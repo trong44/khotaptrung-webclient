@@ -225,7 +225,12 @@
                                                     src="/assets/frontend/theme_3/image/icons/add.png" alt=""></button>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn -secondary w-100 _mt-075 js_step" data-go_to="step2">Chọn mua</button>
+                                    @if(\App\Library\AuthCustom::check())
+                                        <button type="button" class="btn -secondary w-100 _mt-075 js_step" data-go_to="step2">Chọn mua</button>
+                                    @else
+                                        <button type="button" class="btn -secondary w-100 _mt-075" onclick="openLoginModal();">Chọn mua</button>
+                                    @endif
+
                                 </div>
                                 @empty
                                     <div class="text-invalid w-100 text-center">Chưa cấu hình mệnh giá thẻ</div>

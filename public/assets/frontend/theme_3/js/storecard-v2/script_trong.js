@@ -164,26 +164,33 @@ $(document).ready(function () {
         quantity:0,
         _token: $('meta[name="csrf-token"]').attr('content'),
     };
+    $(document).on('click', '.btn-buy-card', function () {
+        let elm = $(this).parent();
+        let amount = elm.find('.card--deno').data('amount');
+        let quantity = elm.find('input.input--amount').val();
+        let ratio_default = elm.find('.card--deno').data('ratio_default') * 1;
+        let discount = 100 - ratio_default;
+        let total_price = (amount - (amount * discount / 100)) * quantity;
+
+        // set data send
+        data_send.amount = amount;
+        data_send.telecom = elm.find('.card--deno').data('key');
+        data_send.quantity = quantity;
+
+        $('#detail--deno__card,#detail--deno__mobile').text(number_format(amount) + 'đ');
+        $('#detail--quantity__card,#detail--quantity__mobile').text(pad(quantity));
+        $('#detail--discount__card,#detail--discount__mobile').text(discount + '%');
+        $('#detail--total__card,#detail--total__mobile').text(number_format(total_price) + ' đ');
+
+        if ($(document).width() > 1199) {
+            $('#modal--confirm__payment').modal('show');
+        }else {
+            handleToggleStep('step2');
+        }
+
+    });
     if ($(document).width() > 1199){
         // handle modal show
-        $(document).on('click', '.btn-buy-card', function () {
-            let elm = $(this).parent();
-            let amount = elm.find('.card--deno').data('amount');
-            let quantity = elm.find('input.input--amount').val();
-            let ratio_default = elm.find('.card--deno').data('ratio_default') * 1;
-            let discount = 100 - ratio_default;
-            let total_price = (amount - (amount * discount / 100)) * quantity;
-
-            // set data send
-            data_send.amount = amount;
-            data_send.telecom = elm.find('.card--deno').data('key');
-            data_send.quantity = quantity;
-
-            $('#detail--deno__card').text(number_format(amount) + 'đ');
-            $('#detail--quantity__card').text(pad(quantity));
-            $('#detail--discount__card').text(discount + '%');
-            $('#detail--total__card').text(number_format(total_price) + ' đ');
-        });
         //submit data
         $('.js-send-data').on('click',function () {
             // call ajax here
@@ -306,26 +313,6 @@ $(document).ready(function () {
 
             handleToggleStep($(this).data('go_to'));
         });
-        function handleToggleStep(step) {
-            step_1.fadeOut();
-            step_2.fadeOut();
-            step_3.fadeOut();
-            step_3_1.fadeOut();
-            switch (step) {
-                case 'step1':
-                    step_1.fadeIn();
-                    break;
-                case 'step2':
-                    step_2.fadeIn();
-                    break;
-                case 'step3':
-                    step_3.fadeIn();
-                    break;
-                case 'step3_1':
-                    step_3_1.fadeIn();
-                    break;
-            }
-        }
         //        submit data
         $('.js-send-data').on('click',function () {
             // call ajax here
@@ -402,5 +389,28 @@ $(document).ready(function () {
                 }
             })
         })
+
+        function handleToggleStep(step) {
+            step_1.fadeOut();
+            step_2.fadeOut();
+            step_3.fadeOut();
+            step_3_1.fadeOut();
+            switch (step) {
+                case 'step1':
+                    step_1.fadeIn();
+                    break;
+                case 'step2':
+                    step_2.fadeIn();
+                    break;
+                case 'step3':
+                    step_3.fadeIn();
+                    break;
+                case 'step3_1':
+                    step_3_1.fadeIn();
+                    break;
+            }
+        }
     }
+
+
 })

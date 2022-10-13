@@ -190,7 +190,7 @@
                                             </div>
                                         </div>
                                         @if(\App\Library\AuthCustom::check())
-                                            <button type="button" class="btn -secondary w-100 _mt-075 btn-buy-card" data-toggle="modal" data-target="#modal--confirm__payment">Chọn mua</button>
+                                            <button type="button" class="btn -secondary w-100 _mt-075 btn-buy-card">Chọn mua</button>
                                         @else
                                             <button type="button" class="btn -secondary w-100 _mt-075" onclick="openLoginModal()">Chọn mua</button>
                                         @endif
