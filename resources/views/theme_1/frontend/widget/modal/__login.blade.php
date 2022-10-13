@@ -17,9 +17,10 @@
             <div class="modal-body">
                 <div class="log-in container" >
                     <div class="log-in-body">
-                        <form action="/ajax/login" method="POST" id="form-login">
-                            <div class="login_error"></div>
-                            {{--            <p style="color: red;font-size: 14px">    {{ $errors->first() }}</p>--}}
+                        <form action="{{ url('/ajax/login') }}" method="POST" id="form-login-modal">
+                            <div class="login_error">
+
+                            </div>
                             @csrf
                             <div class="form-login">
                                 <label>Tài khoản</label>
@@ -37,15 +38,6 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="checkbox icheck">
-                                        <label >
-                                            <input type="checkbox" name="remember_token" value="1">
-                                            Ghi nhớ
-                                        </label>
-                                    </div>
-
-                                </div>
                                 <div class="col-sm-6">
                                     <a href="">Quên mật khẩu</a>
                                 </div>
@@ -88,7 +80,7 @@
             </div>
 
             <div class="modal-body">
-                <form id="formRegister" action="{{ url('/ajax/register') }}" method="POST">
+                <form id="formRegister-modal" action="{{ url('/ajax/register') }}" method="POST">
                     @csrf
                     <div class=" text-center">
                         <div class="my-4 text-center">
@@ -157,13 +149,21 @@
 @endif
 {{--Đăng nhập--}}
 <script>
-    $('.formLogin').submit(function (e) {
+    $('html').on('click','.open-modal-login',function (e) {
+        e.preventDefault();
+        $('#modal-login').modal('show');
+    });
+
+    $('#form-login-modal').on('submit',function (e) {
 
         e.preventDefault();
         var formSubmit = $(this);
         var url = formSubmit.attr('action');
         var btnSubmit = formSubmit.find(':submit');
+        btnSubmit.prop('disabled',true);
+        btnSubmit.text('Đang xử lí...');
         let url2 = new URL(window.location.href);
+
         var return_url = url2.searchParams.get('return_url');
         $.ajax({
             type: "POST",
@@ -179,7 +179,6 @@
                     if (return_url == null || return_url == '' || return_url == undefined){
                         if (data.return_url == null || data.return_url == '' || data.return_url == undefined){
                             window.location.reload();
-
                         }else{
                             window.location.href = data.return_url;
                         }
@@ -188,11 +187,12 @@
 
                     }
 
-                }else{
-                    $('.login-error').html('<strong>'+data.message+'</strong>')
+                }   else{
+                    formSubmit.find('.login_error').html('<strong style="color: red">'+data.message+'</strong>');
 
                 }
-
+                btnSubmit.prop('disabled',false);
+                btnSubmit.text('Đăng nhập');
             },
             error: function (data) {
                 alert('Kết nối với hệ thống thất bại.Xin vui lòng thử lại');
@@ -207,11 +207,12 @@
 {{--Đăng ký--}}
 
 <script>
-    $('#formRegister').submit(function (e) {
+    $('#formRegister-modal').submit(function (e) {
         e.preventDefault();
         var formSubmit = $(this);
         var url = formSubmit.attr('action');
         var btnSubmit = formSubmit.find(':submit');
+
         let url2 = new URL(window.location.href);
         var return_url = url2.searchParams.get('return_url');
         $.ajax({
@@ -241,7 +242,6 @@
                     $('.register-error').html('<strong>'+data.message+'</strong>' )
 
                 }
-
             },
             error: function (data) {
                 alert('Kết nối với hệ thống thất bại.Xin vui lòng thử lại');

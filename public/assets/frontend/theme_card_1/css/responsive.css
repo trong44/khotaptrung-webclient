@@ -1,0 +1,283 @@
+@media only screen and (max-width: 1024px) {
+    .main-tintuc-left {
+        width: 100%;
+    }
+    .new_item {
+        height: 180px;
+    }
+    .main-tintuc-right {
+        width: 100%;
+    }
+    #maintopcontent {
+        display: none;
+    }
+    .content-mobile {
+        display: block;
+    }
+    #footerquydinh {
+        display: none;
+    }
+    .boxlogin {
+        width: 40%;
+        margin-top: 0;
+        padding: 0;
+        height: 45px;
+    }
+    .boxlogin ul {
+        overflow: hidden;
+        float: right;
+    }
+    .navbar-brand {
+        margin-top: 35px;
+        margin-left: -20px;
+    }
+    ul.nav.navbar-nav {
+        padding-top: 10px;
+        padding-left: 30px;
+    }
+    .modal_content {
+        width: 65%;
+    }
+    .menu-mobi {
+        width: 100%;
+        margin-top: -10px;
+    }
+    .banner_fix {
+        display: none;
+    }
+}
+@media only screen and (max-width: 770px) {
+    .section-title.bg-lable4 h2 {
+        height: auto;
+    }
+    .form-group {
+        height: auto !important;
+    }
+    header {
+        height: auto;
+    }
+    figure img {
+        max-width: 100%;
+        height: auto;
+    }
+    .new_description div img,
+    .new_description p img {
+        max-width: 100%;
+        height: auto;
+    }
+    header .logo {
+        padding-left: 0 !important;
+    }
+    header .logo .navbar-brand {
+        padding-top: 2px;
+    }
+    .text-wc {
+        display: none;
+    }
+    .welcome .box-dn #mini-nav {
+        margin-bottom: 0;
+        padding-top: 3px;
+    }
+    .welcome .boxlogin {
+        height: 33px;
+    }
+    .navbar-brand {
+        margin-top: 0;
+    }
+    .boxlogin ul {
+        overflow: inherit;
+        float: right;
+    }
+    #litaikhoan.open > .dropdown-menu {
+        display: block;
+        overflow: inherit;
+    }
+    ul.nav.navbar-nav li a {
+        font-size: 15px;
+        font-weight: 300;
+    }
+    .nonemobile {
+        display: none;
+    }
+    .welcome {
+        height: auto !important;
+    }
+    .noidungtrangchu p img,
+    .noidungtrangchu div img {
+        height: auto !important;
+    }
+    .noidungtrangchu table.table {
+        width: 100% !important;
+        max-width: 100%;
+    }
+    .noidungtrangchu table.table td {
+        float: left;
+        max-width: 50% !important;
+    }
+    .noidungtrangchu table.table td img {
+        max-width: 100%;
+    }
+    .noidungtrangchu span img {
+        max-width: 100% !important;
+        height: auto;
+    }
+    .table_chietkhau {
+        padding: 15px;
+    }
+    .noidung_naptien {
+        margin-top: 25px;
+        width: 100%;
+        border: none;
+    }
+    .ly_naptien {
+        float: left;
+        margin: 20px 0;
+    }
+    .ds_bank_nat .box_ndmd {
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 425px) {
+    button.btnRefresh {
+        margin-top: 20px;
+    }
+    .new_item {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        height: auto;
+    }
+    #navbar-main {
+        float: left;
+        background-image: linear-gradient(white, #f3f3f3, #f3f3f3, #f3f3f3);
+        width: 100%;
+    }
+    .boxlogin {
+        width: 100%;
+    }
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    #slideout {
+        display: none;
+    }
+    .divcontent1 {
+        margin-top: 10px;
+    }
+    header {
+        position: relative;
+    }
+    .menu-mobi {
+        position: relative;
+        height: 0;
+    }
+    .menu-mobi .main-menu {
+        height: 0;
+        top: -50px;
+    }
+    .box-style iframe {
+        max-width: 100% !important;
+    }
+    .nav.navbar-nav .dropdown {
+        margin-top: 2px;
+    }
+    div.sp-thedienthoai ul {
+        padding-left: 0;
+    }
+    div.sp-thedienthoai ul li {
+        float: left;
+        max-width: 50%;
+    }
+    div.sp-thedienthoai ul li .hover-sp {
+        max-width: 99% !important;
+    }
+    div.sp-thedienthoai ul li .hover-sp img {
+        max-width: 100%;
+    }
+    div.col-md-4 div.control-label {
+        display: none;
+    }
+    div.thedianthoai form .col-md-6 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    div.muathegams form .col-md-6 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .boxdrpmega .dropDownList {
+        max-width: 100%;
+        min-width: 99%;
+    }
+    .dropDownList tr:last-child td {
+        width: 45% !important;
+        float: left;
+    }
+    .welcome .boxlogin {
+        height: auto !important;
+    }
+    .boxdrpmega .dropDownList ul li {
+        width: 100px;
+    }
+    .modal_content {
+        width: 90%;
+        margin: 20px auto 0;
+    }
+    .modal_content .form-horizontal .form-group,
+    .modal_content p {
+        margin-bottom: 5px;
+    }
+    .modal_content .col-md-6 {
+        padding: 0;
+    }
+    .modal_content .thtc {
+        width: 100%;
+    }
+    .noidung_naptien {
+        margin-top: 0;
+    }
+    .telco,
+    .menhgia {
+        width: 95%;
+    }
+    .form_mt {
+        padding-left: 0;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 0.5em 0.75em !important;
+    }
+    .noidung_naptien {
+        margin-top: 0;
+        padding: 0 12px;
+    }
+    .ds_bank a img,
+    .ds_bank_nat a img {
+        width: 140px;
+        height: 45px;
+    }
+    #pc_online {
+        display: none;
+    }
+    #mobi_online {
+        display: block;
+    }
+    .ds_bank1,
+    .ds_bank3,
+    #mobi_online div {
+        text-align: center;
+    }
+    .nd_tkbank {
+        text-align: left !important;
+        height: unset;
+    }
+    .head_nh {
+        position: unset;
+        font-size: 13px;
+        line-height: 18px;
+    }
+    .ds_bank_nat .box_ndmd {
+        height: unset;
+        width: 100%;
+        line-height: 30px;
+    }
+}

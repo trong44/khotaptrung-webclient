@@ -25,7 +25,7 @@
                     @csrf
                     <div class="modal-body">
                             <div class="t-sub-2 mb-2">Nhà cung cấp</div>
-                            <select name="type" class="mb-fix-12" id="modal-telecom">
+                            <select name="type" class="select-form mb-fix-12" id="modal-telecom">
                                 <!-- JS PASTE CODE HERE -->
                                 @foreach($data as $val)
                                     <option value="{{$val->key}}">{{$val->title}}</option>

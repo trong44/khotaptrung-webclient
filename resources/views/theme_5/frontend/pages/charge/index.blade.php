@@ -243,7 +243,7 @@
                                     </div>
                                 </div>
                                 <div class="row content-block d-none">
-                                    <div class="col-12 col-lg-12">
+                                    {{-- <div class="col-12 col-lg-12">
                                         <div class="atm-recharge-right c-p-16 brs-8">
                                             <div class="atm-recharge-guide">
                                                 <img class="w-100 c-mb-16" src="/assets/frontend/{{theme('')->theme_key}}/image/phu/atm_recharge_guide.png" alt="">
@@ -258,6 +258,104 @@
                                                     <div class="fz-13 fw-500" id="transactionContent"></div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div> --}}
+                                    <div class="col-12 col-lg-6 c-pr-8 c-pr-lg-15">
+                                        <div class="atm-recharge-banks brs-8 c-p-16 c-p-lg-0">
+                                            <div class="atm-recharge-guide">
+                                                <img class="w-100 c-mb-24" src="/assets/frontend/{{theme('')->theme_key}}/image/phu/atm_recharge_guide.png" alt="">
+                                            </div>
+                                            <span class="d-block atm-banks-label fw-400 fz-13 c-pb-12">
+                                                Vui lòng chọn ngân hàng
+                                            </span>
+                                            <div class="atm-bank-list row m-0">
+                                                <div class="col-4 c-px-4 atm-bank-select">
+                                                    <input type="radio" id="bank-card-1" value="123" name="bank" hidden>
+                                                    <label for="bank-card-1" class="brs-8 c-mb-8">
+                                                        <img src="/assets/frontend/theme_3/image/demo-files/MBBANK.png" alt="">
+                                                    </label>
+                                                </div>
+                                                <div class="col-4 c-px-4 atm-bank-select">
+                                                    <input type="radio" id="bank-card-2" value="231" name="bank" hidden>
+                                                    <label for="bank-card-2" class="brs-8 c-mb-8">
+                                                        <img src="/assets/frontend/theme_3/image/demo-files/TECHCOMBANK.png" alt="">
+                                                    </label>
+                                                </div>
+                                                <div class="col-4 c-px-4 atm-bank-select">
+                                                    <input type="radio" id="bank-card-3" value="333" name="bank" hidden>
+                                                    <label for="bank-card-3" class="brs-8 c-mb-8">
+                                                        <img src="/assets/frontend/theme_3/image/demo-files/VIETCOMBANK.png" alt="">
+                                                    </label>
+                                                </div>
+                                                <div class="col-4 c-px-4 atm-bank-select">
+                                                    <input type="radio" id="bank-card-4" value="221" name="bank" hidden>
+                                                    <label for="bank-card-4" class="brs-8 c-mb-8">
+                                                        <img src="/assets/frontend/theme_3/image/demo-files/VIETINBANK.png" alt="">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <p class="atm-banks-note fw-400 fz-13 c-mb-0">
+                                                Miễn phí. Hỗ trợ từ 08h00 đến 23h00 hàng ngày (trừ ngày lễ và chủ nhật)
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="atm-block-right col-12 col-lg-6 c-pl-8 c-pl-lg-15">
+                                        <div class="loader position-relative d-none">
+                                            <div class="loading-spokes">
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="atm-recharge-detail d-none flex-column justify-content-between">
+                                            <div>
+                                                <span class="d-block c-pb-4 atm-banks-label fw-400 fz-13">
+                                                    Để hoàn tất đơn nạp, bạn vui lòng chuyển khoản theo cú pháp sau:
+                                                </span>
+                                                <div class="atm-recharge-detail-block brs-8 c-p-12">
+                                                    <div class="atm-recharge-attr d-flex justify-content-between align-items-center">
+                                                        <p class="fz-13 fw-400 mb-0">Ngân hàng Kỹ thương Việt Nam (Techcombank)</p>
+                                                        <div>
+                                                            <img src="/assets/frontend/theme_3/image/demo-files/MBBANK.png" class="bank-detail-img" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="atm-recharge-attr d-flex justify-content-between align-items-center">
+                                                        <p class="fz-13 fw-400 mb-0">Chủ tài khoản</p>
+                                                        <div class="fz-13 fw-500">DEMO TEN</div>
+                                                    </div>
+                                                    <div class="atm-recharge-attr d-flex justify-content-between align-items-center">
+                                                        <p class="fz-13 fw-400 mb-0">Số tài khoản</p>
+                                                        <div class="fz-13 fw-500">834783492292343</div>
+                                                    </div>
+                                                    <div class="atm-recharge-attr d-flex justify-content-between align-items-center">
+                                                        <p class="fz-13 fw-400 mb-0">Nội dung</p>
+                                                        <div class="fz-13 fw-500">NAP DEMO 5405</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="w-100 d-none d-lg-block btn primary c-mt-20" type="button" data-toggle="modal" data-target="#atmAutoNotifyModal">Xác nhận</button>
+                                            <button class="w-100 d-block d-lg-none btn primary c-mt-20 open-sheet" type="button" data-target="#sheet-atm-auto-notify">Xác nhận</button>
                                         </div>
                                     </div>
                                 </div>

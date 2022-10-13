@@ -5,33 +5,6 @@ $(document).ready(function () {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
     }
 
-    // /*Get Telecom*/
-    // if (modal_charge.length){
-    //     $.ajax({
-    //         url:'/ajax/get-tele-card',
-    //         type:'GET',
-    //         success:function (res) {
-    //             if (res.status === 1){
-    //                 let telecoms = res.data;
-    //                 let html = '';
-    //                 if (telecoms.length){
-    //                     telecoms.forEach(function (telecom) {
-    //                         html += `<option value="${telecom.key}">${telecom.title}</option>`;
-    //                     });
-    //                 }else {
-    //                     html += '<option value="">-- Vui lòng chọn nhà mạng --</option>';
-    //                 }
-    //                 modal_charge.find('#modal-telecom').html(html);
-    //             }
-    //             $('select').niceSelect();
-    //             $('#modal-telecom').trigger('change');
-    //         },
-    //         error: function (data) {
-    //             console.log('Có lỗi phát sinh vui lòng liên hệ QTV để kịp thời xử lý.(get telecom)')
-    //
-    //         },
-    //     });
-    // }
     $('select.wide').niceSelect();
     $('#modal-telecom').trigger('change');
 
@@ -148,6 +121,44 @@ $(document).ready(function () {
     form.on('submit',function (e) {
         e.preventDefault();
         postCharge();
+    });
+
+    //Js block for auto ATM
+    $('input[name=bank]').on('change', function (e) {
+        $('.atm-card-block .loader').removeClass('d-none');
+        $('.recharge-bank-content').addClass('d-none');
+        setTimeout(() => {
+            $('.atm-card-block .loader').addClass('d-none');
+            $('.recharge-bank-content').removeClass('d-none');
+        }, 1000);
+    });
+
+    // Active swiper atm bank list both in modal and in pages
+    let swiper_bank_lists = new Swiper('.swiper-bank-list', {
+        autoplay: false,
+        updateOnImagesReady: true,
+        watchSlidesVisibility: false,
+        lazyLoadingInPrevNext: false,
+        lazyLoadingOnTransitionStart: false,
+        slidesPerView: 6,
+        speed: 300,
+        spaceBetween: 16,
+        allowTouchMove: false,
+        grabCursor: false,
+        observer: true,
+        observeParents: true,
+        freeMode: false,
+        breakpoints: {
+            992: {
+                allowTouchMove: true,
+                slidesPerView: 5,
+            },
+            768: {
+                allowTouchMove: true,
+                slidesPerView: 2.8,
+                spaceBetween: 12,
+            }
+        }
     });
 
 });

@@ -32,6 +32,8 @@ $(document).ready(function(){
                     $('#info').html('<i class="fas fa-user"></i> Đăng nhập')
                     $('#logout').html('<i class="fas fa-user"></i> Đăng kí')
 
+                    $('#info').addClass('open-modal-login');
+
 
                     $('#info_mobile .loading').remove();
                     $('#logout_mobile .loading').remove();

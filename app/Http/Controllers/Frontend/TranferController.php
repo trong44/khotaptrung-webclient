@@ -22,7 +22,7 @@ class TranferController extends Controller
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
         $data = $result_Api->response_data??null;
 
-        if (theme('')->theme_key == 'theme_1' || theme('')->theme_key == 'theme_4'){
+        if (theme('')->theme_key == 'theme_1' || theme('')->theme_key == 'theme_4' || theme('')->theme_key == 'theme_card_1' || theme('')->theme_key == 'theme_card_2'){
             return view(''.theme('')->theme_key.'.frontend.pages.transfer.index');
         }else{
             return view(''.theme('')->theme_key.'.frontend.pages.charge.index',['data'=>$data->data??null]);

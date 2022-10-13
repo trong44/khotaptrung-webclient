@@ -523,13 +523,71 @@
 
                         <div class="card--gray c-mb-16 c-pt-8 c-pb-8 c-pl-12 c-pr-12 brs-8 g_mobile-content">
 
+                            @if(isset($game_auto_props) && count($game_auto_props))
+                                <div class="card--attr justify-content-between d-flex c-mb-8 text-center">
+                                    <div class="card--attr__name fw-400 fz-13 text-center text-order">
+                                        Tướng
+                                    </div>
+                                    <div class="card--attr__value fz-13 fw-500">{{ $total_tuong }}</div>
+                                </div>
+                                <div class="card--attr justify-content-between d-flex c-mb-8 text-center">
+                                    <div class="card--attr__name fw-400 fz-13 text-center text-order">
+                                        Trang phục
+                                    </div>
+                                    <div class="card--attr__value fz-13 fw-500">{{ $total_trangphuc }}</div>
+                                </div>
+                                <div class="card--attr justify-content-between d-flex c-mb-8 text-center">
+                                    <div class="card--attr__name fw-400 fz-13 text-center text-order">
+                                        Linh thú TFT
+                                    </div>
+                                    <div class="card--attr__value fz-13 fw-500">{{ $total_linhthu }}</div>
+                                </div>
+
+                                @if(isset($data->params))
+                                    @if(isset($data->params->rank_info) && count($data->params->rank_info))
+
+                                        @foreach($data->params->rank_info as $key_rank => $rank_info)
+                                            @if($rank_info->queueType == "RANKED_TFT")
+                                                <div class="card--attr justify-content-between d-flex c-mb-8 text-center">
+                                                    <div class="card--attr__name fw-400 fz-13 text-center text-order">
+                                                        RANKED TFT
+                                                    </div>
+                                                    <div class="card--attr__value fz-13 fw-500">
+                                                        @if($rank_info->tier == "NONE")
+                                                            {{ $rank_info->tier }}
+                                                        @else
+                                                            {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            @elseif($rank_info->queueType == "RANKED_SOLO_5x5")
+                                                <div class="card--attr justify-content-between d-flex c-mb-8 text-center">
+                                                    <div class="card--attr__name fw-400 fz-13 text-center text-order">
+                                                        RANKED SOLO
+                                                    </div>
+                                                    <div class="card--attr__value fz-13 fw-500">
+                                                        @if($rank_info->tier == "NONE")
+                                                            {{ $rank_info->tier }}
+                                                        @else
+                                                            {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+
+                                    @endif
+                                @endif
+                            @else
+                            @endif
+
                             @if(isset($data->groups))
                                 <?php $att_values = $data->groups ?>
                                 @foreach($att_values as $att_value)
                                     @if($att_value->module == 'acc_label' && $att_value->is_slug_override == null)
                                         @if(isset($att_value->parent))
-                                                <div class="card--attr justify-content-between d-flex c-mb-8 text-center">
-                                                    <div class="card--attr__name fw-400 fz-13 text-center text-order">
+                                            <div class="card--attr justify-content-between d-flex c-mb-8 text-center">
+                                                <div class="card--attr__name fw-400 fz-13 text-center text-order">
                                                     {{ $att_value->parent->title??null }}
                                                 </div>
                                                 <div class="card--attr__value fz-13 fw-500">{{ $att_value->title??null }}</div>
@@ -541,14 +599,26 @@
 
                             @if(isset($data->params) && isset($data->params->ext_info))
                                 <?php $params = json_decode(json_encode($data->params->ext_info),true) ?>
-                                @foreach($params as $key => $param)
-                                    <div class="card--attr justify-content-between d-flex c-mb-8 text-center">
-                                        <div class="card--attr__name fw-400 fz-13 text-center text-order">
-                                            {{ $key }}
-                                        </div>
-                                        <div class="card--attr__value fz-13 fw-500">{{ $param }}</div>
-                                    </div>
-                                @endforeach
+                                @if(isset($dataAttribute))
+                                    @foreach($dataAttribute as $index=>$att)
+                                        @if($att->position == 'text')
+                                            @if(isset($att->childs))
+                                                @foreach($att->childs as $child)
+                                                    @foreach($params as $key => $param)
+                                                        @if($key == $child->id && $child->is_slug_override == null)
+                                                            <div class="card--attr justify-content-between d-flex c-mb-8 text-center">
+                                                                <div class="card--attr__name fw-400 fz-13 text-center text-order">
+                                                                    {{ $child->title??'' }}
+                                                                </div>
+                                                                <div class="card--attr__value fz-13 fw-500">{{ $param }}</div>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @endif
                             @endif
 
                         </div>
@@ -771,6 +841,64 @@
 
                 <div class="card--gray c-mb-16 c-pt-8 c-pb-8 c-pl-12 c-pr-12">
 
+                    @if(isset($game_auto_props) && count($game_auto_props))
+                        <div class="card--attr justify-content-between d-flex c-mb-16 text-center">
+                            <div class="card--attr__name fw-400 fz-13 text-center">
+                                Tướng
+                            </div>
+                            <div class="card--attr__value fz-13 fw-500">{{ $total_tuong }}</div>
+                        </div>
+                        <div class="card--attr justify-content-between d-flex c-mb-16 text-center">
+                            <div class="card--attr__name fw-400 fz-13 text-center">
+                                Trang phục
+                            </div>
+                            <div class="card--attr__value fz-13 fw-500">{{ $total_trangphuc }}</div>
+                        </div>
+                        <div class="card--attr justify-content-between d-flex c-mb-16 text-center">
+                            <div class="card--attr__name fw-400 fz-13 text-center">
+                                Linh thú TFT
+                            </div>
+                            <div class="card--attr__value fz-13 fw-500">{{ $total_linhthu }}</div>
+                        </div>
+
+                        @if(isset($data->params))
+                            @if(isset($data->params->rank_info) && count($data->params->rank_info))
+
+                                @foreach($data->params->rank_info as $key_rank => $rank_info)
+                                    @if($rank_info->queueType == "RANKED_TFT")
+                                        <div class="card--attr justify-content-between d-flex c-mb-16 text-center">
+                                            <div class="card--attr__name fw-400 fz-13 text-center">
+                                                RANKED TFT
+                                            </div>
+                                            <div class="card--attr__value fz-13 fw-500">
+                                                @if($rank_info->tier == "NONE")
+                                                    {{ $rank_info->tier }}
+                                                @else
+                                                    {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
+                                                @endif
+                                            </div>
+                                        </div>
+                                    @elseif($rank_info->queueType == "RANKED_SOLO_5x5")
+                                        <div class="card--attr justify-content-between d-flex c-mb-16 text-center">
+                                            <div class="card--attr__name fw-400 fz-13 text-center">
+                                                RANKED SOLO
+                                            </div>
+                                            <div class="card--attr__value fz-13 fw-500">
+                                                @if($rank_info->tier == "NONE")
+                                                    {{ $rank_info->tier }}
+                                                @else
+                                                    {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
+                                                @endif
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+
+                            @endif
+                        @endif
+                    @else
+                    @endif
+
                     @if(isset($data->groups))
                         <?php $att_values = $data->groups ?>
                         @foreach($att_values as $att_value)
@@ -789,14 +917,26 @@
 
                     @if(isset($data->params) && isset($data->params->ext_info))
                         <?php $params = json_decode(json_encode($data->params->ext_info),true) ?>
-                        @foreach($params as $key => $param)
-                            <div class="card--attr justify-content-between d-flex c-mb-16 text-center">
-                                <div class="card--attr__name fw-400 fz-13 text-center">
-                                    {{ $key }}
-                                </div>
-                                <div class="card--attr__value fz-13 fw-500">{{ $param }}</div>
-                            </div>
-                        @endforeach
+                        @if(isset($dataAttribute))
+                            @foreach($dataAttribute as $index=>$att)
+                                @if($att->position == 'text')
+                                    @if(isset($att->childs))
+                                        @foreach($att->childs as $child)
+                                            @foreach($params as $key => $param)
+                                                @if($key == $child->id && $child->is_slug_override == null)
+                                                    <div class="card--attr justify-content-between d-flex c-mb-16 text-center">
+                                                        <div class="card--attr__name fw-400 fz-13 text-center">
+                                                            {{ $child->title??'' }}
+                                                        </div>
+                                                        <div class="card--attr__value fz-13 fw-500">{{ $param }}</div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @endforeach
+                                    @endif
+                                @endif
+                            @endforeach
+                        @endif
                     @endif
 
                 </div>

@@ -104,6 +104,9 @@
 <!-- Modal nạp tiền -->
 @include('frontend.widget.modal.__recharge_modal')
 
+{{-- Modal thông báo ATM tự động --}}
+@include('frontend.widget.modal.atm_auto_notify')
+
 {{-- Modal xem thêm --}}
 @include('frontend.widget.modal.viewmore_modal')
 

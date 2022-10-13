@@ -5,7 +5,6 @@
 @section('meta_robots')
     <meta name="robots" content="index,follow" />
 @endsection
-
 @section('content')
     <div class="container c-container" id="account-list">
         @if($data == null)

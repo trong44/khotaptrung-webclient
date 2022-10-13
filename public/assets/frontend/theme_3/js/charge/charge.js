@@ -1,5 +1,21 @@
 $(document).ready(function(){
 
+    var telecom = $('select#telecom').first().val();
+
+    if (telecom){
+        if (telecom.length > 0){
+            getAmount(telecom);
+        }else {
+            $('.amount-loading').addClass('d-none');
+            $('#amount').removeClass('d-none');
+            $('#amount_mobile').removeClass('d-none');
+        }
+    } else {
+        $('.amount-loading').addClass('d-none');
+        $('#amount').removeClass('d-none');
+        $('#amount_mobile').removeClass('d-none');
+    }
+
     function formatNumber(num) {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
     }

@@ -530,6 +530,13 @@
                                                         </tr>
 
                                                         <tr>
+                                                            <td style="width:50%">Trang phục:</td>
+                                                            <td class="text-danger" style="font-weight: 700">
+                                                                {{ $total_trangphuc }}
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
                                                             <td style="width:50%">Linh thú TFT:</td>
                                                             <td class="text-danger" style="font-weight: 700">
                                                                 {{ $total_linhthu }}
@@ -537,12 +544,24 @@
                                                         </tr>
 
                                                         @if(isset($data->params))
-                                                        @if(isset($data->params->rank_info) && count($data->params->rank_info))
+                                                            @if(isset($data->params->rank_info) && count($data->params->rank_info))
 
-                                                            @foreach($data->params->rank_info as $key_rank => $rank_info)
-                                                                @if($rank_info->queueType == "RANKED_TFT")
-                                                                    <tr>
-                                                                        <td style="width:50%">RANKED TFT:</td>
+                                                                @foreach($data->params->rank_info as $key_rank => $rank_info)
+                                                                    @if($rank_info->queueType == "RANKED_TFT")
+                                                                        <tr>
+                                                                            <td style="width:50%">RANKED TFT:</td>
+                                                                            <td class="text-danger" style="font-weight: 700">
+                                                                                @if($rank_info->tier == "NONE")
+                                                                                    {{ $rank_info->tier }}
+                                                                                @else
+
+                                                                                    {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
+
+                                                                                @endif
+                                                                            </td>
+                                                                        </tr>
+                                                                    @elseif($rank_info->queueType == "RANKED_SOLO_5x5")
+                                                                        <td style="width:50%">RANKED SOLO:</td>
                                                                         <td class="text-danger" style="font-weight: 700">
                                                                             @if($rank_info->tier == "NONE")
                                                                                 {{ $rank_info->tier }}
@@ -552,23 +571,11 @@
 
                                                                             @endif
                                                                         </td>
-                                                                    </tr>
-                                                                @elseif($rank_info->queueType == "RANKED_SOLO_5x5")
-                                                                    <td style="width:50%">RANKED SOLO:</td>
-                                                                    <td class="text-danger" style="font-weight: 700">
-                                                                        @if($rank_info->tier == "NONE")
-                                                                            {{ $rank_info->tier }}
-                                                                        @else
+                                                                    @endif
+                                                                @endforeach
 
-                                                                            {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
-
-                                                                        @endif
-                                                                    </td>
-                                                                @endif
-                                                            @endforeach
-
+                                                            @endif
                                                         @endif
-                                                    @endif
                                                     @endif
 
                                                     @if(isset($data->groups))
@@ -588,12 +595,24 @@
 
                                                     @if(isset($data->params) && isset($data->params->ext_info))
                                                         <?php $params = json_decode(json_encode($data->params->ext_info),true) ?>
-                                                        @foreach($params as $key => $param)
-                                                            <tr>
-                                                                <td style="width:50%">{{ $key }}:</td>
-                                                                <td class="text-danger" style="font-weight: 700">{{ $param }}</td>
-                                                            </tr>
-                                                        @endforeach
+                                                        @if(isset($dataAttribute))
+                                                            @foreach($dataAttribute as $index=>$att)
+                                                                @if($att->position == 'text')
+                                                                    @if(isset($att->childs))
+                                                                        @foreach($att->childs as $child)
+                                                                            @foreach($params as $key => $param)
+                                                                                @if($key == $child->id && $child->is_slug_override == null)
+                                                                                    <tr>
+                                                                                        <td style="width:50%">{{ $child->title??'' }}:</td>
+                                                                                        <td class="text-danger" style="font-weight: 700">{{ $param }}</td>
+                                                                                    </tr>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        @endforeach
+                                                                    @endif
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
                                                     @endif
                                                     </tbody>
                                                 </table>

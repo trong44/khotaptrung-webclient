@@ -26,7 +26,7 @@ $(document).ready(function(){
                     return;
                 }
                 if(data.status === "ERROR"){
-                    alert('Lỗi dữ liệu, vui lòng load lại trang để tải lại dữ liệu')
+                    console.log('Lỗi dữ liệu, vui lòng load lại trang để tải lại dữ liệu')
                 }
                 if(data.status == true){
                     $('#info_id').html('<span>'+data.info.id+'</span>')

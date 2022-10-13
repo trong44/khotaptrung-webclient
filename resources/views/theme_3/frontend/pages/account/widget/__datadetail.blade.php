@@ -168,68 +168,93 @@
                                                                             }
                                                                         }
                                                                     @endphp
-                                                                    <div class="row marginauto gallery-right-top-body-black gallery-right-top-body-span">
-                                                                        <div class="col-auto gallery-col-auto-left left-right">
-                                                                            <small>Tướng</small>
+                                                                    @if($total < 7)
+                                                                        <?php
+                                                                        $total = $total + 1;
+                                                                        ?>
+                                                                        <div class="row marginauto gallery-right-top-body-black gallery-right-top-body-span">
+                                                                            <div class="col-auto gallery-col-auto-left left-right">
+                                                                                <small>Tướng</small>
+                                                                            </div>
+                                                                            <div class="col-auto gallery-col-auto-right left-right d-flex justify-content-between">
+                                                                                <span>{{ $total_tuong }}</span>
+                                                                                <span class="see-modal-acc" id="show-modal-champ">Xem</span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-auto gallery-col-auto-right left-right d-flex justify-content-between">
-                                                                            <span>{{ $total_tuong }}</span>
-                                                                            <span class="see-modal-acc" id="show-modal-champ">Xem</span>
+                                                                    @endif
+                                                                    @if($total < 7)
+                                                                        <?php
+                                                                        $total = $total + 1;
+                                                                        ?>
+                                                                        <div class="row marginauto gallery-right-top-body-black gallery-right-top-body-span">
+                                                                            <div class="col-auto gallery-col-auto-left left-right">
+                                                                                <small>Trang phục</small>
+                                                                            </div>
+                                                                            <div class="col-auto gallery-col-auto-right left-right d-flex justify-content-between">
+                                                                                <span>{{ $total_trangphuc }}</span>
+                                                                                <span class="see-modal-acc" id="show-modal-skin">Xem</span>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <div class="row marginauto gallery-right-top-body-black gallery-right-top-body-span">
-                                                                        <div class="col-auto gallery-col-auto-left left-right">
-                                                                            <small>Trang phục</small>
+                                                                    @endif
+                                                                    @if($total < 7)
+                                                                        <?php
+                                                                        $total = $total + 1;
+                                                                        ?>
+                                                                        <div class="row marginauto gallery-right-top-body-black gallery-right-top-body-span ">
+                                                                            <div class="col-auto gallery-col-auto-left left-right">
+                                                                                <small>Linh thú TFT</small>
+                                                                            </div>
+                                                                            <div class="col-auto gallery-col-auto-right left-right  d-flex justify-content-between">
+                                                                                <span>{{ $total_linhthu }}</span>
+                                                                                <span class="see-modal-acc" id="show-modal-animal">Xem</span>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="col-auto gallery-col-auto-right left-right d-flex justify-content-between">
-                                                                            <span>{{ $total_trangphuc }}</span>
-                                                                            <span class="see-modal-acc" id="show-modal-skin">Xem</span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row marginauto gallery-right-top-body-black gallery-right-top-body-span ">
-                                                                        <div class="col-auto gallery-col-auto-left left-right">
-                                                                            <small>Linh thú TFT</small>
-                                                                        </div>
-                                                                        <div class="col-auto gallery-col-auto-right left-right  d-flex justify-content-between">
-                                                                            <span>{{ $total_linhthu }}</span>
-                                                                            <span class="see-modal-acc" id="show-modal-animal">Xem</span>
-                                                                        </div>
-                                                                    </div>
+                                                                    @endif
 
                                                                     @if(isset($data->params))
                                                                         @if(isset($data->params->rank_info) && count($data->params->rank_info))
 
                                                                             @foreach($data->params->rank_info as $key_rank => $rank_info)
                                                                                 @if($rank_info->queueType == "RANKED_TFT")
-                                                                                    <div class="row marginauto gallery-right-top-body-black gallery-right-top-body-span">
-                                                                                        <div class="col-auto gallery-col-auto-left left-right">
-                                                                                            <small>RANKED TFT</small>
+                                                                                    @if($total < 7)
+                                                                                        <?php
+                                                                                        $total = $total + 1;
+                                                                                        ?>
+                                                                                        <div class="row marginauto gallery-right-top-body-black gallery-right-top-body-span">
+                                                                                            <div class="col-auto gallery-col-auto-left left-right">
+                                                                                                <small>RANKED TFT</small>
+                                                                                            </div>
+                                                                                            <div class="col-auto gallery-col-auto-right left-right">
+                                                                                                <span>
+                                                                                                    @if($rank_info->tier == "NONE")
+                                                                                                        {{ $rank_info->tier }}
+                                                                                                    @else
+                                                                                                        {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
+                                                                                                    @endif
+                                                                                                </span>
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <div class="col-auto gallery-col-auto-right left-right">
-                                                                                            <span>
-                                                                                                @if($rank_info->tier == "NONE")
-                                                                                                    {{ $rank_info->tier }}
-                                                                                                @else
-                                                                                                    {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
-                                                                                                @endif
-                                                                                            </span>
-                                                                                        </div>
-                                                                                    </div>
+                                                                                    @endif
                                                                                 @elseif($rank_info->queueType == "RANKED_SOLO_5x5")
-                                                                                    <div class="row marginauto gallery-right-top-body-black gallery-right-top-body-span">
-                                                                                        <div class="col-auto gallery-col-auto-left left-right">
-                                                                                            <small>RANKED SOLO</small>
+                                                                                    @if($total < 7)
+                                                                                        <?php
+                                                                                        $total = $total + 1;
+                                                                                        ?>
+                                                                                        <div class="row marginauto gallery-right-top-body-black gallery-right-top-body-span">
+                                                                                            <div class="col-auto gallery-col-auto-left left-right">
+                                                                                                <small>RANKED SOLO</small>
+                                                                                            </div>
+                                                                                            <div class="col-auto gallery-col-auto-right left-right">
+                                                                                                <span>
+                                                                                                    @if($rank_info->tier == "NONE")
+                                                                                                        {{ $rank_info->tier }}
+                                                                                                    @else
+                                                                                                        {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
+                                                                                                    @endif
+                                                                                                </span>
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <div class="col-auto gallery-col-auto-right left-right">
-                                                                                            <span>
-                                                                                                @if($rank_info->tier == "NONE")
-                                                                                                    {{ $rank_info->tier }}
-                                                                                                @else
-                                                                                                    {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
-                                                                                                @endif
-                                                                                            </span>
-                                                                                        </div>
-                                                                                    </div>
+                                                                                    @endif
                                                                                 @endif
                                                                             @endforeach
 
@@ -839,6 +864,72 @@
                                     <div class="col-md-12 left-right padding-order-ct">
                                         <div class="row marginauto">
                                             <div class="col-md-12 left-right background-order-ct">
+                                                @if(isset($game_auto_props) && count($game_auto_props))
+                                                    <div class="row marginauto background-order-body-row-ct">
+                                                        <div class="col-auto left-right background-order-col-left-ct">
+                                                            <span>Tướng</span>
+                                                        </div>
+                                                        <div class="col-auto left-right background-order-col-right-ct">
+                                                            <small>{{ $total_tuong }}</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row marginauto background-order-body-row-ct">
+                                                        <div class="col-auto left-right background-order-col-left-ct">
+                                                            <span>Trang phục</span>
+                                                        </div>
+                                                        <div class="col-auto left-right background-order-col-right-ct">
+                                                            <small>{{ $total_trangphuc }}</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row marginauto background-order-body-row-ct">
+                                                        <div class="col-auto left-right background-order-col-left-ct">
+                                                            <span>Linh thú TFT</span>
+                                                        </div>
+                                                        <div class="col-auto left-right background-order-col-right-ct">
+                                                            <small>{{ $total_linhthu }}</small>
+                                                        </div>
+                                                    </div>
+
+                                                    @if(isset($data->params))
+                                                        @if(isset($data->params->rank_info) && count($data->params->rank_info))
+
+                                                            @foreach($data->params->rank_info as $key_rank => $rank_info)
+                                                                @if($rank_info->queueType == "RANKED_TFT")
+                                                                    <div class="row marginauto background-order-body-row-ct">
+                                                                        <div class="col-auto left-right background-order-col-left-ct">
+                                                                            <span>RANKED TFT</span>
+                                                                        </div>
+                                                                        <div class="col-auto left-right background-order-col-right-ct">
+                                                                            <small>
+                                                                                @if($rank_info->tier == "NONE")
+                                                                                    {{ $rank_info->tier }}
+                                                                                @else
+                                                                                    {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
+                                                                                @endif
+                                                                            </small>
+                                                                        </div>
+                                                                    </div>
+                                                                @elseif($rank_info->queueType == "RANKED_SOLO_5x5")
+                                                                    <div class="row marginauto background-order-body-row-ct">
+                                                                        <div class="col-auto left-right background-order-col-left-ct">
+                                                                            <span>RANKED SOLO</span>
+                                                                        </div>
+                                                                        <div class="col-auto left-right background-order-col-right-ct">
+                                                                            <small>
+                                                                                @if($rank_info->tier == "NONE")
+                                                                                    {{ $rank_info->tier }}
+                                                                                @else
+                                                                                    {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
+                                                                                @endif
+                                                                            </small>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    @endif
+                                                @else
+                                                @endif
 
                                                 @if(isset($data->groups))
                                                     <?php $att_values = $data->groups ?>
@@ -860,17 +951,29 @@
                                                 @endif
 
                                                 @if(isset($data->params) && isset($data->params->ext_info))
-                                                    <?php $params = json_decode(json_encode($data->params->ext_info),true); ?>
-                                                    @foreach ($params as $key => $param)
-                                                        <div class="row marginauto background-order-body-row-ct">
-                                                            <div class="col-auto left-right background-order-col-left-ct">
-                                                                <span>{{ $key }}</span>
-                                                            </div>
-                                                            <div class="col-auto left-right background-order-col-right-ct">
-                                                                <small>{{ $param }}</small>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
+                                                    <?php $params = json_decode(json_encode($data->params->ext_info),true) ?>
+                                                    @if(isset($dataAttribute))
+                                                        @foreach($dataAttribute as $index=>$att)
+                                                            @if($att->position == 'text')
+                                                                @if(isset($att->childs))
+                                                                    @foreach($att->childs as $child)
+                                                                        @foreach($params as $key => $param)
+                                                                            @if($key == $child->id && $child->is_slug_override == null)
+                                                                                <div class="row marginauto background-order-body-row-ct">
+                                                                                    <div class="col-auto left-right background-order-col-left-ct">
+                                                                                        <span>{{ $child->title??'' }}</span>
+                                                                                    </div>
+                                                                                    <div class="col-auto left-right background-order-col-right-ct">
+                                                                                        <small>{{ $param }}</small>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    @endforeach
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
                                                 @endif
                                             </div>
 
@@ -1045,6 +1148,72 @@
                             <div class="col-md-12 left-right padding-order-ct">
                                 <div class="row marginauto">
                                     <div class="col-md-12 left-right background-order-ct">
+                                        @if(isset($game_auto_props) && count($game_auto_props))
+                                            <div class="row marginauto background-order-body-row-ct">
+                                                <div class="col-auto left-right background-order-col-left-ct">
+                                                    <span>Tướng</span>
+                                                </div>
+                                                <div class="col-auto left-right background-order-col-right-ct">
+                                                    <small>{{ $total_tuong }}</small>
+                                                </div>
+                                            </div>
+                                            <div class="row marginauto background-order-body-row-ct">
+                                                <div class="col-auto left-right background-order-col-left-ct">
+                                                    <span>Trang phục</span>
+                                                </div>
+                                                <div class="col-auto left-right background-order-col-right-ct">
+                                                    <small>{{ $total_trangphuc }}</small>
+                                                </div>
+                                            </div>
+                                            <div class="row marginauto background-order-body-row-ct">
+                                                <div class="col-auto left-right background-order-col-left-ct">
+                                                    <span>Linh thú TFT</span>
+                                                </div>
+                                                <div class="col-auto left-right background-order-col-right-ct">
+                                                    <small>{{ $total_linhthu }}</small>
+                                                </div>
+                                            </div>
+
+                                            @if(isset($data->params))
+                                                @if(isset($data->params->rank_info) && count($data->params->rank_info))
+
+                                                    @foreach($data->params->rank_info as $key_rank => $rank_info)
+                                                        @if($rank_info->queueType == "RANKED_TFT")
+                                                            <div class="row marginauto background-order-body-row-ct">
+                                                                <div class="col-auto left-right background-order-col-left-ct">
+                                                                    <span>RANKED TFT</span>
+                                                                </div>
+                                                                <div class="col-auto left-right background-order-col-right-ct">
+                                                                    <small>
+                                                                        @if($rank_info->tier == "NONE")
+                                                                            {{ $rank_info->tier }}
+                                                                        @else
+                                                                            {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
+                                                                        @endif
+                                                                    </small>
+                                                                </div>
+                                                            </div>
+                                                        @elseif($rank_info->queueType == "RANKED_SOLO_5x5")
+                                                            <div class="row marginauto background-order-body-row-ct">
+                                                                <div class="col-auto left-right background-order-col-left-ct">
+                                                                    <span>RANKED SOLO</span>
+                                                                </div>
+                                                                <div class="col-auto left-right background-order-col-right-ct">
+                                                                    <small>
+                                                                        @if($rank_info->tier == "NONE")
+                                                                            {{ $rank_info->tier }}
+                                                                        @else
+                                                                            {{ config('module.acc.auto_lm_rank.'.$rank_info->tier ) }} - {{ $rank_info->division }}
+                                                                        @endif
+                                                                    </small>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endif
+                                        @else
+                                        @endif
 
                                         @if(isset($data->groups))
                                             <?php $att_values = $data->groups ?>
@@ -1066,17 +1235,29 @@
                                         @endif
 
                                         @if(isset($data->params) && isset($data->params->ext_info))
-                                            <?php $params = json_decode(json_encode($data->params->ext_info),true); ?>
-                                            @foreach ($params as $key => $param)
-                                                <div class="row marginauto background-order-body-row-ct">
-                                                    <div class="col-auto left-right background-order-col-left-ct">
-                                                        <span>{{ $key }}</span>
-                                                    </div>
-                                                    <div class="col-auto left-right background-order-col-right-ct">
-                                                        <small>{{ $param }}</small>
-                                                    </div>
-                                                </div>
-                                            @endforeach
+                                            <?php $params = json_decode(json_encode($data->params->ext_info),true) ?>
+                                            @if(isset($dataAttribute))
+                                                @foreach($dataAttribute as $index=>$att)
+                                                    @if($att->position == 'text')
+                                                        @if(isset($att->childs))
+                                                            @foreach($att->childs as $child)
+                                                                @foreach($params as $key => $param)
+                                                                    @if($key == $child->id && $child->is_slug_override == null)
+                                                                        <div class="row marginauto background-order-body-row-ct">
+                                                                            <div class="col-auto left-right background-order-col-left-ct">
+                                                                                <span>{{ $child->title??'' }}</span>
+                                                                            </div>
+                                                                            <div class="col-auto left-right background-order-col-right-ct">
+                                                                                <small>{{ $param }}</small>
+                                                                            </div>
+                                                                        </div>
+                                                                    @endif
+                                                                @endforeach
+                                                            @endforeach
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         @endif
                                     </div>
 

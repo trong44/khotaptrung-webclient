@@ -227,6 +227,12 @@
 {{-- Modal mua thẻ cho người dùng --}}
 @include('frontend.widget.modal.__recharge_modal')
 
+{{-- Modal thông báo ATM tự động --}}
+@include('frontend.widget.modal.atm_auto_notify')
+
+{{-- Sheet thông báo ATM tự động --}}
+@include('frontend.widget.modal.atm_auto_notify_sheet')
+
 {{--  sử lý step thanh toán --}}
 <div class="step" id="chargeConfirmStep">
     <div class="head-mobile">

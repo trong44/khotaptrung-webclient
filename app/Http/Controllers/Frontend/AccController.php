@@ -417,7 +417,7 @@ class AccController extends Controller
                     ->with('data_category',$data_category)
                     ->with('game_auto_props',$game_auto_props)
                     ->with('data',$data)
-                    ->with('data',$data)
+                    ->with('dataAttribute',$dataAttribute)
                     ->with('card_percent',$card_percent)->render();
 
                 return response()->json([

@@ -294,12 +294,10 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="tab-pane  @if(Request::is('recharge-atm')) active show @endif fade  mt-3 " id="atm_card" role="tabpanel" >
-                                    <form action="">
+                                <div class="tab-pane @if(Request::is('recharge-atm')) active show @endif fade mt-3" id="atm_card" role="tabpanel" >
+
+                                    {{-- <form action="">
                                         <div class="box-charge-card">
-{{--                                            <div class="atm-card-title mb-fix-20">--}}
-{{--                                                <span>Để hoàn tất đơn nạp, bạn vui lòng chuyển khoản theo cú pháp sau:</span>--}}
-{{--                                            </div>--}}
                                             <div class="dialog--content mb-fix-20">
                                                 <div class="card--gray">
                                                     @if (setting('sys_tranfer_content') != "")
@@ -321,7 +319,107 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </form> --}}
+
+                                    <div class="atm-card-block">
+                                        <div class="recharge-atm-bank">
+                                            <p>Chuyển khoản qua ngân hàng</p>
+                                            <div class="swiper-bank-list">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div class="bank-card">
+                                                            <input type="radio" id="card-bank-1" value="MBBANK" name="bank" data-img="/assets/frontend/{{theme('')->theme_key}}/image/demo-files/MBBANK.png" data-title="MBBank" hidden>
+                                                            <label for="card-bank-1">
+                                                                <img src="/assets/frontend/{{theme('')->theme_key}}/image/demo-files/MBBANK.png" alt="">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="bank-card">
+                                                            <input type="radio" id="card-bank-2" value="TECHCOMBANK" name="bank" data-img="/assets/frontend/{{theme('')->theme_key}}/image/demo-files/TECHCOMBANK.png" data-title="MBBank" hidden>
+                                                            <label for="card-bank-2">
+                                                                <img src="/assets/frontend/{{theme('')->theme_key}}/image/demo-files/TECHCOMBANK.png" alt="">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="bank-card">
+                                                            <input type="radio" id="card-bank-3" value="Vietcombank" name="bank" data-img="/assets/frontend/{{theme('')->theme_key}}/image/demo-files/VIETCOMBANK.png" data-title="MBBank" hidden>
+                                                            <label for="card-bank-3">
+                                                                <img src="/assets/frontend/{{theme('')->theme_key}}/image/demo-files/VIETCOMBANK.png" alt="">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="bank-card">
+                                                            <input type="radio" id="card-bank-4" value="VIETINBANK" name="bank" data-img="/assets/frontend/{{theme('')->theme_key}}/image/demo-files/VIETINBANK.png" data-title="MBBank" hidden>
+                                                            <label for="card-bank-4">
+                                                                <img src="/assets/frontend/{{theme('')->theme_key}}/image/demo-files/VIETINBANK.png" alt="">
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span>Miễn phí. Hỗ trợ từ 08h00 đến 23h00 hàng ngày (trừ ngày lễ và chủ nhật)</span>
+                                        </div>
+                                        <div class="loader d-none">
+                                            <div class="loading-spokes">
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                                <div class="spoke-container">
+                                                    <div class="spoke"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="recharge-bank-content d-none">
+                                            <span>Để hoàn tất chuyển khoản quý khách vui lòng chuyển khoản theo nội dung sau</span>
+                                            <div class="recharge-bank-detail">
+                                                <div class="bank-detail-attr d-flex justify-content-between align-items-center">
+                                                    <p>Ngân hàng Kỹ thương Việt Nam (Techcombank)</p>
+                                                    <div><img class="bank-detail-img" src="/assets/frontend/{{theme('')->theme_key}}/image/demo-files/VIETINBANK.png" alt=""></div>
+                                                </div>
+                                                <div class="bank-detail-attr d-flex justify-content-between align-items-center">
+                                                    <p>Chủ tài khoản</p>
+                                                    <div>DEMO TEN</div>
+                                                </div>
+                                                <div class="bank-detail-attr d-flex justify-content-between align-items-center">
+                                                    <p>Số tài khoản</p>
+                                                    <div>47582312345</div>
+                                                </div>
+                                                <div class="bank-detail-attr d-flex justify-content-between align-items-center">
+                                                    <p>Nội dung chuyển tiền</p>
+                                                    <div>NAP DTGRN 103764</div>
+                                                </div>
+                                            </div>
+                                            <div class="button-default-ct d-none d-lg-block" data-toggle="modal" data-target="#atmAutoNotifyModal" style="text-align: center">Xác nhận</div>
+                                            <div class="padding-order-footer-mobile-ct fixcungbuttonmobile d-block d-lg-none w-100" style="padding-top: 0">
+                                                <div class="row marginauto" style="padding: 12px 16px">
+                                                    <div class="col-md-12 left-right">
+                                                        <button id="charge_next" class="button-default-ct" data-toggle="modal" data-target="#atmAutoNotifyModal">Xác nhận</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                     <div class="tab-pane fade  mt-3 detailViewBlock" id="intro_charge" role="tabpanel" >
                                         <div class="charge-content-img" style="">

@@ -364,12 +364,24 @@
 
                                                         @if(isset($data->params) && isset($data->params->ext_info))
                                                             <?php $params = json_decode(json_encode($data->params->ext_info),true) ?>
-                                                            @foreach($params as $key => $param)
-                                                                <tr>
-                                                                    <td style="width:50%">{{ $key }}:</td>
-                                                                    <td class="text-danger" style="font-weight: 700">{{ $param }}</td>
-                                                                </tr>
-                                                            @endforeach
+                                                            @if(isset($dataAttribute))
+                                                                @foreach($dataAttribute as $index=>$att)
+                                                                    @if($att->position == 'text')
+                                                                        @if(isset($att->childs))
+                                                                            @foreach($att->childs as $child)
+                                                                                @foreach($params as $key => $param)
+                                                                                    @if($key == $child->id && $child->is_slug_override == null)
+                                                                                        <tr>
+                                                                                            <td style="width:50%">{{ $child->title??'' }}:</td>
+                                                                                            <td class="text-danger" style="font-weight: 700">{{ $param }}</td>
+                                                                                        </tr>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            @endforeach
+                                                                        @endif
+                                                                    @endif
+                                                                @endforeach
+                                                            @endif
                                                         @endif
                                                         </tbody>
                                                     </table>
