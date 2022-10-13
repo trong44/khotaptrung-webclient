@@ -85,7 +85,7 @@
                                                     @if($key == 0)
                                                         <div class="swiper-slide">
                                                             <div class="cards__item  w-100">
-                                                                <input type="radio" id="card-mobile-{{ $telecom->id }}" value="{{ $telecom->key }}" data-img="{{ $telecom->image }}" name="card-type-mobile" checked hidden>
+                                                                <input type="radio" id="card-mobile-{{ $telecom->id }}" value="{{ $telecom->key }}" data-img="{{ $telecom->image }}" name="card-type" checked hidden>
 
                                                                 <label for="card-mobile-{{ $telecom->id }}">
                                                                     <img src="{{ $telecom->image }}" class="card--logo" alt="{{ $telecom->title }}">
@@ -95,7 +95,7 @@
                                                     @else
                                                         <div class="swiper-slide">
                                                             <div class="cards__item  w-100">
-                                                                <input type="radio" id="card-mobile-{{ $telecom->id }}" value="{{ $telecom->key }}" data-img="{{ $telecom->image }}" name="card-type-mobile" hidden>
+                                                                <input type="radio" id="card-mobile-{{ $telecom->id }}" value="{{ $telecom->key }}" data-img="{{ $telecom->image }}" name="card-type" hidden>
 
                                                                 <label for="card-mobile-{{ $telecom->id }}">
                                                                     <img src="{{ $telecom->image }}" class="card--logo" alt="{{ $telecom->title }}">
@@ -140,7 +140,7 @@
                                                     @if($key == 0)
                                                         <div class="swiper-slide">
                                                             <div class="cards__item  w-100">
-                                                                <input type="radio" id="card-mobile-{{ $telecom->id }}" value="{{ $telecom->key }}" data-img="{{ $telecom->image }}" name="card-type-mobile" checked hidden>
+                                                                <input type="radio" id="card-mobile-{{ $telecom->id }}" value="{{ $telecom->key }}" data-img="{{ $telecom->image }}" name="card-type" checked hidden>
 
                                                                 <label for="card-mobile-{{ $telecom->id }}">
                                                                     <img src="{{ $telecom->image }}" class="card--logo" alt="{{ $telecom->title }}">
@@ -150,7 +150,7 @@
                                                     @else
                                                         <div class="swiper-slide">
                                                             <div class="cards__item  w-100">
-                                                                <input type="radio" id="card-mobile-{{ $telecom->id }}" value="{{ $telecom->key }}" data-img="{{ $telecom->image }}" name="card-type-mobile" hidden>
+                                                                <input type="radio" id="card-mobile-{{ $telecom->id }}" value="{{ $telecom->key }}" data-img="{{ $telecom->image }}" name="card-type" hidden>
 
                                                                 <label for="card-mobile-{{ $telecom->id }}">
                                                                     <img src="{{ $telecom->image }}" class="card--logo" alt="{{ $telecom->title }}">
@@ -207,19 +207,19 @@
                                 <ul class="deno__list row" id="cardAmountList">
 
                                 </ul>
-                                <div class="swiper slider--card__amount" >
-                                    <div class="swiper-wrapper" id="cardAmountListMobile">
-                                        {{--                                <div class="swiper-slide">--}}
-                                        {{--                                    <div class="deno__item ">--}}
-                                        {{--                                        <input type="radio" id="amount-3346" value="10000" data-discount="99.0" name="card-value" checked="" hidden="">--}}
-                                        {{--                                        <label for="amount-3346" class="deno__value card-item-value"><span>10.000 đ</span></label>--}}
-                                        {{--                                    </div>--}}
+{{--                                <div class="swiper slider--card__amount" >--}}
+{{--                                    <div class="swiper-wrapper" id="cardAmountListMobile">--}}
+{{--                                        --}}{{--                                <div class="swiper-slide">--}}
+{{--                                        --}}{{--                                    <div class="deno__item ">--}}
+{{--                                        --}}{{--                                        <input type="radio" id="amount-3346" value="10000" data-discount="99.0" name="card-value" checked="" hidden="">--}}
+{{--                                        --}}{{--                                        <label for="amount-3346" class="deno__value card-item-value"><span>10.000 đ</span></label>--}}
+{{--                                        --}}{{--                                    </div>--}}
 
-                                        {{--                                </div>--}}
+{{--                                        --}}{{--                                </div>--}}
 
 
-                                    </div>
-                                </div>
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
                                 <div class="card--amount">
                             <span class="card--amount__title">

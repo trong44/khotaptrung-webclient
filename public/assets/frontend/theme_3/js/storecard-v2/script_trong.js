@@ -286,11 +286,11 @@ $(document).ready(function () {
         let step_3 = $('.mobile--success__payment');
         let step_3_1 = $('.mobile--fail__payment');
 
-        $(document).on('click','.js_step', function (e) {
+        $('body').on('click','.js_step', function (e) {
             // chặn tất cả những sự kiện ( modal ... )
             e.stopPropagation();
             e.preventDefault();
-
+            console.log("11111111111111")
             if (e.target.tagName === 'BUTTON'){
                 // set info card
                 let elm = $(this).parent();
