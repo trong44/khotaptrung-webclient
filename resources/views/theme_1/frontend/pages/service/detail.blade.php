@@ -470,8 +470,33 @@
 
         <!-- END: PAGE CONTENT -->
     </div>
+    @if(isset($data->note))
+        <div class="modal fade in" id="notiseviceModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="font-weight: bold;text-transform: uppercase;color: #FF0000;text-align: center">Thông báo</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="font-family: helvetica, arial, sans-serif;">
+                        {!! $data->note !!}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn c-theme-btn c-btn-border-2x c-btn-square c-btn-bold c-btn-uppercase" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
 
+            $(document).ready(function(){
+                $('#notiseviceModal').modal('show');
+            })
 
+        </script>
+    @endif
     <input type="hidden" name="slug" id="slug" value="{{ $slug }}" />
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/service.css">
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/service/showdetailservice.js?v={{time()}}"></script>

@@ -205,20 +205,32 @@
                                                                     </div>
                                                                     <div class="text-right">
                                                                         <span class="fw-500 d-block c-mb-0">{{$item->price}}</span>
-                                                                        @switch($item->status)
-                                                                            @case(0)
-                                                                            <span class="warning-color c-mb-0">{{config('constants.withdraw_status.0')}}</span>
-                                                                            @break
-                                                                            @case(1)
-                                                                            <span class="success-color c-mb-0">{{config('constants.withdraw_status.1')}}</span>
-                                                                            @break
-                                                                            @case(2)
-                                                                            <span class="warning-color c-mb-0">{{config('constants.withdraw_status.2')}}</span>
-                                                                            @break
-                                                                            @case(3)
-                                                                            <span class="invalid-color c-mb-0">{{config('constants.withdraw_status.3')}}</span>
-                                                                            @break
-                                                                        @endswitch
+                                                                        @if($item->payment_type == 13 || $item->payment_type == 12 || $item->payment_type == 11 || $item->payment_type == 14)
+                                                                            @if ($item->status == 0)
+                                                                                <span class="invalid-color c-mb-0">Giao dịch thất bại</span>
+                                                                            @elseif($item->status == 1 )
+                                                                                <span class="warning-color c-mb-0">Chờ xử lý</span>
+                                                                            @elseif($item->status == 2 )
+                                                                                <span class="warning-color c-mb-0">Chờ xử lý</span>
+                                                                            @elseif($item->status == 4 )
+                                                                                <span class="success-color c-mb-0">Hoàn thành</span>
+                                                                            @endif
+                                                                        @else
+                                                                            @switch($item->status)
+                                                                                @case(0)
+                                                                                <span class="warning-color c-mb-0">{{config('constants.withdraw_status.0')}}</span>
+                                                                                @break
+                                                                                @case(1)
+                                                                                <span class="success-color c-mb-0">{{config('constants.withdraw_status.1')}}</span>
+                                                                                @break
+                                                                                @case(2)
+                                                                                <span class="warning-color c-mb-0">{{config('constants.withdraw_status.2')}}</span>
+                                                                                @break
+                                                                                @case(3)
+                                                                                <span class="invalid-color c-mb-0">{{config('constants.withdraw_status.3')}}</span>
+                                                                                @break
+                                                                            @endswitch
+                                                                        @endif
                                                                     </div>
                                                                 </a>
                                                             </li>

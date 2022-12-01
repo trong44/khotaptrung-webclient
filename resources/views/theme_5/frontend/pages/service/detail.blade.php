@@ -336,7 +336,29 @@
     </div>
 
 
+    @if(isset($data->note))
 
+        <div class="modal fade modal-big modal-tra-gop" id="notiseviceModal">
+            <div class="modal-dialog modal-dialog-centered modal-custom">
+                <div class="modal-content c-p-24">
+                    <div class="modal-header">
+                        <h2 class="modal-title center">Thông báo</h2>
+                        <button type="button" class="close" data-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body py-0 pl-0 c-pr-8 c-mt-24" id="modal-body-scroll">
+                        {!! $data->note !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            $(document).ready(function(){
+                $('#notiseviceModal').modal('show');
+            })
+
+        </script>
+    @endif
 
     <!-- Modal xác nhận thanh toán -->
     <div class="modal fade modal-big" id="orderModal">

@@ -3,7 +3,7 @@
     <div class="entries">
         <div class="row fix-border fix-border-nick">
             <div class="col-md-12 left-right data-nick-search">
-                <span style="color: rgb(238, 70, 35);">Dịch vụ cần tìm không tồn tại.</span>
+                <span style="color: rgb(238, 70, 35);">Dịch vụ game cần tìm không tồn tại.</span>
             </div>
             @php
                 $index = 0;

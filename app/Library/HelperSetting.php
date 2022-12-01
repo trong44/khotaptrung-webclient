@@ -10,13 +10,9 @@ if (! function_exists('theme')) {
 
     function theme($key, $default = null)
     {
-
-
         if (is_null($key)) {
-
             return \App\Library\Theme::getAllTheme();
         }
-
         if (is_array($key)) {
 
         }

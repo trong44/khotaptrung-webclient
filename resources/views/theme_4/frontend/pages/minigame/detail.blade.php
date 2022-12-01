@@ -5,8 +5,11 @@
 
 @push('style')
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/scss/trong/style.css?v={{time()}}">
+    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/minigame.css?v={{time()}}">
 @endpush
 @section('content')
+    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/scss/trong/style.css?v={{time()}}">
+    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/minigame.css?v={{time()}}">
     <!-- Modal rút quà -->
     <div class="modal fade" id="modal-withdraw-items" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -1170,11 +1173,7 @@
                             <a class="btn btn-success col-sm-12" data-toggle="modal" data-target="#luotquayModal">Lượt chơi gần đây</a>
                         </div>
                         <div class="item_play_category">
-                            @if(\App\Library\AuthCustom::check())
-                                <a href="#modal-spin-bonus" class="col-sm-12 btn btn-success" data-toggle="modal">Lịch sử chơi</a>
-                            @else
-                                <a href="/login" class="col-sm-12 btn btn-success">Lịch sử chơi</a>
-                            @endif
+                            <a href="{{route('getLog',[$result->group->id])}}" class="col-sm-12 btn btn-success">Lịch sử chơi</a>
                         </div>
                         <div class="item_play_category">
                             <a href="#" class="col-sm-12 btn btn-success" data-toggle="modal" data-target="#topquaythuongModal">Top quay thưởng</a>

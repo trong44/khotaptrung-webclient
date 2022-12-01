@@ -31,6 +31,39 @@
     <input type="hidden" id="data_params" value="{{ $data->params }}">
     <input type="hidden" name="slug" id="slug" value="{{ $slug }}" />
 
+    @if(isset($data->note))
+        <div class="modal fade login show order-modal" id="notiseviceModal" aria-modal="true">
+
+            <div class="modal-dialog step-tab-panel modal-lg modal-dialog-centered login animated">
+                <!--        <div class="image-login"></div>-->
+                <div class="modal-content">
+                    <div class="modal-header p-0" style="border-bottom: 0">
+                        <div class="row marginauto modal-header-order-ct">
+                            <div class="col-12 span__donhang text-center" style="position: relative">
+                                <span>Thông báo</span>
+                                <img data-dismiss="modal" class="lazy img-close-ct close-modal-default" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/close.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-body modal-body-order-ct">
+                        {!! $data->note !!}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+
+            $(document).ready(function(){
+                $('#notiseviceModal').modal('show');
+            })
+
+        </script>
+    @endif
+
     <fieldset id="fieldset-one">
             <section class="media-mobile">
                 <div class="container container-fix banner-mobile-container-ct">
