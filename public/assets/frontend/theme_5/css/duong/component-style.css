@@ -694,3 +694,8 @@
         width: 100%;
     }
 }
+
+/* css mo ta dich vu ds nick*/
+#viewMore a{
+    font-size: 16px !important;
+}

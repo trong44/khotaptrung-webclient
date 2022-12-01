@@ -191,13 +191,13 @@
                                                                 <div class="row bs-normal">
                                                                     @foreach($arr_champ as $champ)
                                                                         <div class="col-3 col-lg-1 item-nick-lmht">
-                                                                            <a href="javascript:void(0)">
+                                                                            <a href="javascript:void(0)" style="color:#999">
                                                                                 <div class="row bs-normal item-nick-lmht__border" style="margin: 0;">
-                                                                                    <div class="col-md-12 item-nick-lmht__border__col">
+                                                                                    <div class="col-md-12 item-nick-lmht__border__col" style="position: relative">
                                                                                         <img class="w-100 item-nick-lmht__border__img lazy" src="https://cdn.upanh.info/{{ $champ->thumb }}" alt="{{ $champ->name }}">
-                                                                                    </div>
-                                                                                    <div class="col-md-12 text-center" style="padding-right: 0; padding-left: 0;">
-                                                                                        <p class="properties-lol-title" style="padding-top: 8px;margin-bottom: 0">{{ $champ->name }}</p>
+                                                                                        <div class="col-md-12 text-center" style="padding-right: 0; padding-left: 0;position: absolute;bottom: 0">
+                                                                                            <p class="properties-lol-title" style="margin-bottom: 0;background: rgba(0,0,0,0.8);">{{ $champ->name }}</p>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </a>
@@ -290,13 +290,13 @@
                                                                 <div class="row bs-normal">
                                                                     @foreach($arr_companions as $companion)
                                                                         <div class="col-3 col-lg-1 item-nick-lmht">
-                                                                            <a href="javascript:void(0)">
+                                                                            <a href="javascript:void(0)" style="color:#999">
                                                                                 <div class="row bs-normal item-nick-lmht__border" style="margin: 0;">
                                                                                     <div class="col-md-12 item-nick-lmht__border__col">
                                                                                         <img class="w-100 item-nick-lmht__border__img lazy" src="https://cdn.upanh.info/{{ $companion->thumb }}" alt="{{ $companion->name }}">
-                                                                                    </div>
-                                                                                    <div class="col-md-12 text-center" style="padding-right: 0; padding-left: 0;">
-                                                                                        <p class="properties-lol-title" style="padding-top: 8px;margin-bottom: 0">{{ $companion->name }}</p>
+                                                                                        <div class="col-md-12 text-center" style="padding-right: 0; padding-left: 0;position: absolute;bottom: 0">
+                                                                                            <p class="properties-lol-title" style="margin-bottom: 0;background: rgba(0,0,0,0.8);">{{ $companion->name }}</p>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </a>
@@ -390,13 +390,13 @@
                                                                 <div class="row bs-normal">
                                                                     @foreach($arr_skins as $skin)
                                                                         <div class="col-3 col-lg-1 item-nick-lmht">
-                                                                            <a href="javascript:void(0)">
+                                                                            <a href="javascript:void(0)" style="color:#999">
                                                                                 <div class="row bs-normal item-nick-lmht__border" style="margin: 0;">
-                                                                                    <div class="col-md-12 item-nick-lmht__border__col">
+                                                                                    <div class="col-md-12 item-nick-lmht__border__col" style="position: relative">
                                                                                         <img class="w-100 item-nick-lmht__border__img lazy" src="https://cdn.upanh.info/{{$skin->thumb}}" alt="{{ $skin->name }}">
-                                                                                    </div>
-                                                                                    <div class="col-md-12 text-center" style="padding-right: 0; padding-left: 0;">
-                                                                                        <p class="properties-lol-title" style="padding-top: 8px;margin-bottom: 0">{{ $skin->name }}</p>
+                                                                                        <div class="col-md-12 text-center" style="padding-right: 0; padding-left: 0;position: absolute;bottom: 0">
+                                                                                            <p class="properties-lol-title" style="margin-bottom:0;background: rgba(0,0,0,0.8);">{{ $skin->name }}</p>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </a>

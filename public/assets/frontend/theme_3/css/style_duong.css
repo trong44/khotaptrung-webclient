@@ -186,3 +186,7 @@
     padding-left: 8px;
     padding-right: 8px;
 }
+/* css mo ta dich vu ds nick*/
+#viewMore a{
+    font-size: 16px !important;
+}
