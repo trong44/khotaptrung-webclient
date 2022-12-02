@@ -58,11 +58,5 @@
         </div>
     </div>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/article/article-detail.js?v={{time()}}"></script>
-        <style>
-            #blog-content .content-blog-item iframe {
-                height: auto !important;
-                max-width: 100%;
-            }
-        </style>
     @endif
 @endsection
