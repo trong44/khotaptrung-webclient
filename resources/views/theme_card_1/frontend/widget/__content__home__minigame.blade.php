@@ -27,7 +27,7 @@
                 @else
                     <div class="service-search d-none d-lg-block " style="font-size: 14px;line-height: 24px;font-weight: 600">
                         <div class="input-group p-box">
-                            <a href="/minigame" class="dich__vu__home">Xem thêm</a>
+                            <a href="/minigame" class="dich__vu__home">Xem tất cả »</a>
                         </div>
                     </div>
                 @endif
@@ -355,7 +355,7 @@
             @else
                 <div class="entries" style="margin-bottom: 0">
 
-                    <div class="swiper swiper-container swiper-banner swiper-list-item-minigame overflow-hidden" style="background: none;box-shadow: none">
+                    <div class="swiper swiper-container swiper-banne swiper-list-item swiper-list-item-minigame overflow-hidden" style="background: none;box-shadow: none">
                         <div class=" swiper-wrapper" style="padding-bottom: 16px">
                             @foreach($data as $item)
 
@@ -432,7 +432,7 @@
                         centeredSlides: false,
                         slidesPerView: 4,
                         speed: 800,
-                        spaceBetween: 16,
+                        spaceBetween: 0,
                         freeMode: true,
                         touchMove: true,
                         freeModeSticky:true,

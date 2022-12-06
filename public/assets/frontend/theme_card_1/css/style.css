@@ -7936,7 +7936,7 @@ button:focus{
 }
 
 .price .price-current {
-    color: #f25922;
+    color: #575757;
     font-weight: 700;
     font-size: 15px;
     line-height: 24px;
@@ -7952,7 +7952,7 @@ button:focus{
 }
 
 .price .discount {
-    background-color: #F473B9;
+    background-color: #f25922;
     border-radius: 16px;
     font-weight: 400;
     font-size: 12px;

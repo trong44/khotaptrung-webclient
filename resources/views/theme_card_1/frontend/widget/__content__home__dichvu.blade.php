@@ -29,7 +29,7 @@
                 @else
                     <div class="service-search d-none d-lg-block " style="font-size: 14px;line-height: 24px;font-weight: 600">
                         <div class="input-group p-box">
-                            <a href="/dich-vu" class="dich__vu__home">Xem thêm</a>
+                            <a href="/dich-vu" class="dich__vu__home">Xem tất cả »</a>
                         </div>
                     </div>
                 @endif
@@ -378,7 +378,7 @@
             @else
                 <div class="entries" style="margin-bottom: 0;padding-bottom: 16px">
 
-                    <div class="swiper swiper-container swiper-banner swiper-list-item-dich-vu overflow-hidden" style="background: none;box-shadow: none">
+                    <div class="swiper swiper-container swiper-list-item swiper-banner swiper-list-item-dich-vu overflow-hidden" style="background: none;box-shadow: none">
                         <div class=" swiper-wrapper">
                             @foreach($data as $item)
 
@@ -386,31 +386,38 @@
                                     <a href="/dich-vu/{{ $item->slug}}">
                                         <img src="{{\App\Library\MediaHelpers::media($item->image)}}"
                                              alt="{{ $item->slug   }}" class="list-item-img">
-                                        <h3 class="text-title text-left text-limit limit-1">{{ $item->title   }}</h3>
-                                        @if(isset($item->total_order))
-                                            @if($item->params_plus)
-                                                @foreach($item->params_plus as $key => $val)
-                                                    @if($key == 'fk_buy')
-                                                        <p style="margin-top: 8px;text-align: left;margin-bottom: 0;">Giao dịch: {{ str_replace(',','.',number_format($item->total_order + $val)) }}</p>
+                                        <div class="card-attr">
+                                            <div class="text-title fw-700 text-limit limit-1">
+                                                {{ $item->title   }}
+                                            </div>
+                                            <div class="info-attr">
+                                                @if(isset($item->total_order))
+                                                    @if($item->params_plus)
+                                                        @foreach($item->params_plus as $key => $val)
+                                                            @if($key == 'fk_buy')
+                                                                Giao dịch: {{ str_replace(',','.',number_format($item->total_order + $val)) }}
+                                                            @endif
+                                                        @endforeach
+
+                                                    @else
+                                                        Giao dịch: {{ str_replace(',','.',number_format($item->total_order)) }}
                                                     @endif
-                                                @endforeach
 
-                                            @else
-                                                <p style="margin-top: 8px;text-align: left;margin-bottom: 0;">Giao dịch: {{ str_replace(',','.',number_format($item->total_order)) }}</p>
-                                            @endif
-
-                                        @else
-                                            @if($item->params_plus)
-                                                @foreach($item->params_plus as $key => $val)
-                                                    @if($key == 'fk_buy')
-                                                        <p style="margin-top: 8px;text-align: left;margin-bottom: 0;">Giao dịch: {{ str_replace(',','.',number_format($val)) }}</p>
+                                                @else
+                                                    @if($item->params_plus)
+                                                        @foreach($item->params_plus as $key => $val)
+                                                            @if($key == 'fk_buy')
+                                                                Giao dịch: {{ str_replace(',','.',number_format($val)) }}
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                        Giao dịch: 0
                                                     @endif
-                                                @endforeach
-                                            @else
-                                                <p style="margin-top: 8px;text-align: left;margin-bottom: 0;">Giao dịch: 0</p>
-                                            @endif
 
-                                        @endif
+                                                @endif
+                                            </div>
+
+                                        </div>
                                     </a>
 
                                 </div>
@@ -435,7 +442,7 @@
                         centeredSlides: false,
                         slidesPerView: 4,
                         speed: 800,
-                        spaceBetween: 16,
+                        spaceBetween: 0,
                         freeMode: true,
                         touchMove: true,
                         freeModeSticky:true,

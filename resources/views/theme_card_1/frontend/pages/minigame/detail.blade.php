@@ -909,58 +909,72 @@
 
                 </div>
                 <div class="box-product minigame-detail_swiper">
-                    <div class="swiper-container list-minigame list-product">
-                        <div class="swiper-wrapper">
-                            @foreach($groups_other as $key => $item)
-                                <div class="swiper-slide">
-                                    <a href="{{route('getIndex',[$item->slug])}}">
-                                        <div class="item-product__box-img">
+                    <div class="swiper swiper-container swiper-banne swiper-list-item list-minigame swiper-list-item-minigame overflow-hidden" style="background: none;box-shadow: none">
+                        <div class=" swiper-wrapper" style="padding-bottom: 16px">
+                            @foreach($groups_other as $item)
 
-                                            <img onerror="imgError(this)"
-                                                 src="{{ \App\Library\MediaHelpers::media($item->image) }}"
-                                                 alt="{{$item->title}}">
-
-                                        </div>
-                                        <div class="item-product__box-content">
-
-
-                                            <div class="item-product__box-name limit-1">
-                                                {{$item->title}}
+                                <div class="list-item image swiper-slide">
+                                    <a href="/minigame-{{ $item->slug}}">
+                                        <img src="{{\App\Library\MediaHelpers::media($item->image)}}"
+                                             alt="{{ $item->slug   }}" class="entries_item-img list-item-img">
+                                        <div class="card-attr">
+                                            <div class="text-title fw-700 text-limit limit-1">
+                                                {{ $item->title   }}
                                             </div>
-                                            <div class="item-product__box-sale">
-                                                Đã
-                                                bán: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}
+                                            <div class="info-attr">
+                                                Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}
                                             </div>
-                                            <div class="item-product__box-price">
-
-                                                <div class="special-price">{{number_format($item->price)}} đ</div>
-
+                                            <div class="price">
                                                 @if(isset($item->params->percent_sale))
-                                                    <div
-                                                        class="old-price">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }}
-                                                        đ
-                                                    </div>
+                                                    <div class="price-current">{{ str_replace(',','.',number_format($item->price)) }} đ</div>
+                                                    <div class="price-old c-mr-8">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</div>
+                                                    <div class="discount">{{ $item->params->percent_sale }}%</div>
                                                 @else
-                                                @endif
-                                                @if(isset($item->params->percent_sale))
-                                                    <div class="item-product__sticker-percent">
-                                                        -{{number_format($item->params->percent_sale)}}%
-                                                    </div>
+                                                    <div class="price-current w-100">{{ str_replace(',','.',number_format($item->price)) }} đ</div>
                                                 @endif
                                             </div>
-
                                         </div>
                                     </a>
+                                    {{--                                    <div class="card">--}}
+                                    {{--                                        <div class="card-body c-p-16 c-p-lg-12 scale-thumb">--}}
+
+                                    {{--                                            <a href="/minigame-{{ $item->slug}}">--}}
+                                    {{--                                                <div class="card-thumb c-mb-8">--}}
+                                    {{--                                                    <img onerror="imgError(this)" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="" class="card-thumb-image">--}}
+                                    {{--                                                </div>--}}
+                                    {{--                                                <div class="card-attr">--}}
+                                    {{--                                                    <div class="text-title fw-700 text-limit limit-1" style="text-align: left">--}}
+                                    {{--                                                        {{ $item->title   }}--}}
+                                    {{--                                                    </div>--}}
+                                    {{--                                                    <div class="info-attr">--}}
+                                    {{--                                                        Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}--}}
+                                    {{--                                                    </div>--}}
+                                    {{--                                                    <div class="price">--}}
+                                    {{--                                                        @if(isset($item->params->percent_sale))--}}
+                                    {{--                                                            <div class="price-current w-100">{{ str_replace(',','.',number_format($item->price)) }} đ</div>--}}
+                                    {{--                                                            <div class="price-old c-mr-8">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</div>--}}
+                                    {{--                                                            <div class="discount">{{ $item->params->percent_sale }}%</div>--}}
+
+                                    {{--                                                        @else--}}
+                                    {{--                                                            <div class="price-current w-100">{{ str_replace(',','.',number_format($item->price)) }} đ</div>--}}
+                                    {{--                                                        @endif--}}
+                                    {{--                                                    </div>--}}
+                                    {{--                                                </div>--}}
+                                    {{--                                            </a>--}}
+
+                                    {{--                                        </div>--}}
+                                    {{--                                    </div>--}}
                                 </div>
+
                             @endforeach
+
                         </div>
+
+                        <div class="navigation swiper-list-prev"></div>
+                        <div class="navigation swiper-list-next"></div>
+
                     </div>
-                    <div class="swiper-button-prev">
-                        <img src="./assets/frontend/theme_3/image/swiper-prev.svg" alt="">
-                    </div>
-                    <div class="swiper-button-next">
-                        <img src="./assets/frontend/theme_3/image/swiper-next.svg" alt="">
-                    </div>
+
                 </div>
             </div>
         @endif

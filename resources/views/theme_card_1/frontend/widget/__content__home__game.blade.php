@@ -27,14 +27,14 @@
                 @else
                     <div class="service-search d-none d-lg-block " style="font-size: 14px;line-height: 24px;font-weight: 600">
                         <div class="input-group p-box">
-                            <a href="/mua-acc" class="dich__vu__home">Xem thêm</a>
+                            <a href="/mua-acc" class="dich__vu__home">Xem tất cả »</a>
                         </div>
                     </div>
                 @endif
             </div>
 
             @if($flag_slide_nick == 0)
-                <div class="entries">
+                <div class="entries" style="padding-bottom: 16px">
                     <div class="row marginauto fix-border fix-border-nick">
 
                         <div class="col-md-12 left-right data-nick-search">
@@ -365,7 +365,7 @@
                         centeredSlides: false,
                         slidesPerView: 4,
                         speed: 800,
-                        spaceBetween: 16,
+                        spaceBetween: 0,
                         freeMode: true,
                         touchMove: true,
                         freeModeSticky:true,

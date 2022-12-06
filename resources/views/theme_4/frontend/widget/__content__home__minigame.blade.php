@@ -33,7 +33,7 @@
         @else
             <div class="service-search d-none d-lg-block " style="font-size: 14px;line-height: 24px;font-weight: 600">
                 <div class="input-group p-box">
-                    <a href="/minigame" class="dich__vu__home">Xem thêm</a>
+                    <a href="/minigame" class="dich__vu__home">Xem tất cả »</a>
                 </div>
             </div>
         @endif
@@ -207,7 +207,7 @@
             <div class="slick-slider">
                 @foreach($data as $item)
 
-                    <div class="item image">
+                    <div class="item image entries_item" style="padding-bottom: 16px">
                         <a href="/minigame-{{ $item->slug}}">
                             <img src="{{\App\Library\MediaHelpers::media($item->image)}}"
                                  alt="{{ $item->slug   }}" class="entries_item-img">

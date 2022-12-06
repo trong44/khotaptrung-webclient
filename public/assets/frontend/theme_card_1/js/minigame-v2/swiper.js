@@ -618,8 +618,8 @@ $(document).ready(function(){
     new Swiper('.list-minigame', {
         autoplay: false,
         navigation: {
-            nextEl: '.minigame-detail_swiper .swiper-button-next',
-            prevEl: '.minigame-detail_swiper .swiper-button-prev',
+            nextEl: '.swiper-list-item-minigame .navigation.swiper-list-next',
+            prevEl: '.swiper-list-item-minigame .navigation.swiper-list-prev',
         },
 
         updateOnImagesReady: true,
@@ -630,9 +630,9 @@ $(document).ready(function(){
         centeredSlides: false,
         speed: 800,
         // allowTouchMove: false,
-        spaceBetween: 10,
+        spaceBetween: 0,
         touchMove: false,
-        slidesPerView: 4.5,
+        slidesPerView: 4.2,
         slidesPerGroup: 3,
         freeModeSticky:true,
         grabCursor: true,

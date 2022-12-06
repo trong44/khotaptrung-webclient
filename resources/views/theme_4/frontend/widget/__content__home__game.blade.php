@@ -32,7 +32,7 @@
         @else
             <div class="service-search d-none d-lg-block " style="font-size: 14px;line-height: 24px;font-weight: 600">
                 <div class="input-group p-box">
-                    <a href="/mua-acc" class="dich__vu__home">Xem thêm</a>
+                    <a href="/mua-acc" class="dich__vu__home">Xem tất cả »</a>
                 </div>
             </div>
         @endif
@@ -53,7 +53,7 @@
                     @endphp
                     <div class="col-md-3 col-sm-6 col-6 entries_item entries_item_nick item-page-nick-1" style="display: block">
                         <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;height: 120px;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" width="120px">
+                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))
@@ -73,7 +73,7 @@
                     @endphp
                     <div class="col-md-3 col-sm-6 col-6 entries_item entries_item_nick item-page-nick-2" style="display: none">
                         <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;height: 120px;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" width="120px">
+                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))
@@ -93,7 +93,7 @@
                     @endphp
                     <div class="col-md-3 col-sm-6 col-6 entries_item entries_item_nick item-page-nick-3" style="display: none">
                         <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;height: 120px;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" width="120px">
+                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))
@@ -113,7 +113,7 @@
                     @endphp
                     <div class="col-md-3 col-sm-6 col-6 entries_item entries_item_nick item-page-nick-4" style="display: none">
                         <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;height: 120px;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" width="120px">
+                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))
@@ -133,7 +133,7 @@
                     @endphp
                     <div class="col-md-3 col-sm-6 col-6 entries_item entries_item_nick item-page-nick-5" style="display: none">
                         <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;height: 120px;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" width="120px">
+                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))
@@ -188,9 +188,9 @@
             <div class="slick-slider">
                 @foreach($data as $item)
 
-                    <div class="item image">
+                    <div class="item image entries_item" style="padding-bottom: 16px">
                         <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;height: 120px;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" width="120px">
+                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))

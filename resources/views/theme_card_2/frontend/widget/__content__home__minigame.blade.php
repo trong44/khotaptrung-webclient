@@ -4,9 +4,7 @@
             <h2 style="color: #2F6A7C;">{{ $title??'Minigame' }}</h2>
         </div>
         <h5 style="margin-bottom: 0;line-height: 30px">
-            <a class="hvr-underline-from-left see-more" href="/minigame" style="color: #2F6A7C">Xem tất cả
-                <svg class="svg-inline--fa fa-angles-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angles-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"></path>
-                </svg><!-- <i class="fas fa-angle-double-right"></i> Font Awesome fontawesome.com -->
+            <a class="hvr-underline-from-left see-more" href="/minigame" style="color: #2F6A7C;font-size: 14px">Xem tất cả »
             </a>
         </h5>
     </div>
@@ -31,7 +29,7 @@
                             <div class="game-list-image">
                                 <a class="account_category" href="/minigame-{{ $item->slug}}">
                                     <img src="{{\App\Library\MediaHelpers::media($item->image)}}"
-                                         alt="{{ $item->slug   }}" class="list-item-img">
+                                         alt="{{ $item->slug   }}" class="game-list-image-in lazy">
                                 </a>
                             </div>
                             <div class="game-list-title" style="padding-left: 8px;padding-right: 8px">
@@ -57,7 +55,7 @@
                             <div class="game-list-image">
                                 <a class="account_category" href="/minigame-{{ $item->slug}}">
                                     <img src="{{\App\Library\MediaHelpers::media($item->image)}}"
-                                         alt="{{ $item->slug   }}" class="list-item-img">
+                                         alt="{{ $item->slug   }}" class="game-list-image-in lazy">
                                 </a>
                             </div>
                             <div class="game-list-title" style="padding-left: 8px;padding-right: 8px">
@@ -68,6 +66,15 @@
                             <div class="game-list-description" style="margin-bottom: 8px">
                                 <div class="countime"></div>
                                 <span>Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</span>
+                                <div class="price">
+                                    @if(isset($item->params->percent_sale))
+                                        <div class="price-current">{{ str_replace(',','.',number_format($item->price)) }} đ</div>
+                                        <div class="price-old c-mr-8">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</div>
+                                        <div class="discount">{{ $item->params->percent_sale }}%</div>
+                                    @else
+                                        <div class="price-current w-100">{{ str_replace(',','.',number_format($item->price)) }} đ</div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

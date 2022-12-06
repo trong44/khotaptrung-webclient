@@ -10,9 +10,9 @@
     <div class=" swiper-wrapper">
         @foreach($data as $item)
 
-        <div class=" image swiper-slide">
+        <div class="list-item image swiper-slide">
             <a href="/dich-vu/{{ $item->slug}}">
-                <img style="width: 100%;height: 120px;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" width="120px">
+                <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img list-item-img">
                 <div>
                     <h3 class="text-title">{{ $item->title}}</h3>
                 </div>
@@ -38,7 +38,7 @@
         lazyLoadingOnTransitionStart: false,
         loop: false,
         centeredSlides: false,
-        slidesPerView: 5,
+        slidesPerView: 4,
         speed: 800,
         spaceBetween: 16,
         freeMode: true,
@@ -53,7 +53,7 @@
         breakpoints: {
 
             992: {
-                slidesPerView: 5,
+                slidesPerView: 4,
             },
             768: {
                 slidesPerView: 3,
