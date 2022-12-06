@@ -7388,6 +7388,13 @@ pre a {
         margin: 15px 0 22px -15px;
         padding: 29px 15px;
         width: 100vw;
+        border-radius: 0;
+    }
+    .wp_content_post_index__minigame {
+        margin: 15px 0 22px -15px!important;
+        padding: 12px 15px!important;
+        width: 100vw;
+        border-radius: 0!important;
     }
     .foot-top-first {
         margin-bottom: 17px;
@@ -7851,7 +7858,7 @@ button:focus{
     box-shadow: 0 4px 4px rgb(0 0 0 / 6%);
     border-radius: 10px;
     margin: 16px 0 4px;
-    padding: 3px 24px;
+    padding: 4px 16px;
 }
 
 
@@ -7925,6 +7932,7 @@ button:focus{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .price .price-current {
@@ -7940,6 +7948,7 @@ button:focus{
     line-height: 16px;
     color: #82869E;
     text-decoration: line-through;
+    margin-left: 4px;
 }
 
 .price .discount {
@@ -7950,6 +7959,7 @@ button:focus{
     line-height: 16px;
     color: #FFFFFF;
     padding: 0 8px;
+    margin-left: 4px;
 }
 
 .card-thumb {
@@ -7970,4 +7980,15 @@ button:focus{
     top: -4px;
     transition: .2s ease-out;
     border-radius: 12px;
+}
+.card-list .card:hover {
+    box-shadow: 0 3.4623px 6.1418px rgba(0,0,0,0.05),0 7.92923px 12.9218px rgba(0,0,0,0.05),0 9px 15px rgba(0,0,0,0.08)!important;
+    top: -4px;
+    transition: .2s ease-out;
+    border-radius: 12px;
+}
+
+.marginauto{
+    width: 100%;
+    margin: 0 auto;
 }
