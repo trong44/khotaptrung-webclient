@@ -182,9 +182,9 @@
                             @endif
                         @endforeach
 
-
+                        @if(count($data) > 8)
                         <button id="btn-expand-minigame" class="expand-button" data-page-current="1" data-page-max="{{ $index }}">Xem thêm minigame</button>
-
+                        @endif
                     </div>
 
 
@@ -197,6 +197,12 @@
                 <script>
                     $(document).ready(function () {
 
+                        var total_item = $('#minigame .entries_item_minigame').length;
+
+                        if (total_item < 2){
+                            $('#btn-expand-minigame').remove();
+                        }
+                        console.log(total_item)
                         $('#txtSearchMobile').on('input', function() {
                             let keyword = convertToSlug($(this).val());
 

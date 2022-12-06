@@ -1,9 +1,9 @@
 @if(isset($data))
 
-    <section class="section-related-service related-service mb-2">
+    <section class="section-related-service related-service mb-2" style="padding-bottom: 16px">
         <div class="section-header c-mb-16 c-mb-lg-8 justify-content-between">
 
-            <h4 class="text-primary">Các dịch vụ liên quan <i class="las la-angle-right"></i></h4>
+            <h4 class="text-primary">Các dịch vụ liên quan</h4>
 
             {{--            <a href="/dich-vu" class="link arr-right">Xem tất cả</a>--}}
         </div>

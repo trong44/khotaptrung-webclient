@@ -1,17 +1,16 @@
-<section class="c_section-category lien-quan">
-    <div class="section-header c-mb-24 c-mb-lg-16">
+<section class="c_section-category section-related-service lien-quan">
+    <div class="section-header c-mb-24 c-mb-lg-16 justify-content-between">
         <h2 class="section-title">
             {{--            <i class="icon-title c-mr-8" style="--path:url(/assets/frontend/{{theme('')->theme_key}}/image/svg/1362.svg)"></i>--}}
             Mini game liên quan
         </h2>
-        <a href="" class="link arr-right ml-auto">Xem thêm</a>
+        <a href="/minigame" class="link arr-right ml-auto">Xem thêm</a>
     </div>
 
     <!-- Đặt tên class cho swiper sau đó config trong file "public/assets/frontend/{{theme('')->theme_key}}/js/swiper-slider-conf/swiper-slider-conf.js" -->
     <!-- Nếu có giao diện giống nhau hoàn toàn thì có thể dùng chung config (chung tên class 'class-config-demo') -->
     @if(isset($data) && count($data) > 0)
-
-    <div class="swiper class-config-demo card-list">
+    <div class="swiper class-config-demo card-list swiper-container-horizontal">
         <div class="swiper-wrapper">
             @foreach($data as $key => $item)
                 @if (isset($data_minigame))

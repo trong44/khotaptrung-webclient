@@ -150,11 +150,11 @@
                 @endif
             @endforeach
 
-
+            @if(count($data) > 8)
             <button id="btn-expand-serivce-nick" class="expand-button" data-page-current="1" data-page-max="{{ $index }}">
                 Xem thêm danh mục
             </button>
-
+            @endif
 
             <script type="text/javascript">
                 $(document).ready(function () {

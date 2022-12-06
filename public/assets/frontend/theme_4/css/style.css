@@ -1886,6 +1886,7 @@ select:focus{
     -webkit-line-clamp: 6;
     line-clamp: 6
 }
+
 .newPrice {
     border: 2px solid rgb(238, 70, 35);
     padding: 5px 15px;

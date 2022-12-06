@@ -3,6 +3,7 @@
 {{--    @include('frontend.widget.__seo_head',with(['data'=>$result->group]))--}}
 @endsection
 @section('content')
+    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/phu/stylev2.css">
     <div class="container c-container" id="minigame-category">
         <ul class="breadcrumb-list">
             <li class="breadcrumb-item">
