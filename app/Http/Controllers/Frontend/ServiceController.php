@@ -139,7 +139,7 @@ class ServiceController extends Controller
                 if ( $filter_type == 6 ) {
                     $data_seo_price = $service_params->price[0];
                 }
-                
+
             } catch (\Exception $e) {
                 $data_seo_price = 7700;
             }
@@ -196,7 +196,7 @@ class ServiceController extends Controller
         if ($request->ajax()){
             $slug = $request->slug;
 
-            $url = '/service/'.$slug;
+            $url = '/service/list-bot/'.$slug;
             $method = "GET";
             $dataSend = array();
 //        $dataSend['slug'] = $slug;

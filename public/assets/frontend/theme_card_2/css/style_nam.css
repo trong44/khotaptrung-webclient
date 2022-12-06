@@ -177,10 +177,20 @@
     top: 0;
     right: 0;
 }
+
+.mobile__content{
+    padding-top: 24px;
+}
 @media (max-width: 768px) {
     .profile_item_mobile.m-dropdown.m-dropdown--mobile-full-width.m-dropdown--align-center > .m-dropdown__wrapper, .m-dropdown.m-dropdown--mobile-full-width > .m-dropdown__wrapper{
         width: 245px !important;
         left: auto !important;
+    }
+    .mobile__content{
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 16px;
+        font-size: 16px;
     }
 }
 

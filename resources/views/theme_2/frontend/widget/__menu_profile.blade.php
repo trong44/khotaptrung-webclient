@@ -40,6 +40,9 @@
         <li class="nav-item" role="presentation">
             <a class="nav-link  @if(Request::is('lich-su-mua-account')) active @endif " href="/lich-su-mua-account" id="tranfer-tab" type="button" ><span><i class="las la-credit-card"></i> Lịch sử mua acc</span></a>
         </li>
+{{--        <li class="nav-item" role="presentation">--}}
+{{--            <a class="nav-link  @if(Request::is('minigame-log')) active @endif " href="/minigame-log" id="tranfer-tab" type="button" ><span><i class="las la-credit-card"></i> Lịch sử minigame</span></a>--}}
+{{--        </li>--}}
 {{--        @endforeach--}}
 
     </ul>

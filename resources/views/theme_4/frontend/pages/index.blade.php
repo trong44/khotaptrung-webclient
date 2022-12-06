@@ -97,5 +97,5 @@
         </div>
     </div><!-- /.container -->
 </section>
-
+@include('frontend.widget.__bonus')
 @endsection

@@ -18,19 +18,27 @@
                         </div>
                         <div class="booking_detail"></div>
                         <div class="wapper-grid profile">
-
-                            <div class="row" style="padding-top: 16px;width: 100%;margin: 0 auto">
-                                <div class="col-md-4">
+                            <form class="form-charge account_content_transaction_history__v2 account_service_history__v2">
+                            <div class="row" style="margin-top: 16px">
+                                <div class="form-row mb-3 col-md-4" style="margin-left: 2px">
                                     <div class="input-group">
-                                        <select name="type" id="type" class="form-control">
+                                        <span class="input-group-btn">
+                                        <p class="input-group-btn-p" style="background-color: #eeeeee;">Loại rút:</p>
+                                        </span>
+                                        <select style="height: 40px" name="type" id="type" class="form-control">
                                             <option selected>Log trúng vật phẩm</option>
                                             <option value="1">Log trúng acc</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+
+                                <div class="form-row mb-3 col-md-4" style="margin-left: 2px">
                                     <div class="input-group">
-                                        <select name="id" id="id" class="form-control">
+                                        <span class="input-group-btn">
+                                        <p class="input-group-btn-p" style="background-color: #eeeeee;">Loại game:</p>
+                                        </span>
+
+                                        <select style="height: 40px" name="id" id="id" class="form-control">
                                             @foreach($group_api as $item)
                                                 <option value="{{route('getLog',['id' => $item->id])}}" {{$group->id==$item->id?'selected':''}}>{{$item->title}}</option>
                                             @endforeach
@@ -48,39 +56,46 @@
                                     });
                                 </script>
                             </div>
+                            </form>
                             <form action="{{route('getLog',[$group->id])}}" method="get" class=" account_content_transaction_history__v2">
-                                <div class="row marginauto" style="padding-top: 16px;width: 100%;margin: 0 auto">
+                                <div class="row" style="padding-top: 16px;">
 
-                                    <div class="form-row mb-3 col-md-4">
-                                        <div class="input-group mb-2 c-square">
-                                            <div class="input-group date date-picker" data-date-format="dd/mm/yyyy" data-rtl="false">
-                                        <span class="input-group-btn">
-                                              <button class="btn default c-btn-square pl-2 pr-2 input-group-addon" type="button">
-                                                  <i class="fa fa-calendar"></i>
-                                              </button>
-                                        </span>
-                                                <input type="text" class="form-control c-square c-theme started_at c__input-group-addon" name="started_at" autocomplete="off" placeholder="Từ ngày" value="">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="form-row mb-3 col-md-4" style="margin-left: 2px">
 
-                                    <div class="form-row mb-3 col-md-4" style="display: flex">
-                                        <div class="input-group mb-2 c-square">
-                                            <div class="input-group date date-picker" data-date-format="dd/mm/yyyy" data-rtl="false">
-                                        <span class="input-group-btn">
-                                            <button class="btn default c-btn-square pl-2 pr-2 input-group-addon" type="button">
-                                                <i class="fa fa-calendar"></i>
-                                            </button>
-                                        </span>
-                                                <input type="text" class="form-control c-square c-theme ended_at c__input-group-addon" name="ended_at" autocomplete="off" placeholder="Đến ngày" value="">
+                                        <div class="input-group m-b-10 c-square">
+                                            <div class="input-group date date-picker" data-date-format="dd/mm/yyyy"
+                                                 data-rtl="false">
+                                            <span class="input-group-btn" style="background-color: #eeeeee;height: 40px">
+                                            <button class="btn default c-btn-square p-l-10 p-r-10" type="button"><i
+                                                    class="fa fa-calendar"></i></button>
+                                            </span>
+                                                <input type="text" class="form-control c-square c-theme started_at" name="started_at"
+                                                       autocomplete="off" placeholder="Từ ngày"
+                                                       value="" style="height: 40px">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-row mb-3 col-md-4">
+
+                                        <div class="input-group m-b-10 c-square">
+                                            <div class="input-group date date-picker" data-date-format="dd/mm/yyyy"
+                                                 data-rtl="false">
+                                            <span class="input-group-btn" style="background-color: #eeeeee;height: 40px">
+                                            <button class="btn default c-btn-square p-l-10 p-r-10" type="button"><i
+                                                    class="fa fa-calendar"></i></button>
+                                            </span>
+                                                <input type="text" class="form-control c-square c-theme ended_at" name="ended_at"
+                                                       autocomplete="off" placeholder="Đến ngày"
+                                                       value="" style="height: 40px">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row mb-3 col-md-4">
                                         <div class="input-group mb-2 c-square">
-                                            <span class="input-group-addon" id="basic-addon1">Tên quà:</span>
-                                            <input type="text" class="form-control input-group-addon c__input-group-addon" name="gift_name" autocomplete="off" placeholder="Tên quà" value="{{request('gift_name')}}">
+                                            <span class="input-group-addon" style="background-color: #eeeeee;height: 40px" id="basic-addon1">Tên quà:</span>
+                                            <input style="height: 40px" type="text" class="form-control input-group-addon c__input-group-addon" name="gift_name" autocomplete="off" placeholder="Tên quà" value="{{request('gift_name')}}">
 
                                         </div>
                                     </div>

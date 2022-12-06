@@ -1,7 +1,7 @@
 <div class="item">
     <div class="index_title">
         <span><img src="/assets/frontend/{{theme('')->theme_key}}/image/svg/ic_h1.svg" alt="mua thẻ điện thoại online"></span>
-        <h2 style="padding-top: 62px"> mua thẻ online</h2>
+        <h2 style="padding-top: 62px">{{ $title??'Mua thẻ online' }}</h2>
     </div>
     <div class="card_process">
         <div class="">

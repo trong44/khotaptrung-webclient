@@ -41,4 +41,6 @@
     </div>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/storecard/store_card.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/service/showdetailservice.js?v={{time()}}"></script>
+
+    @include('frontend.widget.__bonus')
 @endsection

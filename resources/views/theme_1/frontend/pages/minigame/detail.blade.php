@@ -1389,7 +1389,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a href="#" id="btnWithdraw" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">Rút
+                    <a href="#modal-withdraw-items" data-toggle="modal" id="btnWithdraw" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">Rút
                         quà</a>
                     <button type="button"
                             class="btn c-theme-btn c-btn-border-2x c-btn-square c-btn-bold c-btn-uppercase"
@@ -1567,6 +1567,14 @@
     smashwheel - Đập lu , rung cây , gieo quẻ
     --}}
 
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $("#btnWithdraw").on("click", function () {
+                $('#noticeModal').modal('hide');
+            })
+        })
+    </script>
+
     @switch($position)
         @case('rubywheel')
         <script>
@@ -1584,6 +1592,7 @@
             }
 
             $(document).ready(function (e) {
+
 
                 var saleoffpass = "";
                 var game_type_value = "";

@@ -19,7 +19,9 @@ a:hover {
     padding: 0.7em 37px 0.7em 0.8em;
     width: 250px;
 }
-
+a:hover h3{
+    color: #f25922;
+}
 input[type=text], input[type=password], textarea {
     display: block;
     width: 100%;

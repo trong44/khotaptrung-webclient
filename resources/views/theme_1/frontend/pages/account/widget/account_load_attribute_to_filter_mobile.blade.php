@@ -207,7 +207,7 @@
 
                             <div class="col-12 item_buy_form_search">
                                 <div class="input-group">
-                                    <span class="input-group-addon">CAI TRANG</span>
+                                    <span class="input-group-addon">CẢI TRANG</span>
                                     <select type="text" class="form-control champions-mobile select-2-custom" name="champions">
                                         <option value="">--Không chọn--</option>
                                         @if(isset($childs->childs))
@@ -223,7 +223,7 @@
 
                             <div class="col-12 item_buy_form_search">
                                 <div class="input-group">
-                                    <span class="input-group-addon">SKILL PET 2</span>
+                                    <span class="input-group-addon">SKILL 2 ĐỆ TỬ</span>
                                     <select type="text" class="form-control tftmapskins-mobile select-2-custom" name="tftmapskins">
                                         <option value="">--Không chọn--</option>
                                         @if(isset($childs->childs))
@@ -239,7 +239,7 @@
 
                             <div class="col-12 item_buy_form_search">
                                 <div class="input-group">
-                                    <span class="input-group-addon">SKILL PET 3</span>
+                                    <span class="input-group-addon">SKILL 3 ĐỆ TỬ</span>
                                     <select type="text" class="form-control tftdamageskins-mobile select-2-custom" name="tftdamageskins">
                                         <option value="">--Không chọn--</option>
                                         @if(isset($childs->childs))
@@ -255,7 +255,7 @@
 
                             <div class="col-12 item_buy_form_search">
                                 <div class="input-group">
-                                    <span class="input-group-addon">SKILL PET 4</span>
+                                    <span class="input-group-addon">SKILL 4 ĐỆ TỬ</span>
                                     <select type="text" class="form-control skill-mobile select-2-custom" name="skill">
                                         <option value="">--Không chọn--</option>
                                         @if(isset($childs->childs))
@@ -310,9 +310,8 @@
                 <div class="col-auto">
                     <div class="input-group">
                         <span class="input-group-addon">Sắp xếp theo</span>
-                        <select type="text" name="sort_by_mobile" class="form-control sort_by_mobile select-2-custom">
-                            <option value="">Chọn cách sắp xếp</option>
-                            <option value="random">Ngẫu nhiên</option>
+                        <select type="text" name="sort_by_mobile" class="form-control sort_by_mobile">
+                            <option selected value="random">Ngẫu nhiên</option>
                             <option value="price_start">Giá tiền từ cao đến thấp</option>
                             <option value="price_end">Giá tiền từ thấp đến cao</option>
                             <option value="created_at_start">Mới nhất</option>

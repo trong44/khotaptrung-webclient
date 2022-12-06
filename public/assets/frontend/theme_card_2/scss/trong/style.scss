@@ -1,0 +1,138 @@
+@import "./function";
+@import "./variable";
+@import "./mixin";
+
+.is-loading {
+    position: relative;
+    &:before {
+        content: '';
+        @include absolute_full;
+        background-color: rgba(255,255,255,.75);
+    }
+    &:after {
+        content: 'Đang xử lí...';
+        font-weight: 700;
+        @include absolute_center();
+    }
+}
+
+@for $i from 0 through 50 {
+    @if $i % 2 == 0 {
+        .p_#{$i} {
+            padding: #{$i}px !important;
+        }
+        .pt_#{$i},.py_#{$i} {
+            padding-top: #{$i}px !important;
+        }
+        .pb_#{$i},.py_#{$i} {
+            padding-bottom: #{$i}px !important;
+        }
+        .pr_#{$i},.px_#{$i} {
+            padding-right: #{$i}px !important;
+        }
+        .pl_#{$i},.px_#{$i} {
+            padding-left: #{$i}px !important;
+        }
+
+
+        .m_#{$i} {
+            margin: #{$i}px !important;
+        }
+        .mt_#{$i},.my_#{$i} {
+            margin-top: #{$i}px !important;
+        }
+        .mb_#{$i},.my_#{$i} {
+            margin-bottom: #{$i}px !important;
+        }
+        .mr_#{$i},.mx_#{$i} {
+            margin-right: #{$i}px !important;
+        }
+        .ml_#{$i},.mx_#{$i} {
+            margin-left: #{$i}px !important;
+        }
+    }
+}
+// modal rút vật phẩm
+#modal-withdraw-items {
+    & .modal-title {
+        color: #2F6A7C;
+        font-weight: 700;
+        font-size: 16px;
+    }
+    & .nav-tabs {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        border-bottom: unset;
+        & .nav-item {
+            display: table-cell;
+            text-align: center;
+            & .nav-link {
+                border: unset;
+                color: #505050;
+            }
+            & .nav-link.active {
+                border-bottom: 2px solid #2F6A7C;
+            }
+        }
+    }
+    & .modal-dialog {
+        max-width: 768px;
+        margin: auto;
+    }
+}
+#table-history-withdraw {
+    & .history-table {
+        padding: 12px;
+    }
+    & .history-head  {
+        margin-bottom: 8px;
+        & p {
+            font-weight: 600;
+        }
+    }
+    & .section-table-history {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+}
+.text--danger {
+    color: #eb5d68;
+    font-size: 18px;
+    font-weight: 600;
+    &:empty {
+        height: 0;
+    }
+}
+.toggle-password {
+    position: relative;
+    & .eye {
+        position: absolute;
+        right: 8px;
+        width: 24px;height: 24px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-image: url(/assets/frontend/theme_1/image/svg/eye-hide.svg);
+        cursor: pointer;
+    }
+    & .eye.show{
+        background-image: url(/assets/frontend/theme_1/image/svg/eye-show.svg);
+    }
+}
+// modal lịch sử quay
+#modal-spin-bonus {
+    & .modal-dialog  {
+        max-width: 768px;
+        margin: auto;
+    }
+    & .wrap-table td,
+    & .wrap-table th
+    {
+        padding: 8px;
+    }
+    & .modal-title {
+        color: #2F6A7C;
+        font-size: 16px;
+        font-weight: 700;
+    }
+}

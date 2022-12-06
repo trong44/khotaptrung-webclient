@@ -107,6 +107,12 @@
 
     <div class="item_play">
         <div class="container">
+            <nav aria-label="breadcrumb" style="margin-top: 10px;">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="/minigame">Minigame</a></li>
+                </ol>
+            </nav>
 
             @switch($position)
                 @case('rubywheel')
@@ -296,11 +302,19 @@
                             <div class="col-12 item_play_dif_slide" >
                                 <div class="slick-slider">
                                     @foreach($groups_other as $item)
-                                        <div class="item image">
+                                        <div class="item image entries_item" style="padding-bottom: 16px">
                                             <a href="{{route('getIndex',[$item->slug])}}">
-                                                <img style="width: 100%;height: 120px;border-radius: 8px" src="{{ \App\Library\MediaHelpers::media($item->image) }}" alt="{{ $item->title   }}" width="120px">
-                                                <h3 class="text-title text-left text-limit limit-1">{{ $item->title   }}</h3>
-                                                <p class="text-left" style="margin-bottom: 0;margin-top: 4px">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                <img src="{{\App\Library\MediaHelpers::media($item->image)}}"
+                                                     alt="{{ $item->slug   }}" class="entries_item-img">
+                                                <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
+                                                <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                @if(isset($item->params->percent_sale))
+                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @else
+                                                    <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @endif
+
                                             </a>
                                         </div>
                                     @endforeach
@@ -516,11 +530,19 @@
                             <div class="col-12 item_play_dif_slide" >
                                 <div class="slick-slider">
                                     @foreach($groups_other as $item)
-                                        <div class="item image">
+                                        <div class="item image entries_item" style="padding-bottom: 16px">
                                             <a href="{{route('getIndex',[$item->slug])}}">
-                                                <img style="width: 100%;height: 120px;border-radius: 8px" src="{{ \App\Library\MediaHelpers::media($item->image) }}" alt="{{ $item->title   }}" width="120px">
-                                                <h3 class="text-title text-left text-limit limit-1">{{ $item->title   }}</h3>
-                                                <p class="text-left" style="margin-bottom: 0;margin-top: 4px">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                <img src="{{\App\Library\MediaHelpers::media($item->image)}}"
+                                                     alt="{{ $item->slug   }}" class="entries_item-img">
+                                                <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
+                                                <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                @if(isset($item->params->percent_sale))
+                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @else
+                                                    <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @endif
+
                                             </a>
                                         </div>
                                     @endforeach
@@ -644,11 +666,19 @@
                             <div class="col-12 item_play_dif_slide" >
                                 <div class="slick-slider">
                                     @foreach($groups_other as $item)
-                                        <div class="item image">
+                                        <div class="item image entries_item" style="padding-bottom: 16px">
                                             <a href="{{route('getIndex',[$item->slug])}}">
-                                                <img style="width: 100%;height: 120px;border-radius: 8px" src="{{ \App\Library\MediaHelpers::media($item->image) }}" alt="{{ $item->title   }}" width="120px">
-                                                <h3 class="text-title text-left text-limit limit-1">{{ $item->title   }}</h3>
-                                                <p class="text-left" style="margin-bottom: 0;margin-top: 4px">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                <img src="{{\App\Library\MediaHelpers::media($item->image)}}"
+                                                     alt="{{ $item->slug   }}" class="entries_item-img">
+                                                <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
+                                                <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                @if(isset($item->params->percent_sale))
+                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @else
+                                                    <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @endif
+
                                             </a>
                                         </div>
                                     @endforeach
@@ -776,11 +806,19 @@
                             <div class="col-12 item_play_dif_slide" >
                                 <div class="slick-slider">
                                     @foreach($groups_other as $item)
-                                        <div class="item image">
+                                        <div class="item image entries_item" style="padding-bottom: 16px">
                                             <a href="{{route('getIndex',[$item->slug])}}">
-                                                <img style="width: 100%;height: 120px;border-radius: 8px" src="{{ \App\Library\MediaHelpers::media($item->image) }}" alt="{{ $item->title   }}" width="120px">
-                                                <h3 class="text-title text-left text-limit limit-1">{{ $item->title   }}</h3>
-                                                <p class="text-left" style="margin-bottom: 0;margin-top: 4px">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                <img src="{{\App\Library\MediaHelpers::media($item->image)}}"
+                                                     alt="{{ $item->slug   }}" class="entries_item-img">
+                                                <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
+                                                <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                @if(isset($item->params->percent_sale))
+                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @else
+                                                    <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @endif
+
                                             </a>
                                         </div>
                                     @endforeach
@@ -946,11 +984,19 @@
                             <div class="col-12 item_play_dif_slide" >
                                 <div class="slick-slider">
                                     @foreach($groups_other as $item)
-                                        <div class="item image">
+                                        <div class="item image entries_item" style="padding-bottom: 16px">
                                             <a href="{{route('getIndex',[$item->slug])}}">
-                                                <img style="width: 100%;height: 120px;border-radius: 8px" src="{{ \App\Library\MediaHelpers::media($item->image) }}" alt="{{ $item->title   }}" width="120px">
-                                                <h3 class="text-title text-left text-limit limit-1">{{ $item->title   }}</h3>
-                                                <p class="text-left" style="margin-bottom: 0;margin-top: 4px">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                <img src="{{\App\Library\MediaHelpers::media($item->image)}}"
+                                                     alt="{{ $item->slug   }}" class="entries_item-img">
+                                                <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
+                                                <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                @if(isset($item->params->percent_sale))
+                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @else
+                                                    <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @endif
+
                                             </a>
                                         </div>
                                     @endforeach
@@ -1078,11 +1124,19 @@
                             <div class="col-12 item_play_dif_slide" >
                                 <div class="slick-slider">
                                     @foreach($groups_other as $item)
-                                        <div class="item image">
+                                        <div class="item image entries_item" style="padding-bottom: 16px">
                                             <a href="{{route('getIndex',[$item->slug])}}">
-                                                <img style="width: 100%;height: 120px;border-radius: 8px" src="{{ \App\Library\MediaHelpers::media($item->image) }}" alt="{{ $item->title   }}" width="120px">
-                                                <h3 class="text-title text-left text-limit limit-1">{{ $item->title   }}</h3>
-                                                <p class="text-left" style="margin-bottom: 0;margin-top: 4px">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                <img src="{{\App\Library\MediaHelpers::media($item->image)}}"
+                                                     alt="{{ $item->slug   }}" class="entries_item-img">
+                                                <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
+                                                <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
+                                                @if(isset($item->params->percent_sale))
+                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @else
+                                                    <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
+                                                @endif
+
                                             </a>
                                         </div>
                                     @endforeach
@@ -1116,9 +1170,9 @@
         <div class="modal fade" id="luotquayModal" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header" style="padding-left: 16px;padding-right: 16px">
 
-                        <h4 class="modal-title" style="font-weight: bold;text-transform: uppercase;color: #FF0000;text-align: center;margin: auto;padding-left: 60px">Lượt chơi gần đây</h4>
+                        <h4 class="modal-title" style="font-weight: bold;text-transform: uppercase;text-align: center;margin: auto;padding-left: 60px">Lượt chơi gần đây</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -1203,12 +1257,12 @@
     <div class="modal fade" id="theleModal" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header justify-content-center">
+                <div class="modal-header" style="padding-left: 16px;padding-right: 16px">
                     <h5 class="modal-title"
-                        style="font-weight: bold;text-transform: uppercase;color: #FF0000;text-align: center">Thể Lệ</h5>
-{{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                        <span aria-hidden="true">×</span>--}}
-{{--                    </button>--}}
+                        style="font-weight: bold;text-transform: uppercase;text-align: center">Thể Lệ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
 
                 <div class="modal-body" style="font-family: helvetica, arial, sans-serif;">
@@ -1226,9 +1280,9 @@
     <div class="modal fade" id="noticeModal" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" style="padding-left: 16px;padding-right: 16px">
                     <h5 class="modal-title"
-                        style="font-weight: bold;text-transform: uppercase;color: #FF0000;text-align: center">Thông
+                        style="font-weight: bold;text-transform: uppercase;text-align: center">Thông
                         báo</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -1239,7 +1293,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a href="#" id="btnWithdraw" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">Rút
+                    <a href="#modal-withdraw-items" data-toggle="modal" id="btnWithdraw" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--pill">Rút
                         quà</a>
                     <button type="button"
                             class="btn c-theme-btn c-btn-border-2x c-btn-square c-btn-bold c-btn-uppercase"
@@ -1252,9 +1306,9 @@
     <div class="modal fade" id="naptheModal" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" style="padding-left: 16px;padding-right: 16px">
                     <h5 class="modal-title"
-                        style="font-weight: bold;text-transform: uppercase;color: #FF0000;text-align: center">Thông
+                        style="font-weight: bold;text-transform: uppercase;text-align: center">Thông
                         báo</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -1277,9 +1331,9 @@
     <div class="modal fade bd-example-modal-lg" id="topquaythuongModal" role="dialog" aria-hidden="true">
         <div class="modal-dialog " role="document">
             <div class="modal-content">
-                <div class="modal-header justify-content-center">
+                <div class="modal-header" style="padding-right: 16px;padding-left: 16px">
                     <h5 class="modal-title"
-                        style="font-weight: bold;text-transform: uppercase;color: #ff502e;text-align: center;font-size: 16px">Bảng xếp hạng {{ @$result->group->title }}</h5>
+                        style="font-weight: bold;text-transform: uppercase;text-align: center;font-size: 16px">Bảng xếp hạng {{ @$result->group->title }}</h5>
 
                     <!--                    <h4 style="text-transform: uppercase;margin: auto; padding-left: 28px;" class="modal-title"><span>Bảng xếp hạng vòng lật</span></h4>-->
 {{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
@@ -1409,7 +1463,13 @@
         <input type="hidden" id="withdrawruby_{{$item}}" value="{{$key}}">
     @endforeach
     <!-- script -->
-
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $("#btnWithdraw").on("click", function () {
+                $('#noticeModal').modal('hide');
+            })
+        })
+    </script>
     <script type="text/javascript">
         $( document ).ready(function() {
             $(document).on('scroll',function(){

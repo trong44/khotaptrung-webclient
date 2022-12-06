@@ -22,21 +22,26 @@ class DirectAPI{
 
         $data ['domain'] = str_replace('www.','',$http_url);
         $data ['client'] =  str_replace('www.','',$http_url);
+
 //        $data ['domain'] = config('api.client');
 //        $data ['client'] =config('api.client');
 
         if(session()->has('jwt')){
             $data['token'] = session()->get('jwt');
         }
-
-        $data['secret_key'] = config('api.secret_key');
+        if (config('api.config_backup') === true && \Cache::has('verify_shop')) {
+            $verify_shop = \Cache::get('verify_shop');
+            if ($verify_shop->response_code == 200){
+                $data['secret_key'] = $verify_shop->response_data->secret_key??null;
+            }
+        } else {
+            $data['secret_key'] = config('api.secret_key');
+        }
         if(is_array($data)){
             $dataPost = http_build_query($data);
         }else{
             $dataPost = $data;
         }
-
-
 //        Lấy ip user agent khách hàng
 
         if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {

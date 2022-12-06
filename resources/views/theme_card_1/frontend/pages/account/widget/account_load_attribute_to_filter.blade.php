@@ -246,7 +246,7 @@
                                 <div class="col-12 col-lg-3" style="padding-top: 8px;padding-right: 8px;padding-left: 8px;padding-bottom: 8px">
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <p class="input-group-btn-p">CAI TRANG</p>
+                                            <p class="input-group-btn-p">CẢI TRANG</p>
                                         </span>
                                         <select class="form-control champions" name="champions" style="height: 40px">
                                             <option value="">--Không chọn--</option>
@@ -263,7 +263,7 @@
                                 <div class="col-12 col-lg-3" style="padding-top: 8px;padding-right: 8px;padding-left: 8px;padding-bottom: 8px">
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <p class="input-group-btn-p">SKILL PET 2</p>
+                                            <p class="input-group-btn-p">SKILL 2 ĐỆ TỬ</p>
                                         </span>
                                         <select class="form-control tftmapskins" name="tftmapskins" style="height: 40px">
                                             <option value="">--Không chọn--</option>
@@ -281,7 +281,7 @@
                                 <div class="col-12 col-lg-3" style="padding-top: 8px;padding-right: 8px;padding-left: 8px;padding-bottom: 8px">
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <p class="input-group-btn-p">SKILL PET 3</p>
+                                            <p class="input-group-btn-p">SKILL 3 ĐỆ TỬ</p>
                                         </span>
                                         <select class="form-control tftdamageskins" name="tftdamageskins" style="height: 40px">
                                             <option value="">--Không chọn--</option>
@@ -299,7 +299,7 @@
                                 <div class="col-12 col-lg-3" style="padding-top: 8px;padding-right: 8px;padding-left: 8px;padding-bottom: 8px">
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <p class="input-group-btn-p">SKILL PET 4</p>
+                                            <p class="input-group-btn-p">SKILL 4 ĐỆ TỬ</p>
                                         </span>
                                         <select class="form-control skill" name="skill" style="height: 40px">
                                             <option value="">--Không chọn--</option>

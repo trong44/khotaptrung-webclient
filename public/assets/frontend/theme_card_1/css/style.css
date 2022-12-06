@@ -1636,7 +1636,7 @@ div#main_home {
     background: #fff;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.06);
     border-radius: 10px;
-    margin: 45px 0 92px;
+    margin: 24px 0 40px;
     padding: 30px 53px;
 }
 p.service_first_link {
@@ -7388,6 +7388,13 @@ pre a {
         margin: 15px 0 22px -15px;
         padding: 29px 15px;
         width: 100vw;
+        border-radius: 0;
+    }
+    .wp_content_post_index__minigame {
+        margin: 15px 0 22px -15px!important;
+        padding: 12px 15px!important;
+        width: 100vw;
+        border-radius: 0!important;
     }
     .foot-top-first {
         margin-bottom: 17px;
@@ -7783,4 +7790,205 @@ label.item-wapper img {
 }
 button:focus{
     outline: none!important;
+}
+
+.text-limit {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+
+.limit-1 {
+    -webkit-line-clamp: 1;
+    line-clamp: 1
+}
+
+.limit-2 {
+    -webkit-line-clamp: 2;
+    line-clamp: 2
+}
+
+.limit-3 {
+    -webkit-line-clamp: 3;
+    line-clamp: 3
+}
+
+.limit-4 {
+    -webkit-line-clamp: 4;
+    line-clamp: 4
+}
+
+.limit-5 {
+    -webkit-line-clamp: 5;
+    line-clamp: 5
+}
+
+.limit-6 {
+    -webkit-line-clamp: 6;
+    line-clamp: 6
+}
+
+.newPrice {
+    border: 2px solid #f25922;
+    padding: 5px 15px;
+    color: #f25922;
+    display: inline;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 16px;
+}
+.oldPrice {
+    text-decoration: line-through;
+    color: rgb(87, 87, 87);
+    border: 2px solid;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 16px;
+}
+
+.wp_content_post_index__minigame{
+    background: #fff;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 6%);
+    border-radius: 10px;
+    margin: 16px 0 4px;
+    padding: 4px 16px;
+}
+
+
+
+.card {
+    border: 1px solid #E4E5F0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+}
+
+.card.card-dark {
+    background-color: #F8F8FC;
+    box-shadow: none;
+}
+
+.card .card-body {
+    padding: 12px;
+}
+
+.card .card-footer {
+    background-color: #fff;
+    border-top: none;
+    padding: 8px 0;
+}
+
+.card-thumb {
+    position: relative;
+    padding-bottom: 60%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.history-detail-attr .card-attr {
+    display: flex;
+    align-items: center;
+}
+
+.card-attr.active .js-copy-text {
+    filter: invert(22%) sepia(98%) saturate(2861%) hue-rotate(225deg) brightness(81%) contrast(115%);
+}
+
+.card-attr.active .card__info {
+    color: #0E3EDA;
+}
+
+/*card bought*/
+.cards-bought {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.cards-bought .history-detail-info-block {
+    width: calc(50% - 8px);
+}
+
+.cards-bought .history-detail-info-block:last-child:nth-child(odd) {
+    width: 100%;
+}
+
+.cards-bought .history-detail-info-block:nth-child(2) ~ .history-detail-info-block {
+    margin-top: 16px;
+}
+.info-attr {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: #82869E;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.price .price-current {
+    color: #575757;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 24px;
+}
+
+.price .price-old {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #82869E;
+    text-decoration: line-through;
+    margin-left: 4px;
+}
+
+.price .discount {
+    background-color: #f25922;
+    border-radius: 16px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FFFFFF;
+    padding: 0 8px;
+    margin-left: 4px;
+}
+
+.card-thumb {
+    position: relative;
+    padding-bottom: 60%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-thumb .card-thumb-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card-list .swiper-slide:hover {
+    box-shadow: 0 3.4623px 6.1418px rgba(0,0,0,0.05),0 7.92923px 12.9218px rgba(0,0,0,0.05),0 9px 15px rgba(0,0,0,0.08)!important;
+    top: -4px;
+    transition: .2s ease-out;
+    border-radius: 12px;
+}
+.card-list .card:hover {
+    box-shadow: 0 3.4623px 6.1418px rgba(0,0,0,0.05),0 7.92923px 12.9218px rgba(0,0,0,0.05),0 9px 15px rgba(0,0,0,0.08)!important;
+    top: -4px;
+    transition: .2s ease-out;
+    border-radius: 12px;
+}
+
+.marginauto{
+    width: 100%;
+    margin: 0 auto;
 }

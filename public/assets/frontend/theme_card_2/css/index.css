@@ -837,3 +837,40 @@ header li.hvr-underline-from-left:hover:before{
     z-index: 110;
     border-radius: 100%;
 }
+
+.wapper-blog_c a.see-more{
+    padding-bottom: 5px;
+    font-weight: bold;
+    color: #2F6A7C;
+}
+.wapper-blog_c a.see-more{
+    text-decoration: none;
+}
+.wapper-blog_c .hvr-underline-from-left {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+}
+.wapper-blog_c .hvr-underline-from-left:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    background: #2F6A7C;
+    height: 2px;
+    -webkit-transition-property: right;
+    transition-property: right;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+.wapper-blog_c .hvr-underline-from-left:hover:before{
+    right: 0;
+}

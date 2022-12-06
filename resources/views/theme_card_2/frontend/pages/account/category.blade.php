@@ -45,7 +45,7 @@
                     </div>
                 </div>
 
-                <div class="item_buy_list row pt-5">
+                <div class="item_buy_list row pt-3">
                     @if(isset($data) && count($data))
                         @foreach($data as $item)
                             <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 ppk">

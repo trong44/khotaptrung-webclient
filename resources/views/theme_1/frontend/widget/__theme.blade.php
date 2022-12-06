@@ -210,3 +210,15 @@
 
     </style>
 @endif
+@if(setting('sys_theme_width_image') && setting('sys_theme_height_image'))
+    <style>
+        .game-list-image{
+
+            padding-bottom: calc(({{setting('sys_theme_height_image')}} / {{setting('sys_theme_width_image')}})*100%);
+        }
+        .item_buy_list_img {
+            position: relative;
+            padding-bottom: calc(({{setting('sys_theme_height_image')}} / {{setting('sys_theme_width_image')}})*100%);
+        }
+    </style>
+@endif

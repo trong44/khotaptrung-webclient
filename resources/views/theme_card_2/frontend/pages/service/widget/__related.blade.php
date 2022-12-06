@@ -1,7 +1,7 @@
 @if (isset($datacate) && count($datacate) > 0)
 
-        <div class="h3" style="font-size: 18px;font-weight: 700">DỊCH VỤ KHÁC</div>
-        <div class="news_content_line" style="width: 132px"></div>
+    <div class="h3" style="font-size: 18px;font-weight: 700">DỊCH VỤ KHÁC</div>
+    <div class="news_content_line" style="width: 132px"></div>
 
     <div class="container item_play_dif__img swiper-service-related swiper-container">
         <div class="swiper-wrapper">

@@ -1,3 +1,20 @@
+@if(setting('sys_intro_text') != '')
+    <div class="c-mb-16 c-mt-16">
+        <div class="card overflow-hidden detailViewBlock">
+            <div class="card-body c-px-16">
+                <div class="content-desc hide detailViewBlockContent">
+
+                    {!! setting('sys_intro_text') !!}
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <span class="see-more" data-content="Xem thêm nội dung"></span>
+            </div>
+        </div>
+    </div>
+@endif
+
+
 <div class=" mt-fix-20 c-container c-pb-24 c-pt-17 section-about">
     <div class="box-product c-mt-md-18">
         <div class="swiper-container  list-intro">

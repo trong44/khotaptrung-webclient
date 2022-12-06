@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/swiper/swiper.min.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/easy-navigate-toc/public/css/toctoc.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/table_of_contents.css">
-
+    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/theme_main.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/toastr/toastr.css">
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/vendors/vendors.bundle.js" type="text/javascript"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/lazyload2/jquery.lazy.min.js"></script>
@@ -53,6 +53,7 @@
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/fancybox/fancybox.umd.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/fancybox/jquery.fancybox.min.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/easy-navigate-toc/public/js/toctoc.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/lib/select-nice/select-nice.js"></script>
 @if(setting('sys_google_tag_manager_head') != '')
 
         @foreach(explode('|',setting('sys_google_tag_manager_head')) as $tag => $sys)
@@ -180,7 +181,7 @@
 <script src="/assets/frontend/{{theme('')->theme_key}}/js/charge/modal-charge.js" type="text/javascript"></script>
 <script src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js" type="text/javascript"></script>
 <script src="/assets/frontend/{{theme('')->theme_key}}/js/transfer/transfer.js?v={{time()}}"></script>
-
+<script src="/assets/frontend/{{theme('')->theme_key}}/js/slider_home.js"></script>
 </body>
 <!-- end::Body -->
 </html>

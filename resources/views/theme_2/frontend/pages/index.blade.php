@@ -21,15 +21,8 @@
                 <!-- BEGIN Tabs -->
                 <ul class="nav nav-qp-tabs mb-4" role="tablist">
                     <li class="nav-item nav-item-telecom" role="presentation">
-{{--                        <a class="nav-link active" href="#" id="game-tab" data-bs-toggle="tab" data-bs-target="#game" type="button" role="tab" aria-controls="game" aria-selected="true"><span><i class="las la-gamepad"></i> <span><span class="d-none d-md-inline">Mua thẻ</span> Game</span></span></a>--}}
                         <a class="nav-link nav-link-telecom active" href="#" id="thedienthoai-tab" data-bs-toggle="tab" data-content="thedienthoai" data-bs-target="#thedienthoai" type="button" role="tab" aria-controls="mobile" aria-selected="true"><span><i class="las la-mobile"></i> <span class="d-none d-md-inline">Mua thẻ</span> </span></a>
                     </li>
-{{--                    <li class="nav-item" role="presentation">--}}
-{{--                        <a class="nav-link" href="#" id="mobile-tab" data-bs-toggle="tab" data-bs-target="#mobile" type="button" role="tab" aria-controls="mobile" aria-selected="true"><span><i class="las la-mobile"></i> <span class="d-none d-md-inline">Mua thẻ</span> Điện thoại</span></a>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item" role="presentation">--}}
-{{--                        <a class="nav-link" href="#" id="data-tab" data-bs-toggle="tab" data-bs-target="#data" type="button" role="tab" aria-controls="data" aria-selected="true"><span><i class="las la-wifi"></i> <span class="d-none d-md-inline">Nạp tiền</span> 3G/4G</span></a>--}}
-{{--                    </li>--}}
                 </ul>
             </div>
             <div class="tab-content mb-4">
@@ -62,37 +55,11 @@
                                         <span class="pulser"></span>
                                     </div>
                                     <div class="supplier_thedienthoai row row-gateway gateway-store g-0">
-                                        {{--                                    thẻ--}}
-                                        {{--                                    <div class="col-md-3 col-6">--}}
-                                        {{--                                        <div class="item-gateway me-2" >--}}
-                                        {{--                                            <div class="text-center">--}}
-                                        {{--                                                <img src="/assets/frontend/{{theme('')->theme_key}}/img/gateway/garena.png" class="mw-100 img" alt="">--}}
-                                        {{--                                            </div>--}}
-                                        {{--                                        </div>--}}
-                                        {{--                                    </div>--}}
-                                        {{--                                    thẻ--}}
+
                                     </div>
                                 </div>
                                 <div class="price_telecom_thedienthoai">
-                                    {{--                                <div class="pb-5 block-number gateway-telecom">--}}
-                                    {{--                                    <div class="icon">2</div>--}}
-                                    {{--                                    <h6 class="title-small text-uppercase mb-3">Lựa chọn mệnh giá</h6>--}}
-                                    {{--                                    <div class="row row-price g-0">--}}
-                                    {{--                                        <div class="col-md-3 col-6">--}}
-                                    {{--                                            <div class="item-price me-2">--}}
-                                    {{--                                                <h4 class="text-center mb-2">20.000 đ</h4>--}}
-                                    {{--                                                <div class="text-center">Giá: <span class="text-danger">19.200</span> đ</div>--}}
-                                    {{--                                            </div>--}}
-                                    {{--                                        </div>--}}
 
-                                    {{--                                    </div>--}}
-                                    {{--                                    <div class="d-flex justify-content-between align-items-center mt-4">--}}
-                                    {{--                                        <label class="label mb-0">Số lượng</label>--}}
-                                    {{--                                        <div style="width: 140px">--}}
-                                    {{--                                            <input type="number" class="form-control text-center" value="1" min="1" max="100" step="1"/>--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                    </div>--}}
-                                    {{--                                </div>--}}
                                 </div>
                                 <div class="infor-pay pay_thedienthoai">
                                     <div class="mb-5 block-number last">
@@ -198,14 +165,7 @@
                         </div>
                     </form>
 
-
-
-
-
-
                 </div>
-{{--                <div class="tab-pane fade" id="mobile" role="tabpanel" aria-labelledby="mobile-tab">Mobile</div>--}}
-{{--                <div class="tab-pane fade" id="data" role="tabpanel" aria-labelledby="data-tab">Data</div>--}}
             </div>
             <!-- BEGIN -->
             <div class="p-3 bg-light rounded mb-4" id="intro_text">
@@ -217,7 +177,6 @@
         </div>
         <div class="site-content-body second  d-lg-none">
             @include('frontend.widget.__list_serve_remark_image')
-
         </div>
         <div class="col-lg-3">
             @include('frontend.widget.__huongdan__trangchu')
@@ -269,5 +228,5 @@
 <div style="display: none" id="auth">
 {{--    <input type="text" class="auth" value="0">--}}
 </div>
-
+@include('frontend.widget.__bonus')
 @endsection

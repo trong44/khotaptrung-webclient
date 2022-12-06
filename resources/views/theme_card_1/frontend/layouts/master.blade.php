@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/fancybox/fancybox.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/table_of_contents.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/toastr/toastr.css">
+    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/select-nice/select-nice.css">
     {{--    js--}}
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/jquery.min.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/bootstrap/bootstrap.min.js"></script>
@@ -55,6 +56,20 @@
     <script
         src="/assets/frontend/{{theme('')->theme_key}}/lib/bootstrapdatepicker/bootstrap-datepicker.min.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/js_trong/preload.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/lib/lazysizes.min.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/lib/sweetalert/sweetalert.min.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/main.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/modal-charge.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/lib/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="/assets/frontend/{{theme('')->theme_key}}/js/slick.min.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/lib/swiper/swiper.min.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/lib/date-picker/moment.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/lib/date-picker/i18n/vi.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/lib/date-picker/bootstrap-datetimepicker.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/slider_home.js"></script>
+
     @if(setting('sys_google_tag_manager_head') != '')
 
         @foreach(explode('|',setting('sys_google_tag_manager_head')) as $tag => $sys)
@@ -208,14 +223,7 @@
 
 @endif
 
-<script src="/assets/frontend/{{theme('')->theme_key}}/lib/lazysizes.min.js"></script>
-<script src="/assets/frontend/{{theme('')->theme_key}}/lib/sweetalert/sweetalert.min.js"></script>
-<script src="/assets/frontend/{{theme('')->theme_key}}/js/main.js"></script>
-<script src="/assets/frontend/{{theme('')->theme_key}}/js/modal-charge.js"></script>
-<script src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js"></script>
-<script src="/assets/frontend/{{theme('')->theme_key}}/lib/toastr/toastr.min.js"></script>
-<script type="text/javascript" src="/assets/frontend/{{theme('')->theme_key}}/js/slick.min.js"></script>
-<script src="/assets/frontend/{{theme('')->theme_key}}/lib/swiper/swiper.min.js"></script>
+
 <button type="button" class="btn btn-danger btn-floating btn-lg ripple-surface" id="btn-back-to-top"
         style="display: none; min-width: 45px;min-height: 45px;border-radius: 100%;z-index: 999">
     <i class="fas fa-arrow-up"></i>

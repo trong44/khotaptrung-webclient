@@ -92,7 +92,6 @@
             {{--                     Dịch vụ nổi bật--}}
             @include('frontend.widget.__tin__tuc')
             @include('frontend.widget.__abount__us')
-
         </div>
     @endif
 

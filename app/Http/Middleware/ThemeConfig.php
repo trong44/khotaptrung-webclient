@@ -17,7 +17,6 @@ class ThemeConfig
      */
     public function handle(Request $request, Closure $next)
     {
-
         if(\App\Library\Theme::getTheme('') == true) {
             View::getFinder()->prependLocation(
                 resource_path('views') . '/'.theme('')->theme_key
