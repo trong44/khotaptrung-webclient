@@ -15,11 +15,15 @@
             $('.modal-logs-minigame').modal('show');
         })
     </script>
+    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/date-picker/bootstrap-datetimepicker.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/nam/minigame.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/phu/stylev2.css">
+    <script src="/assets/frontend/{{theme('')->theme_key}}/lib/date-picker/moment.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/lib/date-picker/bootstrap-datetimepicker.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/minigame/withdraw-modal.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/minigame/fake-cmt.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/minigame/modal-history-spin-bonus.js?v={{time()}}"></script>
+
 @endsection
 @section('content')
 
@@ -77,23 +81,7 @@
                     @endif
                     <div class="d-block d-lg-none c-mb-16 c-px-lg-16">
                         <div class="rotation-top-mobile brs-12 d-block d-lg-none">
-                            {{--                            <div class="rotation-header-sale c-py-4 c-px-12 d-flex align-items-center justify-content-between">--}}
-                            {{--                                <div class="d-inline-flex align-items-center c-mr-10">--}}
-                            {{--                                    <img src="/assets/frontend/{{theme('')->theme_key}}/image/phu/flash_img.png" alt="">--}}
-                            {{--                                    <p class="fw-500 fz-13 lh-20 mb-0">Flash sale</p>--}}
-                            {{--                                </div>--}}
-                            {{--                                <div class="d-inline-flex align-items-center">--}}
-                            {{--                                    <img class="c-mr-4" src="/assets/frontend/{{theme('')->theme_key}}/image/svg/clock.svg" alt="">--}}
-                            {{--                                    <p class="fz-12 fw-400 mb-0 c-mr-8">Kết thúc trong</p>--}}
-                            {{--                                    <div class="rotation-sale-time">--}}
-                            {{--                                        <ul class="mb-0 p-0">--}}
-                            {{--                                            <li class="d-inline-flex align-items-center justify-content-center brs-4"><span class="fw-600 fz-12" id="hourRemain">10</span></li>--}}
-                            {{--                                            <li class="d-inline-flex align-items-center justify-content-center brs-4"><span class="fw-600 fz-12" id="minuteRemain">2</span></li>--}}
-                            {{--                                            <li class="d-inline-flex align-items-center justify-content-center brs-4"><span class="fw-600 fz-12" id="secondRemain">4</span></li>--}}
-                            {{--                                        </ul>--}}
-                            {{--                                    </div>--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
+
                             <div class="rotation-sale-content brs-12 c-py-12 d-flex flex-column align-items-center">
                                 <p class="d-flex align-items-center c-mb-0">
                                     <span id="rotationFirstPrice" class="fw-400 fz-12 lh-16 c-mr-8">
@@ -127,21 +115,7 @@
                                 </div>
                             </div>
                             <div class="rotation-header-sale d-flex align-items-start">
-                                {{--                                <div class="d-inline-flex align-items-center c-mr-10">--}}
-                                {{--                                    <img src="/assets/frontend/{{theme('')->theme_key}}/image/phu/flash_img.png" alt="">--}}
-                                {{--                                    <p class="fw-700 fz-20 lh-28 mb-0">Flash sale</p>--}}
-                                {{--                                </div>--}}
-                                {{--                                <div class="d-inline-flex align-items-center">--}}
-                                {{--                                    <img class="c-mr-4" src="/assets/frontend/{{theme('')->theme_key}}/image/svg/clock.svg" alt="">--}}
-                                {{--                                    <p class="fz-13 fw-400 mb-0 c-mr-8">Kết thúc trong</p>--}}
-                                {{--                                    <div class="rotation-sale-time">--}}
-                                {{--                                        <ul class="mb-0 p-0">--}}
-                                {{--                                            <li class="d-inline-flex align-items-center justify-content-center brs-4"><span id="hourRemain">10</span></li>--}}
-                                {{--                                            <li class="d-inline-flex align-items-center justify-content-center brs-4"><span id="minuteRemain">2</span></li>--}}
-                                {{--                                            <li class="d-inline-flex align-items-center justify-content-center brs-4"><span id="secondRemain">4</span></li>--}}
-                                {{--                                        </ul>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
+
                             </div>
                         </div>
 
@@ -344,20 +318,12 @@
                                         @if($result->group->params->is_try == 1)
 
                                             <div class="col-12 col-md-6 c-pr-6">
-                                                @if (!\App\Library\AuthCustom::check())
-                                                    <a class="btn secondary w-100" href="/login">Chơi thử</a>
-                                                @else
-                                                    <button id="playerDemo" class="btn secondary w-100 num-play-try">Chơi thử</button>
-                                                @endif
+                                                <button id="playerDemo" class="btn secondary w-100 num-play-try">Chơi thử</button>
                                             </div>
                                         @endif
                                     @endif
                                     <div class="col-12 col-md-6 c-pl-6">
-                                        @if (!\App\Library\AuthCustom::check())
-                                            <a class="btn primary w-100" href="/login">Quay ngay</a>
-                                        @else
-                                            <button id="start-played" class="btn primary w-100 play">Quay ngay</button>
-                                        @endif
+                                        <button id="start-played" class="btn primary w-100 play">Quay ngay</button>
                                     </div>
                                 </div>
                                 <div class="footer-mobile">
@@ -366,20 +332,12 @@
                                         @if(isset($result->group->params->is_try))
                                             @if($result->group->params->is_try == 1)
                                                 <div class="col-6 pl-0 c-pr-8">
-                                                    @if (!\App\Library\AuthCustom::check())
-                                                        <a class="btn secondary w-100" href="/login">Chơi thử</a>
-                                                    @else
-                                                        <button class="btn secondary w-100 num-play-try">Chơi thử</button>
-                                                    @endif
+                                                    <button class="btn secondary w-100 num-play-try">Chơi thử</button>
                                                 </div>
                                             @endif
                                         @endif
                                         <div class="col-6 pr-0 c-pl-8">
-                                            @if (!\App\Library\AuthCustom::check())
-                                                <a class="btn primary w-100" href="/login">Quay ngay</a>
-                                            @else
-                                                <button id="start-played" class="btn primary w-100  play">Quay ngay</button>
-                                            @endif
+                                            <button id="start-played" class="btn primary w-100  play">Quay ngay</button>
                                         </div>
                                     </div>
 
@@ -502,34 +460,23 @@
                     </div>
                     {{-- button mobile--}}
                     <div class="d-block d-lg-none c-mb-16">
-                        @if (\App\Library\AuthCustom::check())
-                            <div class="c-px-16">
-                                <div class="leaderboard-items brs-8 c-mb-4 c-px-12 c-py-8 d-flex align-items-center">
-                                    <span class="fw-400 fz-13 c-mr-8 lh-16">Bạn đang có:</span>
-                                    <p class="c-mb-0 fw-700 fz-15 lh-24">{{ str_replace(',','.',number_format($result->number_item)) }} {{ $result->name_item->image??'' }}</p>
-                                </div>
-                            </div>
-                        @endif
+{{--                        @if (\App\Library\AuthCustom::check())--}}
+{{--                            <div class="c-px-16">--}}
+{{--                                <div class="leaderboard-items brs-8 c-mb-4 c-px-12 c-py-8 d-flex align-items-center">--}}
+{{--                                    <span class="fw-400 fz-13 c-mr-8 lh-16">Bạn đang có:</span>--}}
+{{--                                    <p class="c-mb-0 fw-700 fz-15 lh-24">{{ str_replace(',','.',number_format($result->number_item)) }} {{ $result->name_item->image??'' }}</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
                         <div class="leaderboard-buttons c-px-16 c-py-8 row no-gutters" style="border-bottom: none;">
-                            @if (!\App\Library\AuthCustom::check())
-                                <div class="col-6 c-pr-5">
-                                    <a class="btn secondary w-100" href="/login">
-                                        Lịch sử quay
-                                    </a>
-                                </div>
-                                <div class="col-6 c-pl-5">
-                                    <a class="btn primary w-100" href="/login">Rút quà</a>
-                                </div>
-                            @else
-                                <div class="col-6 c-pr-5">
-                                    <a href="javascript:void(0)" class="btn secondary w-100 logsHisMinigameMobile open-sheet" data-target="#sheet-filter-02" >
-                                        Lịch sử quay
-                                    </a>
-                                </div>
-                                <div class="col-6 c-pl-5">
-                                    <a class="btn primary w-100" href="/withdrawitem-{{$result->group->params->game_type}}">Rút quà</a>
-                                </div>
-                            @endif
+                            <div class="col-6 c-pr-5">
+                                <a href="javascript:void(0)" class="btn secondary w-100 logsHisMinigameMobile open-sheet" data-target="#sheet-filter-02" >
+                                    Lịch sử quay
+                                </a>
+                            </div>
+                            <div class="col-6 c-pl-5">
+                                <a class="btn primary w-100 withdrawitem_game_type_mobile" href="javascript:void(0)">Rút quà</a>
+                            </div>
                         </div>
                     </div>
                     {{--                    top quay thưởng--}}
@@ -557,34 +504,23 @@
 
                 <div class="col-12 col-lg-4 c-pl-8 d-none d-lg-block">
                     <div class="rotation-leaderboard c-py-16 c-px-16 brs-12">
-                        @if (\App\Library\AuthCustom::check())
-                            <div class="leaderboard-items brs-8 c-mb-12 c-px-12 c-py-8 d-flex align-items-center">
-                                <span class="fw-400 fz-13 c-mr-8 lh-16">Bạn đang có:</span>
-                                <p class="c-mb-0 fw-700 fz-15 lh-24">{{ str_replace(',','.',number_format($result->number_item)) }} {{ $result->name_item->image??'' }}</p>
-                            </div>
-                        @endif
+{{--                        @if (\App\Library\AuthCustom::check())--}}
+{{--                            <div class="leaderboard-items brs-8 c-mb-12 c-px-12 c-py-8 d-flex align-items-center">--}}
+{{--                                <span class="fw-400 fz-13 c-mr-8 lh-16">Bạn đang có:</span>--}}
+{{--                                <p class="c-mb-0 fw-700 fz-15 lh-24">{{ str_replace(',','.',number_format($result->number_item)) }} {{ $result->name_item->image??'' }}</p>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
                         <div class="leaderboard-buttons c-pb-24 c-mb-16 row no-gutters">
-                            @if (!\App\Library\AuthCustom::check())
-                                <div class="col-6 c-pr-5">
-                                    <a class="btn secondary w-100" href="/login">
-                                        Lịch sử quay
-                                    </a>
-                                </div>
-                                <div class="col-6 c-pl-5">
-                                    <a class="btn primary w-100" href="/login">Rút quà</a>
-                                </div>
-                            @else
-                                <div class="col-6 c-pr-5">
-                                    <a href="javascript:void(0)" class="btn secondary w-100" data-toggle="modal" data-target="#modal-spin-bonus" >
-                                        Lịch sử quay
-                                    </a>
-                                </div>
-                                <div class="col-6 c-pl-5">
-                                    <a href="/withdrawitem-{{$result->group->params->game_type}}" class="btn primary w-100" data-toggle="modal" data-target="#modalWithdraw">
-                                        Rút quà
-                                    </a>
-                                </div>
-                            @endif
+                            <div class="col-6 c-pr-5">
+                                <a href="javascript:void(0)" class="btn secondary w-100 logsHisMinigameMobile">
+                                    Lịch sử quay
+                                </a>
+                            </div>
+                            <div class="col-6 c-pl-5">
+                                <a href="javascript:void(0)" class="btn primary w-100 withdrawitem_game_type">
+                                    Rút quà
+                                </a>
+                            </div>
                         </div>
                         <div class="leaderboard-header d-flex align-items-center c-mb-16">
                             <img class="c-mr-4" src="/assets/frontend/{{theme('')->theme_key}}/image/svg/top-leaderboard.svg" alt="">
@@ -952,8 +888,8 @@
                     </div>
                 </div>
                 <div class="modal-footer c-p-24">
-                    <a class="btn secondary" href="/withdrawitem-{{$result->group->params->game_type}}" >Rút quà</a>
-                    <button class="btn primary"  data-dismiss="modal">Chơi tiếp</button>
+                    <a class="btn secondary withdrawitem_game_type" href="javascript:void(0)" >Rút quà</a>
+                    <button class="btn primary play"  data-dismiss="modal">Chơi tiếp</button>
                 </div>
             </div>
         </div>
@@ -1043,7 +979,43 @@
             </div>
         </li>
     </script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
 
+            $('body').on('click', '.logsHisMinigameMobile', function(e) {
+
+                if (!auth_check) {
+                    location.href = '/login?return_url=' + window.location.href;
+                    return
+                }
+
+                $('#modal-spin-bonus').modal('show');
+            })
+
+            $('body').on('click', '.withdrawitem_game_type', function(e) {
+
+                if (!auth_check) {
+                    location.href = '/login?return_url=' + window.location.href;
+                    return
+                }
+
+                $('')
+
+                $('#modalWithdraw').modal('show');
+            });
+
+            $('body').on('click', '.play', function(e) {
+
+                if (!auth_check) {
+                    location.href = '/login?return_url=' + window.location.href;
+                    return
+                }
+
+                $('#noticeModal').modal('hide');
+            })
+
+        })
+    </script>
     @switch($position)
         @case('rubywheel')
         <script src="/assets/frontend/{{theme('')->theme_key}}/js/minigame/rubywheel.js?v={{time()}}"></script>

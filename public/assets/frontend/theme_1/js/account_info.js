@@ -94,6 +94,8 @@ $(document).ready(function(){
                 }
                 if(data.status == true){
                     auth_check = true;
+
+                    //Hết minigame
                     $('#username').val(data.info.fullname??data.info.username);
                     $('#info .loading').remove();
                     $('#logout .loading').remove();

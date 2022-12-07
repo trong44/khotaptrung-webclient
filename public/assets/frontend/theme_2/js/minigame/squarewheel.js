@@ -43,7 +43,10 @@ $(document).ready(function(e) {
 
     //Click nút quay
     $('body').delegate('#start-played', 'click', function() {
-
+        if (!auth_check) {
+            location.href = '/login?return_url=' + window.location.href;
+            return
+        }
         if (roll_check) {
             num_current = startat;
             num = startat;
@@ -193,6 +196,10 @@ $(document).ready(function(e) {
 
 
     $('body').delegate('.num-play-try', 'click', function() {
+        if (!auth_check) {
+            location.href = '/login?return_url=' + window.location.href;
+            return
+        }
         if (roll_check) {
             num_current = startat;
             num = startat;

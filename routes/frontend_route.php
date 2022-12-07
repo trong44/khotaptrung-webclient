@@ -92,10 +92,7 @@ Route::get('/406', function ()
                 Route::get('/lich-su-tra-gop',function(){
                     return view('frontend.pages.account.logs-installment');
                 });
-                Route::group(['middleware' => ['intend']], function () {
 
-
-                });
                 Route::group(['middleware' => ['doNotCacheResponse']], function (){
                     Route::post('/ajax/user/account_info', [UserController::class , "getInfo"]);
 
@@ -292,6 +289,12 @@ Route::get('/406', function ()
 
                 });
 
+                Route::group(['middleware' => ['intend']], function () {
+
+                    Route::get('/minigame-{slug}', [\App\Http\Controllers\Frontend\MinigameController::class , 'getIndex'])->name('getIndex');
+
+                });
+
                 //minigame
                 Route::group(['middleware' => ['doNotCacheResponse']], function (){
 
@@ -313,11 +316,7 @@ Route::get('/406', function ()
                     Route::post('/bonus', [\App\Http\Controllers\Frontend\MinigameController::class , 'postBonusLogin'])->name('postBonusLogin');
                     Route::get('/bonus', [\App\Http\Controllers\Frontend\MinigameController::class , 'getBonusLogin'])->name('getBonusLogin');
 
-                    Route::group(['middleware' => ['intend']], function () {
 
-                        Route::get('/minigame-{slug}', [\App\Http\Controllers\Frontend\MinigameController::class , 'getIndex'])->name('getIndex');
-
-                    });
                     Route::get('/service-mobile', function ()
                     {
                         return view('frontend.layouts.includes.list-mobile');
