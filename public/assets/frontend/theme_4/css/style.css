@@ -1307,6 +1307,11 @@ ul.atm-control  li a.active {
         width: 50% !important;
     }
 
+    .o_item_spin_category{
+        justify-content: start!important;
+        overflow: overlay!important;
+    }
+
 }
 
 
@@ -1914,7 +1919,7 @@ select:focus{
     color: rgb(238, 70, 35);
     display: inline;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 8px;
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 10px;

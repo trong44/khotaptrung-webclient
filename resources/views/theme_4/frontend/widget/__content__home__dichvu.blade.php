@@ -38,7 +38,7 @@
     @endif
 </div>
     @if($flag_slide_service == 0)
-        <div class="entries" id="service__widget">
+        <div class="entries" id="service__widget" style="padding-bottom: 16px">
             <div class="row fix-border fix-border-dich-vu">
 
                 <div class="col-md-12 left-right data-service-search">

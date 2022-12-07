@@ -38,7 +38,7 @@
         @endif
     </div>
     @if($flag_slide_nick == 0)
-    <div class="entries" id="nick__widget">
+    <div class="entries" id="nick__widget" style="padding-bottom: 16px">
         <div class="row fix-border fix-border-nick">
             <div class="col-md-12 left-right data-nick-search">
                 <span style="color: rgb(238, 70, 35);">Dịch vụ game cần tìm không tồn tại.</span>

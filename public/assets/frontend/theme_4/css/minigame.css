@@ -2234,12 +2234,6 @@ td{
     margin-top: 12px;
 }
 
-.btn-facebook {
-    color: #fff !important;
-    background-color: #3b5998 !important;
-    border-color: rgba(0,0,0,0.2) !important;
-    margin-bottom: 5px !important;
-}
 .btn-google {
     color: #fff !important;
     background-color: #dd4b39 !important;
@@ -3080,19 +3074,25 @@ footer{
         text-align: center;
     }
     .oldPrice{
-        padding: 5px 8px!important;
+        padding: 4px 4px!important;
     }
     .newPrice{
-        padding: 5px 8px!important;
+        padding: 4px 4px!important;
+    }
+    .newPrice{
+        margin-left: 4px!important;
     }
 }
 
 @media only screen and (max-width: 376px) {
     .oldPrice{
-        padding: 5px 8px!important;
+        padding: 4px 4px!important;
     }
     .newPrice{
-        padding: 5px 8px!important;
+        padding: 4px 4px!important;
+    }
+    .newPrice{
+        margin-left: 4px!important;
     }
     .item_play_title h1{
         font-size: 16px;
@@ -6189,10 +6189,10 @@ a:hover .__icon.--path__custom:after {
 .fancybox__backdrop {
     background: var(--fancybox-bg, rgba(24, 24, 27, 0.98));
 }
-.c_num-play-try{
+.num-play-try{
     color: #ffffff!important;
 }
-.c_num-play-try:hover{
+.num-play-try:hover{
     color: #ffffff!important;
 }
 .c_start-played{
