@@ -112,7 +112,7 @@
                                         </div>
                                         <hr>
                                         <div class="t-sub-2 t-color-title mb-2">
-                                            Chọn vật phẩm bạn đang sở hữu
+                                            Chọn gói rút
                                         </div>
                                         <select name="package" id="package" class="wide select-withdraw">
                                             <option value="">Chọn gói</option>

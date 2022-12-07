@@ -38,7 +38,6 @@ function getWithDrawItem(game_type,data_query) {
                 $('#table-history-withdraw').html(res.history);
                 //Chọn loại vật phẩm
                 let result_data = res.result;
-                let has_server = !!result_data.service;
                 if (result_data.listgametype.length) {
                     let select_game_type = $('#select_game_type');
                     select_game_type.empty();
@@ -60,18 +59,25 @@ function getWithDrawItem(game_type,data_query) {
                     select_package.niceSelect('update')
                 }
                 // server
+                let has_server = !!result_data.service;
+                let input_wrap = $('#input-server');
                 if (has_server) {
-                    let service_params = JSON.parse(result_data.service.params)
-                    let input_server = `<div class="t-sub-2 t-color-title my_8">Chọn máy chủ:</div>`;
-                    input_server += '<select name="server" class="form-control">';
-                    console.log(service_params)
-                    service_params.server_data.forEach((server,idx) => {
-                        input_server += `<option value="${service_params.server_id[idx]}">${server}</option>`
-                    })
-                    input_server += '</select>';
-                    $('#input-server').html(input_server)
+                    if(result_data.service.idkey !== 'roblox_buyserver') {
+                        let service_params = JSON.parse(result_data.service.params)
+                        let input_server = `<div class="t-sub-2 t-color-title my_8">Chọn máy chủ:</div>`;
+                        input_server += '<select name="server" class="form-control">';
+                        service_params.server_data.forEach((server,idx) => {
+                            if(!!server && server.indexOf('[DELETE]') === -1){
+                                input_server += `<option value="${service_params.server_id[idx]}">${server}</option>`
+                            }
+                        })
+                        input_server += '</select>';
+                        input_wrap.html(input_server)
+                    } else  {
+                        input_wrap.empty();
+                    }
                 } else {
-                    $('#input-server').empty();
+                    input_wrap.empty();
                 }
 
                 //id game
