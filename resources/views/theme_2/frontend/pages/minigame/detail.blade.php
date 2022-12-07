@@ -731,14 +731,7 @@
                                     </div>
                                 </div>
                                 <div class="item-input-tab">
-                                    <div class="" id="input-server">
-                                        <div class="form-label">
-                                            Chọn gói rút:
-                                        </div>
-                                        <select name="server" class="wide select-withdraw">
-                                            <option value="">Chọn gói</option>
-                                        </select>
-                                    </div>
+                                    <div class="" id="input-server"></div>
                                     <div class="input-group">
                                         <div class="form-label">
                                             Chọn gói rút:

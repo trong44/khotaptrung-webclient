@@ -72,7 +72,7 @@ function getWithDrawItem(game_type,data_query) {
                             }
                         })
                         input_server += '</select>';
-                        input_wrap.html(input_server)
+                        input_wrap.html(input_server);
                     } else  {
                         input_wrap.empty();
                     }

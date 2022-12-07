@@ -39,14 +39,7 @@
                                             <option value="">Chọn gói</option>
                                         </select>
                                         <span class="text--danger">Vật phẩm hiện có: 0</span>
-                                        <div id="input-server">
-                                           {{-- <div class="t-sub-2 t-color-title my_8">
-                                                Chọn máy chủ:
-                                            </div>
-                                            <select name="server" class="form-control">
-                                                <option value="">Chọn gói</option>
-                                            </select>--}}
-                                        </div>
+                                        <div id="input-server"></div>
                                         <div class="t-sub-2 t-color-title my_8">
                                             Gói muốn rút
                                         </div>

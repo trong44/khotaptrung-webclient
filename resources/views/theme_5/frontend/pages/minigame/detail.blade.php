@@ -759,7 +759,7 @@
 
     <input type="hidden" class="started_at" name="started_at" value="{{ $result->group->started_at??0 }}">
     <input type="hidden" id="type_play" value="real">
-    <input type="text" id="checkPoint" name="checkPoint" value="{{$result->checkPoint}}">
+    <input type="hidden" id="checkPoint" name="checkPoint" value="{{$result->checkPoint}}">
 
     <!-- Modal rút quà -->
     <div class="modal fade" id="modalWithdraw" tabindex="-1" role="dialog">
@@ -793,7 +793,10 @@
                                         <span class="text-error"></span>
                                     </div>
                                 </div>
+
                                 <div class="item-input-tab">
+                                    <div class="" id="input-server"></div>
+
                                     <div class="input-group">
                                         <div class="form-label">
                                             Chọn gói rút
@@ -833,9 +836,6 @@
                                         <input type="search" placeholder="Tìm kiếm" class=" has-submit">
                                         <button type="submit"></button>
                                     </form>
-                                </div>
-                                <div class="value-filter">
-                                    <div class="show-modal-filter noselect">Bộ lọc</div>
                                 </div>
                                 <div class="row history-tab-inputs">
                                     <div class="col-7 c-pr-4">
