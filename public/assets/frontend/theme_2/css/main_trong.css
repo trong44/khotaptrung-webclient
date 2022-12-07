@@ -2268,3 +2268,6 @@ i.title-info:after {
     }
 }
 
+.default-paginate .page-link{
+    display: inline!important;
+}

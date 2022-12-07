@@ -796,7 +796,7 @@
                                 <div class="item-input-tab">
                                     <div class="input-group">
                                         <div class="form-label">
-                                            Chọn vật phẩm bạn đang sở hữu
+                                            Chọn gói rút
                                         </div>
                                         <select name="package" id="package" class="wide select-withdraw">
                                             <option value="">Chọn gói</option>

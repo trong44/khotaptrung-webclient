@@ -39,13 +39,13 @@
                 <a href="javascript:void(0)" class="breadcrumb-link">{{$result->group->title}}</a>
             </li>
         </ul>
-        <div class="head-mobile">
-            <a href="/minigame" class="link-back "></a>
+{{--        <div class="head-mobile">--}}
+{{--            <a href="/minigame" class="link-back "></a>--}}
 
-            <p class="head-title text-title">Danh sách minigame</p>
+{{--            <p class="head-title text-title">Danh sách minigame</p>--}}
 
-            <a href="/" class="home"></a>
-        </div>
+{{--            <a href="/" class="home"></a>--}}
+{{--        </div>--}}
 
         <section class="rotation-content c-mb-40 c-mb-lg-20 c-pt-lg-24" style="padding-top: 16px">
             <div class="row rotation-content-section">
@@ -470,7 +470,7 @@
 {{--                        @endif--}}
                         <div class="leaderboard-buttons c-px-16 c-py-8 row no-gutters" style="border-bottom: none;">
                             <div class="col-6 c-pr-5">
-                                <a href="javascript:void(0)" class="btn secondary w-100 logsHisMinigameMobile open-sheet" data-target="#sheet-filter-02" >
+                                <a href="javascript:void(0)" class="btn secondary w-100 open-sheet" data-target="#sheet-filter-02" >
                                     Lịch sử quay
                                 </a>
                             </div>
@@ -512,7 +512,7 @@
 {{--                        @endif--}}
                         <div class="leaderboard-buttons c-pb-24 c-mb-16 row no-gutters">
                             <div class="col-6 c-pr-5">
-                                <a href="javascript:void(0)" class="btn secondary w-100 logsHisMinigameMobile">
+                                <a href="javascript:void(0)" class="btn secondary w-100 logsHisMinigame">
                                     Lịch sử quay
                                 </a>
                             </div>
@@ -989,7 +989,7 @@
     <script type="text/javascript">
         $( document ).ready(function() {
 
-            $('body').on('click', '.logsHisMinigameMobile', function(e) {
+            $('body').on('click', '.logsHisMinigame', function(e) {
 
                 if (!auth_check) {
                     location.href = '/login?return_url=' + window.location.href;
@@ -1006,7 +1006,7 @@
                     return
                 }
 
-                $('')
+                $('#noticeModal').modal('hide');
 
                 $('#modalWithdraw').modal('show');
             });
