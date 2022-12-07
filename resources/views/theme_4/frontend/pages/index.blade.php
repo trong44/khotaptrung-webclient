@@ -44,7 +44,7 @@
 {{--            @include('frontend.widget.__content__home__game')--}}
 
 {{--            @include('frontend.widget.__content__home__minigame')--}}
-
+            @if(setting('sys_intro_text') != '')
             <div class="article-content content_post ">
                 <div class="special-text">
                     {!! setting('sys_intro_text') !!}
@@ -52,9 +52,8 @@
                 <button  class="expand-button">
                     Xem thêm nội dung
                 </button>
-
             </div>
-
+            @endif
             <style type="text/css">
 
                 @media       only screen and (max-width: 580px) {

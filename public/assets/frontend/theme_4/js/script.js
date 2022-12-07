@@ -215,7 +215,7 @@ $(document).ready(function () {
 
         if (value > 1){
 
-            let htmlservice = '<button id="btn-expand-serivce-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm dịch vụ</button>';
+            let htmlservice = '<button id="btn-expand-serivce-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm</button>';
             $('.fix-border-dich-vu').append(htmlservice);
         }
 
@@ -304,7 +304,7 @@ $(document).ready(function () {
 
         if (value > 1){
 
-            let htmlnick = '<button id="btn-expand-serivce-nick-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm danh mục</button>';
+            let htmlnick = '<button id="btn-expand-serivce-nick-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm</button>';
             $('.fix-border-nick').append(htmlnick);
         }
 
@@ -417,7 +417,7 @@ $(document).ready(function () {
 
         if (value > 1){
 
-            let htmlnick = '<button id="btn-expand-minigame-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm danh mục</button>';
+            let htmlnick = '<button id="btn-expand-minigame-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm</button>';
             $('.fix-border-minigame').append(htmlnick);
         }
 

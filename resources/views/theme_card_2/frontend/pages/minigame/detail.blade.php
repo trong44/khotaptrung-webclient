@@ -169,18 +169,10 @@
                             @if(isset($result->group->params->is_try))
 
                                 @if($result->group->params->is_try == 1)
-                                    @if(\App\Library\AuthCustom::check())
-                                        <a class="btn num-play-try c_num-play-try" style="color: #ffffff">Chơi thử</a>
-                                    @else
-                                        <a data-toggle="modal" data-target="#modalLogin" class="btn c_num-play-try" style="color: #ffffff">Chơi thử</a>
-                                    @endif
+                                    <a class="btn num-play-try c_num-play-try" style="color: #ffffff">Chơi thử</a>
                                 @endif
                             @endif
-                            @if(\App\Library\AuthCustom::check())
                                 <a class="btn   k_start c_start-played" id="start-played"><i class="fas fa-bolt"></i> chơi ngay</a>
-                            @else
-                                <a class="btn   k_start c_start-played" data-toggle="modal" data-target="#modalLogin"><i class="fas fa-bolt"></i> chơi ngay</a>
-                            @endif
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
@@ -191,21 +183,12 @@
                             <a href="#" class="btn button__hover" data-toggle="modal" data-target="#topquaythuongModal">
                                 Top quay thưởng
                             </a>
-                            @if(\App\Library\AuthCustom::check())
-                                <a href="#modal-withdraw-items" class="btn   button__hover" data-toggle="modal">
-                                    Rút Vip
-                                </a>
-                                <a href="#modal-spin-bonus" data-toggle="modal" class="btn   button__hover">
-                                    Lịch sử quay
-                                </a>
-                            @else
-                                <a href="/login" class="btn   button__hover" data-toggle="modal" data-target="#modalLogin">
-                                    Rút Vip
-                                </a>
-                                <a href="/login" class="btn   button__hover" data-toggle="modal" data-target="#modalLogin">
-                                    Lịch sử quay
-                                </a>
-                            @endif
+                            <a href="#" class="btn modal_withdraw_items  button__hover">
+                                Rút Vip
+                            </a>
+                            <a href="#" data-toggle="modal" class="btn modal_spin_bonus  button__hover">
+                                Lịch sử quay
+                            </a>
 
                         </div>
                         <div class="item_spin_title">
@@ -413,18 +396,10 @@
                         <div class="item_play_try">
                             @if(isset($result->group->params->is_try))
                                 @if($result->group->params->is_try == 1)
-                                    @if(\App\Library\AuthCustom::check())
-                                        <a class="btn num-play-try c_num-play-try" style="color: #ffffff">Chơi thử</a>
-                                    @else
-                                        <a data-toggle="modal" data-target="#modalLogin" class="btn c_num-play-try" style="color: #ffffff">Chơi thử</a>
-                                    @endif
+                                    <a class="btn num-play-try c_num-play-try" style="color: #ffffff">Chơi thử</a>
                                 @endif
                             @endif
-                            @if(\App\Library\AuthCustom::check())
                                 <a class="btn   k_start c_start-played" id="start-played"><i class="fas fa-bolt"></i> chơi ngay</a>
-                            @else
-                                <a class="btn   k_start c_start-played" data-toggle="modal" data-target="#modalLogin"><i class="fas fa-bolt"></i> chơi ngay</a>
-                            @endif
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
@@ -435,21 +410,12 @@
                             <a href="#" class="btn button__hover" data-toggle="modal" data-target="#topquaythuongModal">
                                 Top lật thưởng
                             </a>
-                            @if(\App\Library\AuthCustom::check())
-                                <a href="#modal-withdraw-items" class="btn   button__hover" data-toggle="modal">
-                                    Rút Vip
-                                </a>
-                                <a href="#modal-spin-bonus" class="btn   button__hover" data-toggle="modal">
-                                    Lịch sử lật
-                                </a>
-                            @else
-                                <a href="/login" class="btn   button__hover" data-toggle="modal" data-target="#modalLogin">
-                                    Rút Vip
-                                </a>
-                                <a href="/login" class="btn   button__hover" data-toggle="modal" data-target="#modalLogin">
-                                    Lịch sử lật
-                                </a>
-                            @endif
+                            <a href="#" class="btn modal_withdraw_items  button__hover">
+                                Rút Vip
+                            </a>
+                            <a href="#" class="btn modal_spin_bonus  button__hover">
+                                Lịch sử lật
+                            </a>
                         </div>
                         <div class="item_spin_title">
                             <p>Lượt lật gần đây</p>
@@ -637,18 +603,10 @@
                         <div class="item_play_try">
                             @if(isset($result->group->params->is_try))
                                 @if($result->group->params->is_try == 1)
-                                    @if(\App\Library\AuthCustom::check())
-                                        <a class="btn num-play-try c_num-play-try" style="color: #ffffff">Chơi thử</a>
-                                    @else
-                                        <a data-toggle="modal" data-target="#modalLogin" class="btn c_num-play-try" style="color: #ffffff">Chơi thử</a>
-                                    @endif
+                                    <a class="btn num-play-try c_num-play-try" style="color: #ffffff">Chơi thử</a>
                                 @endif
                             @endif
-                            @if(\App\Library\AuthCustom::check())
                                 <a class="btn   k_start c_start-played" id="start-played"><i class="fas fa-bolt"></i> chơi ngay</a>
-                            @else
-                                <a class="btn   k_start c_start-played" data-toggle="modal" data-target="#modalLogin"><i class="fas fa-bolt"></i> chơi ngay</a>
-                            @endif
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12">
@@ -660,14 +618,10 @@
                         </div>
 
                         <div class="item_play_category">
-                            @if(\App\Library\AuthCustom::check())
-                            <a href="#modal-spin-bonus" data-toggle="modal" class="col-sm-12 btn   button__hover">Lịch sử trúng vật phẩm</a>
-                            @else
-                                <a href="#" data-toggle="modal" data-target="#modalLogin" class="col-sm-12 btn   button__hover">Lịch sử trúng vật phẩm</a>
-                            @endif
+                            <a href="#" class="col-sm-12 btn modal_spin_bonus  button__hover">Lịch sử trúng vật phẩm</a>
                         </div>
                         <div class="item_play_category">
-                            <a href="#"  class="col-sm-12 btn   button__hover"  data-toggle="modal" data-target="#topquaythuongModal">Top quay thưởng</a>
+                            <a href="#"  class="col-sm-12 btn button__hover"  data-toggle="modal" data-target="#topquaythuongModal">Top quay thưởng</a>
                         </div>
                     </div>
                 </div>
@@ -811,14 +765,10 @@
                         </div>
 
                         <div class="item_play_category">
-                            @if(\App\Library\AuthCustom::check())
-                                <a href="#modal-spin-bonus" data-toggle="modal" class="col-sm-12 btn   button__hover">Lịch sử trúng vật phẩm</a>
-                            @else
-                                <a href="#" data-toggle="modal" data-target="#modalLogin" class="col-sm-12 btn   button__hover">Lịch sử trúng vật phẩm</a>
-                            @endif
+                            <a href="#" class="col-sm-12 btn  modal_spin_bonus button__hover">Lịch sử trúng vật phẩm</a>
                         </div>
                         <div class="item_play_category">
-                            <a href="#" class="col-sm-12 btn   button__hover"  data-toggle="modal" data-target="#topquaythuongModal">Top quay thưởng</a>
+                            <a href="#" class="col-sm-12 btn button__hover"  data-toggle="modal" data-target="#topquaythuongModal">Top quay thưởng</a>
                         </div>
                     </div>
                 </div>
@@ -972,18 +922,10 @@
                         <div class="item_play_try">
                             @if(isset($result->group->params->is_try))
                                 @if($result->group->params->is_try == 1)
-                                    @if(\App\Library\AuthCustom::check())
-                                        <a class="btn c_num-play-try num-play-try" style="color: #ffffff">Chơi thử</a>
-                                    @else
-                                        <a data-toggle="modal" data-target="#modalLogin" class="btn button__hover c_num-play-try" style="color: #ffffff">Chơi thử</a>
-                                    @endif
+                                    <a class="btn c_num-play-try num-play-try" style="color: #ffffff">Chơi thử</a>
                                 @endif
                             @endif
-                            @if(\App\Library\AuthCustom::check())
                                 <a class="btn   k_start c_start-played" id="start-played"><i class="fas fa-bolt"></i> chơi ngay</a>
-                            @else
-                                <a class="btn   k_start c_start-played" data-toggle="modal" data-target="#modalLogin"><i class="fas fa-bolt"></i> chơi ngay</a>
-                            @endif
                         </div>
                     </div>
 
@@ -998,11 +940,7 @@
                         </div>
 
                         <div class="item_play_category">
-                            @if(\App\Library\AuthCustom::check())
-                                <a href="#modal-spin-bonus" data-toggle="modal" class="col-sm-12 btn   button__hover">Lịch sử trúng vật phẩm</a>
-                            @else
-                                <a href="#" data-toggle="modal" data-target="#modalLogin" class="col-sm-12 btn   button__hover">Lịch sử trúng vật phẩm</a>
-                            @endif                        </div>
+                            <a href="#" data-toggle="modal" class="col-sm-12 btn  modal_spin_bonus button__hover">Lịch sử trúng vật phẩm</a>                        </div>
                         <div class="item_play_category">
                             <a href="#" class="col-sm-12 btn   button__hover"  data-toggle="modal" data-target="#topquaythuongModal">Top quay thưởng</a>
                         </div>
@@ -1129,18 +1067,10 @@
                             @if(isset($result->group->params->is_try))
 
                                 @if($result->group->params->is_try == 1)
-                                    @if(\App\Library\AuthCustom::check())
                                     <a class="btn c_num-play-try num-play-try" style="color: #ffffff">Chơi thử</a>
-                                    @else
-                                        <a data-toggle="modal" data-target="#modalLogin" class="btn c_num-play-try" style="color: #ffffff">Chơi thử</a>
-                                    @endif
                                 @endif
                             @endif
-                                @if(\App\Library\AuthCustom::check())
-                                    <a class="btn   k_start c_start-played" id="start-played"><i class="fas fa-bolt"></i> chơi ngay</a>
-                                @else
-                                    <a class="btn   k_start c_start-played" data-toggle="modal" data-target="#modalLogin"><i class="fas fa-bolt"></i> chơi ngay</a>
-                                @endif
+                                <a class="btn   k_start c_start-played" id="start-played"><i class="fas fa-bolt"></i> chơi ngay</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12">
@@ -1151,11 +1081,7 @@
                             <a href="#" class="btn   col-sm-12 button__hover" data-toggle="modal" data-target="#luotquayModal">Lượt chơi gần đây</a>
                         </div>
                         <div class="item_play_category">
-                            @if(\App\Library\AuthCustom::check())
-                                <a href="#modal-spin-bonus" data-toggle="modal" class="col-sm-12 btn   button__hover">Lịch sử trúng vật phẩm</a>
-                            @else
-                                <a href="#" data-toggle="modal" data-target="#modalLogin" class="col-sm-12 btn   button__hover">Lịch sử trúng vật phẩm</a>
-                            @endif                        </div>
+                            <a href="#" data-toggle="modal" class="col-sm-12 btn modal_spin_bonus  button__hover">Lịch sử trúng vật phẩm</a>                        </div>
                         <div class="item_play_category">
                             <a href="#" class="col-sm-12 btn   button__hover" data-toggle="modal" data-target="#topquaythuongModal">Top quay thưởng</a>
                         </div>
@@ -1351,7 +1277,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a href="#modal-withdraw-items" data-toggle="modal" id="btnWithdraw" class="btn m-btn m-btn--custom m-btn--icon c_start-played">Rút
+                    <a href="#" id="btnWithdraw" class="btn m-btn m-btn--custom m-btn--icon modal_withdraw_items c_start-played">Rút
                         quà</a>
                     <button type="button"
                             class="btn c-theme-btn c-btn-border-2x c-btn-square c-btn-bold c-btn-uppercase button__hover__close"
@@ -1523,6 +1449,35 @@
     <!-- script -->
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/minigame/modal-rut-vp.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/minigame/modal-history-spin-bonus.js?v={{time()}}"></script>
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+
+            $('body').on('click', '.modal_withdraw_items', function(e) {
+
+                if (!auth_check) {
+                    $('#modalLogin').modal('show');
+                    return
+                }
+
+                $('#modal-withdraw-items').modal('show');
+            })
+
+            $('body').on('click', '.modal_spin_bonus', function(e) {
+                if (!auth_check) {
+                    $('#modalLogin').modal('show');
+                    return
+                }
+
+                $('#modal-spin-bonus').modal('show');
+            })
+
+            $("#btnWithdraw").on("click", function () {
+                $('#noticeModal').modal('hide');
+            })
+        })
+    </script>
+
     <script type="text/javascript">
         $( document ).ready(function() {
 
@@ -1640,12 +1595,21 @@
                 //var arrDiscount = '';
 
                 $('body').delegate('#start-played', 'click', function () {
+
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
+
                     $('#type_play').val('real');
                     play();
                 });
 
                 $('body').delegate('.num-play-try', 'click', function () {
-                    console.log(11111111111111111111)
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
                     $('#type_play').val('try');
                     play();
                 });
@@ -2041,6 +2005,12 @@
             $(document).ready(function(e){
                 initial();
                 $('.play').click(function(){
+
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
+
                     roll_check = true;
                     $('.boxflip img.flip-box-front').each(function(){
                         $(this).attr('src','{{ \App\Library\MediaHelpers::media($result->group->params->image_static) }}');
@@ -2055,6 +2025,12 @@
                     $('#type_play').val('real');
                 })
                 $('.num-play-try').click(function(){
+
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
+
                     roll_check = true;
                     $('.boxflip img.flip-box-front').each(function(){
                         $(this).attr('src','{{ \App\Library\MediaHelpers::media($result->group->params->image_static) }}');
@@ -2098,6 +2074,12 @@
                 var showwithdrawbtn = true;
                 //Click nút lật
                 $('body').delegate('.img_remove', 'click', function(){
+
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
+
                     $('.boxflip .flip-box-front').removeClass('img_remove');
                     $('.boxflip .flip-box-front').removeClass('active');
                     $('.boxflip .flip-box-front').addClass('noactive');
@@ -2594,6 +2576,11 @@
                 //Click nút quay
                 $('body').delegate('#start-played', 'click', function() {
 
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
+
                     if (roll_check) {
                         //fakeLoop();
                         roll_check = false;
@@ -2758,6 +2745,12 @@
                 }
 
                 $('body').delegate('.num-play-try', 'click', function() {
+
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
+
                     if (roll_check) {
                         //fakeLoop();
                         roll_check = false;
@@ -3314,7 +3307,10 @@
                 var showwithdrawbtn = true;
                 //Click nút quay
                 $('body').delegate('#start-played', 'click', function() {
-
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
                     if (roll_check) {
                         fakeLoop();
                         roll_check = false;
@@ -3510,6 +3506,12 @@
 
 
                 $('body').delegate('.num-play-try', 'click', function() {
+
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
+
                     if (roll_check) {
                         fakeLoop();
                         roll_check = false;
@@ -4203,7 +4205,10 @@
                 var showwithdrawbtn = true;
                 //Click nút quay
                 $('body').delegate('#start-played', 'click', function() {
-
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
                     if (roll_check) {
                         num_current = startat;
                         num = startat;
@@ -4355,6 +4360,10 @@
 
 
                 $('body').delegate('.num-play-try', 'click', function() {
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
                     if (roll_check) {
                         num_current = startat;
                         num = startat;
@@ -4804,11 +4813,19 @@
                 var game_type_value = "";
 
                 $('body').delegate('#start-played', 'click', function() {
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
                     $('#type_play').val('real');
                     play();
                 });
 
                 $('body').delegate('.num-play-try', 'click', function() {
+                    if (!auth_check) {
+                        $('#modalLogin').modal('show');
+                        return
+                    }
                     $('#type_play').val('try');
                     play();
                 });

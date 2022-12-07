@@ -80,7 +80,10 @@ $(document).ready(function(e) {
     var slot3_fake;
     //Click nút quay
     $('body').delegate('#start-played', 'click', function() {
-
+        if (!auth_check) {
+            $('#signin').modal('show');
+            return
+        }
         if (roll_check) {
             //fakeLoop();
             roll_check = false;
@@ -241,6 +244,10 @@ $(document).ready(function(e) {
 
 
     $('body').delegate('.num-play-try', 'click', function() {
+        if (!auth_check) {
+            $('#signin').modal('show');
+            return
+        }
         if (roll_check) {
             //fakeLoop();
             roll_check = false;

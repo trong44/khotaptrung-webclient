@@ -1,3 +1,4 @@
+let auth_check = false;
 $(document).ready(function(){
     const csrf_token = $('meta[name="csrf-token"]').attr('content');
     const token =  $('meta[name="jwt"]').attr('content');
@@ -93,6 +94,8 @@ $(document).ready(function(){
                     console.log('Lỗi dữ liệu, vui lòng load lại trang để tải lại dữ liệu')
                 }
                 if(data.status == true){
+
+                    auth_check = true;
 
                     $(window).resize(function() {
                         if($(window).width() > 992){

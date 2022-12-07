@@ -14,6 +14,12 @@ document.addEventListener('touchend', function (event) {
 $(document).ready(function(e){
     initial();
     $('.play').click(function(){
+
+        if (!auth_check) {
+            location.href = '/login?return_url=' + window.location.href;
+            return
+        }
+
         roll_check = true;
         $('.boxflip img.flip-box-front').each(function(){
             $(this).attr('src',$('#image_static').val());
@@ -29,6 +35,12 @@ $(document).ready(function(e){
         $('#type_play').val('real');
     })
     $('.num-play-try').click(function(){
+
+        if (!auth_check) {
+            location.href = '/login?return_url=' + window.location.href;
+            return
+        }
+
         roll_check = true;
         $('.boxflip img.flip-box-front').each(function(){
             $(this).attr('src',$('#image_static').val());
@@ -71,6 +83,12 @@ $(document).ready(function(e){
     var arrDiscount = '';
     //Click nút lật
     $('body').delegate('.img_remove', 'click', function(){
+
+        if (!auth_check) {
+            location.href = '/login?return_url=' + window.location.href;
+            return
+        }
+
         $('.boxflip .flip-box-front').removeClass('img_remove');
         $('.boxflip .flip-box-front').removeClass('active');
         $('.boxflip .flip-box-front').addClass('noactive');

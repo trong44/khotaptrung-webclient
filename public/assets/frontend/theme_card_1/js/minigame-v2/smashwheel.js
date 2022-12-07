@@ -20,11 +20,22 @@ $(document).ready(function(e) {
     //var arrDiscount = '';
 
     $('body').delegate('#start-played', 'click', function() {
+
+        if (!auth_check) {
+            $('#signin').modal('show');
+            return
+        }
         $('#type_play').val('real');
         play();
     });
 
     $('body').delegate('.num-play-try', 'click', function() {
+
+        if (!auth_check) {
+            $('#signin').modal('show');
+            return
+        }
+
         $('#type_play').val('try');
         play();
     });

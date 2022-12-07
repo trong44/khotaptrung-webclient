@@ -67,8 +67,6 @@
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/main.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/datetime-picker/bootstrap-datetimepicker.js" defer></script>
 
-
-
 {{--    <script src="/assets/frontend/{{theme('')->theme_key}}/js/storecard/store_card.js"></script>--}}
     @stack('js')
 

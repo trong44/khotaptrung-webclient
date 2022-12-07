@@ -658,6 +658,7 @@ class MinigameController extends Controller
                 }
             } catch (\Exception $e) {
                 logger($e);
+                dd($e->getMessage());
                 return response()->json([
                     'status'=>0,
                     'message'=>$e->getMessage(),

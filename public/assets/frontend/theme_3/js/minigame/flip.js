@@ -14,6 +14,22 @@ document.addEventListener('touchend', function (event) {
 $(document).ready(function(e){
     initial();
     $('.play').click(function(){
+
+        if (!auth_check) {
+            let width = $(window).width();
+            if ( width > 1200 ) {
+                $('#loginModal').modal('show');
+                setTimeout(() => {
+                    $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                }, 200);
+                return
+            } else {
+                $('.mobile-auth').toggleClass('mobile-auth-show');
+                $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                return
+            }
+        }
+
         roll_check = true;
         $('.boxflip img.flip-box-front').each(function(){
             $(this).attr('src',$('#image_static').val());
@@ -29,6 +45,22 @@ $(document).ready(function(e){
         $('#type_play').val('real');
     })
     $('.num-play-try').click(function(){
+
+        if (!auth_check) {
+            let width = $(window).width();
+            if ( width > 1200 ) {
+                $('#loginModal').modal('show');
+                setTimeout(() => {
+                    $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                }, 200);
+                return
+            } else {
+                $('.mobile-auth').toggleClass('mobile-auth-show');
+                $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                return
+            }
+        }
+
         roll_check = true;
         $('.boxflip img.flip-box-front').each(function(){
             $(this).attr('src',$('#image_static').val());
@@ -71,6 +103,22 @@ $(document).ready(function(e){
     var arrDiscount = '';
     //Click nút lật
     $('body').delegate('.img_remove', 'click', function(){
+
+        if (!auth_check) {
+            let width = $(window).width();
+            if ( width > 1200 ) {
+                $('#loginModal').modal('show');
+                setTimeout(() => {
+                    $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                }, 200);
+                return
+            } else {
+                $('.mobile-auth').toggleClass('mobile-auth-show');
+                $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                return
+            }
+        }
+
         $('.boxflip .flip-box-front').removeClass('img_remove');
         $('.boxflip .flip-box-front').removeClass('active');
         $('.boxflip .flip-box-front').addClass('noactive');
@@ -418,7 +466,7 @@ $(document).ready(function(e){
                     $('#noticeModal').modal('show');
                     return;
                 }
-                
+
                 var flag_bonus = true;
                 var c_game_type_value = '';
 

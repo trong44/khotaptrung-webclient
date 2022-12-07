@@ -30,11 +30,55 @@ $(document).ready(function(e) {
     //var arrDiscount = '';
 
     $('body').delegate('#start-played', 'click', function() {
+
+        if (!auth_check) {
+            let width = $(window).width();
+            setTimeout(function(){
+                if ( width > 1200 ) {
+                    $('#loginModal').modal('show');
+                    setTimeout(() => {
+                        $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                    }, 200);
+
+                    return;
+                } else {
+                    $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                    $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                    $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                    $('.mobile-auth').css('transform', 'translateX(0)');
+
+                    return;
+                }
+            }, 0);
+        }
+
         $('#type_play').val('real');
         play();
     });
 
     $('body').delegate('.num-play-try', 'click', function() {
+
+        if (!auth_check) {
+            let width = $(window).width();
+            setTimeout(function(){
+                if ( width > 1200 ) {
+                    $('#loginModal').modal('show');
+                    setTimeout(() => {
+                        $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                    }, 200);
+
+                    return;
+                } else {
+                    $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                    $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                    $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                    $('.mobile-auth').css('transform', 'translateX(0)');
+
+                    return;
+                }
+            }, 0);
+        }
+
         $('#type_play').val('try');
         play();
     });

@@ -142,7 +142,13 @@ a:hover{
     margin: auto;
     line-height: 150%;
 }
-
+.card-attr .text-title{
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #575757;
+    line-height: 150%;
+}
 .c__text-title{
     font-size: 15px;
     font-weight: 700;

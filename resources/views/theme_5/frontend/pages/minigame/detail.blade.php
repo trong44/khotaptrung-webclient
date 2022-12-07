@@ -343,20 +343,12 @@
                                         @if($result->group->params->is_try == 1)
 
                                             <div class="col-12 col-md-6 c-pr-6">
-                                                @if (!\App\Library\AuthCustom::check())
-                                                    <button class="btn secondary w-100" onclick="openLoginModal();">Chơi thử</button>
-                                                @else
-                                                    <button id="playerDemo" class="btn secondary w-100 num-play-try">Chơi thử</button>
-                                                @endif
+                                                <button id="playerDemo" class="btn secondary w-100 num-play-try">Chơi thử</button>
                                             </div>
                                         @endif
                                     @endif
                                     <div class="col-12 col-md-6 c-pl-6">
-                                        @if (!\App\Library\AuthCustom::check())
-                                            <button class="btn primary w-100" onclick="openLoginModal();">Quay ngay</button>
-                                        @else
-                                            <button id="start-played" class="btn primary w-100 play">Quay ngay</button>
-                                        @endif
+                                        <button id="start-played" class="btn primary w-100 play">Quay ngay</button>
                                     </div>
                                 </div>
                                 <div class="footer-mobile">
@@ -365,20 +357,12 @@
                                         @if(isset($result->group->params->is_try))
                                             @if($result->group->params->is_try == 1)
                                                 <div class="col-6 pl-0 c-pr-8">
-                                                    @if (!\App\Library\AuthCustom::check())
-                                                        <button class="btn secondary w-100" onclick="openLoginModal();">Chơi thử</button>
-                                                    @else
-                                                        <button class="btn secondary w-100 num-play-try">Chơi thử</button>
-                                                    @endif
+                                                    <button class="btn secondary w-100 num-play-try">Chơi thử</button>
                                                 </div>
                                             @endif
                                         @endif
                                         <div class="col-6 pr-0 c-pl-8">
-                                            @if (!\App\Library\AuthCustom::check())
-                                                <button class="btn primary w-100" onclick="openLoginModal();">Quay ngay</button>
-                                            @else
-                                                <button id="start-played" class="btn primary w-100  play">Quay ngay</button>
-                                            @endif
+                                            <button id="start-played" class="btn primary w-100  play">Quay ngay</button>
                                         </div>
                                     </div>
 
@@ -510,25 +494,14 @@
                             </div>
                         @endif
                         <div class="leaderboard-buttons c-px-16 c-py-8 row no-gutters" style="border-bottom: none;">
-                            @if (!\App\Library\AuthCustom::check())
-                                <div class="col-6 c-pr-5">
-                                    <a href="javascript:void(0)" class="btn secondary w-100" onclick="openLoginModal();">
-                                        Lịch sử quay
-                                    </a>
-                                </div>
-                                <div class="col-6 c-pl-5">
-                                    <a href="javascript:void(0)" class="btn primary w-100" onclick="openLoginModal();">Rút quà</a>
-                                </div>
-                            @else
-                                <div class="col-6 c-pr-5">
-                                    <a href="javascript:void(0)" class="btn secondary w-100 logsHisMinigameMobile open-sheet" data-target="#sheet-filter-02" >
-                                        Lịch sử quay
-                                    </a>
-                                </div>
-                                <div class="col-6 c-pl-5">
-                                    <a class="btn primary w-100" href="/withdrawitem-{{$result->group->params->game_type}}">Rút quà</a>
-                                </div>
-                            @endif
+                            <div class="col-6 c-pr-5">
+                                <a href="javascript:void(0)" class="btn secondary w-100 logsHisMinigameMobile open-sheet modal_spin_bonus__mobile" data-target="#sheet-filter-02" >
+                                    Lịch sử quay
+                                </a>
+                            </div>
+                            <div class="col-6 c-pl-5">
+                                <a class="btn primary w-100" href="/withdrawitem-{{$result->group->params->game_type}}">Rút quà</a>
+                            </div>
                         </div>
                     </div>
                     {{--                    top quay thưởng--}}
@@ -563,27 +536,16 @@
                             </div>
                         @endif
                         <div class="leaderboard-buttons c-pb-24 c-mb-16 row no-gutters">
-                            @if (!\App\Library\AuthCustom::check())
-                                <div class="col-6 c-pr-5">
-                                    <a href="javascript:void(0)" class="btn secondary w-100" onclick="openLoginModal();">
-                                        Lịch sử quay
-                                    </a>
-                                </div>
-                                <div class="col-6 c-pl-5">
-                                    <a href="javascript:void(0)" class="btn primary w-100" onclick="openLoginModal();">Rút quà</a>
-                                </div>
-                            @else
-                                <div class="col-6 c-pr-5">
-                                    <a href="javascript:void(0)" class="btn secondary w-100" data-toggle="modal" data-target="#modal-spin-bonus" >
-                                        Lịch sử quay
-                                    </a>
-                                </div>
-                                <div class="col-6 c-pl-5">
-                                    <a href="/withdrawitem-{{$result->group->params->game_type}}" class="btn primary w-100" data-toggle="modal" data-target="#modalWithdraw">
-                                        Rút quà
-                                    </a>
-                                </div>
-                            @endif
+                            <div class="col-6 c-pr-5">
+                                <a href="javascript:void(0)" class="btn secondary w-100 modal_spin_bonus">
+                                    Lịch sử quay
+                                </a>
+                            </div>
+                            <div class="col-6 c-pl-5">
+                                <a href="javascript:void(0)" class="btn primary w-100 modal_withdraw_items">
+                                    Rút quà
+                                </a>
+                            </div>
                         </div>
                         <div class="leaderboard-header d-flex align-items-center c-mb-16">
                             <img class="c-mr-4" src="/assets/frontend/{{theme('')->theme_key}}/image/svg/top-leaderboard.svg" alt="">
@@ -951,12 +913,13 @@
                     </div>
                 </div>
                 <div class="modal-footer c-p-24">
-                    <a class="btn secondary" href="/withdrawitem-{{$result->group->params->game_type}}" >Rút quà</a>
+                    <a class="btn secondary modal_withdraw_items" href="#" >Rút quà</a>
                     <button class="btn primary"  data-dismiss="modal">Chơi tiếp</button>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="modal fade modal-small" id="naptheModal" role="dialog" aria-hidden="true">
 
         <div class="modal-dialog modal-dialog-centered modal-custom">
@@ -989,6 +952,91 @@
     <input type="hidden" id="group_id" value="{{ @$result->group->id}}">
     <input type="hidden" id="image_static" value="{{ @\App\Library\MediaHelpers::media($result->group->params->image_static) }}">
     <input type="hidden" id="count_item" value="{{count($result->group->items)}}">
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+
+            $('body').on('click', '.modal_withdraw_items', function(e) {
+
+                if (!auth_check) {
+                    let width = $(window).width();
+                    setTimeout(function(){
+                        if ( width > 1200 ) {
+                            $('#loginModal').modal('show');
+                            setTimeout(() => {
+                                $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                            }, 200);
+
+                            return;
+                        } else {
+                            $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                            $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                            $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                            $('.mobile-auth').css('transform', 'translateX(0)');
+
+                            return;
+                        }
+                    }, 0);
+                }
+
+                $('#modalWithdraw').modal('show');
+                $('#noticeModal').modal('hide');
+            })
+
+            $('body').on('click', '.modal_spin_bonus', function(e) {
+                if (!auth_check) {
+                    let width = $(window).width();
+                    setTimeout(function(){
+                        if ( width > 1200 ) {
+                            $('#loginModal').modal('show');
+                            setTimeout(() => {
+                                $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                            }, 200);
+
+                            return;
+                        } else {
+                            $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                            $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                            $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                            $('.mobile-auth').css('transform', 'translateX(0)');
+
+                            return;
+                        }
+                    }, 0);
+                }
+
+                $('#modal-spin-bonus').modal('show');
+            })
+
+            $('body').on('click', '.modal_spin_bonus__mobile', function(e) {
+                if (!auth_check) {
+                    let width = $(window).width();
+                    setTimeout(function(){
+                        if ( width > 1200 ) {
+                            $('#loginModal').modal('show');
+                            setTimeout(() => {
+                                $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                            }, 200);
+
+                            return;
+                        } else {
+                            $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                            $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                            $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                            $('.mobile-auth').css('transform', 'translateX(0)');
+
+                            return;
+                        }
+                    }, 0);
+                }
+            })
+
+            $("#btnWithdraw").on("click", function () {
+                $('#noticeModal').modal('hide');
+            })
+        })
+    </script>
+
     <!-- script -->
     <script id="history-template" type="text/x-handlebars-template">
         <tr>

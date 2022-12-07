@@ -486,7 +486,7 @@
                             @case('gieoque')
 
                             <div class="rotation">
-                                <div class="rotation-button rotation-button-quanhuy" {{ \App\Library\AuthCustom::check() ?  'id=start-played' : 'onclick=openLoginModal();'}}>
+                                <div class="rotation-button rotation-button-quanhuy" id="start-played">
 
                                     <img onerror="imgError(this)"
 
@@ -586,27 +586,15 @@
                                     @if(isset($result->group->params->is_try))
                                         @if($result->group->params->is_try == 1)
                                             <div class="col-4 button-col">
-                                                @if(App\Library\AuthCustom::check())
-                                                    <button id="playerDemo" class="button-secondary button-demo num-play-try">Chơi thử</button>
-                                                @else
-                                                    <button type="button" class="button-secondary button-demo" data-toggle="modal" data-target="#signin">Chơi thử</button>
-                                                @endif
+                                                <button id="playerDemo" class="button-secondary button-demo num-play-try">Chơi thử</button>
                                             </div>
                                         @endif
                                     @endif
-                                    @if (App\Library\AuthCustom::check())
                                         <div class="col-8 button-rainbow button-col" style="--bg-color: #ecf0f1">
                                             <button id="start-played" class="button-primary button-play play b_button">Quay
                                                 ngay
                                             </button>
                                         </div>
-                                    @else
-                                        <div class="col-6 button-rainbow button-col" style="--bg-color: #ecf0f1">
-                                            <button type="button" class="button-primary button-play b_button"
-                                                    data-toggle="modal" data-target="#signin">Quay ngay
-                                            </button>
-                                        </div>
-                                    @endif
                                 </div>
                             </div>
                             {{--                                <div class="b_item button-rainbow" style="--bg-color: #ecf0f1">--}}
@@ -785,21 +773,12 @@
                                 @endif
                             </div>
                             <div class="col-6 leaderboard-col">
-                                @if(App\Library\AuthCustom::check())
-                                    <button type="button" class="the-a-lich-su button-not-bg-ct button-secondary history-spin-button" data-toggle="modal" data-target="#modal-spin-bonus">Lịch sử quay</button>
-                                @else
-                                    <button type="button" class="the-a-lich-su button-not-bg-ct button-secondary history-spin-button" data-toggle="modal" data-target="#signin">Lịch sử quay</button>
-                                @endif
+                                <button type="button" class="the-a-lich-su button-not-bg-ct button-secondary history-spin-button modal_spin_bonus">Lịch sử quay</button>
+
                             </div>
                             <div class="col-6 leaderboard-col">
-                                @if(App\Library\AuthCustom::check())
-                                    <button class="button-primary" type="button" data-toggle="modal"
-                                            data-target="#modal-withdraw-items">Rút quà
-                                    </button>
-                                @else
-                                    <button class="button-primary" type="button" data-toggle="modal" data-target="#signin">Rút quà
-                                    </button>
-                                @endif
+                                <button class="button-primary modal_withdraw_items" type="button" >Rút quà
+                                </button>
                             </div>
                         </div>
                         <div class="leaderboard-header">
@@ -1012,8 +991,7 @@
                         <div class="col-12">
 
                             @if(App\Library\AuthCustom::check())
-                                <a data-toggle="modal" data-target="#signin" data-dismiss="modal" data-toggle="modal"
-                                   data-target="#modal-withdraw-items" href="javascript:void(0)" class="btn button-secondary">Rút quà</a>
+                                <a href="javascript:void(0)" class="btn button-secondary modal_withdraw_items">Rút quà</a>
                             @endif
                         </div>
 
@@ -1103,6 +1081,8 @@
     <input type="hidden" id="image_static"
            value="{{ @\App\Library\MediaHelpers::media($result->group->params->image_static) }}">
     <input type="hidden" id="count_item" value="{{count($result->group->items)}}">
+
+
     <!-- script -->
     <script id="history-template" type="text/x-handlebars-template">
         <tr>
@@ -1163,6 +1143,36 @@
             </div>
 
         </li>
+    </script>
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+
+            $('body').on('click', '.modal_withdraw_items', function(e) {
+
+                if (!auth_check) {
+                    $('#signin').modal('show');
+                    return
+                }
+
+                $('#modal-withdraw-items').modal('show');
+            })
+
+            $('body').on('click', '.modal_spin_bonus', function(e) {
+                if (!auth_check) {
+                    $('#signin').modal('show');
+                    return
+                }
+
+                $('#modal-spin-bonus').modal('show');
+            })
+
+
+
+            $("#btnWithdraw").on("click", function () {
+                $('#noticeModal').modal('hide');
+            })
+        })
     </script>
 
     @switch($position)

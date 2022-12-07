@@ -1071,6 +1071,23 @@ input[type="checkbox"]:checked + label::after, input[type=radio]:checked + label
     border: 4px solid darken(darkcyan, 10%);
 }
 
+.expand-button_c {
+    cursor: pointer;
+    display: block;
+    width: 20%;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgb(238, 70, 35) !important;
+    border-radius: 3px;
+    background-color: #fff;
+    color: rgb(238, 70, 35) !important;
+    font-size: 13px;
+    padding: 0.5rem;
+    border: 4px solid darken(darkcyan, 10%);
+}
+
 /*END simple-checkbox css*/
 
 ul.atm-control{
@@ -1283,6 +1300,10 @@ ul.atm-control  li a.active {
     }
 
     .expand-button {
+        width: 50% !important;
+    }
+
+    .expand-button_c {
         width: 50% !important;
     }
 
