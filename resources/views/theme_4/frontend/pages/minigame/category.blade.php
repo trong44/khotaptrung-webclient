@@ -157,9 +157,9 @@
                                                 @endif
                                             @endforeach
 
-
+                                            @if(count($data) > 8)
                                             <button id="btn-expand-minigame" class="expand-button" data-page-current="1" data-page-max="{{ $index }}">Xem thêm minigame</button>
-
+                                            @endif
                                         </div>
 
 

@@ -724,9 +724,9 @@
                             <span class="see-more" data-content="Xem thêm nội dung"></span>
                         </div>
 
-                        <div class="card-footer text-center">
-                            <span class="see-more" data-content="Xem thêm nội dung"></span>
-                        </div>
+{{--                        <div class="card-footer text-center">--}}
+{{--                            <span class="see-more" data-content="Xem thêm nội dung"></span>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
             @else

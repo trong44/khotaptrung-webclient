@@ -1,6 +1,6 @@
 
 @if(setting('sys_intro_text') != '')
-<div class="c-mb-16 c-mt-16">
+<div id="intro_text_home" class="c-mb-16 c-mt-16">
     <div class="card overflow-hidden detailViewBlock">
         <div class="card-body c-px-16">
             <div class="content-desc hide detailViewBlockContent">

@@ -1830,3 +1830,7 @@ input[type=text].buy-card-amount-input {
     }
 }
 /*  End TOC Component  */
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+    background: #ffffff!important;
+}

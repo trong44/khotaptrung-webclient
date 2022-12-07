@@ -39,6 +39,7 @@
                                             <option value="">Chọn gói</option>
                                         </select>
                                         <span class="text--danger">Vật phẩm hiện có: 0</span>
+                                        <div id="input-server"></div>
                                         <div class="t-sub-2 t-color-title my_8">
                                             Gói muốn rút
                                         </div>
@@ -161,9 +162,9 @@
                             Giá {{number_format($result->group->price)}}/lượt chơi
                         </div>
 
-                        <div class="item_play_try">
+                        <div class="item_play_try item_play_try__login">
                             @if(isset($result->group->params->is_try) && $result->group->params->is_try == 1)
-                                <a class="btn btn-primary num-play-try">Chơi thử</a>
+                                <a class="btn btn-primary num-play-try flag_num-play-try">Chơi thử</a>
                             @endif
                             <a class="btn btn-success k_start" id="start-played"><i class="fas fa-bolt"></i> Quay ngay</a>
                         </div>
@@ -176,21 +177,13 @@
                             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#topquaythuongModal">
                                 Top quay thưởng
                             </a>
-                            @if(\App\Library\AuthCustom::check())
-                                <a href="#modal-withdraw-items" class="btn btn-success" data-toggle="modal">
-                                    Rút Vip
-                                </a>
-                                <a href="#modal-spin-bonus" class="btn btn-success"  data-toggle="modal">
-                                    Lịch sử quay
-                                </a>
-                            @else
-                                <a href="/login" class="btn btn-success">
-                                    Rút Vip
-                                </a>
-                                <a href="/login" class="btn btn-success">
-                                    Lịch sử quay
-                                </a>
-                            @endif
+
+                            <a href="javascript:void(0)" class="btn btn-success modal__withdraw__items">
+                                Rút Vip
+                            </a>
+                            <a href="javascript:void(0)" class="btn btn-success modal__withdraw__spin">
+                                Lịch sử lật
+                            </a>
 
                         </div>
                         <div class="item_spin_title">
@@ -430,21 +423,22 @@
                             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#topquaythuongModal">
                                 Top lật thưởng
                             </a>
-                            @if(\App\Library\AuthCustom::check())
-                                <a href="#modal-withdraw-items" class="btn btn-success" data-toggle="modal">
-                                    Rút Vip
-                                </a>
-                                <a href="#modal-spin-bonus" class="btn btn-success" data-toggle="modal">
-                                    Lịch sử lật
-                                </a>
-                            @else
-                                <a href="/login" class="btn btn-success">
-                                    Rút Vip
-                                </a>
-                                <a href="/login" class="btn btn-success">
-                                    Lịch sử lật
-                                </a>
-                            @endif
+                            <a href="javascript:void(0)" class="btn btn-success modal__withdraw__items">
+                                Rút Vip
+                            </a>
+                            <a href="javascript:void(0)" class="btn btn-success modal__withdraw__spin">
+                                Lịch sử lật
+                            </a>
+{{--                            @if(\App\Library\AuthCustom::check())--}}
+{{--                                --}}
+{{--                            @else--}}
+{{--                                <a href="/login" class="btn btn-success">--}}
+{{--                                    Rút Vip--}}
+{{--                                </a>--}}
+{{--                                <a href="/login" class="btn btn-success">--}}
+{{--                                    Lịch sử lật--}}
+{{--                                </a>--}}
+{{--                            @endif--}}
                         </div>
                         <div class="item_spin_title">
                             <p>Lượt lật gần đây</p>
@@ -663,9 +657,8 @@
                         <div class="item_play_category luotquay">
                             <a class="btn btn-success col-sm-12" data-toggle="modal" data-target="#luotquayModal">Lượt chơi gần đây</a>
                         </div>
-
                         <div class="item_play_category">
-                            <a href="{{route('getLog',[$result->group->id])}}" class="col-sm-12 btn btn-success">Lịch sử trúng vật phẩm</a>
+                            <a href="javascript:void(0)" class="col-sm-12 btn btn-success modal__withdraw__spin">Lịch sử trúng vật phẩm</a>
                         </div>
                         <div class="item_play_category">
                             <a  class="col-sm-12 btn btn-success"  data-toggle="modal" data-target="#topquaythuongModal">Top quay thưởng</a>
@@ -821,7 +814,7 @@
                         </div>
 
                         <div class="item_play_category">
-                            <a href="{{route('getLog',[$result->group->id])}}" class="col-sm-12 btn btn-success">Lịch sử trúng vật phẩm</a>
+                            <a href="javascript:void(0)" class="col-sm-12 btn btn-success modal__withdraw__spin">Lịch sử trúng vật phẩm</a>
                         </div>
                         <div class="item_play_category">
                             <a  class="col-sm-12 btn btn-success"  data-toggle="modal" data-target="#topquaythuongModal">Top quay thưởng</a>
@@ -1013,7 +1006,7 @@
                         </div>
 
                         <div class="item_play_category">
-                            <a href="{{route('getLog',[$result->group->id])}}" class="col-sm-12 btn btn-success">Lịch sử chơi trúng vật phẩm</a>
+                            <a href="javascript:void(0)" class="col-sm-12 btn btn-success modal__withdraw__spin">Lịch sử chơi trúng vật phẩm</a>
                         </div>
                         <div class="item_play_category">
                             <a  class="col-sm-12 btn btn-success"  data-toggle="modal" data-target="#topquaythuongModal">Top quay thưởng</a>
@@ -1170,12 +1163,14 @@
                         <div class="item_play_category">
                             <a class="btn btn-success col-sm-12" data-toggle="modal" data-target="#luotquayModal">Lượt chơi gần đây</a>
                         </div>
+
                         <div class="item_play_category">
-                            @if(\App\Library\AuthCustom::check())
-                                <a href="#modal-spin-bonus" class="col-sm-12 btn btn-success" data-toggle="modal">Lịch sử chơi</a>
-                            @else
-                                <a href="/login" class="col-sm-12 btn btn-success">Lịch sử chơi</a>
-                            @endif
+                            <a href="javascript:void(0)" class="col-sm-12 btn btn-success modal__withdraw__spin" data-toggle="modal">Lịch sử chơi</a>
+{{--                            @if(\App\Library\AuthCustom::check())--}}
+{{--                                --}}
+{{--                            @else--}}
+{{--                                <a href="/login" class="col-sm-12 btn btn-success">Lịch sử chơi</a>--}}
+{{--                            @endif--}}
                         </div>
                         <div class="item_play_category">
                             <a href="#" class="col-sm-12 btn btn-success" data-toggle="modal" data-target="#topquaythuongModal">Top quay thưởng</a>
@@ -1569,6 +1564,29 @@
 
     <script type="text/javascript">
         $( document ).ready(function() {
+
+            $('body').on('click', '.modal__withdraw__items', function(e) {
+
+                if (!auth_check) {
+                     location.href = '/login?return_url=' + window.location.href;
+                    return
+                }
+
+                $('#modal-withdraw-items').modal('show');
+            })
+
+            $('body').on('click', '.modal__withdraw__spin', function(e) {
+
+                if (!auth_check) {
+                     location.href = '/login?return_url=' + window.location.href;
+                    return
+                }
+
+                $('#modal-spin-bonus').modal('show');
+            })
+
+
+
             $("#btnWithdraw").on("click", function () {
                 $('#noticeModal').modal('hide');
             })
@@ -1613,11 +1631,23 @@
                 //var arrDiscount = '';
 
                 $('body').delegate('#start-played', 'click', function () {
+
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     $('#type_play').val('real');
                     play();
                 });
 
                 $('body').delegate('.num-play-try', 'click', function () {
+
+                    if (!auth_check) {
+                        location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     $('#type_play').val('try');
                     play();
                 });
@@ -1643,7 +1673,7 @@
                             success: function (data) {
 
                                 if (data.status == 4) {
-                                    location.href = '/login?return_url=' + window.location.href;
+                                     location.href = '/login?return_url=' + window.location.href;
                                 } else if (data.status == 3) {
                                     roll_check = true;
                                     $('#naptheModal').modal('show')
@@ -2011,6 +2041,12 @@
             $(document).ready(function(e){
                 initial();
                 $('.play').click(function(){
+
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     roll_check = true;
                     $('.boxflip img.flip-box-front').each(function(){
                         $(this).attr('src','{{ \App\Library\MediaHelpers::media($result->group->params->image_static) }}');
@@ -2024,7 +2060,14 @@
                     //$('.continue').hide();
                     $('#type_play').val('real');
                 })
+
                 $('.num-play-try').click(function(){
+
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     roll_check = true;
                     $('.boxflip img.flip-box-front').each(function(){
                         $(this).attr('src','{{ \App\Library\MediaHelpers::media($result->group->params->image_static) }}');
@@ -2068,6 +2111,12 @@
                 var showwithdrawbtn = true;
                 //Click nút lật
                 $('body').delegate('.img_remove', 'click', function(){
+
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     $('.boxflip .flip-box-front').removeClass('img_remove');
                     $('.boxflip .flip-box-front').removeClass('active');
                     $('.boxflip .flip-box-front').addClass('noactive');
@@ -2103,7 +2152,7 @@
                                     $('.boxflip .flip-box-front').removeClass('active');
                                 },1000);
                                 if (data.status == 4) {
-                                    location.href='/login';
+                                     location.href = '/login?return_url=' + window.location.href;
                                 } else if (data.status == 3) {
                                     roll_check = true;
                                     $('#naptheModal').modal('show');
@@ -2563,6 +2612,11 @@
                 //Click nút quay
                 $('body').delegate('#start-played', 'click', function() {
 
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     if (roll_check) {
                         //fakeLoop();
                         roll_check = false;
@@ -2726,6 +2780,12 @@
                 }
 
                 $('body').delegate('.num-play-try', 'click', function() {
+
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     if (roll_check) {
                         //fakeLoop();
                         roll_check = false;
@@ -2746,7 +2806,7 @@
                             type: 'POST',
                             success: function(data) {
                                 if (data.status == 4) {
-                                    location.href='/login';
+                                     location.href = '/login?return_url=' + window.location.href;
                                     return;
                                 } else if (data.status == 3) {
                                     $('#naptheModal').modal('show')
@@ -3282,6 +3342,11 @@
                 //Click nút quay
                 $('body').delegate('#start-played', 'click', function() {
 
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     if (roll_check) {
                         fakeLoop();
                         roll_check = false;
@@ -3476,6 +3541,12 @@
 
 
                 $('body').delegate('.num-play-try', 'click', function() {
+
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     if (roll_check) {
                         fakeLoop();
                         roll_check = false;
@@ -4169,6 +4240,11 @@
                 //Click nút quay
                 $('body').delegate('#start-played', 'click', function() {
 
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     if (roll_check) {
                         num_current = startat;
                         num = startat;
@@ -4318,6 +4394,12 @@
 
 
                 $('body').delegate('.num-play-try', 'click', function() {
+
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     if (roll_check) {
                         num_current = startat;
                         num = startat;
@@ -4766,11 +4848,23 @@
                 var game_type_value = "";
 
                 $('body').delegate('#start-played', 'click', function() {
+
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     $('#type_play').val('real');
                     play();
                 });
 
                 $('body').delegate('.num-play-try', 'click', function() {
+
+                    if (!auth_check) {
+                         location.href = '/login?return_url=' + window.location.href;
+                        return
+                    }
+
                     $('#type_play').val('try');
                     play();
                 });

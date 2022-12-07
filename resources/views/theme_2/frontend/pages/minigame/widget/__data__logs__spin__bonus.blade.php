@@ -46,10 +46,10 @@
             </div>
             <div class="col-12 col-lg-4 c-pl-6 c-pr-lg-6 c-pl-lg-15 c-mt-lg-4">
                 <div class="row align-items-end" style="height: 100%">
-                    <div class="col-6 c-pr-6 c-mb-8">
+                    <div class="col-6 c-pr-6 c-mb-16">
                         <button type="button" class="btn secondary w-100" id="reset-filter-spin">Đặt lại</button>
                     </div>
-                    <div class="col-6 c-pl-6 c-mb-8">
+                    <div class="col-6 c-pl-6 c-mb-16">
                         <button type="button" class="btn primary w-100" id="submit-filter-spin">Áp dụng</button>
                     </div>
                 </div>

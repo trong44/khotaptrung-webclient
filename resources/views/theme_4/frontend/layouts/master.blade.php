@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="/assets/frontend/{{theme('')->theme_key}}/css/slick-theme.css?v={{time()}}"/>
     <link rel="stylesheet" type="text/css" href="/assets/frontend/{{theme('')->theme_key}}/css/account.css?v={{time()}}"/>
     <link rel="stylesheet" type="text/css" href="/assets/frontend/{{theme('')->theme_key}}/css/sw2.css?v={{time()}}"/>
-    <link rel="stylesheet" type="text/css" href="/assets/frontend/{{theme('')->theme_key}}/css/bootstrap-datetimepicker.css"/>
-    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/toastr/toastr.css">
-    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/easy-navigate-toc/public/css/toctoc.css">
+    <link rel="stylesheet" type="text/css" href="/assets/frontend/{{theme('')->theme_key}}/css/bootstrap-datetimepicker.css?v={{time()}}"/>
+    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/toastr/toastr.css?v={{time()}}">
+    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/easy-navigate-toc/public/css/toctoc.css?v={{time()}}">
 
     <link rel="stylesheet" type="text/css" href="/assets/frontend/{{theme('')->theme_key}}/css/style_nam.css?v={{time()}}"/>
     <link rel="stylesheet" type="text/css" href="/assets/frontend/{{theme('')->theme_key}}/css/modal-custom.css?v={{time()}}"/>
@@ -47,7 +47,7 @@
 
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/table_of_contents.css">
 
-    <script src="/assets/frontend/{{theme('')->theme_key}}/js/sw2.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/sw2.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/popper/popper.min.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/moment.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/bootstrap-datetimepicker.min.js"></script>
@@ -387,8 +387,8 @@
 <![endif]-->
 <script src="/assets/frontend/{{theme('')->theme_key}}/lib/toastr/toastr.min.js"></script>
 
-<script type="text/javascript" src="/assets/frontend/{{theme('')->theme_key}}/js/script.js"></script>
-<script  type="text/javascript" src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js"></script>
+<script type="text/javascript" src="/assets/frontend/{{theme('')->theme_key}}/js/script.js?v={{time()}}"></script>
+<script  type="text/javascript" src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js?v={{time()}}"></script>
 
 
 <script>

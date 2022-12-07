@@ -92,10 +92,7 @@ Route::get('/406', function ()
                 Route::get('/lich-su-tra-gop',function(){
                     return view('frontend.pages.account.logs-installment');
                 });
-                Route::group(['middleware' => ['intend']], function () {
 
-
-                });
                 Route::group(['middleware' => ['doNotCacheResponse']], function (){
                     Route::post('/ajax/user/account_info', [UserController::class , "getInfo"]);
 
@@ -216,8 +213,18 @@ Route::get('/406', function ()
 
                     Route::get('/updategit-master', function ()
                     {
+
                         $command='git pull https://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@github.com/tannm2611/khotaptrung-webclient.git master 2>&1';
                         $output = shell_exec($command);
+
+                        $string_error = "Your local changes to the following files would be overwritten by merge";
+                        if (is_numeric(strpos($output,$string_error))){
+                            $reset_hard = "git reset --hard origin/master 2>&1";
+                            shell_exec($reset_hard);
+                            $command='git pull https://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@github.com/tannm2611/khotaptrung-webclient.git master 2>&1';
+                            $output = shell_exec($command);
+                        }
+
                         \Artisan::call('cache:clear');
                         return response()->json([
                             'status' => 1,
@@ -282,6 +289,12 @@ Route::get('/406', function ()
 
                 });
 
+                Route::group(['middleware' => ['intend']], function () {
+
+                    Route::get('/minigame-{slug}', [\App\Http\Controllers\Frontend\MinigameController::class , 'getIndex'])->name('getIndex');
+
+                });
+
                 //minigame
                 Route::group(['middleware' => ['doNotCacheResponse']], function (){
 
@@ -303,11 +316,7 @@ Route::get('/406', function ()
                     Route::post('/bonus', [\App\Http\Controllers\Frontend\MinigameController::class , 'postBonusLogin'])->name('postBonusLogin');
                     Route::get('/bonus', [\App\Http\Controllers\Frontend\MinigameController::class , 'getBonusLogin'])->name('getBonusLogin');
 
-                    Route::group(['middleware' => ['intend']], function () {
 
-                        Route::get('/minigame-{slug}', [\App\Http\Controllers\Frontend\MinigameController::class , 'getIndex'])->name('getIndex');
-
-                    });
                     Route::get('/service-mobile', function ()
                     {
                         return view('frontend.layouts.includes.list-mobile');

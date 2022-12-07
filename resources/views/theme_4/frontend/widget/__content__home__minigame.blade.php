@@ -162,7 +162,7 @@
                     var pageMax=$(this).data('page-max');
                     pageCurrrent=pageCurrrent+1;
                     $('#minigame__widget .item-page-'+pageCurrrent).fadeIn( "fast", function() {
-                        // Animation complete
+
                     });
                     $(this).data('page-current',pageCurrrent);
                     if(pageCurrrent==pageMax){

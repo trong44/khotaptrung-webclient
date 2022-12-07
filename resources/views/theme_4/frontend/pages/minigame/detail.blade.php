@@ -42,6 +42,7 @@
                                             <option value="">Chọn gói</option>
                                         </select>
                                         <span class="text--danger">Vật phẩm hiện có: 0</span>
+                                        <div id="input-server"></div>
                                         <div class="t-sub-2 t-color-title my_8">
                                             Gói muốn rút
                                         </div>
@@ -107,6 +108,12 @@
 
     <div class="item_play">
         <div class="container">
+            <nav aria-label="breadcrumb" style="margin-top: 10px;">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="/minigame">Minigame</a></li>
+                </ol>
+            </nav>
 
             @switch($position)
                 @case('rubywheel')

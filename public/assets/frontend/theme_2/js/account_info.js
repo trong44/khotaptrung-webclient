@@ -1,3 +1,4 @@
+let auth_check = false;
 $(document).ready(function(){
     const csrf_token = $('meta[name="csrf-token"]').attr('content');
     const token =  $('meta[name="jwt"]').attr('content');
@@ -56,6 +57,9 @@ $(document).ready(function(){
 
                 }
                 else if(data.status == true){
+
+                    auth_check = true;
+
                     $('#info>div:first-child').html(' <div class="small op-5 text-end"> Chào '+ fn(data.info.fullname??data.info.username, 6)  +'</div> <div class="text-end">Số dư: '+formatNumber(data.info.balance)+' đ</div>')
                     $('#info_mobile').html('<div class="medium op-5 text-start"><b>'+ fn(data.info.fullname??data.info.username, 6)  +'</b></div>  <div class="text-start">Số dư:  '+formatNumber(data.info.balance)+' đ</div>')
                     $('#info').attr('data-bs-toggle','dropdown')

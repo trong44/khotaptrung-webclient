@@ -56,7 +56,10 @@ $(document).ready(function(e) {
     var slot5_fake;
     //Click nút quay
     $('body').delegate('#start-played', 'click', function() {
-
+        if (!auth_check) {
+            location.href = '/login?return_url=' + window.location.href;
+            return
+        }
         if (roll_check) {
             // fakeLoop();
             roll_check = false;
@@ -257,6 +260,10 @@ $(document).ready(function(e) {
 
 
     $('body').delegate('.num-play-try', 'click', function() {
+        if (!auth_check) {
+            location.href = '/login?return_url=' + window.location.href;
+            return
+        }
         if (roll_check) {
             fakeLoop();
             roll_check = false;
