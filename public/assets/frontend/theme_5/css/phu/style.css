@@ -638,7 +638,7 @@ input[type=text].buy-card-amount-input {
 .rotation-detail {
     border: 1px solid var(--border-default-color);
     background-color: #FFFFFF;
-    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.05));
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .rotation-header h1 {

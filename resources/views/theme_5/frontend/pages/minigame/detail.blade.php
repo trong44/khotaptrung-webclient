@@ -324,16 +324,16 @@
                                         <select class="rotation-inputs-select" name="type" id="numrolllop">
                                             <option value="1">Mua X1/{{$result->group->price/1000}}k 1 lần quay</option>
                                             @if($result->group->params->price_sticky_3 > 0))
-                                            <option value="3">Mua X3/{{$result->group->params->price_sticky_3/1000}}k 1 lần quay</option>
+                                            <option value="3">Mua X3/{{$result->group->params->price_sticky_3/1000}}k 3 lần quay</option>
                                             @endif
                                             @if($result->group->params->price_sticky_5 > 0))
-                                            <option value="5">Mua X5/{{$result->group->params->price_sticky_5/1000}}k 1 lần quay</option>
+                                            <option value="5">Mua X5/{{$result->group->params->price_sticky_5/1000}}k 5 lần quay</option>
                                             @endif
                                             @if($result->group->params->price_sticky_7 > 0))
-                                            <option value="7">Mua X7/{{$result->group->params->price_sticky_7/1000}}k 1 lần quay</option>
+                                            <option value="7">Mua X7/{{$result->group->params->price_sticky_7/1000}}k 7 lần quay</option>
                                             @endif
                                             @if($result->group->params->price_sticky_10 > 0))
-                                            <option value="10">Mua X10/{{$result->group->params->price_sticky_10/1000}}k 1 lần quay</option>
+                                            <option value="10">Mua X10/{{$result->group->params->price_sticky_10/1000}}k 10 lần quay</option>
                                             @endif
                                         </select>
                                     </div>
@@ -960,23 +960,17 @@
 
                 if (!auth_check) {
                     let width = $(window).width();
-                    setTimeout(function(){
-                        if ( width > 1200 ) {
-                            $('#loginModal').modal('show');
-                            setTimeout(() => {
-                                $('#loginModal #modal-login-container').removeClass('right-panel-active');
-                            }, 200);
-
-                            return;
-                        } else {
-                            $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
-                            $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
-                            $('.mobile-auth .head-mobile h1').text('Đăng nhập');
-                            $('.mobile-auth').css('transform', 'translateX(0)');
-
-                            return;
-                        }
-                    }, 0);
+                    if ( width > 1200 ) {
+                        $('#loginModal').modal('show');
+                        $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                        return;
+                    } else {
+                        $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                        $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                        $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                        $('.mobile-auth').css('transform', 'translateX(0)');
+                        return;
+                    }
                 }
 
                 $('#modalWithdraw').modal('show');
@@ -986,23 +980,17 @@
             $('body').on('click', '.modal_spin_bonus', function(e) {
                 if (!auth_check) {
                     let width = $(window).width();
-                    setTimeout(function(){
-                        if ( width > 1200 ) {
-                            $('#loginModal').modal('show');
-                            setTimeout(() => {
-                                $('#loginModal #modal-login-container').removeClass('right-panel-active');
-                            }, 200);
-
-                            return;
-                        } else {
-                            $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
-                            $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
-                            $('.mobile-auth .head-mobile h1').text('Đăng nhập');
-                            $('.mobile-auth').css('transform', 'translateX(0)');
-
-                            return;
-                        }
-                    }, 0);
+                    if ( width > 1200 ) {
+                        $('#loginModal').modal('show');
+                        $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                        return;
+                    } else {
+                        $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                        $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                        $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                        $('.mobile-auth').css('transform', 'translateX(0)');
+                        return;
+                    }
                 }
 
                 $('#modal-spin-bonus').modal('show');

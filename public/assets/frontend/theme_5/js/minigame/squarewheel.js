@@ -46,23 +46,17 @@ $(document).ready(function(e) {
 
         if (!auth_check) {
             let width = $(window).width();
-            setTimeout(function(){
-                if ( width > 1200 ) {
-                    $('#loginModal').modal('show');
-                    setTimeout(() => {
-                        $('#loginModal #modal-login-container').removeClass('right-panel-active');
-                    }, 200);
-
-                    return;
-                } else {
-                    $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
-                    $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
-                    $('.mobile-auth .head-mobile h1').text('Đăng nhập');
-                    $('.mobile-auth').css('transform', 'translateX(0)');
-
-                    return;
-                }
-            }, 0);
+            if ( width > 1200 ) {
+                $('#loginModal').modal('show');
+                $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                return;
+            } else {
+                $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                $('.mobile-auth').css('transform', 'translateX(0)');
+                return;
+            }
         }
 
         if (roll_check) {
@@ -88,7 +82,18 @@ $(document).ready(function(e) {
                 type: 'POST',
                 success: function(data) {
                     if (data.status == 4) {
-                        location.href='/login?return_url='+window.location.href;
+                        let width = $(window).width();
+                        if ( width > 1200 ) {
+                            $('#loginModal').modal('show');
+                            $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                            return;
+                        } else {
+                            $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                            $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                            $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                            $('.mobile-auth').css('transform', 'translateX(0)');
+                            return;
+                        }
                     } else if (data.status == 3) {
                         clearTimeout(runtime);
                         roll_check = true;
@@ -217,23 +222,17 @@ $(document).ready(function(e) {
 
         if (!auth_check) {
             let width = $(window).width();
-            setTimeout(function(){
-                if ( width > 1200 ) {
-                    $('#loginModal').modal('show');
-                    setTimeout(() => {
-                        $('#loginModal #modal-login-container').removeClass('right-panel-active');
-                    }, 200);
-
-                    return;
-                } else {
-                    $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
-                    $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
-                    $('.mobile-auth .head-mobile h1').text('Đăng nhập');
-                    $('.mobile-auth').css('transform', 'translateX(0)');
-
-                    return;
-                }
-            }, 0);
+            if ( width > 1200 ) {
+                $('#loginModal').modal('show');
+                $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                return;
+            } else {
+                $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                $('.mobile-auth').css('transform', 'translateX(0)');
+                return;
+            }
         }
 
         if (roll_check) {
@@ -260,7 +259,18 @@ $(document).ready(function(e) {
                 success: function(data) {
 
                     if (data.status == 4) {
-                        location.href='/login?return_url='+window.location.href;
+                        let width = $(window).width();
+                        if ( width > 1200 ) {
+                            $('#loginModal').modal('show');
+                            $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                            return;
+                        } else {
+                            $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                            $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                            $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                            $('.mobile-auth').css('transform', 'translateX(0)');
+                            return;
+                        }
                     } else if (data.status == 3) {
                         clearTimeout(runtime);
                         roll_check = true;

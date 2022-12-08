@@ -443,7 +443,7 @@
 <script src="/assets/frontend/{{theme('')->theme_key}}/js/nam/swiper-banner.js"></script>
 <script src="/assets/frontend/{{theme('')->theme_key}}/lib/bottom-sheet/main.js"></script>
 <script src="/assets/frontend/{{theme('')->theme_key}}/lib/history-filter/handle.js"></script>
-<script src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js"></script>
+<script src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js?v={{time()}}"></script>
 <script src="/assets/frontend/{{theme('')->theme_key}}/js/js_duong/style.js"></script>
 <script src="/assets/frontend/{{theme('')->theme_key}}/lib/select2/select2.min.js"></script>
 <script src="/assets/frontend/{{theme('')->theme_key}}/lib/easy-navigate-toc/public/js/toctoc.js"></script>
