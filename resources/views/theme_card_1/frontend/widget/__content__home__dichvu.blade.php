@@ -22,7 +22,7 @@
                 @if($flag_slide_service == 0)
                     <div class="service-search d-none d-lg-block ">
                         <div class="input-group p-box">
-                            <input type="text" id="txtSearch" placeholder="Tìm dịch vụ" value="" class="" width="200px">
+                            <input type="text" id="txtSearchDichVu" placeholder="Tìm dịch vụ" value="" class="" width="200px">
                             <span class="icon-search"><i class="fas fa-search"></i></span>
                         </div>
                     </div>
@@ -35,8 +35,8 @@
                 @endif
             </div>
             @if($flag_slide_service == 0)
-                <div class="entries" style="padding-bottom: 16px">
-                    <div class="row marginauto fix-border fix-border-dich-vu">
+                <div class="entries" id="service__widget" style="padding-bottom: 16px">
+                    <div class="row marginauto fix-border">
 
                         <div class="col-md-12 left-right data-service-search">
                             <span style="color: rgb(238, 70, 35);">Dịch vụ cần tìm không tồn tại.</span>
@@ -266,7 +266,7 @@
 
 
                     <div class="entries-search">
-                        <div class="row fix-border ">
+                        <div class="row fix-border-dich-vu">
                         </div>
                     </div>
 
@@ -287,34 +287,37 @@
                             }
                         });
 
+                        $('#txtSearchDichVu').on('input', function() {
 
-                        $('#txtSearch').on('input', function() {
                             let keyword = convertToSlug($(this).val());
+
                             let index = 0;
                             let value = 0;
-                            $('.list-item-service').each(function (i,elm) {
-                                $(this).removeClass('dis-block-service');
+                            $('#service__widget .list-item-service').each(function (i,elm) {
+                                $(this).removeClass('dis-block-dich-vu');
                             })
-                            $('.list-item-service').each(function (i,elm) {
 
+                            $('#service__widget .list-item-service').each(function (i,elm) {
+                                // $('.body-modal__nick__text-error').css('display','none');
                                 let slug_item = $(elm).find('img').attr('alt');
                                 slug_item = convertToSlug(slug_item);
                                 $(this).toggle(slug_item.indexOf(keyword) > -1);
                                 if (slug_item.indexOf(keyword) > -1){
                                     ++index;
-                                    $(this).addClass('dis-block-service');
-                                }else {}
+                                    $(this).addClass('dis-block-dich-vu');
+                                }else {
 
+                                }
                                 $('#btn-expand-serivce').remove();
                                 $('#btn-expand-serivce-search').remove();
                             })
 
-                            $('.dis-block-service').each(function (i,elm) {
+
+                            $('#service__widget .dis-block-dich-vu').each(function (i,elm) {
                                 if (i>=8){
                                     $(this).css('display','none');
                                 }
                             })
-
                             if (index <= 8){
                                 value = 1;
                             }else if (index <= 16){
@@ -328,17 +331,21 @@
                             }
 
                             if (value > 1){
+                                let htmldv = '<button id="btn-expand-serivce-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm danh mục</button>';
+                                console.log($('#btn-expand-serivce-search').length)
+                                if ($('#btn-expand-serivce-search').length < 1){
+                                    $('#service__widget .fix-border-dich-vu').append(htmldv);
+                                }
 
-                                let htmlservice = '<button id="btn-expand-serivce-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm dịch vụ</button>';
-                                $('.fix-border-dich-vu').append(htmlservice);
                             }
+
+
 
                             if (index == 0){
-                                $('.data-service-search').css('display','block');
+                                $('#service__widget .data-service-search').css('display','block');
                             }else {
-                                $('.data-service-search').css('display','none');
+                                $('#service__widget .data-service-search').css('display','none');
                             }
-
                             //$(this).val() // get the current value of the input field.
                         });
 

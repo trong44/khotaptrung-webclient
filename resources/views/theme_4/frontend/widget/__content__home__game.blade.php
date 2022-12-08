@@ -52,8 +52,8 @@
                         $index = 1;
                     @endphp
                     <div class="col-md-3 col-sm-6 col-6 entries_item entries_item_nick item-page-nick-1" style="display: block">
-                        <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
+                        <a href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}">
+                            <img style="width: 100%;border-radius: 8px" src="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) :  \App\Library\MediaHelpers::media($item->image) }}" alt="{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))
@@ -72,8 +72,8 @@
                         $index = 2;
                     @endphp
                     <div class="col-md-3 col-sm-6 col-6 entries_item entries_item_nick item-page-nick-2" style="display: none">
-                        <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
+                        <a href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}">
+                            <img style="width: 100%;border-radius: 8px" src="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) :  \App\Library\MediaHelpers::media($item->image) }}" alt="{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))
@@ -92,8 +92,8 @@
                         $index = 3;
                     @endphp
                     <div class="col-md-3 col-sm-6 col-6 entries_item entries_item_nick item-page-nick-3" style="display: none">
-                        <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
+                        <a href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}">
+                            <img style="width: 100%;border-radius: 8px" src="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) :  \App\Library\MediaHelpers::media($item->image) }}" alt="{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))
@@ -112,8 +112,8 @@
                         $index = 4;
                     @endphp
                     <div class="col-md-3 col-sm-6 col-6 entries_item entries_item_nick item-page-nick-4" style="display: none">
-                        <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
+                        <a href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}">
+                            <img style="width: 100%;border-radius: 8px" src="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) :  \App\Library\MediaHelpers::media($item->image) }}" alt="{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))
@@ -132,8 +132,8 @@
                         $index = 5;
                     @endphp
                     <div class="col-md-3 col-sm-6 col-6 entries_item entries_item_nick item-page-nick-5" style="display: none">
-                        <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
+                        <a href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}">
+                            <img style="width: 100%;border-radius: 8px" src="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) :  \App\Library\MediaHelpers::media($item->image) }}" alt="{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))
@@ -189,8 +189,8 @@
                 @foreach($data as $item)
 
                     <div class="item image entries_item" style="padding-bottom: 16px">
-                        <a href="/dich-vu/{{ $item->slug}}">
-                            <img style="width: 100%;border-radius: 8px" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="{{ $item->title   }}" class="entries_item-img">
+                        <a href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}">
+                            <img style="width: 100%;border-radius: 8px" src="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) :  \App\Library\MediaHelpers::media($item->image) }}" alt="{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}" class="entries_item-img">
                             <h3 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h3>
                             @if(isset($item->items_count))
                                 @if((isset($item->account_fake) && $item->account_fake > 1) || (isset($item->custom->account_fake) && $item->custom->account_fake > 1))

@@ -40,11 +40,11 @@
     </div>
     @if($flag_slide_minigame == 0)
         <div class="entries" id="minigame__widget" style="padding-bottom: 16px">
-            <div class="row fix-border fix-border-dich-vu">
+            <div class="row fix-border">
 
-                <div class="col-md-12 left-right data-nick-search">
-                    <span style="color: rgb(238, 70, 35);">Minigame cần tìm không tồn tại.</span>
-                </div>
+{{--                <div class="col-md-12 left-right data_minigame_search">--}}
+{{--                    <span style="color: rgb(238, 70, 35);">Minigame cần tìm không tồn tại.</span>--}}
+{{--                </div>--}}
                 @php
                     $index = 0;
                 @endphp
@@ -174,7 +174,7 @@
                     var pageCurrrent=$(this).data('page-current');
                     var pageMax=$(this).data('page-max');
                     pageCurrrent=pageCurrrent+1;
-                    $('.dis-block').each(function (i,elm) {
+                    $('#minigame__widget .dis-block').each(function (i,elm) {
                         if (pageCurrrent == 2){
                             if (i < 16){
                                 $(this).css('display','block');
@@ -199,6 +199,8 @@
                         $(this).remove();
                     }
                 });
+
+
             });
 
         </script>

@@ -34,8 +34,8 @@
             </div>
 
             @if($flag_slide_nick == 0)
-                <div class="entries" style="padding-bottom: 16px">
-                    <div class="row marginauto fix-border fix-border-nick">
+                <div class="entries" id="nick__widget" style="padding-bottom: 16px">
+                    <div class="row marginauto">
 
                         <div class="col-md-12 left-right data-nick-search">
                             <span style="color: rgb(238, 70, 35);">Danh mục cần tìm không tồn tại.</span>
@@ -213,17 +213,48 @@
                                     }
                                 });
 
+                                $('body').on('click','#btn-expand-nick-search',function(){
+
+                                    var pageCurrrent=$(this).data('page-current');
+                                    var pageMax=$(this).data('page-max');
+                                    pageCurrrent=pageCurrrent+1;
+                                    $('.dis-block').each(function (i,elm) {
+                                        if (pageCurrrent == 2){
+                                            if (i < 16){
+                                                $(this).css('display','block');
+                                            }
+                                        }else if (pageCurrrent == 3){
+                                            if (i < 24){
+                                                $(this).css('display','block');
+                                            }
+                                        }else if (pageCurrrent == 4){
+                                            if (i < 32){
+                                                $(this).css('display','block');
+                                            }
+                                        }else if (pageCurrrent == 5){
+                                            if (i < 40){
+                                                $(this).css('display','block');
+                                            }
+                                        }
+                                    });
+
+                                    $(this).data('page-current',pageCurrrent);
+                                    if(pageCurrrent==pageMax){
+                                        $(this).remove();
+                                    }
+                                });
+
                                 $('#txtSearchNick').on('input', function() {
 
                                     let keyword = convertToSlug($(this).val());
 
                                     let index = 0;
                                     let value = 0;
-                                    $('.list-item-nick').each(function (i,elm) {
+                                    $('#nick__widget .list-item-nick').each(function (i,elm) {
                                         $(this).removeClass('dis-block');
                                     })
 
-                                    $('.list-item-nick').each(function (i,elm) {
+                                    $('#nick__widget .list-item-nick').each(function (i,elm) {
                                         // $('.body-modal__nick__text-error').css('display','none');
                                         let slug_item = $(elm).find('img').attr('alt');
                                         slug_item = convertToSlug(slug_item);
@@ -239,7 +270,7 @@
                                     })
 
 
-                                    $('.dis-block').each(function (i,elm) {
+                                    $('#nick__widget .dis-block').each(function (i,elm) {
                                         if (i>=8){
                                             $(this).css('display','none');
                                         }
@@ -259,13 +290,13 @@
                                     if (value > 1){
 
                                         let htmlnick = '<button id="btn-expand-serivce-nick-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm danh mục</button>';
-                                        $('.fix-border-nick').append(htmlnick);
+                                        $('#nick__widget .fix-border-nick').append(htmlnick);
                                     }
 
                                     if (index == 0){
-                                        $('.data-nick-search').css('display','block');
+                                        $('#nick__widget .data-nick-search').css('display','block');
                                     }else {
-                                        $('.data-nick-search').css('display','none');
+                                        $('#nick__widget .data-nick-search').css('display','none');
                                     }
                                     //$(this).val() // get the current value of the input field.
                                 });
@@ -306,7 +337,7 @@
 
 
                     <div class="entries-search">
-                        <div class="row fix-border ">
+                        <div class="row fix-border-nick">
                         </div>
                     </div>
 

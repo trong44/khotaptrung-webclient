@@ -33,12 +33,12 @@
                 @endif
             </div>
             @if($flag_slide_minigame == 0)
-                <div class="entries card-list" style="padding-bottom: 16px" id="minigame">
-                    <div class="row fix-border fix-border-dich-vu marginauto" >
+                <div class="entries card-list" style="padding-bottom: 16px" id="minigame__widget">
+                    <div class="row fix-border marginauto" >
 
-                        <div class="col-md-12 left-right data-nick-search">
-                            <span style="color: rgb(238, 70, 35);">Minigame cần tìm không tồn tại.</span>
-                        </div>
+{{--                        <div class="col-md-12 left-right data-minigame-search">--}}
+{{--                            <span style="color: rgb(238, 70, 35);">Minigame cần tìm không tồn tại.</span>--}}
+{{--                        </div>--}}
                         @php
                             $index = 0;
                         @endphp
@@ -197,54 +197,49 @@
                 <script>
                     $(document).ready(function () {
 
-                        var total_item = $('#minigame .entries_item_minigame').length;
 
-                        if (total_item < 2){
-                            $('#btn-expand-minigame').remove();
-                        }
-                        console.log(total_item)
-                        $('#txtSearchMobile').on('input', function() {
-                            let keyword = convertToSlug($(this).val());
-
-                            let index = 0;
-                            $('.entries_item').each(function (i,elm) {
-                                // $('.body-modal__nick__text-error').css('display','none');
-                                let slug_item = $(elm).find('img').attr('alt');
-                                slug_item = convertToSlug(slug_item);
-                                $(this).toggle(slug_item.indexOf(keyword) > -1);
-                                if (slug_item.indexOf(keyword) > -1){
-                                    index = index + 1
-                                }else {}
-                                console.log(index)
-                                if (index > 8){
-                                    $('.item-page-2').css('display','none');
-                                    $('.item-page-3').css('display','none');
-                                    $('.item-page-4').css('display','none');
-                                }
-
-                            })
-
-
-                            //$(this).val() // get the current value of the input field.
-                        });
+                        // $('#txtSearchMobile').on('input', function() {
+                        //     let keyword = convertToSlug($(this).val());
+                        //
+                        //     let index = 0;
+                        //     $('.entries_item').each(function (i,elm) {
+                        //         // $('.body-modal__nick__text-error').css('display','none');
+                        //         let slug_item = $(elm).find('img').attr('alt');
+                        //         slug_item = convertToSlug(slug_item);
+                        //         $(this).toggle(slug_item.indexOf(keyword) > -1);
+                        //         if (slug_item.indexOf(keyword) > -1){
+                        //             index = index + 1
+                        //         }else {}
+                        //         console.log(index)
+                        //         if (index > 8){
+                        //             $('.item-page-2').css('display','none');
+                        //             $('.item-page-3').css('display','none');
+                        //             $('.item-page-4').css('display','none');
+                        //         }
+                        //
+                        //     })
+                        //
+                        //
+                        //     //$(this).val() // get the current value of the input field.
+                        // });
 
                         $('#txtSearchMinigame').on('input', function() {
                             let keyword = convertToSlug($(this).val());
 
                             let index = 0;
                             let value = 0;
-                            $('.entries_item_minigame').each(function (i,elm) {
-                                $(this).removeClass('dis-block');
+                            $('#minigame__widget .entries_item_minigame').each(function (i,elm) {
+                                $(this).removeClass('dis-block-minigame');
                             })
 
-                            $('.entries_item_minigame').each(function (i,elm) {
+                            $('#minigame__widget .entries_item_minigame').each(function (i,elm) {
                                 // $('.body-modal__nick__text-error').css('display','none');
                                 let slug_item = $(elm).find('img').attr('alt');
                                 slug_item = convertToSlug(slug_item);
                                 $(this).toggle(slug_item.indexOf(keyword) > -1);
                                 if (slug_item.indexOf(keyword) > -1){
                                     ++index;
-                                    $(this).addClass('dis-block');
+                                    $(this).addClass('dis-block-minigame');
                                 }else {
 
                                 }
@@ -253,7 +248,7 @@
                             })
 
 
-                            $('.dis-block').each(function (i,elm) {
+                            $('#minigame__widget .dis-block-minigame').each(function (i,elm) {
                                 if (i>=8){
                                     $(this).css('display','none');
                                 }
@@ -272,14 +267,14 @@
 
                             if (value > 1){
 
-                                let htmlnick = '<button id="btn-expand-minigame-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm danh mục</button>';
-                                $('.fix-border-minigame').append(htmlnick);
+                                let htmlminigame = '<button id="btn-expand-minigame-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm danh mục</button>';
+                                $('#minigame__widget .fix-border-minigame').append(htmlminigame);
                             }
 
                             if (index == 0){
-                                $('.data-nick-search').css('display','block');
+                                $('#minigame__widget .data-minigame-search').css('display','block');
                             }else {
-                                $('.data-nick-search').css('display','none');
+                                $('#minigame__widget .data-minigame-search').css('display','none');
                             }
                             //$(this).val() // get the current value of the input field.
                         });
@@ -288,7 +283,7 @@
                             var pageCurrrent=$(this).data('page-current');
                             var pageMax=$(this).data('page-max');
                             pageCurrrent=pageCurrrent+1;
-                            $('#minigame .item-page-'+pageCurrrent).fadeIn( "fast", function() {
+                            $('#minigame__widget .item-page-'+pageCurrrent).fadeIn( "fast", function() {
                                 // Animation complete
                             });
                             $(this).data('page-current',pageCurrrent);
@@ -302,7 +297,7 @@
                             var pageCurrrent=$(this).data('page-current');
                             var pageMax=$(this).data('page-max');
                             pageCurrrent=pageCurrrent+1;
-                            $('.dis-block').each(function (i,elm) {
+                            $('#minigame__widget .dis-block-minigame').each(function (i,elm) {
                                 if (pageCurrrent == 2){
                                     if (i < 16){
                                         $(this).css('display','block');
