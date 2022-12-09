@@ -550,7 +550,7 @@
                 </div>
                 <div class="modal-footer group-btn c-mt-24" style="--data-between: 12px">
                     <button type="button" class="btn ghost" data-dismiss="modal">Đóng</button>
-                    <a href="/nap-tien" class="btn primary">Nạp tiền</a>
+                    <a href="javascript:void(0);" class="handle-recharge-modal btn primary" data-tab="1" data-dismiss="modal">Nạp tiền</a>
                 </div>
             </div>
         </div>

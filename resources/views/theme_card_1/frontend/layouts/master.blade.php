@@ -59,16 +59,16 @@
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/js_trong/preload.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/lazysizes.min.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/sweetalert/sweetalert.min.js"></script>
-    <script src="/assets/frontend/{{theme('')->theme_key}}/js/main.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/main.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/modal-charge.js"></script>
-    <script src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/toastr/toastr.min.js"></script>
     <script type="text/javascript" src="/assets/frontend/{{theme('')->theme_key}}/js/slick.min.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/swiper/swiper.min.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/date-picker/moment.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/date-picker/i18n/vi.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/date-picker/bootstrap-datetimepicker.js"></script>
-    <script src="/assets/frontend/{{theme('')->theme_key}}/js/slider_home.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/slider_home.js?v={{time()}}"></script>
 
     @if(setting('sys_google_tag_manager_head') != '')
 

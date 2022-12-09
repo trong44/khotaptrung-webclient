@@ -32,7 +32,7 @@
                             </div>
                             <div class="game-list-title">
                                 <a class="account_category" href="/dich-vu/{{ $item->slug   }}">
-                                    <h3><strong>{{ $item->title   }}</strong></h3>
+                                    <h3><strong class="limit-1 text-limit">{{ $item->title   }}</strong></h3>
                                 </a>
                             </div>
                             <div class="game-list-description">

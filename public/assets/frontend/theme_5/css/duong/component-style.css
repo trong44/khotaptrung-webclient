@@ -458,6 +458,10 @@
 
 
 /* chi tiet tin tuc */
+.--custom.content-detail a{
+    font-size: unset;
+}
+
 .breadcrum--list {
     display: flex;
     list-style: none;
@@ -568,6 +572,7 @@
         border-radius: 0;
     }
 }
+
 
 .successful-service {
     font-family: 'Roboto';

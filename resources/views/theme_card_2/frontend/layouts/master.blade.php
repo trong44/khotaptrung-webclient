@@ -179,9 +179,9 @@
 <script src="/assets/frontend/{{theme('')->theme_key}}/js/index.js" type="text/javascript"></script>
 <script src="/assets/frontend/{{theme('')->theme_key}}/js/main.js" type="text/javascript"></script>
 <script src="/assets/frontend/{{theme('')->theme_key}}/js/charge/modal-charge.js" type="text/javascript"></script>
-<script src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js" type="text/javascript"></script>
+<script src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js?v={{time()}}" type="text/javascript"></script>
 <script src="/assets/frontend/{{theme('')->theme_key}}/js/transfer/transfer.js?v={{time()}}"></script>
-<script src="/assets/frontend/{{theme('')->theme_key}}/js/slider_home.js"></script>
+<script src="/assets/frontend/{{theme('')->theme_key}}/js/slider_home.js?v={{time()}}"></script>
 </body>
 <!-- end::Body -->
 </html>
