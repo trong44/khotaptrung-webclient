@@ -37,7 +37,7 @@
 }
 .nice-select:after {
     content: '';
-    background-image: url(/assets/theme_3/image/icons/arrows/arrow-select-nice.png);
+    background-image: url(../../image/icons/arrows/arrow-select-nice.png);
     display: block;
     height: 16px;
     width: 16px;

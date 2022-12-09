@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
-
+    setDisplayLink(0, 'skin-paginate');
+    setDisplayLink(0, 'tft-paginate');
+    setDisplayLink(0, 'champion-paginate');
 
     $(document).on('click', '.buyacc',function(e){
         e.preventDefault();
@@ -42,6 +44,7 @@ $(document).ready(function () {
 
                 if(response.status == 1){
                     $('.loadModal__acount').modal('hide');
+                    $('#successModal').modal('show');
                     swal({
                         title: "Mua tài khoản thành công",
                         text: "Thông tin chi tiết tài khoản vui lòng về lịch sử đơn hàng.",
@@ -51,10 +54,14 @@ $(document).ready(function () {
                         cancelButtonText: "Đóng",
                     })
                         .then((result) => {
+                            var slug_category = $('.slug_category').val();
+
                             if (result.value) {
                                 window.location = '/lich-su-mua-account';
-                            } else if (result.dismiss === 'đóng') {
-
+                            } else if (result.dismiss === "Đóng") {
+                                window.location = '/mua-acc/'+ slug_category;
+                            }else {
+                                window.location = '/mua-acc/'+ slug_category;
                             }
                         })
                 }
@@ -102,5 +109,61 @@ $(document).ready(function () {
 
 
     })
+
+    $(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+        window.scrollTo(window.scrollX, window.scrollY + 1);
+    })
+    $('body').on('click', '.lm_xemthem', function () {
+        window.scrollTo(window.scrollX, window.scrollY + 1);
+    })
+
+    // Paginate Handle
+    function setDisplayLink (page, paginateTab) {
+        let firstPage = $(`.js-pagination-handle.${paginateTab} .page-item:first-child .page-link`).data('page');
+        let lastPage = $(`.js-pagination-handle.${paginateTab} .page-item:last-child .page-link`).data('page');
+
+        //Display none all page item
+        $(`.js-pagination-handle.${paginateTab} .page-item`).addClass('d-none');
+
+        if ( page > 2 ) {
+            $(`.js-pagination-handle.${paginateTab} .page-item-0`).removeClass('d-none');
+        }
+
+        if ( page > 3 ) {
+            $(`.js-pagination-handle.${paginateTab} .page-item.dot-first-paginate`).removeClass('d-none');
+        }
+
+        for ( let i = firstPage; i <= lastPage; i++ ) {
+            if ( i >= page - 2 && i <= page + 2 ) {
+                if ( i == page ) {
+                    $(`.js-pagination-handle.${paginateTab} .page-item`).removeClass('active');
+                    $(`.js-pagination-handle.${paginateTab} .page-item-${i}`).removeClass('d-none');
+                    $(`.js-pagination-handle.${paginateTab} .page-item-${i}`).addClass('active');
+                } else {
+                    $(`.js-pagination-handle.${paginateTab} .page-item-${i}`).removeClass('d-none');
+                }
+            }
+        }
+
+        if ( page < lastPage - 3 ) {
+            $(`.js-pagination-handle.${paginateTab} .page-item.dot-last-paginate`).removeClass('d-none');
+        }
+
+        if ( page < lastPage - 2 ) {
+            $(`.js-pagination-handle.${paginateTab} .page-item-${lastPage}`).removeClass('d-none');
+        }
+
+    }
+
+    $('.js-pagination-handle .page-item .page-link').on('click', function (e) {
+        e.preventDefault();
+        let pageSelected = $(this).data('page');
+        let paginateTab = $(this).closest('.js-pagination-handle').data('tab');
+        if ( pageSelected === undefined || pageSelected === null || pageSelected === "" ) {
+            return false;
+        }
+
+        setDisplayLink(pageSelected, paginateTab);
+    });
 
 });

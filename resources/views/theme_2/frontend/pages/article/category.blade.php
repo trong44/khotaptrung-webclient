@@ -28,16 +28,27 @@
         <div class="site-content-body alt first pt-0 pb-0 d-flex justify-content-between align-items-center">
             <ul class="nav nav-line">
                 <li class="nav-item">
-                    <a href="/tin-tuc" class="nav-link">Tin tức chung</a>
+                    @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                    <a href="{{ setting('sys_zip_shop') }}" class="nav-link">Tin tức chung</a>
+                    @else
+                        <a href="/tin-tuc" class="nav-link">Tin tức chung</a>
+                    @endif
                 </li>
                 @include('frontend.widget.__menu__article')
             </ul>
             <div>
                 <div class="input-group input-group-search">
-                    <form action="/tin-tuc" method="get" class="form_new input-group input-group-search">
+                    @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                    <form action="{{ setting('sys_zip_shop') }}" method="get" class="form_new input-group input-group-search">
                         <input name="querry" type="text" value="" placeholder="Từ khóa" class="form-control btn_new">
                         <button class="btn bg-transparent text-secondary" type="submit"><i class="las la-search"></i></button>
                     </form>
+                    @else
+                        <form action="/tin-tuc" method="get" class="form_new input-group input-group-search">
+                            <input name="querry" type="text" value="" placeholder="Từ khóa" class="form-control btn_new">
+                            <button class="btn bg-transparent text-secondary" type="submit"><i class="las la-search"></i></button>
+                        </form>
+                    @endif
                 </div>
             </div>
 

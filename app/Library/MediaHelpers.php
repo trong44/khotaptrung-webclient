@@ -23,9 +23,20 @@ class MediaHelpers
             }elseif (strpos($path, 'https://') > -1){
                 $path = str_replace('https:','',$path);
             }
+
+            if(setting('sys_server_image') != ''){
+                if (setting('sys_server_image') == 'https://imagetip.net'){
+                    $path = str_replace('cdn.upanh.info','imagetip.net',$path);
+                }
+            }
             return url($path);
 		}else{
-            return config('api.url_media').'/'. ltrim($path, '/');
+
+            if(setting('sys_server_image') != ''){
+                return setting('sys_server_image').'/'. ltrim($path, '/');
+            }else{
+                return config('api.url_media').'/'. ltrim($path, '/');
+            }
 
 		}
 	}

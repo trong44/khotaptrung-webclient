@@ -22,9 +22,9 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" href="#" id="deposit-via-card-tab" data-bs-toggle="tab" data-bs-target="#deposit-via-card" type="button" role="tab" aria-controls="deposit via card" aria-selected="true"><span><i class="las la-receipt"></i> Nạp bằng thẻ</span></a>
                     </li>
-                    {{--                    <li class="nav-item" role="presentation">--}}
-                    {{--                        <a class="nav-link" href="#" id="deposit-tab" data-bs-toggle="tab" data-bs-target="#deposit" type="button" role="tab" aria-controls="deposit" aria-selected="true"><span><i class="las la-money-check-alt"></i> <span>Nạp ATM - Ví</span></a>--}}
-                    {{--                    </li>--}}
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="#" id="deposit-tab" data-bs-toggle="tab" data-bs-target="#deposit" type="button" role="tab" aria-controls="deposit" aria-selected="true"><span><i class="las la-money-check-alt"></i> <span>Nạp ATM - Ví</span></a>
+                    </li>
                 </ul>
                 <div class="tab-content mb-4">
                     <!-- BEGIN Tab Content Deposit -->
@@ -34,6 +34,7 @@
                                 {!! setting('sys_charge_content') !!}
                             </div>
                         @endif
+
                         <form action="{{route('postTelecomDepositAuto')}}" method="POST"  id="form-charge"class="form-horizontal form-charge">
                             @csrf
                             <div class="mb-3">
@@ -104,64 +105,10 @@
                         </form>
                     </div><!-- END Tab Content Deposit -->
                     <div class="tab-pane fade" id="deposit" role="tabpanel" aria-labelledby="deposit-tab">
+                        @if (setting('sys_tranfer_content') != "") {!! setting('sys_tranfer_content') !!} @endif
 
+                        <p style="text-align:center">Nội dung thanh toán: <strong class="transfer-code">  </strong></p>
 
-                        <p style="text-align:center"><a href="https://muathengay.com/blog/huong-dan-nap-tien-vao-web" target="_blank"><span style="color:#2980b9"><strong>&gt;&gt; Hướng dẫn mua thẻ Game&nbsp;bằng ATM &lt;&lt;</strong></span></a></p>
-
-                        <table align="center" border="1" cellpadding="10" cellspacing="1" class="table table-bordered table-striped">
-                            <tbody>
-                            <tr>
-                                <th colspan="2"><span style="color:#000000">T&ecirc;n chủ khoản: TRẦN VĂN SƠN</span></th>
-                                <th><span style="color:#000000">Chi nh&aacute;nh</span></th>
-                            </tr>
-                            <tr>
-                                <td><strong>Vietcombank</strong></td>
-                                <th style="text-align:right"><strong>0491000165748</strong></th>
-                                <td style="text-align:center"><strong><span style="color:#000000">H&Agrave; NỘI</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Agribank</strong></td>
-                                <th style="text-align:right"><strong>1507205852938</strong></th>
-                                <td style="text-align:center"><strong><span style="color:#000000">H&Agrave; NỘI</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Techcombank</strong></td>
-                                <th style="text-align:right"><strong>19032691413020</strong></th>
-                                <td style="text-align:center"><strong><span style="color:#000000">H&Agrave; NỘI</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Mbbank</strong></td>
-                                <th style="text-align:right"><strong>0080114849007</strong></th>
-                                <td style="text-align:center"><strong><span style="color:#000000">H&Agrave; NỘI</span></strong></td>
-                            </tr>
-                            <tr>
-                                <td><strong>VietinBank</strong></td>
-                                <th style="text-align:right"><strong>100873246867</strong></th>
-                                <td style="text-align:center"><strong>H&Agrave; NỘI</strong></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                        <p style="text-align:center"><a href="https://muathengay.com/blog/huong-dan-nap-tien-vao-web" target="_blank"><span style="color:#2980b9"><strong>&gt;&gt; Hướng dẫn mua thẻ Game&nbsp;bằng V&iacute; Điện Tử &lt;&lt;</strong></span></a></p>
-
-                        <table align="center" border="1" cellpadding="10" cellspacing="1" class="table table-bordered table-striped">
-                            <tbody>
-                            <tr>
-                                <td><span style="color:#000000"><strong>Tsr (thesieure.com)</strong></span></td>
-                                <td style="text-align:center"><span style="color:#000000"><strong>dichvume</strong></span></td>
-                            </tr>
-                            <tr>
-                                <td><span style="color:#000000"><strong>Azpro ( azpro.vn)</strong></span></td>
-                                <td style="text-align:center"><span style="color:#000000"><strong>dichvume</strong></span></td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                        <p>&nbsp;</p>
-
-                        <p style="text-align:center">Nội dung thanh to&aacute;n:&nbsp;<strong>&nbsp;muathengay.com&nbsp;+&nbsp;{ID web hoặc T&ecirc;n TK đăng k&yacute;}</strong></p>
-
-                        <p style="text-align:center">Chuyển xong li&ecirc;n hệ fanpage :&nbsp;<u><a href="https://www.facebook.com/Muathengaycom-Mua-Th%E1%BA%BB-Game-Gi%C3%A1-R%E1%BA%BB-Chi%E1%BA%BFt-Kh%E1%BA%A5u-Cao-T%E1%BB%A9c-Th%C3%AC-Auto-100-104529571784024" target="_blank"><span style="color:#ff0000"><strong>Chăm S&oacute;c Kh&aacute;ch H&agrave;ng</strong></span></a></u>&nbsp;hoặc Hotline&nbsp;<strong>0792.000.792</strong>&nbsp;để được xử l&yacute;</p>
                     </div>
                 </div>
             </div>
@@ -217,4 +164,7 @@
     </div>
     <div class="after"></div>
     <script src="/assets/frontend/theme_2/js/charge/charge.js?v={{time()}}"></script>
+    <script src="/assets/frontend/theme_2/js/transfer/transfer.js?v={{time()}}"></script>
+
+    <div id="copy"></div>
 @endsection

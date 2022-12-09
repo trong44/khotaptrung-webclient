@@ -13,13 +13,16 @@ class Setting{
             $setting = self::getAllSettings();
 
             $setting_get_key = null;
-            foreach ($setting as $item){
-                if(isset($item->name) && $item->name === $key){
-                    $setting_get_key = $item;
-                    break;
+            if (isset($setting) && count($setting)){
+                foreach ($setting as $item){
+                    if(isset($item->name) && $item->name === $key){
+                        $setting_get_key = $item;
+                        break;
+                    }
+                    continue;
                 }
-                continue;
             }
+
             if(empty($setting_get_key)){
                 return null;
             }
@@ -58,7 +61,7 @@ class Setting{
         $data = array();
         $result = DirectAPI::_makeRequest($url ,$data ,$method);
         if(isset($result) && $result->response_code == 200){
-            $seo = $result->response_data->data;
+            $seo = $result->response_data->data??null;
             return Cache::rememberForever('settings.all', function() use ($seo) {
                 return $seo;
             });

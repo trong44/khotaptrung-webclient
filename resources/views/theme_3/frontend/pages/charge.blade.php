@@ -50,7 +50,7 @@
 
                             </div>
                             <div class="box-product " >
-                                <div class="default-tab pr-fix-16 pl-fix-16"">
+                                <div class="default-tab pr-fix-16 pl-fix-16">
                                     <ul class="nav justify-content-between row" role="tablist" >
                                         <li class="nav-item col-4 col-md-4 p-0  p-md-0" role="presentation">
                                             <a  class="nav-link active text-center " data-toggle="tab" href="#charge_card" role="tab" aria-selected="true">Nạp thẻ <span class="d-g-none">cào</span> </a>
@@ -464,7 +464,7 @@
 
     </div>
 
-    @include('theme_3.frontend.widget.modal.__charge')
+    @include('theme_3.frontend.widget.modal.__confirm_charge')
     @include('theme_3.frontend.widget.modal.__success_charge')
     @include('theme_3.frontend.widget.modal.__reject_charge')
     @include('theme_3.frontend.widget.modal.__success_charge_atm')

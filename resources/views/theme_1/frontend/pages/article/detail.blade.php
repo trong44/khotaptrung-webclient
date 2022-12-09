@@ -8,7 +8,6 @@
 @section('content')
     @if($data == null)
         <div class="item_buy">
-
             <div class="container pt-3">
                 <div class="row pb-3 pt-3">
                     <div class="col-md-12 text-center">
@@ -21,16 +20,12 @@
                             </span>
                     </div>
                 </div>
-
             </div>
-
         </div>
     @else
-
     @if(isset($data->params) && isset($data->params->article_type))
         {!! $data->params->article_type !!}
     @endif
-
     <div class="news">
         <div class="news_breadcrumbs">
             <div class="container">
@@ -39,7 +34,13 @@
                         <ul class="news_breadcrumbs_theme news_breadcrumbs_theme__show">
                             <li><a href="/" class="news_breadcrumbs_theme_trangchu news_breadcrumbs_theme_trangchu_a">Trang chủ</a></li>
                             <li>/</li>
-                            <li><a href="/tin-tuc" class="news_breadcrumbs_theme_tintuc_a"><p class="news_breadcrumbs_theme_tintuc">Tin tức</p></a></li>
+                            <li>
+                                @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                                <a href="{{ setting('sys_zip_shop') }}" class="news_breadcrumbs_theme_tintuc_a"><p class="news_breadcrumbs_theme_tintuc">Tin tức</p></a>
+                                @else
+                                    <a href="/tin-tuc" class="news_breadcrumbs_theme_tintuc_a"><p class="news_breadcrumbs_theme_tintuc">Tin tức</p></a>
+                                @endif
+                            </li>
                             <li>/</li>
                             <li class="news_breadcrumbs_theme__li"><a href="javascript:void(0)" class="news_breadcrumbs_theme_title_a"><p class="news_breadcrumbs_theme_title">{{ $data->title }}</p></a></li>
                         </ul>
@@ -47,7 +48,6 @@
                 </div>
             </div>
         </div>
-
         <div class="news_content">
             <div class="container">
                 <div class="row news_content_in">
@@ -57,23 +57,20 @@
                             <div class="news_content_line"></div>
                         </div>
                         <div class="news_detail">
-                            <div class="news_detail_content">
+                            <div class="news_detail_content fix-image-acount">
                                 {!! $data->content !!}
                             </div>
                         </div>
                     </div>
-
-                    @include('frontend.widget.__menu__category__article')
-
+                    @include('frontend.pages.article.widget.__danh__muc')
                 </div>
             </div>
         </div>
-
         @include('frontend.widget.__bai__viet__lien__quan')
-
     </div>
-
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/article/article-detail.js?v={{time()}}"></script>
     @endif
+    @include('frontend.widget.__theme')
 
 @endsection
 

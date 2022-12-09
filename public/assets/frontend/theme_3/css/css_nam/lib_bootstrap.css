@@ -57,7 +57,7 @@
 .mr-fix-12{
     margin-right: 0.75rem;
 }
-.mb-fix-12{
+.mb-fix-12 {
     margin-bottom: 0.75rem;
 }
 .mt-fix-12{
@@ -78,6 +78,26 @@
 }
 .pt-fix-16{
     padding-top: 1rem;
+}
+/*padding 6*/
+.p-fix-6{
+    padding: 0.375rem;
+}
+.pl-fix-6{
+    padding-left: 0.375rem;
+}
+.pr-fix-6{
+    padding-right: 0.375rem;
+}
+.pb-fix-6{
+    padding-bottom:0.375rem;
+}
+.pt-fix-6{
+    padding-top: 0.375rem;
+}
+.px-fix-6{
+    padding-left: 0.375rem;
+    padding-right: 0.375rem;
 }
 /*padding 8*/
 .p-fix-8{
@@ -110,6 +130,26 @@
 }
 .pt-fix-10{
     padding-top: 0.625rem;
+}
+/*padding 12*/
+.p-fix-12{
+    padding: 0.75rem;
+}
+.pl-fix-12{
+    padding-left: 0.75rem;
+}
+.pr-fix-12{
+    padding-right: 0.75rem;
+}
+.pb-fix-12{
+    padding-bottom: 0.75rem;
+}
+.pt-fix-12{
+    padding-top: 0.75rem;
+}
+.px-fix-12{
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
 }
 /*margin 10*/
 .m-fix-10{
@@ -153,6 +193,21 @@
     .d-g-lg-block{
         display: block !important;
     }
+    .p-lg-fix-4{
+        padding: 0.25rem;
+    }
+    .pl-lg-fix-4{
+        padding-left: 0.25rem;
+    }
+    .pr-lg-fix-4{
+        padding-right: 0.25rem;
+    }
+    .pb-lg-fix-4{
+        padding-bottom:0.25rem;
+    }
+    .pt-lg-fix-4{
+        padding-top: 0.25rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -191,11 +246,52 @@
     .mr-md-fix-8{
         margin-right: 0.5rem;
     }
+    .mx-md-fix-8{
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+    }
     .mb-md-fix-8{
         margin-bottom: 0.5rem;
     }
     .mt-md-fix-8{
         margin-top: 0.5rem;
+    }
+    /*margin 20*/
+    .m-md-fix-20{
+        margin: 1.25rem;
+    }
+    .ml-md-fix-20{
+        margin-left: 1.25rem;
+    }
+    .mr-md-fix-20{
+        margin-right: 1.25rem;
+    }
+    .mb-md-fix-20{
+        margin-bottom: 1.25rem;
+    }
+    .mt-md-fix-20{
+        margin-top: 1.25rem;
+    }
+    /*padding 4*/
+    .p-md-fix-4{
+        margin: 0.25rem;
+    }
+    .pl-md-fix-4{
+        margin-left: 0.25rem;
+    }
+    .pr-md-fix-4{
+        margin-right: 0.25rem;
+    }
+    .pb-md-fix-4{
+        margin-bottom:0.25rem;
+    }
+    .pt-md-fix-4{
+        margin-top: 0.25rem;
+    }
+
+    /*width*/
+    .w-md-100{
+        width: 100% !important;
     }
 
 }

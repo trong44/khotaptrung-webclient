@@ -1,168 +1,64 @@
-@if(empty($data->data))
+@extends('frontend.layouts.master')
+@section('seo_head')
+    @include('frontend.widget.__seo_head')
+    <meta name="robots" content="noindex,nofollow" />
+@endsection
+@push('js')
 
-    <div class="table-responsive">
-        <table cellspacing="0" cellpadding="0" class="table table-hover">
-            <thead>
-            <tr>
-                <th class="text-secondary">Thời gian</th>
-                <th class="text-secondary">ID</th>
-                <th class="text-secondary">Tài khoản </th>
-                <th class="text-secondary">Giao dịch</th>
-                <th class="text-secondary">Số tiền</th>
-                <th class="text-secondary">Số dư cuối</th>
-                <th class="text-secondary">Nội dung</th>
-                <th class="text-secondary">Trạng thái</th>
-            </tr>
-            </thead>
-            <tbody>
+@endpush
 
-            @php
-                $prev = null;
-            @endphp
-            @if(isset($data) && count($data) > 0)
-                @foreach ($data as $item)
-
-                    @php
-                        $curr = \App\Library\Helpers::formatDate($item->created_at);
-                    @endphp
-                    @if($curr != $prev)
-
-                        <tr>
-                            <td colspan="8"><b>Ngày {{$curr}}</b></td>
-                        </tr>
-                        <tr>
-                            <td>{{ formatDateTime($item->created_at) }}</td>
-                            <td>#{{$item->id}}</td>
-                            <td> {{ $item->user->username }} </td>
-
-                            <td>
-                                @foreach($config as $ils => $valls)
-                                    @if($ils == $item->trade_type)
-                                        {{ $valls }}
-                                    @endif
-                                @endforeach
-                            </td>
-                            <td>
-                                @if($item->is_add==1)
-                                    <span class="c-font-bold text-info">+{{formatPrice((int)$item->amount)}}đ</span>
-                                @elseif($item->is_add==0)
-                                    <span class="c-font-bold text-danger">-{{formatPrice((int)$item->amount)}}đ</span>
-                                @endif
-                            </td>
-                            <td>{{ formatPrice((int)$item->last_balance) }}đ</td>
-                            <td>{{ $item->description }}</td>
-                            <td>
-                                @foreach($status as $istls => $valstls)
-                                    @if($istls == $item->status)
-                                        @if($item->status == 1)
-                                            <b class="text-success">{{ $valstls }}</b>
-                                        @elseif($item->status == 0)
-                                            <b class="text-danger">{{ $valstls }}</b>
-                                        @elseif($item->status == 2)
-                                            <b class="text-warning">{{ $valstls }}</b>
-                                        @endif
-                                    @endif
-                                @endforeach
-                            </td>
-                        </tr>
-                        @php
-                            $prev = $curr;
-                        @endphp
-                    @else
-                        <tr>
-                            <td>{{ formatDateTime($item->created_at) }}</td>
-                            <td>#{{ $item->id }}</td>
-                            <td> {{ $item->user->username }} </td>
-                            <td>
-                                @foreach($config as $ils => $valls)
-                                    @if($ils == $item->trade_type)
-                                        {{ $valls }}
-                                    @endif
-                                @endforeach
-                            </td>
-                            <td>
-                                @if($item->is_add==1)
-                                    <span class="c-font-bold text-info">+{{formatPrice((int)$item->amount)}}đ</span>
-                                @elseif($item->is_add==0)
-                                    <span class="c-font-bold text-danger">-{{formatPrice((int)$item->amount)}}đ</span>
-                                @endif
-                            </td>
-                            <td>{{ formatPrice((int)$item->last_balance) }}đ</td>
-                            <td>{{$item->description}}</td>
-                            <td>
-                                @foreach($status as $istls => $valstls)
-                                    @if($istls == $item->status)
-                                        @if($item->status == 1)
-                                            <b class="text-success">{{ $valstls }}</b>
-                                        @elseif($item->status == 0)
-                                            <b class="text-danger">{{ $valstls }}</b>
-                                        @elseif($item->status == 2)
-                                            <b class="text-warning">{{ $valstls }}</b>
-                                        @endif
-                                    @endif
-                                @endforeach
-                            </td>
-
-                        </tr>
-                    @endif
-                @endforeach
-            @else
-                <tr>
-                    <td colspan="8">
-                        <span style="color: red;font-size: 16px;">Không có dữ liệu!</span>
-                    </td>
-                </tr>
-            @endif
-
-            </tbody>
-        </table>
-    </div>
-
-@endif
-<div class="row">
-    <div class="col-md-12 left-right justify-content-end">
-        <div class="d-flex justify-content-between align-items-md-center flex-column flex-md-row mt-2 pt-3">
-            <div class="text-secondary mb-2">
-                @if(isset($total) && isset($per_page))
-                    Hiển thị {{ $per_page }} / {{ $total }} kết quả
-                @endif
-            </div>
+@section('content')
+    <div class="site-content-body bg-white first last p-0">
+        <div class="block-profile" >
+            @include('frontend.widget.__menu_profile')
+            <div class="block-content p-3">
+                <div class=" mb-4">
+                    <div class="" id="history" style="min-height: 628px;">
+                        <form class="form-charge form-charge__accounttxns account_content_transaction_history__v2">
+                            <div class="d-flex justify-content-between align-items-md-center flex-column flex-md-row">
+                                <h4 class="title-style-left mb-3">Danh sách giao dịch</h4>
+                                <div class="d-flex align-items-center mb-3">
+                                    <div>
+                                        <input type="text" placeholder="ID" name="id_txns" class="id_txns">
+                                    </div>
 
 
-            <nav class="page-pagination mb-2 paginate__v1_index_txns paginate__v1_mobie frontend__panigate">
-                @if(isset($data))
-                    @if($data->total()>1)
-                        <div class="row marinautooo paginate__history paginate__history__fix justify-content-end">
-                            <div class="col-auto paginate__category__col">
-                                <div class="data_paginate paging_bootstrap paginations_custom" style="text-align: center">
-                                    {{ $data->appends(request()->query())->links('pagination::bootstrap-4') }}
+                                    <div class="input-group date-ranger-picker ms-3">
+                                        <input type="text" class="form-control border-end-0 started_at" name="started_at" placeholder="DD/MM/YYYY" value="">
+                                        <span class="input-group-text bg-transparent text-secondary"><i class="las la-arrow-right"></i></span>
+                                        <input type="text" class="form-control border-start-0 ended_at" name="ended_at" placeholder="DD/MM/YYYY" value="">
+                                        <button class="btn bg-primary text-white" type="submit"><i class="las la-angle-right"></i></button>
+                                    </div>
                                 </div>
                             </div>
+                        </form>
+
+                        <div id="data_lich__su_history">
+                            <div class="text-center ajax-loading-store load_spinner ajax-loading-data" >
+                                <div class="cv-spinner">
+                                    <span class="spinner"></span>
+                                </div>
+                            </div>
+                            @include('frontend.pages.transaction.widget.__transaction_history')
                         </div>
-                    @endif
-                @endif
-            </nav>
+
+                    </div><!-- END Tab Content History -->
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <div id="copy"></div>
+    <div class="after"></div>
 
-{{--<div class="d-flex justify-content-between align-items-md-center flex-column flex-md-row mt-2">--}}
-{{--    <div class="text-secondary mb-2">--}}
-{{--        Hiển thị 5 / 10 kết quả--}}
-{{--    </div>--}}
-{{--    <nav class="page-pagination mb-2">--}}
-{{--        <ul class="pagination">--}}
-{{--            <li class="page-item disabled">--}}
-{{--                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><i class="las la-angle-left"></i></a>--}}
-{{--            </li>--}}
-{{--            <li class="page-item"><a class="page-link" href="#">1</a></li>--}}
-{{--            <li class="page-item active" aria-current="page">--}}
-{{--                <a class="page-link" href="#">2</a>--}}
-{{--            </li>--}}
-{{--            <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
-{{--            <li class="page-item">--}}
-{{--                <a class="page-link" href="#"><i class="las la-angle-right"></i></a>--}}
-{{--            </li>--}}
-{{--        </ul>--}}
-{{--    </nav>--}}
-{{--</div>--}}
+
+    {{--    transaction--}}
+    <input type="hidden" name="id_txns_data" class="id_txns_data" value="">
+    <input type="hidden" name="started_at_data" class="started_at_data" value="">
+    <input type="hidden" name="ended_at_data" class="ended_at_data" value="">
+    <input type="hidden" name="hidden_page" id="hidden_page_service" class="hidden_page_service" value="1" />
+
+
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/txns-history.js?v={{time()}}"></script>
+
+@endsection
+

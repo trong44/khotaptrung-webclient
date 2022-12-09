@@ -17,6 +17,13 @@ class AuthCustom{
         }
         return null;
     }
+    public static function getName(){
+        if(session()->has('auth_custom')){
+            $user = session()->get('auth_custom');
+            return $user->fullname??$user->username;
+        }
+        return null;
+    }
 //    public static function check(){
 //        if(session()->has('jwt')){
 //            return true;

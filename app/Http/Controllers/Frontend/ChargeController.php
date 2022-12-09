@@ -20,6 +20,33 @@ class ChargeController extends Controller
 
 {
     public function index() {
+        try{
+            $url = '/deposit-auto/get-telecom';
+            $method = "GET";
+            $dataSend = array();
+            $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+            $data = $result_Api->response_data??null;
+            if(isset($data) && $data->status == 1){
+                return response()->json([
+                    'status' => 1,
+                    'message' => 'Thành công',
+                    'data' => $data->data,
+                ],200);
+            }
+            else{
+                return response()->json([
+                    'status' => 0,
+                    'message'=>$data->message??"Không thể lấy dữ liệu"
+                ]);
+            }
+        }
+        catch(\Exception $e){
+            Log::error($e);
+            return response()->json([
+                'status' => 0,
+                'message' => 'Có lỗi phát sinh khi lấy nhà mạng nạp thẻ, vui lòng liên hệ QTV để xử lý.',
+            ]);
+        }
         return view('index');
     }
     public function capthcaFormValidate(Request $request) {
@@ -47,9 +74,39 @@ class ChargeController extends Controller
     }
     public function getDepositAuto(Request $request)
     {
-        Session::forget('return_url');
-        Session::put('return_url', $_SERVER['REQUEST_URI']);
-        return view('frontend.pages.charge.index');
+
+        try{
+            $url = '/deposit-auto/get-telecom';
+            $method = "GET";
+            $dataSend = array();
+            $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+            $data = $result_Api->response_data??null;
+
+
+            if(isset($data) && $data->status == 1){
+                return view(''.theme('')->theme_key.'.frontend.pages.charge.index')->with('data',$data->data);
+
+                return response()->json([
+                    'status' => 1,
+                    'message' => 'Thành công',
+                    'data' => $data->data,
+                ],200);
+            }
+            else{
+                return response()->json([
+                    'status' => 0,
+                    'message'=>$data->message??"Không thể lấy dữ liệu"
+                ]);
+            }
+        }
+        catch(\Exception $e){
+            Log::error($e);
+            return response()->json([
+                'status' => 0,
+                'message' => 'Có lỗi phát sinh khi lấy nhà mạng nạp thẻ, vui lòng liên hệ QTV để xử lý.',
+            ]);
+        }
+
 
     }
 
@@ -89,7 +146,7 @@ class ChargeController extends Controller
 
                 $data = new LengthAwarePaginator($data->data, $data->total, $data->per_page, $page, $data->data);
 
-                $html =  view('frontend.pages.charge.widget.__charge')
+                $html =  view(''.theme('')->theme_key.'.frontend.pages.charge.widget.__charge')
                     ->with('data', $data)->with('arrpin',$arrpin)->render();
 
                 if (count($data) == 0 && $page == 1){
@@ -257,8 +314,6 @@ class ChargeController extends Controller
 
     public function getChargeDepositHistory(Request $request)
     {
-
-
         if (AuthCustom::check()) {
 
             $method = "GET";
@@ -279,28 +334,27 @@ class ChargeController extends Controller
                 $val['token'] = $jwt;
                 $val['page'] = $page;
 
-                if (isset($request->serial) || $request->serial != '' || $request->serial != null) {
+                if ($request->filled('serial')) {
                     $val['serial'] = $request->serial;
                 }
 
-                if (isset($request->key) || $request->key != '' || $request->key != null) {
+                if ($request->filled('key')) {
                     $val['key'] = $request->key;
                 }
 
-                if (isset($request->status) || $request->status != '' || $request->status != null) {
+                if ($request->filled('key')) {
                     $val['status'] = $request->status;
                 }
 
-                if (isset($request->started_at) || $request->started_at != '' || $request->started_at != null) {
+                if ($request->filled('started_at')) {
                     $started_at = \Carbon\Carbon::parse($request->started_at)->format('Y-m-d H:i:s');
                     $val['started_at'] = $started_at;
                 }
 
-                if (isset($request->ended_at) || $request->ended_at != '' || $request->ended_at != null) {
+                if ($request->filled('ended_at')) {
                     $ended_at = \Carbon\Carbon::parse($request->ended_at)->format('Y-m-d H:i:s');
                     $val['ended_at'] = $ended_at;
                 }
-
                 $result_Api = DirectAPI::_makeRequest($url, $val, $method);
                 $response_data = $result_Api->response_data??null;
 
@@ -335,7 +389,14 @@ class ChargeController extends Controller
                         ]);
                     }
 
-                    $html =  view('frontend.pages.charge.widget.__charge_history')
+                    if ($page > $data->lastPage()) {
+                        return response()->json([
+                            'status' => 404,
+                            'message'=>'Trang này không tồn tại',
+                        ]);
+                    }
+
+                    $html =  view(''.theme('')->theme_key.'.frontend.pages.charge.widget.__charge_history')
                         ->with('data',$data)->with('arrpin',$arrpin)->with('arrserial',$arrserial)->render();
 
                     return response()->json([
@@ -364,7 +425,7 @@ class ChargeController extends Controller
 
                 $data_telecome = $response_tele_data->data;
 
-                return view('frontend.pages.charge.logs')->with('data_telecome', $data_telecome);
+                return view(''.theme('')->theme_key.'.frontend.pages.charge.logs')->with('data_telecome', $data_telecome);
 
             }
             else{
@@ -373,8 +434,36 @@ class ChargeController extends Controller
                     'message'=>$response_data->message??"Không thể lấy dữ liệu"
                 ]);
             }
+        }
+    }
 
+    public function getChargeDepositHistoryDetail(Request $request,$id){
+        $url = '/deposit-auto/history/'.$id;
 
+        $val = array();
+        $jwt = Session::get('jwt');
+        if (empty($jwt)) {
+            return response()->json([
+                'status' => "LOGIN"
+            ]);
+        }
+        $method = "GET";
+        $val['token'] = $jwt;
+
+        $result_Api = DirectAPI::_makeRequest($url, $val, $method);
+        $response_data = $result_Api->response_data??null;
+
+        if(isset($response_data) && $response_data->status == 1) {
+
+            $data = $response_data->data;
+
+            return view(''.theme('')->theme_key.'.frontend.pages.charge.logsdetail')->with('data', $data);
+
+        }else{
+            return response()->json([
+                'status' => 0,
+                'message'=>$response_data->message??"Không thể lấy dữ liệu"
+            ]);
         }
 
     }

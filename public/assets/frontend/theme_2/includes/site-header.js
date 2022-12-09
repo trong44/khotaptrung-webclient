@@ -17,7 +17,7 @@ document.write( '                            </li>\n' );
 document.write( '                            <li class=\"nav-item item-support\">\n' );
 document.write( '                                <a href=\"support.html\" class=\"nav-link\">Hỗ trợ</a>\n' );
 document.write( '                            </li>\n' );
-document.write( '                            <li class=\"nav-item item-news\">\n' );
+document.write( '                            <li class=\"nav-item item-article\">\n' );
 document.write( '                                <a href=\"category.html\" class=\"nav-link\">Tin tức</a>\n' );
 document.write( '                            </li>\n' );
 document.write( '                        </ul>\n' );

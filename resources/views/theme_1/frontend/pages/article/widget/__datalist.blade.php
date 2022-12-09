@@ -3,9 +3,23 @@
         <div class="news_content_list">
             <div class="news_content_list_item">
                 <div class="news_content_list_image">
-                    <a href="/tin-tuc/{{ $item->slug }}">
-                        <img src="{{\App\Library\MediaHelpers::media($item->image)}}" class="lazy" alt="">
-                    </a>
+                    @if(isset($item->url_redirect_301))
+                        <a target="_blank" href="{{ $item->url_redirect_301 }}">
+                            <img src="{{\App\Library\MediaHelpers::media($item->image)}}" class="lazy" alt="">
+                        </a>
+                    @else
+                        @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                            <a href="{{ setting('sys_zip_shop') }}/{{ $item->slug }}">
+                                <img src="{{\App\Library\MediaHelpers::media($item->image)}}" class="lazy" alt="">
+                            </a>
+                        @else
+                            <a href="/tin-tuc/{{ $item->slug }}">
+                                <img src="{{\App\Library\MediaHelpers::media($item->image)}}" class="lazy" alt="">
+                            </a>
+                        @endif
+
+                    @endif
+
                 </div>
 
                 <div class="news_content_list_info">
@@ -13,21 +27,34 @@
                         @if(isset($item->url_redirect_301))
                             <a target="_blank" href="{{ $item->url_redirect_301 }}"> {{ $item->title }} </a>
                         @else
-                            <a href="/tin-tuc/{{ $item->slug }}"> {{ $item->title }} </a>
+                            @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                            <a href="{{ setting('sys_zip_shop') }}/{{ $item->slug }}"> {{ $item->title }} </a>
+                            @else
+                                <a href="/tin-tuc/{{ $item->slug }}"> {{ $item->title }} </a>
+                            @endif
                         @endif
                     </div>
 
                     <div class="news_content_list_date">
                         <div>
-                            <i class="fas fa-calendar-alt"></i> {{ formatDateTime($item->created_at) }}
+                            @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                                @if(isset($item->published_at))
+                                    <i class="fas fa-calendar-alt"></i> {{ formatDateTime($item->published_at) }}
+                                @else
+                                    <i class="fas fa-calendar-alt"></i> {{ formatDateTime($item->created_at) }}
+                                @endif
+
+                            @else
+                                <i class="fas fa-calendar-alt"></i> {{ formatDateTime($item->created_at) }}
+                            @endif
                         </div>
                         <div>
-                            <i class="fas fa-newspaper"></i><a href=""> {{ $item->groups[0]->title }} </a>
+                            <i class="fas fa-newspaper"></i><a href=""> {{@$item->groups[0]->title }} </a>
                         </div>
                     </div>
 
                     <div class="news_content_list_decription">
-                        {!! $item->description !!}
+                        {!! $item->seo_description !!}
                     </div>
                 </div>
             </div>

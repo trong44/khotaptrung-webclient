@@ -3,83 +3,88 @@ $(document).ready(function(){
     function formatNumber(num) {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
     }
-    // function getCaptcha(){
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: 'first-captcha',
-    //         success: function (data) {
-    //             $(".captcha_trangchu span").html(data.captcha);
-    //         }
-    //     });
-    // }
-    // getCaptcha();
-    // $('#reload_trangchu').click(function () {
-    //     $.ajax({
-    //         type: 'GET',
-    //         url: 'reload-captcha',
-    //         success: function (data) {
-    //             $(".captcha_trangchu span").html(data.captcha);
-    //         }
-    //     });
-    //
-    // });
 
-    function getTelecom(){
-
-        var url = '/get-tele-card';
+    $('#reload_trangchu').click(function () {
         $.ajax({
-            type: "GET",
-            url: url,
-            beforeSend: function (xhr) {
-                $('#form-content').hide();
-            },
+            type: 'GET',
+            url: '/reload-captcha',
             success: function (data) {
-                if(data.status == 1){
-                    let html = '';
-                    if(data.data.length > 0){
-                        $.each(data.data,function(key,value){
-                            html += '<option value="'+value.key+'">'+value.key+'</option>';
-                        });
-                    }
-                    else{
-                        html += '<option value="">-- Vui lòng chọn nhà mạng --</option>';
-                    }
-                    $('select#telecom').html(html)
-                    ele = $('select#telecom option').first();
-                    var telecom = ele.val();
-                    getAmount(telecom);
-                    paycartDataChargeHistory();
+                $(".captcha_trangchu span").html(data.captcha);
+            }
+        });
 
-                    $('#loading-data').remove();
-                    $('#form-content').show();
-                    $('#form-content').removeClass('hide');
-                }
-                // else{
-                //     swal({
-                //         title: "Có lỗi xảy ra !",
-                //         text: data.message,
-                //         icon: "error",
-                //         buttons: {
-                //             cancel: "Đóng",
-                //         },
-                //     })
-                // }
-            },
-            error: function (data) {
-                swal({
-                    title: "Lỗi !",
-                    text: "Có lỗi phát sinh vui lòng liên hệ QTV để kịp thời xử lý.",
-                    icon: "error",
-                    buttons: {
-                        cancel: "Đóng",
-                    },
-                })
-            },
-            complete: function (data) {
+    });
 
+    function reload_captcha_home() {
+        $.ajax({
+            type: 'GET',
+            url: '/reload-captcha',
+            success: function (data) {
+                $(".captcha_trangchu span").html(data.captcha);
             }
         });
     }
+
+    // function getTelecom(){
+    //
+    //     var url = '/ajax/get-tele-card';
+    //     $.ajax({
+    //         type: "GET",
+    //         url: url,
+    //         beforeSend: function (xhr) {
+    //             $('#form-content').hide();
+    //         },
+    //         success: function (data) {
+    //             if(data.status == 1){
+    //                 let html = '';
+    //                 if(data.data.length > 0){
+    //                     $.each(data.data,function(key,value){
+    //                         html += '<option value="'+value.key+'">'+value.key+'</option>';
+    //                     });
+    //                 }
+    //                 else{
+    //                     html += '<option value="">-- Vui lòng chọn nhà mạng --</option>';
+    //                 }
+    //                 $('select#telecom').html(html)
+    //                 ele = $('select#telecom option').first();
+    //                 var telecom = ele.val();
+    //                 getAmount(telecom);
+    //                 paycartDataChargeHistory();
+    //
+    //                 $('#loading-data').remove();
+    //                 $('#form-content').show();
+    //                 $('#form-content').removeClass('hide');
+    //             }
+    //             // else{
+    //             //     swal({
+    //             //         title: "Có lỗi xảy ra !",
+    //             //         text: data.message,
+    //             //         icon: "error",
+    //             //         buttons: {
+    //             //             cancel: "Đóng",
+    //             //         },
+    //             //     })
+    //             // }
+    //         },
+    //         error: function (data) {
+    //             swal({
+    //                 title: "Lỗi !",
+    //                 text: "Có lỗi phát sinh vui lòng liên hệ QTV để kịp thời xử lý.",
+    //                 icon: "error",
+    //                 buttons: {
+    //                     cancel: "Đóng",
+    //                 },
+    //             })
+    //         },
+    //         complete: function (data) {
+    //
+    //         }
+    //     });
+    // }
+    ele = $('select#telecom option').first();
+    var telecom = ele.val();
+    getAmount(telecom);
+    // paycartDataChargeHistory();
 
     function getAmount(telecom){
         if(telecom == null){
@@ -87,7 +92,7 @@ $(document).ready(function(){
             $('slect#amount').html(html)
             return;
         }
-        var url = '/get-amount-tele-card';
+        var url = '/ajax/get-amount-tele-card';
         $.ajax({
             type: "GET",
             url: url,
@@ -107,6 +112,7 @@ $(document).ready(function(){
                         });
                     }
                     $('select#amount').html(html);
+                    reload_captcha_home()
                 }
                 // else{
                 //     swal({
@@ -120,14 +126,8 @@ $(document).ready(function(){
                 // }
             },
             error: function (data) {
-                swal({
-                    title: "Lỗi !",
-                    text: "Có lỗi phát sinh vui lòng liên hệ QTV để kịp thời xử lý.",
-                    icon: "error",
-                    buttons: {
-                        cancel: "Đóng",
-                    },
-                })
+                console.log('Có lỗi phát sinh vui lòng liên hệ QTV để kịp thời xử lý.(nạp thẻ (getAmount) )')
+
             },
             complete: function (data) {
 
@@ -140,7 +140,7 @@ $(document).ready(function(){
         getAmount(telecom)
     });
 
-    getTelecom();
+    // getTelecom();
 
     $('#form-charge').submit(function (e) {
         e.preventDefault();
@@ -191,14 +191,8 @@ $(document).ready(function(){
                 }
             },
             error: function (data) {
-                swal({
-                    title: "Có lỗi xảy ra !",
-                    text: "Có lỗi phát sinh vui lòng liên hệ QTV để kịp thời xử lý.",
-                    icon: "error",
-                    buttons: {
-                        cancel: "Đóng",
-                    },
-                })
+                console.log('Có lỗi phát sinh vui lòng liên hệ QTV để kịp thời xử lý.(nạp thẻ (postCharge))')
+
             },
             complete: function (data) {
                 $('#reload_trangchu').trigger('click');
@@ -209,57 +203,6 @@ $(document).ready(function(){
         });
     });
 
-    $(document).on('click', '.paginate__v1__nt .pagination a',function(event){
-        event.preventDefault();
-
-        var page = $(this).attr('href').split('page=')[1];
-
-        $('#hidden_page_service_nt').val(page);
-
-        $('li').removeClass('active');
-        $(this).parent().addClass('active');
 
 
-        paycartDataChargeHistory(page);
-    });
-
-    function paycartDataChargeHistory(page) {
-
-        request = $.ajax({
-            type: 'GET',
-            url: '/get-tele-card/data',
-            data: {
-                page:page,
-            },
-            beforeSend: function (xhr) {
-
-            },
-            success: (data) => {
-                if (data.status == 1){
-                    $(".paycartdata").empty().html('');
-                    $(".paycartdata").empty().html(data.data);
-                }else if (data.status == 0){
-                    var html = '';
-                    html += '<div class="table-responsive" id="tableacchstory">';
-                    html += '<table class="table table-hover table-custom-res">';
-                    html += '<thead><tr><th>Thời gian</th><th>Nhà mạng</th><th>Mã thẻ</th><th>serial</th><th>Mệnh giá</th><th>Kết quả</th><th>Thực nhận</th></tr></thead>';
-                    html += '<tbody>';
-                    html += '<tr><td colspan="8"><span style="color: red;font-size: 16px;">' + data.message + '</span></td></tr>';
-                    html += '</tbody>';
-                    html += '</table>';
-                    html += '</div>';
-
-                    $(".paycartdata").empty().html('');
-                    $(".paycartdata").empty().html(html);
-                }
-
-            },
-            error: function (data) {
-
-            },
-            complete: function (data) {
-
-            }
-        });
-    }
 });

@@ -21,14 +21,23 @@
                     </div>
                 </div>
                 <div class="row marginauto modal-body-span-success-ct justify-content-center">
-                    <div class="col-md-12 text-center" style="font-size: 14px">
-                        Tài khoản sẽ được cộng tiền ngay sau khi kiểm tra nếu thẻ đúng. Nếu sai thông tin hoặc xảy ra lỗi, vui lòng liên hệ fanpage để được hỗ trợ.
+                    <div class="col-md-12 text-center" style="font-size: 14px" id="success_charge">
+
                     </div>
 
                 </div>
                 <div class="row marginauto justify-content-center modal-footer-success-ct">
-                    <div class="col-md-12 col-6 modal-footer-success-col-left-ct">
+                    <div class="col-md-6 col-6 modal-footer-success-col-left-ct pr-fix-4 pl-0">
+                        <div class="row marginauto modal-footer-success-row-not-ct">
+                            <div class="col-md-12 left-right">
+                                <a href="/lich-su-nap-the" class="button-not-bg-ct" style="display: flex;justify-content: center"><span>Lịch sử</span></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-6 modal-footer-success-col-left-ct pl-fix-4 pr-0">
                         <div class="row marginauto modal-footer-success-row-ct">
+
                             <div class="col-md-12 left-right">
                                 <a href="/nap-the" class="button-not-bg-ct" style="display: flex;justify-content: center"><span>Nạp thêm</span></a>
                             </div>

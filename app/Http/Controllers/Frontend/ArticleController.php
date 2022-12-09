@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
+use Redirect;
 use Session;
 
 class ArticleController extends Controller
@@ -31,6 +32,7 @@ class ArticleController extends Controller
 
                 $per_page = 0;
                 $total = 0;
+
                 if (isset($data->total)){
                     $total = $data->total;
                 }
@@ -38,20 +40,15 @@ class ArticleController extends Controller
                 if (isset($data->to)){
                     $per_page = $data->to;
                 }
-
-                $data = new LengthAwarePaginator($data->data, $data->total, $data->per_page, $data->current_page,$data->data);
-
+                $data = new LengthAwarePaginator($data->data, $data->total , $data->per_page, $data->current_page,$data->data);
                 $data->setPath($request->url());
-
-                Session::forget('return_url');
-                Session::put('return_url', $_SERVER['REQUEST_URI']);
-
                 return view('frontend.pages.article.list')
                     ->with('total',$total)
                     ->with('per_page',$per_page)
                     ->with('data',$data);
             }
             else{
+
                 $data = null;
 
                 $message = $response_data->message??"Không thể lấy dữ liệu";
@@ -89,11 +86,15 @@ class ArticleController extends Controller
                 Session::put('path', $_SERVER['REQUEST_URI']);
                 $data = $response_data->data;
 
+                if (isset($data->url_redirect_301)){
+                    return Redirect::to($data->url_redirect_301);
+                }
+
                 return view('frontend.pages.article.detail')
                     ->with('slug',$slug)
                     ->with('data',$data);
 
-            }else{
+            }else {
 
                 $data = $response_data->data;
                 $title = $response_data->categoryarticle;
@@ -108,13 +109,13 @@ class ArticleController extends Controller
                     ->with('slug',$slug);
             }
         }
-        else{
-            $data = null;
-            $message = $response_data->message??"Không thể lấy dữ liệu";
+        else {
 
-            return view('frontend.pages.article.category')
-                ->with('message',$message)
-                ->with('data',$data);
+
+            $data = null;
+//            $message = $response_data->message??"Không thể lấy dữ liệu";
+
+            return view('frontend.404.404');
         }
     }
 

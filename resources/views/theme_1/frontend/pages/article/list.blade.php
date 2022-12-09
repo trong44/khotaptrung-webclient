@@ -6,6 +6,7 @@
     <meta name="robots" content="index,follow" />
 @endsection
 @section('content')
+    {{--    aaaaaaaaaaaa--}}
     @if($data == null)
         <div class="item_buy">
 
@@ -31,7 +32,11 @@
                             <ul class="news_breadcrumbs_theme">
                                 <li><a href="/" class="news_breadcrumbs_theme_trangchu news_breadcrumbs_theme_trangchu_a">Trang chủ</a></li>
                                 <li>/</li>
-                                <li><a href="/tin-tuc" class="news_breadcrumbs_theme_title_a"><h1 class="news_breadcrumbs_theme_title">Tin tức</h1></a></li>
+                                @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                                    <li><a href="{{ setting('sys_zip_shop') }}" class="news_breadcrumbs_theme_title_a"><h1 class="news_breadcrumbs_theme_title">Tin tức</h1></a></li>
+                                @else
+                                    <li><a href="/tin-tuc" class="news_breadcrumbs_theme_title_a"><h1 class="news_breadcrumbs_theme_title">Tin tức</h1></a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -54,18 +59,23 @@
                                                 <input type="submit" class="btn btn-news" value="Tìm kiếm">
                                             </div>
                                             <div class="col-lg-5 col-md-6 col-6 pl-0">
-                                                <a href="/tin-tuc" class="btn btn-danger">Tất Cả</a>
+                                                @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                                                <a href="{{ setting('sys_zip_shop') }}" class="btn btn-danger">Tất Cả</a>
+                                                @else
+                                                    <a href="/tin-tuc" class="btn btn-danger">Tất Cả</a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
 
                                 </div>
                             </form>
+
                             <div class="article_data">
                                 @include('frontend.pages.article.widget.__datalist')
                             </div>
                         </div>
-                        @include('frontend.widget.__menu__category__article')
+                        @include('frontend.pages.article.widget.__danh__muc')
                     </div>
                 </div>
             </div>

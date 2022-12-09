@@ -22,7 +22,7 @@ $(document).ready(function(){
         $('li').removeClass('active');
         $(this).parent().addClass('active');
 
-        var id_lsmt_data = $('.id_lsmt_data').val();
+        var id_storecard = $('.id_storecard').val();
         var started_at_lsmt_data = $('.started_at_lsmt_data').val();
         var ended_at_lsmt_data = $('.ended_at_lsmt_data').val();
 
@@ -130,22 +130,32 @@ $(document).ready(function(){
                 ended_at:ended_at_lsmt_data,
             },
             beforeSend: function (xhr) {
-                $("#data_muathe_history").hide();
-                $(".load_spinner").show();
+
 
             },
             success: (data) => {
+                if (data.status == 1){
+                    $("#data_muathe_history").empty().html('');
+                    $("#data_muathe_history").empty().html(data.data);
+                }else if (data.status == 0) {
+                    var html = '';
+                    html += '<div class="col-md-12">';
+                    html += '  <span style="color: red;font-size: 16px;">Không có dữ liệu!</span>';
+                    html += '</div>';
 
-                $("#data_muathe_history").empty().html('');
-                $("#data_muathe_history").empty().html(data);
+
+                    $("#data_muathe_history").empty().html('');
+                    $("#data_muathe_history").empty().html(html);
+                }
+
+
 
             },
             error: function (data) {
 
             },
             complete: function (data) {
-                $("#data_muathe_history").show();
-                $(".load_spinner").hide();
+
 
             }
         });

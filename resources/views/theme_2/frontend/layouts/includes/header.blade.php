@@ -14,7 +14,7 @@
                 </ul>
             </div><!-- END Site Header Nav -->
             <div class="site-header-right d-flex ms-auto">
-                <ul class="nav header-right-nav align-items-center">
+                <ul class="nav header-right-nav align-items-center" style="z-index: 999">
                     <li class="nav-item item-deposit d-none d-md-inline-block">
                         <a href="/nap-the" class="nav-link rounded-x ps-4 px-4"><strong>Nạp thẻ ngay <i class="las la-angle-right"></i></strong></a>
                     </li>
@@ -51,9 +51,12 @@
                                 }
                             </style>
                             <a class="dropdown-item" href="/thong-tin"><i class="las la-user icon"></i>Hồ sơ cá nhân</a>
-                            <a class="dropdown-item" href="/thong-tin?log=transaction-history"><i class="las la-clock icon"></i>Lịch sử giao dịch</a>
-                            <a class="dropdown-item" href="/thong-tin?log=deposit-history"><i class="las la-credit-card icon"></i>Lịch sử nạp thẻ</a>
-                            <a class="dropdown-item" href="/thong-tin?log=store-card"><i class="las la-credit-card icon"></i>Thẻ cào đã mua</a>
+                            <a class="dropdown-item" href="/lich-su-giao-dich"><i class="las la-clock icon"></i>Lịch sử giao dịch</a>
+                            <a class="dropdown-item" href="/lich-su-nap-the"><i class="las la-credit-card icon"></i>Lịch sử nạp thẻ</a>
+                            <a class="dropdown-item" href="/the-cao-da-mua"><i class="las la-credit-card icon"></i>Thẻ cào đã mua</a>
+                            <a class="dropdown-item" href="/lich-su-atm-tu-dong"><i class="las la-credit-card icon"></i>Lịch sử nạp ATM</a>
+                            <a class="dropdown-item" href="/dich-vu-da-mua"><i class="las la-credit-card icon"></i>Dịch vụ đã mua</a>
+                            <a class="dropdown-item" href="/lich-su-mua-account"><i class="las la-credit-card icon"></i>Lịch sử mua acc</a>
 
                             <a class="dropdown-item" href="/login" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="las la-sign-out-alt icon"></i>Đăng xuất</a>
                         </div>
@@ -61,7 +64,7 @@
                     <li class="nav-item item-menu d-lg-none ms-2">
                         <a href="#" class="nav-link"><i class="las la-bars"></i></a>
                     </li>
-                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
+                    <form id="logout-form" action="{{ url('/ajax/logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
                 </ul>

@@ -16,7 +16,7 @@ class Helpers
 
     public static function formatDateTime($date){
 
-        return \Carbon\Carbon::parse($date)->format('d/m/Y H:s');
+        return \Carbon\Carbon::parse($date)->format('d/m/Y H:i:s');
     }
 
     public static function formatDate($date){
@@ -49,9 +49,14 @@ class Helpers
         return ['q','s','e','r','t','y','u','i','o','p'];
     }
 
-    public static function encodeItemID($id){
+    static function encodeItemID($id, $shop_id = 0){
         $num_str = ['q','s','e','r','t','y','u','i','o','p'];
-        $shop_id = session('shop_id')??0;
+        if (!$shop_id) {
+            $shop_id = config('etc.shop_id')??0;
+            if (session('shop_id')) {
+                $shop_id = session('shop_id');
+            }
+        }
         $alpha_id = '';
         foreach (str_split($shop_id) as $i) {
             $alpha_id .= self::encoder_num_str()[intval($i)];
@@ -59,7 +64,7 @@ class Helpers
         return strtoupper($alpha_id).($id+$shop_id*2);
     }
 
-    public static function decodeItemID($str){
+    static function decodeItemID($str){
         $str = strtolower($str);
         $shop_id = '';
         $alpha = '';
@@ -159,4 +164,22 @@ class Helpers
 
     }
 
+    public static function Encrypt($string,$secret_key="") {
+        $output = "";
+
+        $encrypt_method = "AES-256-CBC";
+        if($secret_key==null ||$secret_key==""){
+            $secret_key = 'keymahoa';
+        }
+        $secret_iv = 'hash';
+
+        // hash
+        $key = hash('sha256', $secret_key);
+
+        // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+        $iv = substr(hash('sha256', $secret_iv), 0, 16);
+        $output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
+        $output = base64_encode($output);
+        return $output;
+    }
 }

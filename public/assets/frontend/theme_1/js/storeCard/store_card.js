@@ -3,68 +3,90 @@ $(document).ready(function(){
     function formatNumber(num) {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
     }
-    function getTelecom (){
-        const url = '/store-card/get-telecom';
-        $.ajax({
-            type: "GET",
-            url: url,
-            beforeSend: function (xhr) {
-            },
-            success: function (data) {
-                if(data.status == 1){
-                    let html = '';
-                    if(data.data.length > 0){
-                        $.each(data.data,function(key,value){
-                            html += '<option value="'+value.key+'">'+value.key+'</option>';
-                        });
-                    }
-                    $('select#telecom_storecard').html(html)
-                    ele = $('select#telecom_storecard option').first();
 
-                    var telecom = ele.val();
-                    getAmount(telecom);
-                    $("#buy_telecom_key").on('change', function () {
-                        getAmount(telecom);
+    // function getTelecom (){
+    //     const url = '/store-card/get-telecom';
+    //     $.ajax({
+    //         type: "GET",
+    //         url: url,
+    //         beforeSend: function (xhr) {
+    //         },
+    //         success: function (data) {
+    //             if(data.status == 1){
+    //                 let html = '';
+    //                 if(data.data.length > 0){
+    //                     $.each(data.data,function(key,value){
+    //                         html += '<option value="'+value.key+'">'+value.key+'</option>';
+    //                     });
+    //                 }
+    //                 $('select#telecom_storecard').html(html)
+    //                 ele = $('select#telecom_storecard option').first();
+    //
+    //                 var telecom = ele.val();
+    //                 getAmount(telecom);
+    //                 $("#buy_telecom_key").on('change', function () {
+    //                     getAmount(telecom);
+    //
+    //                 });
+    //
+    //                 $("#buy_amount").on('change', function () {
+    //                     UpdatePrice();
+    //                 });
+    //
+    //                 $("#quantity").on('change', function () {
+    //                     UpdatePrice();
+    //                 });
+    //                 $('#loading-data').remove();
+    //                 $('#loading-data-total').remove();
+    //                 $('#loading-data-pay').remove();
+    //                 $('#formStoreCard').removeClass('hide');
+    //                 $('#StoreCardTotal').removeClass('hide');
+    //                 $('#StoreCardPay').removeClass('hide');
+    //             }
+    //             else{
+    //                 swal({
+    //                     title: "Có lỗi xảy ra !",
+    //                     text: data.message,
+    //                     icon: "error",
+    //                     buttons: {
+    //                         cancel: "Đóng",
+    //                     },
+    //                 })
+    //             }
+    //         },
+    //         error: function (data) {
+    //             alert('Có lỗi phát sinh, vui lòng liên hệ QTV để kịp thời xử lý!')
+    //             return;
+    //         },
+    //         complete: function (data) {
+    //
+    //         }
+    //     });
+    // }
 
-                    });
+    ele = $('select#telecom_storecard option').first();
+    var telecom = ele.val();
+    getAmount(telecom);
+    $("#buy_telecom_key").on('change', function () {
+        getAmount(telecom);
 
-                    $("#buy_amount").on('change', function () {
-                        UpdatePrice();
-                    });
+    });
 
-                    $("#quantity").on('change', function () {
-                        UpdatePrice();
-                    });
-                    $('#loading-data').remove();
-                    $('#loading-data-total').remove();
-                    $('#loading-data-pay').remove();
-                    $('#formStoreCard').removeClass('hide');
-                    $('#StoreCardTotal').removeClass('hide');
-                    $('#StoreCardPay').removeClass('hide');
-                }
-                else{
-                    swal({
-                        title: "Có lỗi xảy ra !",
-                        text: data.message,
-                        icon: "error",
-                        buttons: {
-                            cancel: "Đóng",
-                        },
-                    })
-                }
-            },
-            error: function (data) {
-                alert('Có lỗi phát sinh, vui lòng liên hệ QTV để kịp thời xử lý!')
-                return;
-            },
-            complete: function (data) {
+    $("#buy_amount").on('change', function () {
+        UpdatePrice();
+    });
 
-            }
-        });
-    }
-
+    $("#quantity").on('change', function () {
+        UpdatePrice();
+    });
+    // $('#loading-data').remove();
+    $('#loading-data-total').remove();
+    $('#loading-data-pay').remove();
+    // $('#formStoreCard').removeClass('hide');
+    $('#StoreCardTotal').removeClass('hide');
+    $('#StoreCardPay').removeClass('hide');
     function getAmount(telecom){
-        var url = '/store-card/get-amount';
+        var url = '/ajax/store-card/get-amount';
         $.ajax({
             type: "GET",
             url: url,
@@ -89,25 +111,19 @@ $(document).ready(function(){
                     UpdatePrice();
                 }
                 else{
-                    swal({
-                        title: "Có lỗi xảy ra !",
-                        text: data.message,
-                        icon: "error",
-                        buttons: {
-                            cancel: "Đóng",
-                        },
-                    })
+                    // swal({
+                    //     title: "Có lỗi xảy ra !",
+                    //     text: data.message,
+                    //     icon: "error",
+                    //     buttons: {
+                    //         cancel: "Đóng",
+                    //     },
+                    // })
                 }
             },
             error: function (data) {
-                swal({
-                    title: "Lỗi !",
-                    text: "Có lỗi phát sinh vui lòng liên hệ QTV để kịp thời xử lý.",
-                    icon: "error",
-                    buttons: {
-                        cancel: "Đóng",
-                    },
-                })
+                console.log('Có lỗi phát sinh vui lòng liên hệ QTV để kịp thời xử lý.(mua thẻ (getAmount))')
+
             },
             complete: function (data) {
 
@@ -118,11 +134,11 @@ $(document).ready(function(){
         var telecom = $(this).val();
         getAmount(telecom)
     });
-    getTelecom();
-    $("#telecom_storecard").on('change', function () {
-        GetAmount();
-
-    });
+    // getTelecom();
+    // $("#telecom_storecard").on('change', function () {
+    //     getAmount();
+    //
+    // });
 
     $("#amount_storecard").on('change', function () {
         UpdatePrice();
@@ -143,9 +159,6 @@ $(document).ready(function(){
             $('#txtPrice').removeClass().addClass('bounceIn animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                 $(this).removeClass();
             });
-            console.log('amount:'+amount);
-            console.log('ratio:'+ratio);
-            console.log('quantity:'+quantity);
             return;
         }
         if(ratio<=0 || ratio=="" || ratio==null){
@@ -155,7 +168,6 @@ $(document).ready(function(){
         var total=(amount-sale) *quantity;
         // var total=sale*quantity;
         var totalnotsale = amount*quantity
-        console.log(sale)
         if(sale != 0){
             $('#txtPrice').html('Tổng: ' + total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ' VNĐ');
             $('#txtPrice').removeClass().addClass('bounceIn animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
@@ -185,7 +197,7 @@ $(document).ready(function(){
         toastr.success('Đã sao chép: '+ data);
     })
 
-    $('#form-storeCard').submit(function (e) {
+    $('#form-storecard').submit(function (e) {
         e.preventDefault();
         $('#homealert').modal("show");
         var formSubmit = $(this);
@@ -212,22 +224,23 @@ $(document).ready(function(){
                         })
                         $('#success_storecard').modal("show");
                         let html = '';
-                        if(data.data.length > 0){
-                            $.each(data.data,function(key,value){
-                                html+='<div class="col-md-4 p-2">'
+                        if(data.data.data_card.length > 0){
+                            $.each(data.data.data_card,function(key,value){
+
+                                html+='<div class="col-12 col-md-4 p-2">'
                                 html+='<div class="alert alert-info">'
-                                html+='<p>Mã thẻ'+key+' </p>'
+                                html+='<p>Mã thẻ '+key+' </p>'
                                 html+='<div class="success_storecard_pin">'
                                 html+='<p>Mã thẻ <br>'
                                 html+='<span>'+value.pin+'</span>'
                                 html+='</p>'
-                                html+='<b><i style="cursor: pointer" class="fa fa-copy copyData" data-copy="'+value.pin+'" aria-hidden="true"></i></b>'
+                                html+='<b class="mt-4"><i style="cursor: pointer" class="fa fa-copy copyData" data-copy="'+value.pin+'" aria-hidden="true"></i></b>'
                                 html+='</div>'
                                 html+='<div class="success_storecard_serial">'
                                 html+='<p>Serial  <br>'
                                 html+='<span>'+value.serial+'</span>'
                                 html+='</p>'
-                                html+='<b><i style="cursor: pointer" class="fa fa-copy copyData" data-copy="'+value.serial+'" aria-hidden="true"></i></b>'
+                                html+='<b class="mt-4"><i style="cursor: pointer" class="fa fa-copy copyData" data-copy="'+value.serial+'" aria-hidden="true"></i></b>'
                                 html+='</div>'
                                 html+='</div>'
                                 html+='</div>'

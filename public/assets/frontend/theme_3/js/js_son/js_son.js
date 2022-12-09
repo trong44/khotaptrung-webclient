@@ -9,6 +9,7 @@ $(document).ready(function (e) {
             openHamburgerBar = true;
         }
     });
+
     $('.close-profile-sidebar').click(function (e) {
         if (openHamburgerBar) {
             e.preventDefault();

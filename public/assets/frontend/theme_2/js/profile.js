@@ -21,7 +21,7 @@ $(document).ready(function(){
                 }
                 if(data.status == true){
                     $('#info_create').html('Id: '+data.info.id)
-                    $('#info_name').html(data.info.username +'<i class="las la-check-circle text-success"></i>')
+                    $('#info_name').html(data.info.fullname??data.info.username +'<i class="las la-check-circle text-success"></i>')
                     $('#info_phone').val(data.info.id);
                     // $('#info_balance').html('<span>'+data.info.balance+'</span>')
                     // $('#info_balance').html('<span><i class="text-danger">'+formatNumber(data.info.balance)+'</i></span>')

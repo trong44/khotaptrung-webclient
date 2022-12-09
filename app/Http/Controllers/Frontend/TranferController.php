@@ -16,21 +16,39 @@ class TranferController extends Controller
 {
     public function index(Request $request)
     {
-        Session::forget('return_url');
-        Session::put('return_url', $_SERVER['REQUEST_URI']);
-        return view('frontend.pages.transfer.index');
+        $url = '/deposit-auto/get-telecom';
+        $method = "GET";
+        $dataSend = array();
+        $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+        $data = $result_Api->response_data??null;
+
+        if (theme('')->theme_key == 'theme_1' || theme('')->theme_key == 'theme_4' || theme('')->theme_key == 'theme_card_1' || theme('')->theme_key == 'theme_card_2' || theme('')->theme_key == 'theme_dup'){
+            return view(''.theme('')->theme_key.'.frontend.pages.transfer.index');
+        }else{
+            return view(''.theme('')->theme_key.'.frontend.pages.charge.index',['data'=>$data->data??null]);
+        }
+
 
     }
+
     public function getIdCode(Request $request)
     {
-
+        Session::push('url_return.id_return','1');
         try {
+            $jwt = Session::get('jwt');
+            if(empty($jwt)){
+                return response()->json([
+                    'status' => 0,
+                ]);
+            }
             $url = '/transfer/get-code';
             $method = "GET";
             $dataSend = array();
             $dataSend['token'] = session()->get('jwt');
             $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+
             $data = $result_Api->response_data??null;
+
 
             if(isset($data) && $data->status == 1){
                 return response()->json([
@@ -75,6 +93,7 @@ class TranferController extends Controller
             $sendData['page'] = $page;
 
             $result_Api = DirectAPI::_makeRequest($url, $sendData, $method);
+
             $response_data = $result_Api->response_data??null;
 
             if(isset($response_data) && $response_data->status == 1){
@@ -83,13 +102,20 @@ class TranferController extends Controller
 
                 $data = new LengthAwarePaginator($data->data, $data->total, $data->per_page, $page, $data->data);
 
-                $html =  view('frontend.pages.transfer.widget.__tranfer_history')
+                $html =  view(''.theme('')->theme_key.'.frontend.pages.transfer.widget.__tranfer_history')
                     ->with('data', $data)->render();
 
                 if (count($data) == 0 && $page == 1){
                     return response()->json([
                         'status' => 0,
-                        'message' => 'Hiện tại không có dữ liệu nào phù hợp với yêu cầu của bạn! Hệ thống cập nhật nick thường xuyên bạn vui lòng theo dõi web trong thời gian tới !',
+                        'message' => 'Hiện tại không có giao dịch nào !',
+                    ]);
+                }
+
+                if ($page > $data->lastPage()) {
+                    return response()->json([
+                        'status' => 404,
+                        'message'=>'Trang này không tồn tại',
                     ]);
                 }
 
@@ -108,45 +134,53 @@ class TranferController extends Controller
         }
     }
 
-//    public function getBankData(Request $request)
-//    {
-//        if ($request->ajax() && AuthCustom::check()) {
-//            try{
-//                $page = $request->page;
-//                $urlhistory = '/transfer/history';
-//
-//                $method = "GET";
-//                $val = array();
-//                $jwt = Session::get('jwt');
-//                if(empty($jwt)){
-//                    return response()->json([
-//                        'status' => "LOGIN"
-//                    ]);
-//                }
-//                $val['token'] =$jwt;
-//                $val['page'] = $page;
-//
-//                $result_ApiHistory = DirectAPI::_makeRequest($urlhistory,$val,$method);
-//
-//                if (isset($result_ApiHistory)== 200 && $result_ApiHistory->httpcode == 200) {
-//
-//                    $data = $result_ApiHistory->data;
-//
-//                    if (isEmpty($data->data)){
-//                        $data = new LengthAwarePaginator($data->data,$data->total,$data->per_page,$page,$data->data);
-//                    }
-//
-//                    return view('frontend.pages.account.user.function.__pay_atm', compact('data'));
-//                } else {
-//                    return redirect()->back()->withErrors('Có lỗi phát sinh.Xin vui lòng thử lại !');
-//                }
-//            }
-//            catch(\Exception $e){
-//                Log::error($e);
-//                return redirect()->back()->withErrors('Có lỗi phát sinh.Xin vui lòng thử lại !');
-//            }
+    public function logsDetail(Request $request,$id){
+
+        $url = '/transfer/history/'.$id;
+
+        $method = "GET";
+        $val = array();
+//        $jwt = Session::get('jwt');
+//        if (empty($jwt)) {
+//            return response()->json([
+//                'status' => "LOGIN"
+//            ]);
 //        }
-//    }
+
+        $result_Api = DirectAPI::_makeRequest($url, $val, $method);
+        $response_data = $result_Api->response_data??null;
+
+        if(isset($response_data) && $response_data->status == 1) {
+
+            $data = $response_data->data;
+
+            return view(''.theme('')->theme_key.'.frontend.pages.transfer.logsdetail')->with('data', $data);
+
+        }else{
+            return response()->json([
+                'status' => 0,
+                'message'=>$response_data->message??"Không thể lấy dữ liệu"
+            ]);
+        }
+
+
+    }
+
+    public function logs(Request $request)
+    {
+        try {
+
+            return view(''.theme('')->theme_key.'.frontend.pages.transfer.logs');
+
+        }   catch(\Exception $e){
+            Log::error($e);
+            return response()->json([
+                'status' => 0,
+                'message' => 'Có lỗi phát sinh ',
+            ]);
+        }
+    }
+
 
 
 }

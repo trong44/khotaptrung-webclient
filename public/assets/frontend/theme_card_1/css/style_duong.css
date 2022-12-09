@@ -1,0 +1,517 @@
+.text-title {
+    font-size: 15px;
+    text-align: center;
+    color: #575757;
+    font-weight: 600;
+}
+.text-account-number{
+    color: #575757;
+}
+/* css chat detail service */
+.chat {
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #434651;
+    background-color: #fefefe;
+}
+.chat .chat-history {
+    padding: 30px 0 20px 30px;
+}
+
+.chat .chat-history ul {
+    overflow-y: scroll;
+    padding-right: 30px;
+    height: 575px;
+}
+
+.chat .chat-message {
+    padding: 30px 30px 0 0;
+
+}
+
+.chat .chat-message textarea {
+    width: 100%;
+    border: 2px solid #dee2e6 !important;
+    outline: 0 none;
+    padding: 10px 20px;
+    font: 14px/22px "Lato", Arial, sans-serif;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    resize: none;
+}
+
+.pill-button {
+    border-radius: 1rem;
+    background-color: #1ab394;
+    border: none;
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    display: inline-block;
+    color: #ffffff;
+}
+
+.chat .chat-history .message-data {
+    margin-bottom: 15px;
+}
+.chat .chat-history .message-data-time {
+    color: #a8aab1;
+    padding-left: 6px;
+}
+.online {
+    color: #86BB71;
+}
+
+.chat .chat-history .my-message {
+    background: #86BB71;
+
+}
+.chat .chat-history .message {
+    color: white;
+    padding: 8px 16px;
+    line-height: 26px;
+    font-size: 14px;
+    border-radius: 7px;
+    margin-bottom: 30px;
+    width: 90%;
+    position: relative;
+}
+.chat .chat-history .message:after {
+    bottom: 100%;
+    left: 7%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #86BB71;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.chat .chat-history ul {
+    overflow-y: scroll;
+    padding-right: 30px;
+    height: 464px;
+}
+
+
+.chat .chat-history ul::-webkit-scrollbar {
+    width: 8px;
+    background-color: #ffffff;
+    border-radius: 100px;
+    border: none;
+}
+.chat .chat-history ul::-webkit-scrollbar-thumb {
+    background-color: #3a3a3c;
+    border: 2px solid #121212;
+    border-radius: 100px;
+    border: none;
+    margin-left: 20px;
+    height: 20px;
+}
+.chat .chat-history .other-message {
+    background: #94C2ED;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.align-right {
+    text-align: right;
+}
+.chat .chat-history .other-message:after {
+    border-bottom-color: #94C2ED;
+    left: 93%;
+}
+
+
+.me {
+    color: #94C2ED;
+}
+
+/* css description detail service */
+.special-text {
+
+    line-height: 1.8;
+    font-size: 15px;
+    padding: 10px 10px;
+    position: relative;
+    max-height: 450px;
+    overflow: hidden;
+    text-align: justify;
+    /* transition: max-height 0.2s ease; */
+    /* background-color: #fff; */
+}
+
+.special-text.-expanded {
+    max-height: unset !important;
+}
+
+.special-text:not(.-expanded)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient( rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) );
+}
+
+
+.special-text-nick {
+
+    line-height: 1.8;
+    font-size: 15px;
+    padding: 10px 10px;
+    position: relative;
+    max-height: 160px;
+    overflow: hidden;
+    text-align: justify;
+    /* transition: max-height 0.2s ease; */
+    /* background-color: #fff; */
+}
+
+.special-text-nick.-expanded {
+    max-height: unset !important;
+}
+
+.special-text-nick:not(.-expanded)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient( rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) );
+}
+
+.expand-button {
+    cursor: pointer;
+    display: block;
+    width: 20%;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgb(238, 70, 35) !important;
+    border-radius: 3px;
+    background-color: #fff;
+    color: rgb(238, 70, 35) !important;
+    font-size: 13px;
+    padding: 0.5rem;
+    border: 4px solid darken(darkcyan, 10%);
+}
+
+@media only screen and (max-width: 480px) {
+    .expand-button {
+        width: 50% !important;
+    }
+}
+
+
+/*css dich vu da mua */
+.user-manager {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.user-manager .site-menu {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    margin-bottom: 15px;
+}
+.user-manager .site-form{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+
+}
+
+.user-manager .menu-content {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-bottom: 16px;
+}
+
+.user-manager .menu-link {
+
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 15px 1px rgb(137 147 164 / 15%);
+    border-radius: 8px;
+    width: 100% !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(238, 70, 35) !important;
+    cursor: pointer;
+    display: block;
+    padding: 12px 0px;
+}
+
+.user-manager .menu-link ul {
+    list-style-type: none;
+}
+
+
+.user-manager .menu-link .root-left {
+    font-size: 17px;
+    border-left: 3px solid rgb(238, 70, 35) !important;
+    padding: 15px 15px;
+    margin: 0;
+}
+
+.user-manager .menu-link ul li {
+    width: 100% !important;
+    cursor: pointer;
+    padding-left: 15px;
+
+}
+
+.user-manager .menu-link ul li.active, .user-manager .menu-link ul li:hover {
+
+}
+
+.user-manager .menu-link ul li.active a, .user-manager .menu-link ul li:hover a,.user-manager .menu-link ul li a.active {
+    color: rgb(238, 70, 35) !important;
+}
+
+
+.user-manager .menu-link ul li a {
+    width: 100% !important;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    display: block;
+    padding: 15px 15px;
+}
+
+.user-manager .menu-link ul li a i {
+    margin-right: 10px;
+}
+
+
+.user-manager .menu-content {
+
+
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 15px 1px rgba(137, 147, 164, 0.15);
+    border-radius: 8px;
+    min-height: 212.568px;
+}
+
+
+.user-manager .menu-content .title {
+    background: #FFFFFF;
+    border-bottom: 1px solid #cccccc;
+    padding: 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.user-manager .menu-content .title h3 {
+    color: rgb(238, 70, 35) !important;
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 32px;
+    margin-bottom: 0px !important;
+}
+
+
+.user-manager .menu-content .wapper .form-row input#upload {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    background-color: #FFF4E6;
+}
+
+.user-manager .menu-content .wapper .form-row #image_profile {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    float: right;
+    margin-right: 50px;
+}
+
+.user-manager .menu-content .wapper .form-row span.label {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    background: #FFF4E6;
+    cursor: pointer;
+    color: #FF6700;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+
+.user-manager .menu-content .wapper button.btn-submit {
+    border-radius: 2px;
+    background: rgb(238, 70, 35) !important;
+    padding: 8px 90px;
+    margin: 10px 0px;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+
+/*Modal recharge*/
+#rechargeModal .modal-dialog {
+    max-width: 500px;
+    margin: auto;
+}
+
+#rechargeModal .modal-dialog .modal-content {
+    border: none;
+    border-radius: 12px;
+}
+
+#rechargeModal .modal-content .modal-header {
+    padding: 12px 24px;
+    border-bottom: 1px solid #E4E5F0;
+    align-items: center;
+}
+
+#rechargeModal .modal-content .modal-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #3f444a;
+}
+
+#rechargeModal .modal-header .close {
+    all: unset;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background-image: url(../image/svg/close-modal.svg);
+}
+
+#rechargeModal .nav-tabs {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    border: none;
+    height: 48px;
+}
+
+#rechargeModal .nav-tabs .nav-item {
+    display: table-cell;
+    text-align: center;
+}
+
+#rechargeModal .nav-tabs .nav-item .nav-link {
+    color: #82869E;
+    border-bottom: 1px solid #DCDEE9;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#rechargeModal .nav-tabs .nav-item.show .nav-link,
+#rechargeModal .nav-tabs .nav-link.active {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-bottom: 11.5px;
+    border-bottom: 2px solid #32c5d2;
+    font-weight: 700;
+    color: #32c5d2;
+}
+
+#rechargeModal .nav-tabs .nav-link:not(.active):hover {
+    border-color: transparent transparent #DCDEE9 transparent;
+    color: #1B1D29;
+}
+
+#rechargeModal .modal-body {
+    padding: 32px 24px 0;
+}
+
+#rechargeModal .modal-footer {
+    border-top: unset;
+    padding: 24px;
+}
+
+#rechargeModal .nice-select {
+    float: none;
+}
+
+#rechargeModal .nice-select .list {
+    width: 100%;
+}
+
+#rechargeModal .list-card-deno {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -6px;
+    margin-left: -6px;
+}
+
+#rechargeModal .list-card-deno .card-item {
+    width: 25%;
+    padding: 0 6px;
+    margin-bottom: 12px;
+}
+
+#rechargeModal .list-card-deno .card-label {
+    position: relative;
+    display: flex;
+    background-color: #FBFBFD;
+    padding: 16px 8px 48%;
+    border: 1px solid #DCDEE9;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+#rechargeModal .list-card-deno input:checked + .card-label {
+    border-color: #32c5d2;
+}
+#rechargeModal .list-card-deno .card-label span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: #434657;
+}
+#rechargeModal .list-card-deno input:checked + .card-label span {
+    color: #32c5d2;
+}
+/*text*/
+.t-sub-2 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Small Screen */
+#modal-form-charge .modal-body {
+    padding-top: 12px;
+}
+#modal-form-charge [type=submit] {
+    margin: 0;
+}

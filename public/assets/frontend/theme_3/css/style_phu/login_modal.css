@@ -79,7 +79,7 @@
     text-align: center;
 }
 
-.modal-login-form h1 {
+.modal-login-form p {
     color: #1B1D29;;
     font-weight: 700;
     font-size: 24px;
@@ -238,7 +238,7 @@
     transform: translateX(0);
 }
 
-.modal-login-overlay-panel h1 {
+.modal-login-overlay-panel p.modal-login-suggestion {
     margin-bottom: 0.5rem;
     font-weight: 700;
     font-size: 24px;
@@ -261,7 +261,7 @@
     padding: 11px 0;
 }
 
-.modal-login-error {
+.modal-login-form p.modal-login-error {
     color: #DA4343;
     font-weight: 400;
     font-size: 12px;
@@ -407,7 +407,7 @@
         padding: 1rem 1rem 0 1rem;
     }
 
-    .modal-login-form h1 {
+    .modal-login-form p {
         color: #A7ABC3;
         font-weight: 400;
         font-size: 14px;

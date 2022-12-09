@@ -16,9 +16,9 @@
                                     <div class="item_play_dif_slide_img">
                                         <a href="/dich-vu/{{ isset($item->custom->slug) ? $item->custom->slug :  $item->slug }}">
                                             @if(isset($item->image) || isset($item->custom->image))
-                                                <img src="{{\App\Library\MediaHelpers::media(isset($item->custom->image) ? $item->custom->image :  $item->image)}}" alt=""  class="img-fluid swiper-lazy item_play_dif_slide_img_main">
+                                                <img data-original="{{\App\Library\MediaHelpers::media(isset($item->custom->image) ? $item->custom->image :  $item->image)}}" alt=""  class="img-fluid lazy item_play_dif_slide_img_main">
                                             @else
-                                                <img src="/assets/frontend/{{theme('')->theme_key}}/images/fff.jpg" alt=""  class="img-fluid swiper-lazy item_play_dif_slide_img_main">
+                                                <img data-original="/assets/frontend/{{theme('')->theme_key}}/images/fff.jpg" alt=""  class="img-fluid lazy item_play_dif_slide_img_main">
                                             @endif
                                         </a>
                                     </div>

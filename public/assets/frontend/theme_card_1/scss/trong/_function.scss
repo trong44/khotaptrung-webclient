@@ -1,0 +1,3 @@
+@function calc_ratio ($width:50,$height:50){
+    @return $height/$width*100*1%
+}

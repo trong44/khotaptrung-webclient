@@ -894,7 +894,7 @@ input[type="checkbox"]:checked + label::after, input[type=radio]:checked + label
     color: #ffffff;
 }
 tr.selected td {
-    background: #dcdcdc !important;
+    /*background: #dcdcdc !important;*/
 }
 
 

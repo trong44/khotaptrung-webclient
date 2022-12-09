@@ -1,164 +1,61 @@
-@if(empty($data->data))
+@extends('frontend.layouts.master')
+@section('seo_head')
+    @include('frontend.widget.__seo_head')
+    <meta name="robots" content="noindex,nofollow" />
+@endsection
+@push('js')
 
-    <div class="table-responsive">
-        <table cellspacing="0" cellpadding="0" class="table table-hover">
-            <thead>
-            <tr>
-                <th class="text-secondary">Thời gian</th>
-                <th class="text-secondary">Nhà mạng</th>
-                <th class="text-secondary">Mã thẻ</th>
-                <th class="text-secondary">serial</th>
-                <th class="text-secondary">Mệnh giá</th>
-                <th class="text-secondary">Kết quả</th>
-                <th class="text-secondary">Thực nhận</th>
-            </tr>
-            </thead>
-            <tbody>
-            @if(isset($data) && count($data) > 0)
-                @php
-                    $prev = null;
-                @endphp
+@endpush
 
-                @foreach ($data as $key => $item)
-                    @php
-                        $curr = \App\Library\Helpers::formatDate($item->created_at);
-                    @endphp
-                    @if($curr != $prev)
-                        <tr>
-                            <td colspan="8"><b>Ngày {{$curr}}</b></td>
-                        </tr>
-                        <tr>
-                            <td>{{ formatDateTime($item->created_at) }}</td>
-                            <td>{{ $item->telecom_key }}</td>
-                            <td>
-                                @if(isset($arrpin) && count($arrpin))
-                                    {{ $arrpin[$key] }}
-                                @endif
-                            </td>
-                            <td>
-                                @if(isset($item->serial))
-                                    {{ $item->serial }}
-                                @endif
-                                {{--                            @if(isset($arrserial) && count($arrserial))--}}
-                                {{--                            {{ $arrserial[$key] }}--}}
-                                {{--                            @endif--}}
-                            </td>
-                            <td>{{ formatPrice((int)$item->declare_amount) }} đ</td>
-                            <td>
-                                @if($item->status == 1)
-                                    <b class=" text-primary">{{config('module.charge.status.1')}}</b>
-                                @elseif($item->status == 0)
-                                    <b class="text-danger">{{config('module.charge.status.0')}}</b>
-                                @elseif($item->status == 3)
-                                    <b class="text-danger">{{config('module.charge.status.3')}}</b>
-                                @elseif($item->status == 2)
-                                    <b class="text-warning">{{config('module.charge.status.2')}}</b>
-                                @elseif($item->status == 999)
-                                    <b class="text-danger">{{config('module.charge.status.999')}}</b>
-                                @elseif($item->status == -999)
-                                    <b class="text-danger">{{config('module.charge.status.-999')}}</b>
-                                @elseif($item->status == -1)
-                                    <b class="text-danger">{{config('module.charge.status.-1')}}</b>
-                                @endif
-                            </td>
-                            <td>
-                                @if(isset($item->real_received_amount))
-                                    <span class="c-font-bold text-info"> {{ formatPrice($item->real_received_amount) }}</span>
-
-                                @else
-                                    <span class="c-font-bold text-info"> 0</span>
-
-                                @endif
-                            </td>
-                        </tr>
-                        @php
-                            $prev = $curr;
-                        @endphp
-                    @else
-                        <tr>
-                            <td>{{ formatDateTime($item->created_at) }}</td>
-                            <td>{{ $item->telecom_key }}</td>
-                            <td>
-                                @if(isset($arrpin) && count($arrpin))
-                                    {{ $arrpin[$key] }}
-                                @endif
-                            </td>
-                            <td>
-                                @if(isset($item->serial))
-                                    {{ $item->serial }}
-                                @endif
-                                {{--                            @if(isset($arrserial) && count($arrserial))--}}
-                                {{--                            {{ $arrserial[$key] }}--}}
-                                {{--                            @endif--}}
-                            </td>
-                            <td>{{ formatPrice($item->declare_amount) }}</td>
-                            <td>
-                                @if($item->status == 1)
-                                    <b class="text-primary">{{config('module.charge.status.1')}}</b>
-                                @elseif($item->status == 0)
-                                    <b class="text-danger">{{config('module.charge.status.0')}}</b>
-                                @elseif($item->status == 3)
-                                    <b class="text-danger">{{config('module.charge.status.3')}}</b>
-                                @elseif($item->status == 2)
-                                    <b class="text-warning">{{config('module.charge.status.2')}}</b>
-                                @elseif($item->status == 999)
-                                    <b class="text-danger">{{config('module.charge.status.999')}}</b>
-                                @elseif($item->status == -999)
-                                    <b class="text-danger">{{config('module.charge.status.-999')}}</b>
-                                @elseif($item->status == -1)
-                                    <b class="text-danger">{{config('module.charge.status.-1')}}</b>
-                                @endif
-                            </td>
-                            <td>
-                                @if(isset($item->real_received_amount))
-                                    <span class="c-font-bold text-info"> {{ formatPrice($item->real_received_amount) }}</span>
-                                @else
-                                    <span class="c-font-bold text-info"> 0</span>
-                                @endif
-                            </td>
-                        </tr>
-                    @endif
-
-                @endforeach
-            @else
-                <tr>
-                    <td colspan="8">
-                        <span style="color: red;font-size: 16px;">Không có dữ liệu!</span>
-                    </td>
-                </tr>
-            @endif
-
-            </tbody>
-        </table>
-    </div>
-
-@endif
-<div class="row">
-    <div class="col-md-12 left-right justify-content-end">
-        <div class="d-flex justify-content-between align-items-md-center flex-column flex-md-row mt-2  pt-3">
-            <div class="text-secondary mb-2">
-                @if(isset($total) && isset($per_page))
-                    Hiển thị {{ $per_page }} / {{ $total }} kết quả
-                @endif
-            </div>
-
-
-            <nav class="page-pagination mb-2 paginate__v1_index_lsnt paginate__v1_mobie frontend__panigate">
-                @if(isset($data))
-                    @if($data->total()>1)
-                        <div class="row marinautooo paginate__history paginate__history__fix justify-content-end">
-                            <div class="col-auto paginate__category__col">
-                                <div class="data_paginate paging_bootstrap paginations_custom" style="text-align: center">
-                                    {{ $data->appends(request()->query())->links('pagination::bootstrap-4') }}
+@section('content')
+    <div class="site-content-body bg-white first last p-0">
+        <div class="block-profile" >
+            @include('frontend.widget.__menu_profile')
+            <div class="block-content p-3">
+                <div class="tab-content mb-4">
+                    <div class="data__napthe_tab" id="deposit"  style="min-height: 700px;">
+                        <form class="form-charge form__lsnt">
+                            <div class="d-flex justify-content-between align-items-md-center flex-column flex-md-row">
+                                <h4 class="title-style-left mb-3">Lịch sử nạp thẻ</h4>
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="input-group date-ranger-picker ms-3">
+                                        <input type="text" name="started_at" class="form-control input-group-addon border-end-0 started_at" placeholder="DD/MM/YYYY" value="" autocomplete="off">
+                                        <span class="input-group-text bg-transparent text-secondary"><i class="las la-arrow-right"></i></span>
+                                        <input type="text" name="ended_at" class="form-control input-group-addon           border-start-0 ended_at" placeholder="DD/MM/YYYY" value="" autocomplete="off">
+                                        <button class="btn bg-primary text-white" type="submit"><i class="las la-angle-right"></i></button>
+                                    </div>
                                 </div>
                             </div>
+                        </form>
+
+                        <div id="data_charge_history">
+                            <div class="text-center ajax-loading-store load_spinner ajax-loading-data">
+                                <div class="cv-spinner">
+                                    <span class="spinner"></span>
+                                </div>
+                            </div>
+                            @include('frontend.pages.charge.widget.__charge_history')
                         </div>
-                    @endif
-                @endif
-            </nav>
+
+                    </div><!-- END Tab Content History -->
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <div id="copy"></div>
+    <div class="after"></div>
 
 
-0
+
+    {{--    charge--}}
+    <input type="hidden" name="started_at_lsnt_data" class="started_at_data_lsnt" value="">
+    <input type="hidden" name="ended_at_lsnt_data" class="ended_at_data_lsnt" value="">
+    <input type="hidden" name="hidden_page_service_lsnt" id="hidden_page_service_lsnt" class="hidden_page_service_lsnt" value="1" />
+
+    <script src="/assets/frontend/theme_2/js/account/charge-history.js?v={{time()}}"></script>
+
+
+
+
+@endsection
+

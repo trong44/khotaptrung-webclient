@@ -1,145 +1,142 @@
 $(document).ready(function(){
     const csrf_token = $('meta[name="csrf-token"]').attr('content');
     const token =  $('meta[name="jwt"]').attr('content');
-    let page = $('#hidden_page_service_txns').val();
-    $(document).on('click', '.paginate__v1_index_txns .pagination a',function(event){
-        event.preventDefault();
+    let page = $('#hidden_page_service').val();
 
+    $('body').on('click', '.paginate__v1 .pagination a',function(event){
+        event.preventDefault();
 
         var page = $(this).attr('href').split('page=')[1];
 
-        $('#hidden_page_service_txns').val(page);
+        $('#hidden_page_service').val(page);
+
+
+        let html_loading = '';
+        html_loading += '<div class="text-center ajax-loading-store load_spinner ajax-loading-data" >';
+        html_loading += '<div class="cv-spinner">';
+        html_loading += '<span class="spinner"></span>';
+        html_loading += '</div>';
+        html_loading += '</div>';
+        $('.data-card').show()
+
+        $("#data_lich__su_history").empty().html('');
+        $("#data_lich__su_history").empty().html(html_loading);
 
         $('li').removeClass('active');
         $(this).parent().addClass('active');
-
         var id_txns_data = $('.id_txns_data').val();
-        var started_at_txns_data = $('.started_at_txns_data').val();
-        var ended_at_txns_data = $('.ended_at_txns_data').val();
+        var started_at_data = $('.started_at_data').val();
+        var ended_at_data = $('.ended_at_data').val();
 
-        loadDataAccountList(page,id_txns_data,started_at_txns_data,ended_at_txns_data)
+        loadDataAccountList(page,id_txns_data,started_at_data,ended_at_data)
     });
 
-    $(document).on('submit', '.form__txns', function(e){
+    $(document).on('submit', '.form-charge__accounttxns', function(e){
         e.preventDefault();
 
-        var id_txns = $('.id_txns').val();
-        var started_at_txns = $('.started_at_txns').val();
-        var ended_at_txns = $('.ended_at_txns').val();
+        let html_loading = '';
+        html_loading += '<div class="text-center ajax-loading-store load_spinner" >';
+        html_loading += '<div class="cv-spinner">';
+        html_loading += '<span class="spinner"></span>';
+        html_loading += '</div>';
+        html_loading += '</div>';
+        $('.data-card').show()
 
-        if (started_at_txns == null || started_at_txns == undefined || started_at_txns == ''){
-            $('.started_at_txns_data').val('');
+        $("#data_lich__su_history").empty().html('');
+        $("#data_lich__su_history").empty().html(html_loading);
+
+        var id = $('.id_txns_data').val();
+        var started_at = $('.started_at').val();
+        var ended_at = $('.ended_at').val();
+
+        if (started_at == null || started_at == undefined || started_at == ''){
+            $('.started_at_data').val('');
         }else {
-            $('.started_at_txns_data').val(started_at_txns);
+            $('.started_at_data').val(started_at);
         }
 
-        if (ended_at_txns == null || ended_at_txns == undefined || ended_at_txns == ''){
-            $('.ended_at_txns_data').val('');
+        if (ended_at == null || ended_at == undefined || ended_at == ''){
+            $('.ended_at_data').val('');
         }else {
-            $('.ended_at_txns_data').val(ended_at_txns);
+            $('.ended_at_data').val(ended_at);
         }
 
-        if (id_txns == null || id_txns == undefined || id_txns == ''){
+        if (id == null || id == undefined || id == ''){
             $('.id_txns_data').val('');
         }else {
-            $('.id_txns_data').val(id_txns);
+            $('.id_txns_data').val(id);
         }
 
+
         var id_txns_data = $('.id_txns_data').val();
 
-        var started_at_txns_data = $('.started_at_txns_data').val();
-        var ended_at_txns_data = $('.ended_at_txns_data').val();
-        var page = 1;
+        var started_at_data = $('.started_at_data').val();
+        var ended_at_data = $('.ended_at_data').val();
+        var page = $('#hidden_page_service').val();
 
-        loadDataAccountList(page,id_txns_data,started_at_txns_data,ended_at_txns_data)
+
+        loadDataAccountList(page,id_txns_data,started_at_data,ended_at_data)
 
     });
 
-    $('body').on('click','.data__giaodich',function(e){
-        e.preventDefault();
-        $('.id_txns_data').val('');
-        $('.started_at_txns_data').val('');
-        $('.ended_at_txns_data').val('');
-
-        var id_txns_data = $('.id_txns_data').val();
-        var started_at_txns_data = $('.started_at_txns_data').val();
-        var ended_at_txns_data = $('.ended_at_txns_data').val();
-        var page = $('#hidden_page_service_txns').val();
 
 
-        loadDataAccountList(page,id_txns_data,started_at_txns_data,ended_at_txns_data)
+    loadDataAccountList()
 
-    });
-    var loc = window.location.search;
-    if(loc.replace('?log=','') == 'transaction-history'){
-        $('.nav-link').removeClass('active');
-        $('.tab-pane').removeClass('active');
-        $('.tab-pane').removeClass('show');
-        $('.data__giaodich').addClass('active');
-        $('.data__giaodich').addClass('show');
-        $('.data__giaodich_tab').addClass('active');
-        $('.data__giaodich_tab').addClass('show');
-        $('.id_txns_data').val('');
-        $('.started_at_txns_data').val('');
-        $('.ended_at_txns_data').val('');
-
-        var id_txns_data = $('.id_txns_data').val();
-        var started_at_txns_data = $('.started_at_txns_data').val();
-        var ended_at_txns_data = $('.ended_at_txns_data').val();
-        let page = $('#hidden_page_service_txns').val();
-
-        loadDataAccountList(page,id_txns_data,started_at_txns_data,ended_at_txns_data)
-    }
-
-
-    $('body').on('click','.button__txns',function(e){
-        e.preventDefault();
-        $('.id_txns_data').val('');
-        $('.started_at_txns_data').val('');
-        $('.ended_at_txns_data').val('');
-
-        var id_txns_data = $('.id_txns_data').val();
-        var started_at_txns_data = $('.started_at_txns_data').val();
-        var ended_at_txns_data = $('.ended_at_txns_data').val();
-        var page = $('#hidden_page_service_txns').val();
-
-        loadDataAccountList(page,id_txns_data,started_at_txns_data,ended_at_txns_data)
-
-    });
-
-    function loadDataAccountList(page,id_txns_data,started_at_txns_data,ended_at_txns_data) {
+    function loadDataAccountList(page,config_data,status_data,started_at_data,ended_at_data,sort_by_data) {
         if (page == null || page == '' || page == undefined){
             page = 1;
         }
         request = $.ajax({
             type: 'GET',
-            url: '/lich-su-giao-dich-tich-hop',
+            url: '/lich-su-giao-dich',
             data: {
                 page:page,
-                id:id_txns_data,
-                started_at:started_at_txns_data,
-                ended_at:ended_at_txns_data,
+                config:config_data,
+                status:status_data,
+                started_at:started_at_data,
+                ended_at:ended_at_data,
+                sort_by:sort_by_data,
             },
             beforeSend: function (xhr) {
-                $(".load_spinner").show();
-                $("#data_lich__su_history").hide();
+
             },
             success: (data) => {
-                $(".load_spinner").hide();
-                $("#data_lich__su_history").show();
-                $("#data_lich__su_history").empty().html('');
-                $("#data_lich__su_history").empty().html(data);
+
+                $('.loading-data__timkiem').html('');
+
+                if (data.status == 1){
+
+
+                    $("#data_lich__su_history").empty().html('');
+                    $("#data_lich__su_history").empty().html(data.data);
+
+                    // $(".booking_detail")[0].scrollIntoView();
+
+                }else if (data.status == 0){
+                    var html = '';
+                    html += '<div class="table-responsive">';
+                    html += '<table class="table table-hover table-custom-res">';
+                    html += '<thead><tr><th>Thời gian</th><th>ID</th><th>Tài khoản </th><th>Giao dịch</th><th>Số tiền</th><th>Số dư cuối</th><th>Nội dung</th><th>Trạng thái</th></tr></thead>';
+                    html += '<tbody>';
+                    html += '<tr><td colspan="8"><span style="color: red;font-size: 16px;">' + data.message + '</span></td></tr>';
+                    html += '</tbody>';
+                    html += '</table>';
+                    html += '</div>';
+
+                    $("#data_lich__su_history").empty().html('');
+                    $("#data_lich__su_history").empty().html(html);
+
+                }
+                $('.data-card').show()
+
             },
             error: function (data) {
 
             },
             complete: function (data) {
 
-                    $("#overlay").fadeOut(100);
-
             }
         });
     }
-
-
 })
