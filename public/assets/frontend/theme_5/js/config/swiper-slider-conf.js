@@ -232,6 +232,96 @@ let swiper_config_related_service = new Swiper('.swiper-related-service',{
     },
 });
 
+let swiper_config_related_service_one = new Swiper('.swiper-related-service-one',{
+    autoplay: false,
+    updateOnImagesReady: true,
+    watchSlidesVisibility: false,
+    lazyLoadingInPrevNext: false,
+    lazyLoadingOnTransitionStart: false,
+    slidesPerView: 5,
+    speed: 300,
+    spaceBetween: 16,
+    touchMove: false,
+    grabCursor: false,
+    observer: true,
+    observeParents: true,
+    breakpoints: {
+        992: {
+            freeMode: true,
+            slidesPerView: 3,
+        },
+        768: {
+            freeMode: true,
+            slidesPerView: 2.25,
+            spaceBetween: 12,
+        }
+    },
+    navigation: {
+        nextEl: ".swiper-related-service .navigation.slider-next",
+        prevEl: ".swiper-related-service .navigation.slider-prev",
+    },
+});
+
+let swiper_config_related_service_two = new Swiper('.swiper-related-service-two',{
+    autoplay: false,
+    updateOnImagesReady: true,
+    watchSlidesVisibility: false,
+    lazyLoadingInPrevNext: false,
+    lazyLoadingOnTransitionStart: false,
+    slidesPerView: 5,
+    speed: 300,
+    spaceBetween: 16,
+    touchMove: false,
+    grabCursor: false,
+    observer: true,
+    observeParents: true,
+    breakpoints: {
+        992: {
+            freeMode: true,
+            slidesPerView: 3,
+        },
+        768: {
+            freeMode: true,
+            slidesPerView: 2.25,
+            spaceBetween: 12,
+        }
+    },
+    navigation: {
+        nextEl: ".swiper-related-service .navigation.slider-next",
+        prevEl: ".swiper-related-service .navigation.slider-prev",
+    },
+});
+
+let swiper_config_related_service_three = new Swiper('.swiper-related-service-three',{
+    autoplay: false,
+    updateOnImagesReady: true,
+    watchSlidesVisibility: false,
+    lazyLoadingInPrevNext: false,
+    lazyLoadingOnTransitionStart: false,
+    slidesPerView: 5,
+    speed: 300,
+    spaceBetween: 16,
+    touchMove: false,
+    grabCursor: false,
+    observer: true,
+    observeParents: true,
+    breakpoints: {
+        992: {
+            freeMode: true,
+            slidesPerView: 3,
+        },
+        768: {
+            freeMode: true,
+            slidesPerView: 2.25,
+            spaceBetween: 12,
+        }
+    },
+    navigation: {
+        nextEl: ".swiper-related-service .navigation.slider-next",
+        prevEl: ".swiper-related-service .navigation.slider-prev",
+    },
+});
+
 let swiper_card_other = new Swiper('.swiper-card',{
     autoplay: false,
     updateOnImagesReady: true,
