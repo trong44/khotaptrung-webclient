@@ -5,7 +5,7 @@
                 <i class="icon-title c-mr-8" style="--path:url(/assets/frontend/{{theme('')->theme_key}}/image/svg/acc-game.svg)"></i>
                 {{ $title??'Dịch vụ game' }}
             </h2>
-            <a href="/dich-vu" class="link arr-right">Xem tất cả</a>
+            <a href="/dich-vu?service-option=1" class="link arr-right">Xem tất cả</a>
         </div>
         @if (!setting('sys_theme_service_list') || setting('sys_theme_service_list') == 1 )
             <div class="swiper swiper-related-service card-list">
@@ -122,7 +122,7 @@
                 <i class="icon-title c-mr-8" style="--path:url(/assets/frontend/{{theme('')->theme_key}}/image/svg/acc-game.svg)"></i>
                 {{ $title??'Dịch vụ game' }}
             </h2>
-            <a href="/dich-vu" class="link arr-right">Xem tất cả</a>
+            <a href="/dich-vu?service-option=1" class="link arr-right">Xem tất cả</a>
         </div>
         <div class="list-category content-desc-nick hide">
             @foreach($data as $item)

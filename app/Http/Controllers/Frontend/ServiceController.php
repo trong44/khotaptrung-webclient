@@ -28,6 +28,18 @@ class ServiceController extends Controller
         $dataSend = array();
         $dataSend['limit'] = 100;
 
+        if ($request->filled('service-option'))  {
+            if ($request->get('service-option') == 1){
+                $arr = explode('|',setting('sys_service_widget_one'));
+            }elseif ($request->get('service-option') == 2){
+                $arr = explode('|',setting('sys_service_widget_two'));
+            }elseif ($request->get('service-option') == 3){
+                $arr = explode('|',setting('sys_service_widget_three'));
+            }
+
+            $dataSend['id_option'] = $arr;
+        }
+
         if ($request->ajax()){
 
             $page = $request->page;

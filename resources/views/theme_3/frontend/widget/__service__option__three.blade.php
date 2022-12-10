@@ -1,12 +1,15 @@
 <div class="block-product gaming-recharge mt-fix-20">
-    <div class="gaming-recharge-header d-flex">
+    <div class="gaming-recharge-header">
 
-        <div class="product-header d-flex d-md-flex">
+        <div class="product-header d-flex">
                     <span>
                         <img src="/assets/frontend/{{theme('')->theme_key}}/image/svg/muathegiare.svg" alt="">
                     </span>
             <h2 class="text-title" >{{ $title??'Nạp game giá rẻ nhé' }}</h2>
             <div class="navbar-spacer"></div>
+            <div class="text-view-more">
+                <a href="/dich-vu?service-option=3" class="global__link">Xem thêm<i class="__icon --sm --link ml-1" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/svg/arrowright.svg)"></i></a>
+            </div>
         </div>
     </div>
 {{--    <div class="gaming-recharge-search">--}}
