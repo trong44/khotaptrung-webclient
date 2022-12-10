@@ -2,13 +2,13 @@
     <div class="flash-sales c_block-product mt-fix-20 ">
         <div class="product-header d-flex">
         <span>
-                        <img src="/assets/frontend/{{theme('')->theme_key}}/image/svg/saleindex.svg" alt="">
-                    </span>
+            <img src="/assets/frontend/{{theme('')->theme_key}}/image/svg/saleindex.svg" alt="">
+        </span>
             <h2 class="text-title">{{ $title??'Danh mục acc game' }}</h2>
             <div class="navbar-spacer"></div>
 
             <div class="text-view-more">
-                <a href="/mua-acc" class="global__link">Xem thêm<i class="__icon --sm --link ml-1" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/svg/arrowright.svg)"></i></a>
+                <a href="/mua-acc?nick-option=1" class="global__link">Xem thêm<i class="__icon --sm --link ml-1" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/svg/arrowright.svg)"></i></a>
             </div>
         </div>
         <div class="box-product acc-swiper">

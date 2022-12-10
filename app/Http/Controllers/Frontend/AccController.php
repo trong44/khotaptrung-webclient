@@ -24,6 +24,20 @@ class AccController extends Controller
         $dataSend = array();
         $dataSend['data'] = 'category_list';
         $dataSend['module'] = 'acc_category';
+
+        if ($request->filled('nick-option'))  {
+            if ($request->get('nick-option') == 1){
+                $arr = explode('|',setting('sys_nick_widget_one'));
+            }elseif ($request->get('nick-option') == 2){
+                $arr = explode('|',setting('sys_nick_widget_two'));
+            }elseif ($request->get('nick-option') == 3){
+                $arr = explode('|',setting('sys_nick_widget_three'));
+            }
+
+            $dataSend['id_option'] = $arr;
+        }
+
+
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
         $response_data = $result_Api->response_data??null;
 

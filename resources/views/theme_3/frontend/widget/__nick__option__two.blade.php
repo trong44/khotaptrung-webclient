@@ -8,7 +8,7 @@
             <div class="navbar-spacer"></div>
 
             <div class="text-view-more">
-                <a href="/mua-acc" class="global__link">Xem thêm<i class="__icon --sm --link ml-1" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/svg/arrowright.svg)"></i></a>
+                <a href="/mua-acc?nick-option=2" class="global__link">Xem thêm<i class="__icon --sm --link ml-1" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/svg/arrowright.svg)"></i></a>
             </div>
         </div>
         <div class="box-product acc-swiper">
