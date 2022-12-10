@@ -444,6 +444,16 @@ View::composer('frontend.widget.__buy__acc__home', function ($view) {
         $dataSend = array();
         $dataSend['data'] = 'category_list';
         $dataSend['module'] = 'acc_category';
+        $arr = null;
+        if (setting('sys_nick_widget_one') != '' || setting('sys_nick_widget_two') != '' || setting('sys_nick_widget_three') != ''){
+            $arr = \App\Library\CategoryListOption::service();
+            if (isset($arr)){
+                $arr = explode('|',$arr);
+                if (count($arr)){
+                    $dataSend['id_not_option'] = $arr;
+                }
+            }
+        }
 
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
 
@@ -688,8 +698,18 @@ View::composer('frontend.widget.__service_game', function ($view) {
         $url = '/service';
         $method = "GET";
         $dataSend = array();
+
+        if (setting('sys_service_widget_one') != '' || setting('sys_service_widget_two') != '' || setting('sys_service_widget_three') != ''){
+            $arr = \App\Library\CategoryListOption::service();
+            if (isset($arr) && count($arr)){
+                $arr = explode('|',$arr);
+                $dataSend['id_not_option'] = $arr;
+            }
+        }
+
 //        $dataSend['limit'] = 8;
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+
         return $data = $result_Api->response_data->data->data??null;
     });
     return $view->with('data', $data);
