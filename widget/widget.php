@@ -445,16 +445,14 @@ View::composer('frontend.widget.__buy__acc__home', function ($view) {
         $dataSend['data'] = 'category_list';
         $dataSend['module'] = 'acc_category';
         $arr = null;
+
         if (setting('sys_nick_widget_one') != '' || setting('sys_nick_widget_two') != '' || setting('sys_nick_widget_three') != ''){
             $arr = \App\Library\CategoryListOption::service();
             if (isset($arr)){
-                $arr = explode('|',$arr);
-                if (count($arr)){
-                    $dataSend['id_not_option'] = $arr;
-                }
+                $dataSend['id_not_option'] = $arr;
             }
         }
-
+        
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
 
         return $data = $result_Api->response_data->data??null;
