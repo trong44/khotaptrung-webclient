@@ -214,7 +214,7 @@ Route::get('/406', function ()
                     Route::get('/updategit-master', function ()
                     {
 
-                        $command='git pull https://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@github.com/tannm2611/khotaptrung-webclient.git master 2>&1';
+                        $command='git pull https://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@github.com/tannm2611/khotaptrung-webclient.git master 2>&1';
                         $output = shell_exec($command);
 
                         $string_error = "Your local changes to the following files would be overwritten by merge";
@@ -223,7 +223,7 @@ Route::get('/406', function ()
                         if (is_numeric(strpos($output,$string_error)) || is_numeric(strpos($output,$string_error2))){
                             $reset_hard = "git reset --hard origin/master 2>&1";
                             shell_exec($reset_hard);
-                            $command='git pull https://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@github.com/tannm2611/khotaptrung-webclient.git master 2>&1';
+                            $command='git pull https://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@github.com/tannm2611/khotaptrung-webclient.git master 2>&1';
                             $output = shell_exec($command);
                         }
 
