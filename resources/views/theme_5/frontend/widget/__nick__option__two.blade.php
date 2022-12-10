@@ -9,7 +9,7 @@
         </div>
 
         @if (!setting('sys_theme_nick_list') || setting('sys_theme_nick_list') == 1 )
-            <div class="swiper swiper-related-service-two card-list">
+            <div class="swiper swiper-related-service card-list">
                 <div class="swiper-wrapper">
 
                     @foreach($data as $item)
