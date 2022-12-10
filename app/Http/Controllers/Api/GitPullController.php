@@ -34,7 +34,7 @@ class GitPullController extends Controller
 //        $output_one = shell_exec($command_one);
 
 //        $command ='git pull https://'.$token.'@github.com/tannm2611/khotaptrung-webclient.git '.$brand.' 2>&1';
-        $command='git pull https://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@github.com/tannm2611/khotaptrung-webclient.git master 2>&1';
+        $command='git pull https://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@github.com/tannm2611/khotaptrung-webclient.git master 2>&1';
 
         $output = shell_exec($command);
 
@@ -44,7 +44,7 @@ class GitPullController extends Controller
         if (is_numeric(strpos($output,$string_error)) || is_numeric(strpos($output,$string_error2))){
             $reset_hard = "git reset --hard origin/master 2>&1";
             shell_exec($reset_hard);
-            $command='git pull https://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@github.com/tannm2611/khotaptrung-webclient.git master 2>&1';
+            $command='git pull https://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@github.com/tannm2611/khotaptrung-webclient.git master 2>&1';
             $output = shell_exec($command);
         }
 
