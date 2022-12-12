@@ -23,7 +23,7 @@ class RegisterController extends Controller
 
             return view('frontend.pages.regist');
         }else{
-            return redirect()->back()->withErrors(__('Trang không tồn tại'))->withInput();
+            redirect()->route('/404');
         }
 
     }
