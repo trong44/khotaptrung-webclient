@@ -193,10 +193,10 @@ class ServiceController extends Controller
 
         }
         elseif ($result_Api->response_code == 404){
-            redirect()->route('/404');
+            redirect()->route('404');
         }
         else{
-            redirect()->route('/404');
+            redirect()->route('404');
         }
     }
 
