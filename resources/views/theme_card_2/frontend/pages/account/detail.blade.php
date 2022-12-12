@@ -461,7 +461,7 @@
                                                                     <img
                                                                         src="https://cdn.upanh.info/{{$champ->thumb}}"
                                                                         class="w-100 brs-4 position-absolute item-nick-lmht__border__img"
-                                                                        d alt="{{ $champ->name }}">
+                                                                        alt="{{ $champ->name }}">
                                                                 </div>
                                                                 <div class="col-md-12 pl-0 pr-0 text-center">
                                                                     <p class="fw-400 fz-13 c-mb-4 c-mt-20 text-theme text-limit limit-1">{{ $champ->name }}</p>
