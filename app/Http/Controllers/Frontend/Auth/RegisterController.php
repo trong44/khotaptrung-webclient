@@ -16,8 +16,18 @@ use Validator;
 class RegisterController extends Controller
 {
     public function showFormRegister(){
-        return view('frontend.pages.regist');
+        if (theme('')->theme_key == "theme_1"
+            ||theme('')->theme_key == "theme_2"
+            || theme('')->theme_key == "theme_card_2"
+            ||theme('')->theme_key == "theme_dup"){
+
+            return view('frontend.pages.regist');
+        }else{
+            return redirect()->back()->withErrors(__('Trang không tồn tại'))->withInput();
+        }
+
     }
+
     public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'username'=>'required',
