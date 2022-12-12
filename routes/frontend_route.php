@@ -93,18 +93,22 @@ Route::get('/406', function ()
                     return view('frontend.pages.account.logs-installment');
                 });
 
+                Route::group(['middleware' => ['intend']], function (){
+                    Route::get('/acc/{slug}', [AccController::class , "getDetail"])->name('accDetail');
+                });
+
+                Route::get('/related-acc', [AccController::class , "getRelated"]);
+                Route::get('/watched-acc', [AccController::class , "getWatched"]);
+
                 Route::group(['middleware' => ['doNotCacheResponse']], function (){
                     Route::post('/ajax/user/account_info', [UserController::class , "getInfo"]);
 
                     Route::group(['middleware' => ['intend']], function (){
-//                    Route::get('/mua-nick-random', [AccController::class , "getShowAccRandom"]);
                         Route::get('/mua-acc/{slug}', [AccController::class , "getList"])->name('accList');
-                        Route::get('/acc/{slug}', [AccController::class , "getDetail"])->name('accDetail');
                     });
 
                     Route::get('/acc/{id}/databuy', [AccController::class , "getBuyAccount"]);
-                    Route::get('/related-acc', [AccController::class , "getRelated"]);
-                    Route::get('/watched-acc', [AccController::class , "getWatched"]);
+
 
                     Route::get('/ajax/mua-nick-random', [AccController::class , "getShowAccRandom"]);
 
