@@ -23,7 +23,7 @@ class RegisterController extends Controller
 
             return view('frontend.pages.regist');
         }else{
-            redirect()->route('404');
+            return view('frontend.pages.404');
         }
 
     }
