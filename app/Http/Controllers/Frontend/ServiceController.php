@@ -193,13 +193,12 @@ class ServiceController extends Controller
 
         }
         elseif ($result_Api->response_code == 404){
+            return redirect()->back()->withErrors(__('Trang không tồn tại'))->withInput();
             return view('frontend.404.404');
         }
         else{
-
-            $data =null;
-            $message = "Không thể lấy dữ liệu";
-            return view('frontend.pages.service.detail')->with('data', $data)->with('message', $message);
+            return redirect()->back()->withErrors(__('Trang không tồn tại'))->withInput();
+            return view('frontend.404.404');
 
         }
     }
