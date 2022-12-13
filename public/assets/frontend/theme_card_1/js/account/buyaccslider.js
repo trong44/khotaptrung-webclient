@@ -56,7 +56,7 @@ $(document).ready(function () {
                     prevEl: ".swiper-list-acc .swiper-list-prev",
                 },
             });
-        } 
+        }
     }
 
 
@@ -162,7 +162,7 @@ $(document).ready(function () {
         });
     }
 
-    getTaiKhoanDaXem();
+    // getTaiKhoanDaXem();
 
     function getTaiKhoanDaXem() {
 

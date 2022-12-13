@@ -99,7 +99,7 @@ $(document).ready(function () {
         });
     }
 
-    getTaiKhoanDaXem();
+    // getTaiKhoanDaXem();
 
     function getTaiKhoanDaXem() {
 

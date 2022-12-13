@@ -128,9 +128,9 @@
 
         </section>
 
-        <section id="showswatched">
+{{--        <section id="showswatched">--}}
 
-        </section>
+{{--        </section>--}}
         {{--            Đã xem   --}}
 {{--        @include('frontend.pages.account.widget.__watched')--}}
 

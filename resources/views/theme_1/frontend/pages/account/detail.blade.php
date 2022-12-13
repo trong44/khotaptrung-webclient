@@ -195,16 +195,16 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 
-                <div class="row marginauto">
-                    <div class="col-md-12 left-right" id="showswatched">
-                        <div class="body-box-loadding result-amount-loadding result-amount-loadding__nick-lien-quan">
-                            <div class="d-flex justify-content-center" style="padding-top: 112px;">
-                                <span class="pulser"></span>
-                            </div>
-                        </div>
+{{--                <div class="row marginauto">--}}
+{{--                    <div class="col-md-12 left-right" id="showswatched">--}}
+{{--                        <div class="body-box-loadding result-amount-loadding result-amount-loadding__nick-lien-quan">--}}
+{{--                            <div class="d-flex justify-content-center" style="padding-top: 112px;">--}}
+{{--                                <span class="pulser"></span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                    </div>
-                </div>
+{{--                    </div>--}}
+{{--                </div>--}}
 
             </div>
         </div>

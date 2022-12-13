@@ -99,7 +99,7 @@
 
             </div>
 
-            <div id="showswatched"></div>
+{{--            <div id="showswatched"></div>--}}
 
             @if(isset($game_auto_props) && count($game_auto_props))
                 @if($slug_category == 'nick-lien-minh')
