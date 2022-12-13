@@ -329,13 +329,15 @@ Route::get('/406', function ()
                     Route::get('/nick-free-fire-sieu-cap', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlRikaki']);
                     Route::get('/free-fire-tam-trung', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlRikaki']);
                     Route::get('/game-acc-free-fire', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlNickFreeGireGiare']);
+
+                    Route::group(['middleware' => ['intend']], function () {
+
+                        Route::get('/minigame-{slug}', [\App\Http\Controllers\Frontend\MinigameController::class , 'getIndex'])->name('getIndex');
+
+                    });
                 });
 
-                Route::group(['middleware' => ['intend']], function () {
 
-                    Route::get('/minigame-{slug}', [\App\Http\Controllers\Frontend\MinigameController::class , 'getIndex'])->name('getIndex');
-
-                });
             });
 
             Route::post('/ajax/mua-the', [\App\Http\Controllers\Frontend\StoreCardController::class , 'postStoreCard'])->name('postStoreCard');
