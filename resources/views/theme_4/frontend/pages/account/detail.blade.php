@@ -184,10 +184,10 @@
 
                             </div>
 
-                            <div class="row" style="width: 100%;margin: 0 auto" id="showswatched">
+{{--                            <div class="row" style="width: 100%;margin: 0 auto" id="showswatched">--}}
 
 
-                            </div>
+{{--                            </div>--}}
                     </div>
                 </div>
                 <!-- END: BLOG LISTING  -->
