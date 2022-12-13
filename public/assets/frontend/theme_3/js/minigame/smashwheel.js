@@ -20,11 +20,43 @@ $(document).ready(function(e) {
     //var arrDiscount = '';
 
     $('body').delegate('#start-played', 'click', function() {
+
+        if (!auth_check) {
+            let width = $(window).width();
+            if ( width > 1200 ) {
+                $('#loginModal').modal('show');
+                setTimeout(() => {
+                    $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                }, 200);
+                return
+            } else {
+                $('.mobile-auth').toggleClass('mobile-auth-show');
+                $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                return
+            }
+        }
+
         $('#type_play').val('real');
         play();
     });
 
     $('body').delegate('.num-play-try', 'click', function() {
+
+        if (!auth_check) {
+            let width = $(window).width();
+            if ( width > 1200 ) {
+                $('#loginModal').modal('show');
+                setTimeout(() => {
+                    $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                }, 200);
+                return
+            } else {
+                $('.mobile-auth').toggleClass('mobile-auth-show');
+                $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                return
+            }
+        }
+
         $('#type_play').val('try');
         play();
     });
@@ -50,7 +82,18 @@ $(document).ready(function(e) {
                 type: 'POST',
                 success: function(data) {
                     if (data.status == 4) {
-                        location.href='/login?return_url='+window.location.href;
+                        let width = $(window).width();
+                        if ( width > 1200 ) {
+                            $('#loginModal').modal('show');
+                            setTimeout(() => {
+                                $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                            }, 200);
+                            return
+                        } else {
+                            $('.mobile-auth').toggleClass('mobile-auth-show');
+                            $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                            return
+                        }
                     } else if (data.status == 3) {
                         $('#lac_lixi').attr('src',$("#hdImageLD").val());
                         roll_check = true;
@@ -137,7 +180,7 @@ $(document).ready(function(e) {
                 {
                     $('#lac_lixi').attr('src',gift_detail.image);
                 }
-                
+
                 var flag_bonus = true;
                 var c_game_type_value = '';
 
@@ -272,7 +315,7 @@ $(document).ready(function(e) {
                         }
                     }else {
                         $html += "<span>Kết quả: "+gift_revice[0].children[0].title+"</span><br/>";
-                        
+
                         if(gift_detail.winbox == 1){
                             $html += "<span>Mua X1: Nhận được "+gift_revice[0]["parrent"].params.value+"</span><br/>";
                             //$html += "<span>chơi được "+(xvalue+3)+" hình trùng nhau. Nhận X"+(xvalueaDD[0])+" giải thưởng: "+gift_revice[0]["parrent"].params.value*(xvalueaDD[0])+""+msg_random_bonus[0]+"</span><br/>"+$strDiscountcode;

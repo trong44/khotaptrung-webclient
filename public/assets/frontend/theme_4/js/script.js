@@ -96,16 +96,16 @@ $(document).ready(function () {
         autoplaySpeed:3000,
         dots: false,
         infinite: true,
-        slidesToShow: 5,
-        slidesToScroll: 5,
+        slidesToShow: 4,
+        slidesToScroll: 4,
         prevArrow: '<i class="fas fa-chevron-left arrow prev"></i>',
         nextArrow: '<i class="fas fa-chevron-right arrow next"></i>',
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 5,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
                     infinite: true,
                     dots: true
                 }
@@ -215,7 +215,7 @@ $(document).ready(function () {
 
         if (value > 1){
 
-            let htmlservice = '<button id="btn-expand-serivce-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm dịch vụ</button>';
+            let htmlservice = '<button id="btn-expand-serivce-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm</button>';
             $('.fix-border-dich-vu').append(htmlservice);
         }
 
@@ -265,11 +265,11 @@ $(document).ready(function () {
 
         let index = 0;
         let value = 0;
-        $('.entries_item_nick').each(function (i,elm) {
+        $('#nick__widget .entries_item_nick').each(function (i,elm) {
             $(this).removeClass('dis-block');
         })
 
-        $('.entries_item_nick').each(function (i,elm) {
+        $('#nick__widget .entries_item_nick').each(function (i,elm) {
             // $('.body-modal__nick__text-error').css('display','none');
             let slug_item = $(elm).find('img').attr('alt');
             slug_item = convertToSlug(slug_item);
@@ -285,7 +285,7 @@ $(document).ready(function () {
         })
 
 
-        $('.dis-block').each(function (i,elm) {
+        $('#nick__widget .dis-block').each(function (i,elm) {
             if (i>=8){
                 $(this).css('display','none');
             }
@@ -304,14 +304,14 @@ $(document).ready(function () {
 
         if (value > 1){
 
-            let htmlnick = '<button id="btn-expand-serivce-nick-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm danh mục</button>';
-            $('.fix-border-nick').append(htmlnick);
+            let htmlnick = '<button id="btn-expand-serivce-nick-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm</button>';
+            $('#nick__widget .fix-border-nick').append(htmlnick);
         }
 
         if (index == 0){
-            $('.data-nick-search').css('display','block');
+            $('#nick__widget .data-nick-search').css('display','block');
         }else {
-            $('.data-nick-search').css('display','none');
+            $('#nick__widget .data-nick-search').css('display','none');
         }
         //$(this).val() // get the current value of the input field.
     }, 400);
@@ -398,7 +398,7 @@ $(document).ready(function () {
         })
 
 
-        $('.dis-block').each(function (i,elm) {
+        $('#minigame__widget .dis-block').each(function (i,elm) {
             if (i>=8){
                 $(this).css('display','none');
             }
@@ -417,14 +417,14 @@ $(document).ready(function () {
 
         if (value > 1){
 
-            let htmlnick = '<button id="btn-expand-minigame-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm danh mục</button>';
+            let htmlnick = '<button id="btn-expand-minigame-search" class="expand-button" data-page-current="1" data-page-max="' + value + '">Xem thêm</button>';
             $('.fix-border-minigame').append(htmlnick);
         }
 
         if (index == 0){
-            $('.data-nick-search').css('display','block');
+            $('#minigame__widget .data_minigame_search').css('display','block');
         }else {
-            $('.data-nick-search').css('display','none');
+            $('#minigame__widget .data_minigame_search').css('display','none');
         }
         //$(this).val() // get the current value of the input field.
     }, 400);
@@ -434,7 +434,7 @@ $(document).ready(function () {
         var pageCurrrent=$(this).data('page-current');
         var pageMax=$(this).data('page-max');
         pageCurrrent=pageCurrrent+1;
-        $('.dis-block').each(function (i,elm) {
+        $('#minigame__widget .dis-block').each(function (i,elm) {
             if (pageCurrrent == 2){
                 if (i < 16){
                     $(this).css('display','block');

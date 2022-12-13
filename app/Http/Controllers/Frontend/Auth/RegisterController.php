@@ -58,8 +58,9 @@ class RegisterController extends Controller
                 Session::put('jwt',$response_data->token);
                 Session::put('exp_token',$response_data->exp_token);
                 Session::put('time_exp_token',$time_exp_token);
-
+                Session::put('auth_custom',$response_data->user);
                 $return_url = Session::get('url.intended');
+
                 return response()->json([
                     'status' => 1,
                     'message' => 'Thành công',

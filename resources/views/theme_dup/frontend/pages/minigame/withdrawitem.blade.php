@@ -36,7 +36,7 @@
                     <div class="account_sidebar_content_line"></div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3 control-label">
+                    <label class="col-md-3 control-label" style="color: white">
                         Chọn loại vật phẩm khác:
                     </label>
                     <div class="col-md-6">
@@ -60,7 +60,7 @@
                 <form class="form-horizontal form-withdraw" method="POST">
                     {{csrf_field()}}
                     <div class="form-group row">
-                        <label class="col-md-3 control-label">
+                        <label class="col-md-3 control-label" style="color: white">
                             Gói muốn rút:
                         </label>
                         <div class="col-md-6">
@@ -77,7 +77,7 @@
 
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 control-label">
+                        <label class="col-md-3 control-label" style="color: white">
                             {{isset($result->gametype->idkey)?$result->gametype->idkey:'ID trong game:'}}
                         </label>
                         <div class="col-md-6">
@@ -88,7 +88,7 @@
 
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 control-label">
+                        <label class="col-md-3 control-label" style="color: white">
                             {{isset($result->gametype->position)?$result->gametype->position:'Số điện thoại ( nếu có ):'}}
                         </label>
                         <div class="col-md-6">

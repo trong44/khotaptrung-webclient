@@ -34,7 +34,7 @@ $(document).ready(function(){
     loadDataAccountList()
 
     function loadDataAccountList(page,id_data = '',title_data = '',price_data = '',status_data = '',select_data = '',sort_by_data = '',champions_data = '',skill_data = '',tftcompanions_data = '',tftdamageskins_data = '',tftmapskins_data = '',server_data = '') {
-
+        console.log(sort_by_data)
         let slug = $('.slug').val();
 
         var url = '/mua-acc/' + slug;

@@ -201,7 +201,7 @@
 {{--                                @dd(config('module.acc.auto_nro_skill_pet_2'))--}}
                                 <div class="col-3 item_buy_form_search">
                                     <div class="input-group">
-                                        <span class="input-group-addon">SKILL PET 2</span>
+                                        <span class="input-group-addon">SKILL 2 ĐỆ TỬ</span>
                                         <select type="text" class="form-control tftmapskins" name="tftmapskins">
                                             <option value="">--Không chọn--</option>
 
@@ -219,7 +219,7 @@
 
                                 <div class="col-3 item_buy_form_search">
                                     <div class="input-group">
-                                        <span class="input-group-addon">SKILL PET 3</span>
+                                        <span class="input-group-addon">SKILL 3 ĐỆ TỬ</span>
                                         <select type="text" class="form-control tftdamageskins" name="tftdamageskins">
                                             <option value="">--Không chọn--</option>
                                             @if(isset($childs->childs))
@@ -235,7 +235,7 @@
 
                                 <div class="col-3 item_buy_form_search">
                                     <div class="input-group">
-                                        <span class="input-group-addon">SKILL PET 4</span>
+                                        <span class="input-group-addon">SKILL 4 ĐỆ TỬ</span>
                                         <select type="text" class="form-control skill" name="skill">
                                             <option value="">--Không chọn--</option>
                                             @if(isset($childs->childs))
@@ -302,9 +302,8 @@
                 <div class="col-auto">
                     <div class="input-group">
                         <span class="input-group-addon">Sắp xếp theo</span>
-                        <select type="text" name="sort_by" class="form-control sort_by select-2-custom">
-                            <option value="">Chọn cách sắp xếp</option>
-                            <option value="random">Ngẫu nhiên</option>
+                        <select type="text" name="sort_by" class="form-control sort_by">
+                            <option selected value="random">Ngẫu nhiên</option>
                             <option value="price_start">Giá tiền từ cao đến thấp</option>
                             <option value="price_end">Giá tiền từ thấp đến cao</option>
                             <option value="created_at_start">Mới nhất</option>

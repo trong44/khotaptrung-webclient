@@ -37,7 +37,7 @@
             <meta name="csrf-token" content="{{ csrf_token() }}">
             @if($data->giatritu > 0 && $data->giatriden > 0)
                 @if($data->dangnhap == 0)
-                    <a id="bonus_login"  title="Click để nhận thưởng!" style="position: relative">
+                    <a id="bonus_login"  title="Click để nhận thưởng!">
                         <img src='{{\App\Library\MediaHelpers::media($data->icon)}}'/>
                         <img class="remove_gift_bonus" style="width: 24px;height: 24px;position: absolute;top: 0;right: 0" src='/assets/frontend/{{theme('')->theme_key}}/image/closer-red.png'/>
                     </a>

@@ -83,30 +83,6 @@
                             </div>
                             @include('frontend.pages.transaction.widget.__transaction_history')
                         </div>
-{{--                        <div id="content-cart" class="m-portlet__body">--}}
-{{--                            <div style="overflow-x: auto" class="tab-content">--}}
-{{--                                <table class="table">--}}
-{{--                                    <thead class="thead-inverse">--}}
-{{--                                    <tr>--}}
-{{--                                        <th>Thời gian</th>--}}
-{{--                                        <th>ID</th>--}}
-{{--                                        <th>Tài khoản</th>--}}
-{{--                                        <th>Giao dịch</th>--}}
-{{--                                        <th>Số tiền</th>--}}
-{{--                                        <th>Số dư cuối</th>--}}
-{{--                                        <th>Nội dung</th>--}}
-{{--                                        <th>Trạng thái</th>--}}
-{{--                                    </tr>--}}
-{{--                                    </thead>--}}
-{{--                                    <tbody style="font-weight: bold">--}}
-{{--                                    </tbody>--}}
-{{--                                </table>--}}
-{{--                                <div class="data_paginate paging_bootstrap paginations_custom"--}}
-{{--                                     style="text-align: center">--}}
-
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                     </div>
                 </div>
             </div>

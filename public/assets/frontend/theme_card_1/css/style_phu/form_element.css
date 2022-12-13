@@ -1,0 +1,119 @@
+/* CSS for button */
+.button-primary {
+    background: #f25922;
+    border-radius: 8px;
+    color: #FFFFFF;
+    border: 1px solid #f25922;
+}
+
+.button-primary:hover {
+    border-color: #DD6A00;
+    background: #DD6A00;
+}
+
+.button-primary:hover:active {
+    border-color: #C55E00;
+    background: #C55E00;
+}
+
+.button-primary:disabled {
+    border-color: #DBDBDB;
+    background: #DBDBDB;
+    color: #7D7D7D;
+}
+
+.button-secondary {
+    border: 1px solid #f25922;
+    border-radius: 8px;
+    color: #f25922;
+    background-color: #FFFFFF;
+}
+
+.button-secondary:hover {
+    background: #f25922;
+    color: #FFFFFF;
+}
+
+.button-secondary:hover:active {
+    background: #C55E00;
+    color: #FFFFFF;
+}
+
+.button-secondary:disabled {
+    background: #DBDBDB;
+    border-color: #DBDBDB;
+    color: #7D7D7D;
+}
+
+/* CSS for select input */
+/* Also css for jquery nice select */
+.select-primary {
+    background-color: #FBFBFD;
+    border: 1px solid ;
+    border-color: #DCDEE9;
+    border-radius: 8px;
+    color: #434657;
+}
+
+.select-primary:hover {
+    border-color: #BCBFD6;
+    background-color: #F3F3F7;
+}
+
+.select-primary:focus {
+    border-color: #f25922;
+    background-color: #F3F3F7;
+}
+
+.select-primary ul.list {
+    width: 100%;
+}
+
+/* CSS for input filed */
+.input-primary {
+    border: 1px solid;
+    border-color: #BCBFD6;
+    border-radius: 8px;
+    background: #FBFBFD;
+    color: #1B1D29;
+}
+
+.input-primary::placeholder {
+    color: #82869E;
+}
+
+.input-primary:hover {
+    background-color: #F3F3F7;
+    border-color: #BCBFD6;
+}
+
+.input-primary:focus {
+    background-color: #F3F3F7;
+    border-color: #f25922;
+    outline: none;
+}
+
+/* CSS for textarea */
+.textarea-primary {
+    resize: none;
+    border: 1px solid;
+    border-color: #BCBFD6;
+    border-radius: 8px;
+    background: #FBFBFD;
+    color: #1B1D29;
+}
+
+.textarea-primary::placeholder {
+    color: #82869E;
+}
+
+.textarea-primary:hover {
+    background-color: #F3F3F7;
+    border-color: #BCBFD6;
+}
+
+.textarea-primary:focus {
+    background-color: #F3F3F7;
+    border-color: #f25922;
+    outline: none;
+}

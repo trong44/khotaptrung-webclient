@@ -291,9 +291,9 @@
     </div>
 
     <!-- Modal Xác Nhận Thanh Toán-->
-    <div class="modal fade mx-md-fix-8" id="modal--confirm__payment" aria-hidden="true">
+    <div class="modal fade " id="modal--confirm__payment" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered animated">
-            <div class="modal-content -custom dialog">
+            <div class="modal-content -custom dialog" style="margin-left: 16px;margin-right: 16px">
                 <div class="dialog--header">
                     <div class="dialog--header__title">
                         Xác nhận thanh toán

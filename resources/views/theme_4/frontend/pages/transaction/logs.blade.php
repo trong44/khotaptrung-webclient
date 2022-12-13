@@ -90,7 +90,7 @@
                         </form>
 
 
-                        <div id="data_lich__su_history" style="position: relative">
+                        <div id="data_lich__su_history" class="table-responsive" style="position: relative">
                             <div class="body-box-loadding result-amount-loadding" style="position: absolute;top: 100%;left: 50%">
                                 <div class="d-flex justify-content-center">
                                     <span class="pulser"></span>

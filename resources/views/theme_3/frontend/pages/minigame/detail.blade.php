@@ -111,8 +111,9 @@
                                             </div>
                                         </div>
                                         <hr>
+                                        <div id="input-server"></div>
                                         <div class="t-sub-2 t-color-title mb-2">
-                                            Chọn vật phẩm bạn đang sở hữu
+                                            Chọn gói rút
                                         </div>
                                         <select name="package" id="package" class="wide select-withdraw">
                                             <option value="">Chọn gói</option>
@@ -305,7 +306,7 @@
                             @case('rubywheel')
                             <div class="rotation">
                                 <div class="item_spin ">
-                                    <div class="rotation-button ani-zoom " {{ \App\Library\AuthCustom::check() ?  'id=start-played' : 'onclick=openLoginModal();'}} >
+                                    <div class="rotation-button ani-zoom " id="start-played" >
                                         <img onerror="imgError(this)"
                                              src="{{\App\Library\MediaHelpers::media($result->group->image_icon)}}"
                                              alt="{{$result->group->title}}">
@@ -377,8 +378,6 @@
                             @break
                             @case('squarewheel')
 
-
-
                             <div class="item_square" style="display: flex; flex-wrap: wrap;">
 
                                 <table id="squaredesktop" class="square">
@@ -423,7 +422,7 @@
                                         <td colspan="3">
                                             <div class="outer-btn text-center">
                                                 <div class="play btn m-btn m-btn--custom m-btn--icon m-btn--pill"
-                                                     style="" {{ \App\Library\AuthCustom::check() ?  'id=start-played' : 'onclick=openLoginModal();'}}>
+                                                     style="" id="start-played">
                                                     <img onerror="imgError(this)"
                                                          src="{{\App\Library\MediaHelpers::media($result->group->image_icon)}}"
                                                          alt="" style="">
@@ -478,7 +477,7 @@
                             @case('gieoque')
 
                             <div class="rotation">
-                                <div class="rotation-button rotation-button-quanhuy" {{ \App\Library\AuthCustom::check() ?  'id=start-played' : 'onclick=openLoginModal();'}}>
+                                <div class="rotation-button rotation-button-quanhuy" id="start-played">
 
                                     <img onerror="imgError(this)"
 
@@ -578,27 +577,16 @@
                                     @if(isset($result->group->params->is_try))
                                         @if($result->group->params->is_try == 1)
                                             <div class="col-6 button-col">
-                                                @if(App\Library\AuthCustom::check())
                                                 <button id="playerDemo" class="button-secondary button-demo num-play-try">Chơi thử</button>
-                                                @else
-                                                    <button type="button" class="button-secondary button-demo" onclick="openLoginModal();">Chơi thử</button>
-                                                @endif
+
                                             </div>
                                         @endif
                                     @endif
-                                    @if (App\Library\AuthCustom::check())
                                         <div class="col-6 button-rainbow button-col" style="--bg-color: #ecf0f1">
                                             <button id="start-played" class="button-primary button-play play b_button">Quay
                                                 ngay
                                             </button>
                                         </div>
-                                    @else
-                                        <div class="col-6 button-rainbow button-col" style="--bg-color: #ecf0f1">
-                                            <button type="button" class="button-primary button-play b_button"
-                                                    onclick="openLoginModal();">Quay ngay
-                                            </button>
-                                        </div>
-                                    @endif
                                 </div>
                             </div>
                             {{--                                <div class="b_item button-rainbow" style="--bg-color: #ecf0f1">--}}
@@ -636,10 +624,10 @@
                                 @endif
                             </div>
                             <div class="col-6 leaderboard-col">
-                                <a href="{{route('getLog',[$result->group->id])}}" class="the-a-lich-su button-not-bg-ct button-secondary history-spin-button">Lịch sử quay</a>
+                                <a href="javascript:void(0)" class="the-a-lich-su button-not-bg-ct button-secondary history-spin-button modal__withdraw__spin">Lịch sử quay</a>
                             </div>
                             <div class="col-6 leaderboard-col">
-                                <button class="button-primary">Rút quà</button>
+                                <button class="button-primary modal__withdraw__items">Rút quà</button>
                             </div>
                         </div>
                         <div class="leaderboard-header">
@@ -762,7 +750,6 @@
                         <div class="leaderboard-buttons row d-none d-lg-flex">
                             <div class="col-12">
                                 @if(isset($result->number_item))
-
                                     <div class="existing-items">
                                         <span class="t-body-1">Bạn đang có:</span>
                                         <div class="number_item">{{ str_replace(',','.',number_format($result->number_item)) }} {{ $result->name_item->image }}</div>
@@ -777,21 +764,11 @@
                                 @endif
                             </div>
                             <div class="col-6 leaderboard-col">
-                                @if(App\Library\AuthCustom::check())
-                                    <button type="button" class="the-a-lich-su button-not-bg-ct button-secondary history-spin-button" data-toggle="modal" data-target="#modal-spin-bonus">Lịch sử quay</button>
-                                @else
-                                    <button type="button" class="the-a-lich-su button-not-bg-ct button-secondary history-spin-button" onclick="openLoginModal();">Lịch sử quay</button>
-                                @endif
+                                <button type="button" class="the-a-lich-su button-not-bg-ct button-secondary history-spin-button modal__withdraw__spin">Lịch sử quay</button>
                             </div>
                             <div class="col-6 leaderboard-col">
-                                @if(App\Library\AuthCustom::check())
-                                    <button class="button-primary" type="button" data-toggle="modal"
-                                            data-target="#modal-withdraw-items">Rút quà
-                                    </button>
-                                @else
-                                    <button class="button-primary" type="button" onclick="openLoginModal();">Rút quà
-                                    </button>
-                                @endif
+                                <button class="button-primary modal__withdraw__items" type="button" >Rút quà
+                                </button>
                             </div>
                         </div>
                         <div class="leaderboard-header">
@@ -989,10 +966,7 @@
                     <div class="rotation-modal-btn row no-gutters">
                         <div class="col-12">
 
-                            @if(App\Library\AuthCustom::check())
-                            <a onclick="openLoginModal();" data-dismiss="modal" data-toggle="modal"
-                               data-target="#modal-withdraw-items" href="javascript:void(0)" class="btn button-secondary">Rút quà</a>
-                            @endif
+                            <a href="javascript:void(0)" class="btn button-secondary modal__withdraw__items">Rút quà</a>
                         </div>
 
                     </div>
@@ -1142,7 +1116,55 @@
 
         </li>
     </script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
 
+            $('body').on('click', '.modal__withdraw__items', function(e) {
+
+                if (!auth_check) {
+                    let width = $(window).width();
+                    if ( width > 1200 ) {
+                        $('#loginModal').modal('show');
+                        setTimeout(() => {
+                            $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                        }, 200);
+                        return
+                    } else {
+                        $('.mobile-auth').toggleClass('mobile-auth-show');
+                        $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                        return
+                    }
+                }
+
+                $('#modal-withdraw-items').modal('show');
+            })
+
+            $('body').on('click', '.modal__withdraw__spin', function(e) {
+                if (!auth_check) {
+                    let width = $(window).width();
+                    if ( width > 1200 ) {
+                        $('#loginModal').modal('show');
+                        setTimeout(() => {
+                            $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                        }, 200);
+                        return
+                    } else {
+                        $('.mobile-auth').toggleClass('mobile-auth-show');
+                        $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                        return
+                    }
+                }
+
+                $('#modal-spin-bonus').modal('show');
+            })
+
+
+
+            $("#btnWithdraw").on("click", function () {
+                $('#noticeModal').modal('hide');
+            })
+        })
+    </script>
     @switch($position)
         @case('rubywheel')
         <script src="/assets/frontend/{{theme('')->theme_key}}/js/minigame/rubywheel.js?v={{time()}}"></script>

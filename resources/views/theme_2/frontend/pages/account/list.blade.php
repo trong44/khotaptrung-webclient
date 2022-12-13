@@ -299,7 +299,7 @@
                                     @elseif($slug == 'ban-nick-ngoc-rong' || $slug == 'nick-ngoc-rong-online')
                                         @foreach($auto_properties as $auto_propertie)
                                             @if($auto_propertie->key == 'CAPTURES')
-                            
+
                                             @elseif($auto_propertie->key == 'SERVER')
                                                 <div class="input-group">
                                                     <label class="form-label">
@@ -320,7 +320,7 @@
                                                         @if($childs->key == 'CAI_TRANG')
                                                             <div class="input-group">
                                                                 <label class="form-label">
-                                                                    CAI TRANG
+                                                                    CẢI TRANG
                                                                 </label>
                                                                 <select name="champions_data" class="select-2-custom w-100" id="">
                                                                     <option value="">--Không chọn--</option>
@@ -334,13 +334,13 @@
                                                         @elseif($childs->key == 'SKILL_PET')
                                                             <div class="input-group">
                                                                 <label class="form-label">
-                                                                    SKILL PET 2
+                                                                    SKILL 2 ĐỆ TỬ
                                                                 </label>
                                                                 <select name="tftmapskins_data" class="select-2-custom w-100" id="">
                                                                     <option value="">--Không chọn--</option>
                                                                     @if(isset($childs->childs))
                                                                         @foreach($childs->childs as $child)
-                        
+
                                                                             @if($child->name == config('module.acc.auto_nro_skill_pet_2.'.$child->name))
                                                                                 <option value="{{ $child->id }}">{{ $child->name }}</option>
                                                                             @endif
@@ -351,7 +351,7 @@
 
                                                             <div class="input-group">
                                                                 <label class="form-label">
-                                                                    SKILL PET 3
+                                                                    SKILL 3 ĐỆ TỬ
                                                                 </label>
                                                                 <select name="tftdamageskins_data" class="select-2-custom w-100" id="">
                                                                     <option value="">--Không chọn--</option>
@@ -367,7 +367,7 @@
 
                                                             <div class="input-group">
                                                                 <label class="form-label">
-                                                                    SKILL PET 4
+                                                                    SKILL 4 ĐỆ TỬ
                                                                 </label>
                                                                 <select name="skill_data" class="select-2-custom w-100" id="">
                                                                     <option value="">--Không chọn--</option>
@@ -633,7 +633,7 @@
                                 @elseif($slug == 'ban-nick-ngoc-rong' || $slug == 'nick-ngoc-rong-online')
                                     @foreach($auto_properties as $auto_propertie)
                                         @if($auto_propertie->key == 'CAPTURES')
-                        
+
                                         @elseif($auto_propertie->key == 'SERVER')
                                             <div class="input-group">
                                                 <label class="form-label">
@@ -654,7 +654,7 @@
                                                     @if($childs->key == 'CAI_TRANG')
                                                         <div class="input-group">
                                                             <label class="form-label">
-                                                                CAI TRANG
+                                                                CẢI TRANG
                                                             </label>
                                                             <select name="champions_data" class="account-filter-field" id="" data-title="{{ $auto_propertie->key }}">
                                                                 <option value="">--Không chọn--</option>
@@ -668,13 +668,13 @@
                                                     @elseif($childs->key == 'SKILL_PET')
                                                         <div class="input-group">
                                                             <label class="form-label">
-                                                                SKILL PET 2
+                                                                SKILL 2 ĐỆ TỬ
                                                             </label>
                                                             <select name="tftmapskins_data" class="account-filter-field" id="" data-title="{{ $auto_propertie->key }}">
                                                                 <option value="">--Không chọn--</option>
                                                                 @if(isset($childs->childs))
                                                                     @foreach($childs->childs as $child)
-                    
+
                                                                         @if($child->name == config('module.acc.auto_nro_skill_pet_2.'.$child->name))
                                                                             <option value="{{ $child->id }}">{{ $child->name }}</option>
                                                                         @endif
@@ -685,7 +685,7 @@
 
                                                         <div class="input-group">
                                                             <label class="form-label">
-                                                                SKILL PET 3
+                                                                SKILL 3 ĐỆ TỬ
                                                             </label>
                                                             <select name="tftdamageskins_data" class="account-filter-field" id="" data-title="{{ $auto_propertie->key }}">
                                                                 <option value="">--Không chọn--</option>
@@ -701,7 +701,7 @@
 
                                                         <div class="input-group">
                                                             <label class="form-label">
-                                                                SKILL PET 4
+                                                                SKILL 4 ĐỆ TỬ
                                                             </label>
                                                             <select name="skill_data" class="account-filter-field" id="" data-title="{{ $auto_propertie->key }}">
                                                                 <option value="">--Không chọn--</option>

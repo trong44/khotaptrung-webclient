@@ -30,17 +30,17 @@
                         <div class="col-md-12 col-xs-12 left-right">
                             <div class="row" style="width: 100%;margin: 0 auto">
                                 <div class="art-list" style="width: 100%">
-                                    <div class="d-flex justify-content-between" style="padding-top: 8px;padding-bottom: 24px">
-                                        <div class="main-title">
-                                            {{--                                            <h1>Danh mục game</h1>--}}
-                                        </div>
-                                        <div class="service-search d-none d-lg-block">
-                                            <div class="input-group p-box">
-                                                <input type="text" id="txtSearch" placeholder="Tìm dịch vụ" value="" class="" width="200px">
-                                                <span class="icon-search"><i class="fas fa-search"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {{--<div class="d-flex justify-content-between" style="padding-top: 8px;padding-bottom: 24px">--}}
+                                    {{--    <div class="main-title">--}}
+                                    {{--        --}}{{--                                            <h1>Danh mục game</h1>--}}
+                                    {{--    </div>--}}
+                                    {{--    <div class="service-search d-none d-lg-block">--}}
+                                    {{--        <div class="input-group p-box">--}}
+                                    {{--            <input type="text" id="txtSearch" placeholder="Tìm dịch vụ" value="" class="" width="200px">--}}
+                                    {{--            <span class="icon-search"><i class="fas fa-search"></i></span>--}}
+                                    {{--        </div>--}}
+                                    {{--    </div>--}}
+                                    {{--</div>--}}
 
                                     @include('frontend.widget.__content__home__dichvu')
 

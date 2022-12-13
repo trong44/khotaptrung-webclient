@@ -14,5 +14,7 @@ $(document).ready(function() {
         headLinkText: ['<i class="fas fa-expand-arrows-alt"></i>', '<i class="fas fa-compress-arrows-alt"></i>'],
         headBackgroundColor: 'transparent',
     };
-    $.toctoc(options);
+    if ( $(".news_detail_content h2").length >=2 ) {
+        $.toctoc(options);
+    }
 });

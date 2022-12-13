@@ -467,7 +467,7 @@
                                     @elseif($slug == 'ban-nick-ngoc-rong' || $slug == 'nick-ngoc-rong-online')
                                         @foreach($auto_properties as $auto_propertie)
                                             @if($auto_propertie->key == 'CAPTURES')
-                            
+
                                             @elseif($auto_propertie->key == 'SERVER')
                                                 <div class="col-md-12 left-right modal-nick-padding">
                                                     <div class="row marginauto">
@@ -493,7 +493,7 @@
                                                             <div class="col-md-12 left-right modal-nick-padding">
                                                                 <div class="row marginauto">
                                                                     <div class="col-12 left-right background-nick-col-top-ct">
-                                                                        <small>CAI TRANG</small>
+                                                                        <small>CẢI TRANG</small>
                                                                     </div>
                                                                     <div class="col-12 left-right background-nick-col-bottom-ct">
                                                                         <select class="select-2-custom account-filter-field" data-query="champions_data"  data-title="">
@@ -511,14 +511,14 @@
                                                             <div class="col-md-12 left-right modal-nick-padding">
                                                                 <div class="row marginauto">
                                                                     <div class="col-12 left-right background-nick-col-top-ct">
-                                                                        <small>SKILL PET 2</small>
+                                                                        <small>SKILL 2 ĐỆ TỬ</small>
                                                                     </div>
                                                                     <div class="col-12 left-right background-nick-col-bottom-ct">
                                                                         <select class="select-2-custom account-filter-field" data-query="tftmapskins_data"  data-title="">
                                                                             <option value="">--Không chọn--</option>
                                                                             @if(isset($childs->childs))
                                                                                 @foreach($childs->childs as $child)
-                                
+
                                                                                     @if($child->name == config('module.acc.auto_nro_skill_pet_2.'.$child->name))
                                                                                         <option value="{{ $child->id }}">{{ $child->name }}</option>
                                                                                     @endif
@@ -532,7 +532,7 @@
                                                             <div class="col-md-12 left-right modal-nick-padding">
                                                                 <div class="row marginauto">
                                                                     <div class="col-12 left-right background-nick-col-top-ct">
-                                                                        <small>SKILL PET 3</small>
+                                                                        <small>SKILL 3 ĐỆ TỬ</small>
                                                                     </div>
                                                                     <div class="col-12 left-right background-nick-col-bottom-ct">
                                                                         <select class="select-2-custom account-filter-field" data-query="tftdamageskins_data"  data-title="">
@@ -552,7 +552,7 @@
                                                             <div class="col-md-12 left-right modal-nick-padding">
                                                                 <div class="row marginauto">
                                                                     <div class="col-12 left-right background-nick-col-top-ct">
-                                                                        <small>SKILL PET 4</small>
+                                                                        <small>SKILL 4 ĐỆ TỬ</small>
                                                                     </div>
                                                                     <div class="col-12 left-right background-nick-col-bottom-ct">
                                                                         <select class="select-2-custom account-filter-field" data-query="skill_data" data-title="">

@@ -14,6 +14,28 @@ document.addEventListener('touchend', function (event) {
 $(document).ready(function(e){
     initial();
     $('.play').click(function(){
+
+        if (!auth_check) {
+            let width = $(window).width();
+            setTimeout(function(){
+                if ( width > 1200 ) {
+                    $('#loginModal').modal('show');
+                    setTimeout(() => {
+                        $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                    }, 200);
+
+                    return;
+                } else {
+                    $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                    $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                    $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                    $('.mobile-auth').css('transform', 'translateX(0)');
+
+                    return;
+                }
+            }, 0);
+        }
+
         roll_check = true;
         $('.boxflip img.flip-box-front').each(function(){
             $(this).attr('src',$('#image_static').val());
@@ -29,6 +51,28 @@ $(document).ready(function(e){
         $('#type_play').val('real');
     })
     $('.num-play-try').click(function(){
+
+        if (!auth_check) {
+            let width = $(window).width();
+            setTimeout(function(){
+                if ( width > 1200 ) {
+                    $('#loginModal').modal('show');
+                    setTimeout(() => {
+                        $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                    }, 200);
+
+                    return;
+                } else {
+                    $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                    $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                    $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                    $('.mobile-auth').css('transform', 'translateX(0)');
+
+                    return;
+                }
+            }, 0);
+        }
+
         roll_check = true;
         $('.boxflip img.flip-box-front').each(function(){
             $(this).attr('src',$('#image_static').val());
@@ -71,6 +115,22 @@ $(document).ready(function(e){
     var arrDiscount = '';
     //Click nút lật
     $('body').delegate('.img_remove', 'click', function(){
+
+        if (!auth_check) {
+            let width = $(window).width();
+            if ( width > 1200 ) {
+                $('#loginModal').modal('show');
+                $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                return;
+            } else {
+                $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                $('.mobile-auth').css('transform', 'translateX(0)');
+                return;
+            }
+        }
+
         $('.boxflip .flip-box-front').removeClass('img_remove');
         $('.boxflip .flip-box-front').removeClass('active');
         $('.boxflip .flip-box-front').addClass('noactive');
@@ -105,7 +165,18 @@ $(document).ready(function(e){
                         $('.boxflip .flip-box-front').removeClass('active');
                     },1000);
                     if (data.status == 4) {
-                        location.href='/login';
+                        let width = $(window).width();
+                        if ( width > 1200 ) {
+                            $('#loginModal').modal('show');
+                            $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                            return;
+                        } else {
+                            $('.mobile-auth-form #formLoginMobile').css('display', 'flex');
+                            $('.mobile-auth-form #formRegisterMobile').css('display', 'none');
+                            $('.mobile-auth .head-mobile h1').text('Đăng nhập');
+                            $('.mobile-auth').css('transform', 'translateX(0)');
+                            return;
+                        }
                     } else if (data.status == 3) {
                         roll_check = true;
                         $('#naptheModal').modal('show');

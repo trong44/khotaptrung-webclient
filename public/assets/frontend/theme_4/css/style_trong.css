@@ -43,7 +43,7 @@
 }
 
 #content-store-card {
-    --primary-color: #32c5d2;
+    --primary-color: rgb(238, 70, 35);
 }
 
 #content-store-card .card {
@@ -53,7 +53,7 @@
 }
 
 .card.--custom {
-    --primary-color: #32c5d2;
+    --primary-color: rgb(238, 70, 35);
     border-radius: 12px;
     border: none;
 
@@ -766,7 +766,7 @@
 
 /*style for order detail*/
 .order--detail {
-    --primary-color: #32c5d2;
+    --primary-color: rgb(238, 70, 35);
     padding: 0 0 0 10px;
 }
 
@@ -993,7 +993,7 @@
 }
 
 .input--file::-webkit-file-upload-button {
-    border: 1px solid #32c5d2;
+    border: 1px solid rgb(238, 70, 35);
     border-radius: 4px;
     background-color: #FFFFFF;
     color: var(--primary-color);
@@ -1663,9 +1663,9 @@ a:hover .__icon.--path__custom:after {
     border-left: none;
     border-right: none;
     padding-bottom: 11.5px;
-    border-bottom: 2px solid #32c5d2;
+    border-bottom: 2px solid rgb(238, 70, 35);
     font-weight: 700;
-    color: #32c5d2;
+    color: rgb(238, 70, 35);
 }
 
 #rechargeModal .nav-tabs .nav-link:not(.active):hover {
@@ -1715,7 +1715,7 @@ a:hover .__icon.--path__custom:after {
     margin-bottom: 0;
 }
 #rechargeModal .list-card-deno input:checked + .card-label {
-    border-color: #32c5d2;
+    border-color: rgb(238, 70, 35);
 }
 #rechargeModal .list-card-deno .card-label span {
     position: absolute;
@@ -1732,7 +1732,7 @@ a:hover .__icon.--path__custom:after {
     color: #434657;
 }
 #rechargeModal .list-card-deno input:checked + .card-label span {
-    color: #32c5d2;
+    color: rgb(238, 70, 35);
 }
 /*text*/
 .t-sub-2 {

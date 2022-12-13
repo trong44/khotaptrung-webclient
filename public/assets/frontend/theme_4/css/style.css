@@ -1071,6 +1071,23 @@ input[type="checkbox"]:checked + label::after, input[type=radio]:checked + label
     border: 4px solid darken(darkcyan, 10%);
 }
 
+.expand-button_c {
+    cursor: pointer;
+    display: block;
+    width: 20%;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgb(238, 70, 35) !important;
+    border-radius: 3px;
+    background-color: #fff;
+    color: rgb(238, 70, 35) !important;
+    font-size: 13px;
+    padding: 0.5rem;
+    border: 4px solid darken(darkcyan, 10%);
+}
+
 /*END simple-checkbox css*/
 
 ul.atm-control{
@@ -1284,6 +1301,15 @@ ul.atm-control  li a.active {
 
     .expand-button {
         width: 50% !important;
+    }
+
+    .expand-button_c {
+        width: 50% !important;
+    }
+
+    .o_item_spin_category{
+        justify-content: start!important;
+        overflow: overlay!important;
     }
 
 }
@@ -1848,4 +1874,64 @@ select:focus{
 .navbar-light .navbar-nav .menu-item:hover{
     background: lightgray;
     transition: .2s;
+}
+.text-limit {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+
+.limit-1 {
+    -webkit-line-clamp: 1;
+    line-clamp: 1
+}
+
+.limit-2 {
+    -webkit-line-clamp: 2;
+    line-clamp: 2
+}
+
+.limit-3 {
+    -webkit-line-clamp: 3;
+    line-clamp: 3
+}
+
+.limit-4 {
+    -webkit-line-clamp: 4;
+    line-clamp: 4
+}
+
+.limit-5 {
+    -webkit-line-clamp: 5;
+    line-clamp: 5
+}
+
+.limit-6 {
+    -webkit-line-clamp: 6;
+    line-clamp: 6
+}
+
+.newPrice {
+    border: 2px solid rgb(238, 70, 35);
+    padding: 5px 15px;
+    color: rgb(238, 70, 35);
+    display: inline;
+    border-radius: 5px;
+    margin-left: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 16px;
+}
+.oldPrice {
+    text-decoration: line-through;
+    color: rgb(87, 87, 87);
+    border: 2px solid;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 16px;
 }

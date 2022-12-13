@@ -712,10 +712,7 @@
         $('#txtPrice').html('Tổng: 0 ' + purchase_name);
 
         function UpdatePrice() {
-
             var container = $('.m-datatable__body').html('');
-
-
             if (data.server_mode == 1 && data.server_price == 1) {
 
                 var s_price = data["price" + server];
@@ -755,7 +752,7 @@
 
         function UpdateTotal() {
             var price = parseInt($('#input_pack').val().replace(/,/g, ''));
-
+            let purchase_name = data.filter_name;
             if (typeof price != 'number' || price < min || price > max) {
                 $('button[type="submit"]').addClass('not-allow');
 
@@ -786,20 +783,24 @@
                 }
             }
             else {
-                let idx_server_selected = $('select.server-filter').val() * 1;
-                var s_discount = data["discount"];
-                discount = s_discount[idx_server_selected];
+                let s_discount = data["discount"];
+                data.price.forEach((price_mark,idx) => {
+                    if (price >= price_mark){
+                        discount = s_discount[idx];
+                    }
+                })
                 total = price * discount;
             }
 
-            $('[name="value"]').val('');
             $('[name="value"]').val(price);
-            total = parseInt(total / 1000 * data.input_pack_rate);
+            if(isNaN(total)) {
+                total = 0;
+            }
+            total = total / 1000 * data.input_pack_rate;
 
             $('#txtDiscount').val(discount);
             total = total.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
             total = total.split('').reverse().join('').replace(/^[\.]/,'');
-            $('#txtPrice').html('');
             $('#txtPrice').html('Tổng: ' + total + " " + purchase_name);
             $('#txtPrice').removeClass().addClass('bounceIn animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                 $(this).removeClass();

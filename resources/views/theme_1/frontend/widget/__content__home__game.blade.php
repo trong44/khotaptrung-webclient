@@ -81,16 +81,16 @@
                                 @if(isset($item->lm_auto))
                                     @if($item->lm_auto == 1)
                                         <a class="account_category" href="/mua-acc/{{ config('module.acc.slug-auto') }}">
-                                            <h3><strong>{{ isset($item->custom->title) ? $item->custom->title :  $item->title }}</strong></h3>
+                                            <h3><strong class="limit-1 text-limit">{{ isset($item->custom->title) ? $item->custom->title :  $item->title }}</strong></h3>
                                         </a>
                                     @else
                                         <a class="account_category" href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}">
-                                            <h3><strong>{{ isset($item->custom->title) ? $item->custom->title :  $item->title }}</strong></h3>
+                                            <h3><strong class="limit-1 text-limit">{{ isset($item->custom->title) ? $item->custom->title :  $item->title }}</strong></h3>
                                         </a>
                                     @endif
                                 @else
                                     <a class="account_category" href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}">
-                                        <h3><strong>{{ isset($item->custom->title) ? $item->custom->title :  $item->title }}</strong></h3>
+                                        <h3><strong class="limit-1 text-limit">{{ isset($item->custom->title) ? $item->custom->title :  $item->title }}</strong></h3>
                                     </a>
                                 @endif
                             </div>

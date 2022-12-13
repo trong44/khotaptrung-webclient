@@ -1,3 +1,4 @@
+let auth_check = false;
 $(document).ready(function(){
     const csrf_token = $('meta[name="csrf-token"]').attr('content');
     const token =  $('meta[name="jwt"]').attr('content');
@@ -79,7 +80,7 @@ $(document).ready(function(){
                     alert('Lỗi dữ liệu, vui lòng load lại trang để tải lại dữ liệu')
                 }
                 if(data.status == true){
-
+                    auth_check = true;
                     $('.box-loading').hide();
                     $('.box-logined').hide();
                     $('.box-account').show();

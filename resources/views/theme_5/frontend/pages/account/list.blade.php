@@ -310,7 +310,7 @@
                                     @elseif($slug == 'ban-nick-ngoc-rong' || $slug == 'nick-ngoc-rong-online')
                                         @foreach($auto_properties as $auto_propertie)
                                             @if($auto_propertie->key == 'CAPTURES')
-                            
+
                                             @elseif($auto_propertie->key == 'SERVER')
                                                 <div class="input-group">
                                                     <label class="form-label">
@@ -331,7 +331,7 @@
                                                         @if($childs->key == 'CAI_TRANG')
                                                             <div class="input-group">
                                                                 <label class="form-label">
-                                                                    CAI TRANG
+                                                                    CẢI TRANG
                                                                 </label>
                                                                 <select name="champions_data" class="select-2-custom w-100" id="">
                                                                     <option value="">--Không chọn--</option>
@@ -345,7 +345,7 @@
                                                         @elseif($childs->key == 'SKILL_PET')
                                                             <div class="input-group">
                                                                 <label class="form-label">
-                                                                    SKILL PET 2
+                                                                    SKILL 2 ĐỆ TỬ
                                                                 </label>
                                                                 <select name="tftmapskins_data" class="select-2-custom w-100" id="">
                                                                     <option value="">--Không chọn--</option>
@@ -361,7 +361,7 @@
 
                                                             <div class="input-group">
                                                                 <label class="form-label">
-                                                                    SKILL PET 3
+                                                                    SKILL 3 ĐỆ TỬ
                                                                 </label>
                                                                 <select name="tftdamageskins_data" class="select-2-custom w-100" id="">
                                                                     <option value="">--Không chọn--</option>
@@ -377,7 +377,7 @@
 
                                                             <div class="input-group">
                                                                 <label class="form-label">
-                                                                    SKILL PET 4
+                                                                    SKILL 4 ĐỆ TỬ
                                                                 </label>
                                                                 <select name="skill_data" class="select-2-custom w-100" id="">
                                                                     <option value="">--Không chọn--</option>
@@ -716,38 +716,36 @@
                 <div class="c-mb-16">
                     <div class="card overflow-hidden detailViewBlock">
                         <div class="card-body c-px-16">
-                            @if(substr($data->custom->content, 1200))
-                                <div class="content-desc hide detailViewBlockContent">
-                                    {!! $data->custom->content !!}
-                                </div>
-                            @else
-                                <div class="content-desc detailViewBlockContent">
-                                    {!! $data->custom->content !!}
-                                </div>
-                            @endif
+                            <div class="content-desc hide detailViewBlockContent">
+                                {!! $data->custom->content !!}
+                            </div>
                         </div>
-
                         <div class="card-footer text-center">
                             <span class="see-more" data-content="Xem thêm nội dung"></span>
                         </div>
+
+{{--                        <div class="card-footer text-center">--}}
+{{--                            <span class="see-more" data-content="Xem thêm nội dung"></span>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
             @else
+                @if($data->content)
                 <div class="c-mb-16 c-mt-16">
                     <div class="card overflow-hidden detailViewBlock">
                         <div class="card-body c-px-16">
-                            @if(substr($data->content, 1200))
-                                <div class="content-desc hide detailViewBlockContent">
-                                    {!! $data->content !!}
-                                </div>
-                            @else
-                                <div class="content-desc detailViewBlockContent">
-                                    {!! $data->content !!}
-                                </div>
-                            @endif
+                            <div class="content-desc hide detailViewBlockContent">
+
+                                {!! $data->content !!}
+                            </div>
                         </div>
+                        <div class="card-footer text-center">
+                            <span class="see-more" data-content="Xem thêm nội dung"></span>
+                        </div>
+
                     </div>
                 </div>
+                @endif
             @endif
 
         {{--            Dịch vụ khác   --}}

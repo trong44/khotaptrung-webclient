@@ -253,16 +253,15 @@
                                                         @foreach($arr_companions as $companion)
                                                             <div class="col-auto c-px-6 c-py-8 item-nick-lmht">
                                                         <span>
-                                                            <div class="row marginauto item-nick-lmht__border">
-                                                                <div
-                                                                    class="col-md-12 pl-0 pr-0 item-nick-lmht__border__col">
+                                                            <div class="row marginauto item-nick-lmht__border p-0">
+                                                                <div class="col-md-12 pl-0 pr-0 item-nick-lmht__border__col" style="position: relative">
                                                                     <img src="https://cdn.upanh.info/{{$companion->thumb}}"
                                                                          class="w-100 brs-4 position-absolute item-nick-lmht__border__img"
 
                                                                          alt="{{ $companion->name }}">
-                                                                </div>
-                                                                <div class="col-md-12 pl-0 pr-0 text-center">
-                                                                    <p class="fw-400 fz-13 c-mb-4 c-mt-20 text-theme text-limit limit-1">{{ $companion->name }}</p>
+                                                                    <div class="col-md-12 pl-0 pr-0 text-center" style="position: absolute;bottom: 0">
+                                                                    <p class="fw-400 fz-13 c-mt-20 text-theme text-limit limit-1" style="margin-bottom: 0;background: rgba(0,0,0,0.8);color:#999;">{{ $companion->name }}</p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </span>
@@ -352,16 +351,14 @@
                                                         @foreach($arr_skins as $skin)
                                                             <div class="col-auto c-px-6 c-py-8 item-nick-lmht">
                                                         <span>
-                                                            <div class="row marginauto item-nick-lmht__border">
-                                                                <div
-                                                                    class="col-md-12 pl-0 pr-0 item-nick-lmht__border__col">
-                                                                    <img
-                                                                        src="https://cdn.upanh.info/{{$skin->thumb}}"
+                                                            <div class="row marginauto item-nick-lmht__border p-0">
+                                                                <div class="col-md-12 pl-0 pr-0 item-nick-lmht__border__col" style="position: relative">
+                                                                    <img src="https://cdn.upanh.info/{{$skin->thumb}}"
                                                                         class="w-100 brs-4 position-absolute item-nick-lmht__border__img "
                                                                         alt="{{ $skin->name }}">
-                                                                </div>
-                                                                <div class="col-md-12 pl-0 pr-0 text-center">
-                                                                    <p class="fw-400 fz-13 c-mb-4 c-mt-20 text-theme text-limit limit-1">{{ $skin->name }}</p>
+                                                                    <div class="col-md-12 pl-0 pr-0 text-center" style="position: absolute;bottom: 0">
+                                                                    <p class="fw-400 fz-13 c-mt-20 text-theme text-limit limit-1" style="margin-bottom: 0;background: rgba(0,0,0,0.8);color:#999;">{{ $skin->name }}</p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </span>
@@ -456,16 +453,17 @@
                                                         @foreach($arr_champ as $champ)
                                                             <div class="col-auto c-px-6 c-py-8 item-nick-lmht">
                                                         <span>
-                                                            <div class="row marginauto item-nick-lmht__border">
-                                                                <div class="col-md-12 pl-0 pr-0 item-nick-lmht__border__col">
+                                                            <div class="row marginauto item-nick-lmht__border p-0">
+                                                                <div class="col-md-12 pl-0 pr-0 item-nick-lmht__border__col" style="position: relative">
                                                                     <img
                                                                         src="https://cdn.upanh.info/{{$champ->thumb}}"
                                                                         class="w-100 brs-4 position-absolute item-nick-lmht__border__img"
                                                                         alt="{{ $champ->name }}">
+                                                                    <div class="col-md-12 pl-0 pr-0 text-center" style="position: absolute;bottom: 0">
+                                                                    <p class="fw-400 fz-13 c-mt-20 text-theme text-limit limit-1" style="margin-bottom: 0;background: rgba(0,0,0,0.8);color:#999;">{{ $champ->name }}</p>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-md-12 pl-0 pr-0 text-center">
-                                                                    <p class="fw-400 fz-13 c-mb-4 c-mt-20 text-theme text-limit limit-1">{{ $champ->name }}</p>
-                                                                </div>
+
                                                             </div>
                                                         </span>
                                                             </div>

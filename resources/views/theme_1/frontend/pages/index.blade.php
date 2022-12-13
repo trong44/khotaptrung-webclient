@@ -18,38 +18,67 @@
             <div class="content-banner container">
                 @if(isset(theme('')->theme_config->sys_charge_home))
                     @if(theme('')->theme_config->sys_charge_home == 'sys_charge_home_ver1')
-                    <div class="content-banner-card">
-                        <ul class="nav " role="tablist" >
-                            <li role="presentation" class="nav-item active" >
-                                <a  class="active" data-toggle="tab" href="#top_napthe" role="tab"  >
-                                    TOP NẠP THẺ THÁNG {{Carbon\Carbon::now()->month}}
-                                </a>
-                            </li>
-                            <li role="presentation" class="" >
+                        <div class="content-banner-card">
+                            <ul class="nav " role="tablist" >
+                                <li role="presentation" class="nav-item active" >
+                                    <a  class="active" data-toggle="tab" href="#top_napthe" role="tab"  >
+                                        TOP NẠP THẺ THÁNG {{Carbon\Carbon::now()->month}}
+                                    </a>
+                                </li>
+                                <li role="presentation" class="" >
 
-                                <a  class="nav-item " data-toggle="tab" href="#napthe" role="tab"  >
-                                    NẠP THẺ
+                                    <a  class="nav-item " data-toggle="tab" href="#napthe" role="tab"  >
+                                        NẠP THẺ
 
-                                </a>
-                            </li>
-                        </ul>
+                                    </a>
+                                </li>
+                            </ul>
 
-                        <div class="tab-content">
-                            <div class="tab-pane  fade show active" id="top_napthe">
-                                <div class="content-banner-card-box">
-                                    @include('frontend.widget.__top_nap_the')
+                            <div class="tab-content">
+                                <div class="tab-pane  fade show active" id="top_napthe">
+                                    <div class="content-banner-card-box">
+                                        @include('frontend.widget.__top_nap_the')
 
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane  fade show " id="napthe">
-                                <div class="content-banner-card-form">
-                                    @include('frontend.widget.__nap_the')
-                                    {{--                                {!! widget('frontend.widget.__nap_the') !!}--}}
+                                <div class="tab-pane  fade show " id="napthe">
+                                    <div class="content-banner-card-form">
+                                        @include('frontend.widget.__nap_the')
+                                        {{--                                {!! widget('frontend.widget.__nap_the') !!}--}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @elseif(theme('')->theme_config->sys_charge_home == 'sys_charge_home_position')
+                        <div class="content-banner-card">
+                            <ul class="nav " role="tablist" >
+                                <li role="presentation" class="active" >
+                                    <a  class="nav-item active" data-toggle="tab" href="#napthe" role="tab"  >
+                                        NẠP THẺ
+                                    </a>
+                                </li>
+                                <li role="presentation" class="nav-item " >
+                                    <a  class="nav-item" data-toggle="tab" href="#top_napthe" role="tab"  >
+                                        TOP NẠP THẺ THÁNG {{Carbon\Carbon::now()->month}}
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane  fade show active" id="napthe">
+                                    <div class="content-banner-card-form">
+                                        @include('frontend.widget.__nap_the')
+                                        {{--                                {!! widget('frontend.widget.__nap_the') !!}--}}
+                                    </div>
+                                </div>
+                                <div class="tab-pane  fade show " id="top_napthe">
+                                    <div class="content-banner-card-box">
+                                        @include('frontend.widget.__top_nap_the')
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endif
                 @else
                     <div class="content-banner-card">

@@ -184,13 +184,9 @@
             let server_id = $server;
             let total = 0, index, current, discount = 0;
             if (!!price) {
-
                 if ($params.server_mode * 1 === 1 && $params.server_price * 1 === 1) {
-
                     let s_price = $params["price" + server_id];
-
                     let s_discount = $params["discount" + server_id];
-
                     for (let i = 0; i < s_price.length; i++) {
                         if (price >= s_price[i] && !!s_price[i]) {
                             current = s_price[i];
@@ -201,9 +197,11 @@
                     }
                 } else {
                     let s_discount = $params["discount"];
-                    let idx_server_selected = $('select[name="server"]').val() * 1;
-                    discount = s_discount[idx_server_selected];
-
+                    $params.price.forEach((price_mark,idx) => {
+                        if (price >= price_mark){
+                            discount = s_discount[idx];
+                        }
+                    })
                     total = price * discount;
                 }
                 total = parseInt(total / 1000 * $params.input_pack_rate);

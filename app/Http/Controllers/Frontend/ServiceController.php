@@ -28,6 +28,18 @@ class ServiceController extends Controller
         $dataSend = array();
         $dataSend['limit'] = 100;
 
+        if ($request->filled('service-option'))  {
+            if ($request->get('service-option') == 1){
+                $arr = explode('|',setting('sys_service_widget_one'));
+            }elseif ($request->get('service-option') == 2){
+                $arr = explode('|',setting('sys_service_widget_two'));
+            }elseif ($request->get('service-option') == 3){
+                $arr = explode('|',setting('sys_service_widget_three'));
+            }
+
+            $dataSend['id_option'] = $arr;
+        }
+
         if ($request->ajax()){
 
             $page = $request->page;
@@ -139,7 +151,7 @@ class ServiceController extends Controller
                 if ( $filter_type == 6 ) {
                     $data_seo_price = $service_params->price[0];
                 }
-                
+
             } catch (\Exception $e) {
                 $data_seo_price = 7700;
             }
@@ -196,7 +208,7 @@ class ServiceController extends Controller
         if ($request->ajax()){
             $slug = $request->slug;
 
-            $url = '/service/'.$slug;
+            $url = '/service/list-bot/'.$slug;
             $method = "GET";
             $dataSend = array();
 //        $dataSend['slug'] = $slug;

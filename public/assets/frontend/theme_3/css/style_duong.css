@@ -186,7 +186,20 @@
     padding-left: 8px;
     padding-right: 8px;
 }
-/* css mo ta dich vu ds nick*/
+/* css description account*/
 #viewMore a{
-    font-size: 16px !important;
+    font-size: unset;
+}
+#viewMore li{
+    font-size: unset;
+}
+#viewMore strong{
+    font-size: unset;
+}
+/* css intro text*/
+#intro_text_home a {
+    font-size: unset;
+}
+#intro_text_home p {
+    font-size: unset;
 }

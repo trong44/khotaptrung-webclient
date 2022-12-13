@@ -7,42 +7,40 @@
 @endsection
 @section('content')
     <div style="width:100%;position: relative;" class="homeitem">
-        <div class="item">
-            <div class="index_title">
-                <span><img src="/assets/frontend/{{theme('')->theme_key}}/image/svg/ic_h1.svg" alt="mua thẻ điện thoại online"></span>
-                <h2 style="padding-top: 62px"> mua thẻ online</h2>
-            </div>
-            @include('frontend.widget.__card_purchase')
-        </div>
-        <!--popup work start here-->
-        @include('frontend.widget.__content__home__dichvu')
-        @include('frontend.widget.__content__home__game')
-        <div class="clr"></div>
-        @if(setting('sys_intro_text'))
-        <div class="wp_content_post_index">
-            <div class="post_index">
-                    <div class="content_bvct">
-                        {!! setting('sys_intro_text') !!}
-                    </div>
-                    <span class="xt more">Xem thêm</span>
-                    <span class="xt tg" style="display: none;">Thu gọn</span>
+    @if(setting('sys_theme_ver_page_build') )
 
-                    <script type="text/javascript">
-                        $('.more').click(function () {
-                            $('.content_bvct').css('height', 'unset');
-                            $('.more').hide();
-                            $('.tg').show();
-                        });
-                        $('.tg').click(function () {
-                            $('.content_bvct').css('height', '1000px');
-                            $('.more').show();
-                            $('.tg').hide();
-                        });
-                    </script>
-                </div>
-        </div>
+        @php
+            $dat = explode(',',setting('sys_theme_ver_page_build'));
+            $data_title = null;
+            $data_widget = null;
+            foreach($dat as $key => $it){
+                if ($key == 0){
+                    $data_title = explode('|',$it);
+                }else{
+                    $data_widget = explode('|',$it);
+                }
+            }
+        @endphp
+        @if(isset($data_widget))
+            @foreach($data_widget as $key => $value)
+                @include('frontend.widget.'.$value.'',with(['title'=>$data_title[$key]]))
+            @endforeach
         @endif
+    @else
+
+        @include('frontend.widget.__card_purchase')
+        <!--popup work start here-->
+            @include('frontend.widget.__content__home__dichvu')
+            @include('frontend.widget.__content__home__game')
+            @include('frontend.widget.__content__home__minigame')
+            @include('frontend.widget.__dichvu__lienquan')
+            @include('frontend.widget.__intro__text')
+
+    @endif
+
     </div>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/storecard/store_card.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/service/showdetailservice.js?v={{time()}}"></script>
+
+    @include('frontend.widget.__bonus')
 @endsection

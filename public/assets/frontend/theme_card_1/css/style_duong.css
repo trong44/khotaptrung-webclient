@@ -233,6 +233,7 @@
 .user-manager .menu-content {
     padding-left: 10px !important;
     padding-right: 10px !important;
+    padding-bottom: 16px;
 }
 
 .user-manager .menu-link {

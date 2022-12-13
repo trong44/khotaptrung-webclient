@@ -1477,7 +1477,7 @@ label {
     width: 40px;
     height: 40px;
     background-color: rgba(220, 222, 233, 0.5);
-    background-image: url(../image/svg/navigation-swiper.svg);
+    background-image: url(../image/navigation-swiper.svg);
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 0 100% 100% 0;
@@ -1492,7 +1492,12 @@ label {
 .swiper:hover .navigation {
     visibility: visible;
 }
-
+.swiper-banner .navigation.slider-next{
+    right: 0;
+}
+.swiper-banner .navigation.slider-prev {
+    left: 0;
+}
 /*card*/
 
 .card {

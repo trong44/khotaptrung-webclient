@@ -30,11 +30,43 @@ $(document).ready(function(e) {
     //var arrDiscount = '';
 
     $('body').delegate('#start-played', 'click', function() {
+
+        if (!auth_check) {
+            let width = $(window).width();
+            if ( width > 1200 ) {
+                $('#loginModal').modal('show');
+                setTimeout(() => {
+                    $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                }, 200);
+                return
+            } else {
+                $('.mobile-auth').toggleClass('mobile-auth-show');
+                $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                return
+            }
+        }
+
         $('#type_play').val('real');
         play();
     });
 
     $('body').delegate('.num-play-try', 'click', function() {
+
+        if (!auth_check) {
+            let width = $(window).width();
+            if ( width > 1200 ) {
+                $('#loginModal').modal('show');
+                setTimeout(() => {
+                    $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                }, 200);
+                return
+            } else {
+                $('.mobile-auth').toggleClass('mobile-auth-show');
+                $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                return
+            }
+        }
+
         $('#type_play').val('try');
         play();
     });
@@ -59,7 +91,20 @@ $(document).ready(function(e) {
                 type: 'POST',
                 success: function(data) {
                     if (data.status == 4) {
-                        location.href='/login?return_url='+window.location.href;
+
+                        let width = $(window).width();
+                        if ( width > 1200 ) {
+                            $('#loginModal').modal('show');
+                            setTimeout(() => {
+                                $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                            }, 200);
+                            return
+                        } else {
+                            $('.mobile-auth').toggleClass('mobile-auth-show');
+                            $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                            return
+                        }
+
                     } else if (data.status == 3) {
                         roll_check = true;
                         $('#naptheModal').modal('show')
@@ -132,7 +177,7 @@ $(document).ready(function(e) {
                     $('#noticeModal').modal('show');
                     return;
                 }
-                
+
                 var flag_bonus = true;
                 var c_game_type_value = '';
                 if (data.game_type_value){

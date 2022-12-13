@@ -45,8 +45,15 @@ function getWithDrawItem(game_type,data_query) {
                     result_data.listgametype.forEach(function (item) {
                         let html = `<option value="${item.parent_id}" ${item.parent_id === game_type * 1 ? 'selected' : ''}>${item.title}</option>`;
                         select_game_type.prepend(html);
+                        var total_price = 0;
+                        if (item.set_number_item){
+                            total_price = item.set_number_item;
+                        }
 
-                        item.parent_id === game_type * 1 ? $('.text--danger').text(`Số vật phẩm hiện có: ${item.set_number_item || 0} ${item.image}`) : '';
+                        total_price = total_price.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                        total_price = total_price.split('').reverse().join('').replace(/^[\.]/,'');
+
+                        item.parent_id === game_type * 1 ? $('.text--danger').text(`Số vật phẩm hiện có: ${total_price} ${item.image}`) : '';
                     });
                 }
               //    Chọn gói vật phẩm
@@ -59,6 +66,28 @@ function getWithDrawItem(game_type,data_query) {
                     });
                     select_package.niceSelect('update')
                 }
+                // server
+                let has_server = !!result_data.service;
+                let input_wrap = $('#input-server');
+                if (has_server) {
+                    if(result_data.service.idkey !== 'roblox_buyserver') {
+                        let service_params = JSON.parse(result_data.service.params)
+                        let input_server = `<div class="t-sub-2 t-color-title my_8">Chọn máy chủ:</div>`;
+                        input_server += '<select name="server" class="form-control">';
+                        service_params.server_data.forEach((server,idx) => {
+                            if(!!server && server.indexOf('[DELETE]') === -1){
+                                input_server += `<option value="${service_params.server_id[idx]}">${server}</option>`
+                            }
+                        })
+                        input_server += '</select>';
+                        input_wrap.html(input_server);
+                    } else  {
+                        input_wrap.empty();
+                    }
+                } else {
+                    input_wrap.empty();
+                }
+
                 //id game
                 let text_id_game =  result_data.gametype.idkey ? result_data.gametype.idkey : 'Id trong game:';
                 $('.input-id-game .t-sub-2').text(text_id_game);

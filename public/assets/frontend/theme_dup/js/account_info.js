@@ -1,3 +1,4 @@
+let auth_check = false;
 $(document).ready(function(){
     const csrf_token = $('meta[name="csrf-token"]').attr('content');
     function getInfo(){
@@ -90,7 +91,7 @@ $(document).ready(function(){
 
                 }
                 if(data.status == true){
-
+                    auth_check = true;
                     $('#username').val(data.info.fullname??data.info.username);
                     $('#info .loading').remove();
                     $('#logout .loading').remove();

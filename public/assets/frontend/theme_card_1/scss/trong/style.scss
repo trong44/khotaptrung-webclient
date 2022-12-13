@@ -59,7 +59,7 @@
     }
     & .nav-tabs {
         display: table;
-        table-layout: fixed;
+        //table-layout: fixed;
         width: 100%;
         border-bottom: unset;
         & .nav-item {
@@ -70,7 +70,7 @@
                 color: #505050;
             }
             & .nav-link.active {
-                border-bottom: 2px solid #32c5d2;
+                border-bottom: 2px solid #f25922;
             }
         }
     }
@@ -129,6 +129,6 @@
         padding: 8px;
     }
     & .modal-title {
-        color: #eb5d68;
+        color: #333;
     }
 }

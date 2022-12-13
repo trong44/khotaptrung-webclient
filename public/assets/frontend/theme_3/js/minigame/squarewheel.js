@@ -44,6 +44,11 @@ $(document).ready(function(e) {
     //Click nút quay
     $('body').delegate('#start-played', 'click', function() {
 
+        if (!auth_check) {
+            $('#loginModal').modal('show');
+            return
+        }
+
         if (roll_check) {
             num_current = startat;
             num = startat;
@@ -67,7 +72,7 @@ $(document).ready(function(e) {
                 type: 'POST',
                 success: function(data) {
                     if (data.status == 4) {
-                        location.href='/login?return_url='+window.location.href;
+                        $('#loginModal').modal('show');
                     } else if (data.status == 3) {
                         clearTimeout(runtime);
                         roll_check = true;
@@ -137,7 +142,7 @@ $(document).ready(function(e) {
                     $('#noticeModal').modal('show');
                     return;
                 }
-                
+
                 var flag_bonus = true;
                 var c_game_type_value = '';
 
@@ -193,6 +198,22 @@ $(document).ready(function(e) {
 
 
     $('body').delegate('.num-play-try', 'click', function() {
+
+        if (!auth_check) {
+            let width = $(window).width();
+            if ( width > 1200 ) {
+                $('#loginModal').modal('show');
+                setTimeout(() => {
+                    $('#loginModal #modal-login-container').removeClass('right-panel-active');
+                }, 200);
+                return
+            } else {
+                $('.mobile-auth').toggleClass('mobile-auth-show');
+                $('.menu-category-mobile').removeClass('menu-category-mobile_show');
+                return
+            }
+        }
+
         if (roll_check) {
             num_current = startat;
             num = startat;
@@ -217,7 +238,7 @@ $(document).ready(function(e) {
                 success: function(data) {
 
                     if (data.status == 4) {
-                        location.href='/login?return_url='+window.location.href;
+                        $('#loginModal').modal('show');
                     } else if (data.status == 3) {
                         clearTimeout(runtime);
                         roll_check = true;
@@ -370,7 +391,7 @@ $(document).ready(function(e) {
                 }
 
                 var c_game_type_value = '';
-                
+
                 if (game_type_value){
                     c_game_type_value = " " + game_type_value;
                 }

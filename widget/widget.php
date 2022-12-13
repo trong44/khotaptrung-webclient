@@ -270,6 +270,87 @@ View::composer('frontend.widget.__list_serve_remark_mobile', function ($view) {
 
 });
 
+View::composer('frontend.widget.__nick__option__one', function ($view) {
+
+    //    Acc
+
+    $data = \Cache::rememberForever('__nick__option__one', function() {
+
+        $url = '/acc';
+        $method = "GET";
+        $dataSend = array();
+        $dataSend['data'] = 'category_list';
+        $dataSend['module'] = 'acc_category';
+        if (setting('sys_nick_widget_one') != ''){
+            $arr_service_one = explode('|',setting('sys_nick_widget_one'));
+
+            if (count($arr_service_one)){
+                $dataSend['id_option'] = $arr_service_one;
+            }
+        }
+
+        $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+
+        return $data = $result_Api->response_data->data??null;
+    });
+
+    return $view->with('data', $data);
+});
+
+View::composer('frontend.widget.__nick__option__two', function ($view) {
+
+    //    Acc
+
+    $data = \Cache::rememberForever('__nick__option__two', function() {
+
+        $url = '/acc';
+        $method = "GET";
+        $dataSend = array();
+        $dataSend['data'] = 'category_list';
+        $dataSend['module'] = 'acc_category';
+        if (setting('sys_nick_widget_two') != ''){
+            $arr_service_one = explode('|',setting('sys_nick_widget_two'));
+
+            if (count($arr_service_one)){
+                $dataSend['id_option'] = $arr_service_one;
+            }
+        }
+
+        $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+
+        return $data = $result_Api->response_data->data??null;
+    });
+
+    return $view->with('data', $data);
+});
+
+View::composer('frontend.widget.__nick__option__three', function ($view) {
+
+    //    Acc
+
+    $data = \Cache::rememberForever('__nick__option__three', function() {
+
+        $url = '/acc';
+        $method = "GET";
+        $dataSend = array();
+        $dataSend['data'] = 'category_list';
+        $dataSend['module'] = 'acc_category';
+        if (setting('sys_nick_widget_three') != ''){
+            $arr_service_one = explode('|',setting('sys_nick_widget_three'));
+
+            if (count($arr_service_one)){
+                $dataSend['id_option'] = $arr_service_one;
+            }
+        }
+
+        $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+
+        return $data = $result_Api->response_data->data??null;
+    });
+
+    return $view->with('data', $data);
+});
+
 View::composer('frontend.widget.__content__home__game', function ($view) {
 
 //    Acc
@@ -363,6 +444,14 @@ View::composer('frontend.widget.__buy__acc__home', function ($view) {
         $dataSend = array();
         $dataSend['data'] = 'category_list';
         $dataSend['module'] = 'acc_category';
+        $arr = null;
+
+        if (setting('sys_nick_widget_one') != '' || setting('sys_nick_widget_two') != '' || setting('sys_nick_widget_three') != ''){
+            $arr = \App\Library\CategoryListOption::nick();
+            if (isset($arr)){
+                $dataSend['id_not_option'] = $arr;
+            }
+        }
 
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
 
@@ -407,7 +496,7 @@ View::composer('frontend.widget.__tin__tuc', function ($view) {
 
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
 
-      return $data = $result_Api->response_data->data->data??null;
+        return $data = $result_Api->response_data->data->data??null;
 
     });
 
@@ -487,6 +576,72 @@ View::composer('frontend.widget.__content__home__dichvu', function ($view) {
 
 });
 
+View::composer('frontend.widget.__service__option__one', function ($view) {
+
+    $data = \Cache::rememberForever('__service__option__one', function() {
+        $url = '/service';
+        $method = "GET";
+        $dataSend = array();
+        $dataSend['limit'] = 118;
+        if (setting('sys_service_widget_one') != ''){
+            $arr_service_one = explode('|',setting('sys_service_widget_one'));
+
+            if (count($arr_service_one)){
+                $dataSend['id_option'] = $arr_service_one;
+            }
+        }
+        $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+        return $data = $result_Api->response_data->data->data??null;
+    });
+
+    return $view->with('data', $data);
+
+});
+
+View::composer('frontend.widget.__service__option__two', function ($view) {
+
+    $data = \Cache::rememberForever('__service__option__two', function() {
+        $url = '/service';
+        $method = "GET";
+        $dataSend = array();
+        $dataSend['limit'] = 118;
+        if (setting('sys_service_widget_two') != ''){
+            $arr_service_one = explode('|',setting('sys_service_widget_two'));
+
+            if (count($arr_service_one)){
+                $dataSend['id_option'] = $arr_service_one;
+            }
+        }
+        $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+        return $data = $result_Api->response_data->data->data??null;
+    });
+
+    return $view->with('data', $data);
+
+});
+
+View::composer('frontend.widget.__service__option__three', function ($view) {
+
+    $data = \Cache::rememberForever('__service__option__three', function() {
+        $url = '/service';
+        $method = "GET";
+        $dataSend = array();
+        $dataSend['limit'] = 118;
+        if (setting('sys_service_widget_three') != ''){
+            $arr_service_one = explode('|',setting('sys_service_widget_three'));
+
+            if (count($arr_service_one)){
+                $dataSend['id_option'] = $arr_service_one;
+            }
+        }
+        $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+        return $data = $result_Api->response_data->data->data??null;
+    });
+
+    return $view->with('data', $data);
+
+});
+
 View::composer('frontend.widget.__content__home__dichvu__v2', function ($view) {
 
     $data = \Cache::rememberForever('__content__home__dichvu__v2', function() {
@@ -541,8 +696,18 @@ View::composer('frontend.widget.__service_game', function ($view) {
         $url = '/service';
         $method = "GET";
         $dataSend = array();
+
+        if (setting('sys_service_widget_one') != '' || setting('sys_service_widget_two') != '' || setting('sys_service_widget_three') != ''){
+            $arr = \App\Library\CategoryListOption::service();
+            if (isset($arr) && count($arr)){
+                $arr = explode('|',$arr);
+                $dataSend['id_not_option'] = $arr;
+            }
+        }
+
 //        $dataSend['limit'] = 8;
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+
         return $data = $result_Api->response_data->data->data??null;
     });
     return $view->with('data', $data);
@@ -1431,7 +1596,7 @@ View::composer('frontend.widget.__bonus', function ($view) {
     $url = '/minigame/bonus';
     $method = "GET";
     $dataSend = array();
-        $dataSend['secret_key'] = config('api.secret_key');
+    $dataSend['secret_key'] = config('api.secret_key');
     $dataSend['domain'] = \Request::server("HTTP_HOST");
     $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
     $data = $result_Api->response_data??null;

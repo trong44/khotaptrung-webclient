@@ -14,5 +14,8 @@ $(document).ready(function() {
         headLinkText: ['<i class="fas fa-expand-arrows-alt"></i>', '<i class="fas fa-compress-arrows-alt"></i>'],
         headBackgroundColor: 'transparent',
     };
-    $.toctoc(options);
+    
+    if ( $(".article--content__text h2").length >=2 ) {
+        $.toctoc(options);
+    }
 });

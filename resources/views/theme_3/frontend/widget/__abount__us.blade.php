@@ -1,3 +1,29 @@
+@if(setting('sys_intro_text') != '')
+    <section>
+        <div class="font-detail-service container container-fix body-container-ct">
+            <div class="row marginauto body-container-row-ct">
+                <div class="col-md-12 left-right detailViewBlock">
+                    <div class="row marginauto body-row-ct footer-row-ct">
+
+                        <div class="col-md-12 left-right footer-row-col-ct content-video-in content-video-in-add detailViewBlockContent">
+                            {!!  setting('sys_intro_text') !!}
+                        </div>
+
+                        <div class="col-md-12 left-right text-center js-toggle-content noselect">
+                            <div class="view-more">
+                                <a href="javascript:void(0)" class="global__link__default">Xem thêm<i class="__icon__default --sm__default --link__default ml-1" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/svg/xemthem.svg)"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+@endif
+
+
+
 <div class="block-product mt-fix-20">
 
     <div class="box-product">

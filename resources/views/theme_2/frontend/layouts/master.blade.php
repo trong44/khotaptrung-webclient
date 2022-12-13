@@ -36,7 +36,6 @@
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/fancybox/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/fancybox/fancybox.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/easy-navigate-toc/public/css/toctoc.css">
-
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/main_trong.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/son/style.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/phu/style.css">
@@ -44,7 +43,7 @@
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/table_of_contents.css">
 
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/style-custom.css">
-    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/duong/component-style.css">
+    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/duong/component-style.css?v={{time()}}">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/modal-custom.css">
 
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/select2/select2.min.css">
@@ -67,8 +66,6 @@
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/account_info.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/main.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/datetime-picker/bootstrap-datetimepicker.js" defer></script>
-
-
 
 {{--    <script src="/assets/frontend/{{theme('')->theme_key}}/js/storecard/store_card.js"></script>--}}
     @stack('js')

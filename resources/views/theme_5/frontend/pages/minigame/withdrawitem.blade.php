@@ -106,6 +106,42 @@
                                             @endif
                                         </select>
                                     </div>
+                                        @php
+                                            $service = null;
+                                            $params = null;
+                                            $server_id = null;
+                                            $server_data = null;
+                                            if (isset($result->service)){
+                                                $service = $result->service;
+
+                                                if (isset($service->params)){
+                                                    $params = $service->params;
+                                                    $server_data=\App\Library\HelpersDecode::DecodeJson('server_data',$params);
+                                                    $server_id = \App\Library\HelpersDecode::DecodeJson('server_id',$params);
+                                                }
+
+                                            }
+
+                                        @endphp
+                                    @if(isset($service))
+                                        <input type="hidden" name="service_id" value="{{ $service->id }}">
+                                        @if(isset($server_data) && isset($server_id) && count($server_data) && count($server_id))
+                                            @if($service->idkey != 'roblox_buyserver')
+                                                <div class="input-group">
+                                                    <span class="form-label">
+                                                        Chon server
+                                                    </span>
+                                                    <select name="server" class="wide">
+                                                        @for($i = 0; $i < count($server_data); $i++)
+                                                            @if((strpos($server_data[$i], '[DELETE]') === false))
+                                                                <option value="{{$server_id[$i]}}">{{$server_data[$i]}}</option>
+                                                            @endif
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                            @endif
+                                        @endif
+                                    @endif
 
                                     <div class="input-group">
                                         <span class="form-label">

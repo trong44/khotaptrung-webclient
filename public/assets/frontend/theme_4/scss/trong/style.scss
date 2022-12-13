@@ -55,7 +55,7 @@
 // modal rút vật phẩm
 #modal-withdraw-items {
     & .modal-title {
-        color: #eb5d68;
+        //color: #eb5d68;
     }
     & .nav-tabs {
         display: table;
@@ -70,7 +70,7 @@
                 color: #505050;
             }
             & .nav-link.active {
-                border-bottom: 2px solid #32c5d2;
+                border-bottom: 2px solid rgb(238, 70, 35);
             }
         }
     }
@@ -95,8 +95,8 @@
     }
 }
 .text--danger {
-    color: #eb5d68;
-    font-size: 18px;
+    //color: #eb5d68;
+    font-size: 16px;
     font-weight: 600;
     &:empty {
         height: 0;
@@ -129,6 +129,6 @@
         padding: 8px;
     }
     & .modal-title {
-        color: #eb5d68;
+        //color: #eb5d68;
     }
 }

@@ -1,0 +1,754 @@
+#withdrawMoney.withdraw-content {
+    border-radius: 12px;
+    background-color: #FFFFFF;
+}
+
+#withdrawMoney .withdraw-header  {
+    position: relative;
+    padding: 0.75rem 1rem;
+}
+
+#withdrawMoney .listed-type {
+    text-align: center;
+    padding: 0.75rem 0;
+    font-weight: 400;
+    font-size: 20px;
+    color: #82869E;
+    border-bottom: 1px solid #E4E5F0;
+    cursor: pointer;
+}
+
+#withdrawMoney .listed-type.listed-type-active {
+    font-weight: 700;
+    color: #f25922;
+}
+
+#withdrawMoney .type-listing {
+    position: absolute;
+    top: 84%;
+    left: 16px;
+    height: 2px;
+    background-color: #f25922;
+    transition: transform 0.2s ease-in-out, width 0.2s ease-out;
+}
+
+#withdrawMoney .withdraw-body {
+
+}
+
+#withdrawMoney .withdraw-tab-container {
+    padding: 0.75rem 1rem 1rem 1rem;
+}
+
+#withdrawMoney .withdraw-tab {
+    border: 1px solid #DCDEE9;
+    border-radius: 8px;
+}
+
+#withdrawMoney .withdraw-tab-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+    font-size: 16px;
+    color: #1B1D29;
+}
+
+#withdrawMoney .withdraw-tab-header span {
+    font-weight: 700;
+    font-size: 16px;
+    margin-left: 0.25rem;
+    color: #f25922;
+}
+
+#withdrawMoney .input-block:first-child {
+    padding-top: 1rem;
+}
+
+#withdrawMoney .input-block {
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}
+
+#withdrawMoney .radio-container {
+    position: relative;
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+}
+
+#withdrawMoney .radio-block {
+    display: flex;
+    align-items: center;
+}
+
+#withdrawMoney .radio-container input[type="radio"] {
+    position: absolute;
+    left: -9999px;
+    visibility: hidden;
+}
+
+#withdrawMoney .radio-block label {
+    position: relative;
+    font-weight: 400;
+    font-size: 16px;
+    color: #434657;
+    margin-bottom: 0;
+    padding-left: 1.5rem;
+    cursor: pointer;
+}
+
+#withdrawMoney .radio-block label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+
+#withdrawMoney .radio-block label::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #f25922;
+    position: absolute;
+    top: 9px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+#withdrawMoney .radio-block input[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+#withdrawMoney .radio-block input[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+#withdrawMoney .input-block h6 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #1B1D29;
+    margin-bottom: 0.5rem;
+}
+
+#withdrawMoney .withdraw-reminder {
+    font-weight: 400;
+    font-size: 12px;
+    color: #82869E;
+    margin-top: 0.25rem;
+}
+
+#withdrawMoney .input-block.capcha-block .withdraw-capcha {
+    padding: 0 0.5rem 0 1rem;
+}
+
+#withdrawMoney .withdraw-refresh-capcha {
+    border: none;
+    border-radius: 8px;
+}
+
+#withdrawMoney .input-block textarea {
+    padding: 0.75rem;
+    width: 100%;
+}
+
+#withdrawMoney .input-block textarea::placeholder {
+    font-size: 14px;
+}
+
+#withdrawMoneyFilter .input-date-right h5 {
+    text-align: left;
+    padding-left: 0.5rem;
+}
+
+#withdrawMoney .withdraw-select {
+    width: 100%;
+    float: none;
+    padding-left: 12px;
+}
+
+#withdrawMoney .withdraw-inputs {
+    width: 100%;
+    height: 40px;
+    padding-left: 12px;
+}
+
+#withdrawMoney .withdraw-inputs::placeholder {
+    font-size: 14px;
+}
+
+#withdrawMoney .input-button {
+    width: 446px;
+    padding: 0.75rem 1rem;
+}
+
+#withdrawMoney .input-button button {
+    width: 100%;
+    padding: 0.75rem;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#withdrawMoney .history-tab-container {
+
+}
+
+#withdrawMoney .history-tab-filter {
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#withdrawMoney .history-search {
+
+}
+
+#withdrawMoney .search-form {
+    position: relative;
+}
+
+#withdrawMoney .search-form input {
+    height: 40px;
+    padding-left: 2.75rem;
+    width: 260px;
+}
+
+#withdrawMoney .search-form img {
+    position: absolute;
+    left: 12px;
+    top: 18%;
+}
+
+#withdrawMoney .search-form button {
+    height: 40px;
+    width: 120px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 0.75rem;
+}
+
+#withdrawMoney .history-filter {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-bottom: 0.6rem;
+}
+
+#withdrawMoney .history-filter p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #434657;
+    margin-right: 0.25rem;
+    margin-bottom: 0;
+}
+
+#withdrawMoney .filter-count {
+    text-align: center;
+    background: #DA4343;
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 16px;
+    color: #FFFFFF;
+}
+
+#withdrawMoney .current-filter {
+    display: flex;
+    padding: 0.75rem;
+    direction: rtl;
+    width: 100%;
+    overflow-x: auto;
+}
+
+#withdrawMoney .current-filter:empty {
+    padding: 0;
+}
+
+#withdrawMoney .filter-activated {
+    direction: ltr;
+    display: flex;
+    align-items: center;
+    background: #F3F3F7;
+    border-radius: 100px;
+    padding: 6px 8px;
+    margin-left: 0.5rem;
+}
+
+#withdrawMoney .filter-activated span {
+    font-weight: 600;
+    font-size: 12px;
+    color: #434657;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+}
+
+#withdrawMoney .filter-activated img {
+    width: 20px;
+    cursor: pointer;
+}
+
+#withdrawMoney .history-table-container {
+    padding: 0 1rem;
+}
+
+#withdrawMoney .history-table {
+    border: 1px solid #DCDEE9;
+    border-radius: 8px;
+}
+
+#withdrawMoney .history-head {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background: #FBFBFD;
+}
+
+#withdrawMoney .history-head-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #E4E5F0;
+}
+
+#withdrawMoney .history-head-item.history-head-sm.item-left p {
+    padding: 0;
+}
+
+#withdrawMoney .history-head-item.history-head-sm.item-right p {
+    padding: 0;
+}
+
+#withdrawMoney .history-head-item p {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1B1D29;
+    margin-bottom: 0;
+}
+
+#withdrawMoney .item-right {
+    text-align: right;
+    padding-right: 0.75rem;
+}
+
+#withdrawMoney .history-head-item.item-left p {
+    padding-left: 0.75rem;
+}
+
+#withdrawMoney .history-head-item.item-right p {
+    padding-right: 0.75rem;
+}
+
+#withdrawMoney .history-item:nth-child(odd) {
+    background-color: #FFFFFF;
+}
+
+#withdrawMoney .history-item:nth-child(even) {
+    background-color: #FBFBFD;
+}
+
+#withdrawMoney .history-item:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#withdrawMoney .history-item.empty-state {
+    justify-content: center;
+}
+
+#withdrawMoney .history-item.empty-state p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #434657;
+    margin-bottom: 0;
+    padding: 2.15rem 0;
+}
+
+#withdrawMoney .history-item-data {
+    display: flex;
+    align-items: center;
+}
+
+#withdrawMoney .history-item-data p {
+    padding: 0.75rem;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #434657;
+}
+
+#withdrawMoney .history-item-data.history-data-sm p {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#withdrawMoney p.transaction-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-break: auto;
+    width: 100%;
+    vertical-align: top;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#withdrawMoney .history-item-data.data-right {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+#withdrawMoney .history-item-data.data-right span {
+    text-align: center;
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    color: #FFFFFF;
+    padding: 2px 0;
+    width: 90px;
+    border-radius: 4px;
+    margin-right: 0.75rem;
+}
+
+#withdrawMoney .history-item-data.data-right span.status-success {
+    background-color: #30CD60;
+}
+
+#withdrawMoney .history-item-data.data-right span.status-failed {
+    background-color: #DA4343;
+}
+
+#withdrawMoney .history-item-data.data-right span.status-pending {
+    background-color: #FFA940;
+}
+
+#withdrawMoney .history-item-data.data-right img {
+    margin-right: 0.75rem;
+}
+
+/* Pagination */
+
+#withdrawMoney .history-pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+#withdrawMoney .history-pagination {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+#withdrawMoney .pagination-item {
+    width: 32px;
+    height: 32px;
+    border: 1px solid;
+    border-color: #E4E5F0;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+}
+
+#withdrawMoney .pagination-item:hover {
+    border-color: #BCBFD6;
+    background-color: #FFFFFF;
+}
+
+#withdrawMoney .pagination-item:active {
+    border-color: #f25922;
+    background-color: #FFFFFF;
+}
+
+#withdrawMoney .pagination-item.pagination-etc {
+    border: none;
+    background-color: #FFFFFF !important;
+}
+
+#withdrawMoney .pagination-item.disabled {
+    cursor: default;
+    border-color: #BCBFD6;
+    background-color: #F3F3F7;
+}
+
+#withdrawMoney .pagination-item.active {
+    border-color: #f25922;
+    background-color: #FFFFFF;
+}
+
+#withdrawMoney .pagination-item + .pagination-item {
+    margin-left: 0.5rem;
+}
+
+#withdrawMoney .pagination-link {
+    color: #434657;
+    font-weight: 600;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#withdrawMoney .pagination-link:hover {
+    color: inherit;
+}
+
+#withdrawMoney .pagination-item.disabled .pagination-link {
+    cursor: default;
+}
+
+#withdrawMoney .pagination-item.active .pagination-link {
+    color: #f25922;
+}
+
+#withdrawMoney .pagination-item.disabled:active .pagination-link {
+    color: inherit;
+}
+
+#withdrawMoney .pagination-item:active .pagination-link {
+    color: #f25922;
+}
+
+/* Filter Modal */
+#withdrawMoneyFilter .filter-input-block {
+    margin-bottom: 1rem;
+}
+
+#withdrawMoneyFilter .filter-input-block h5 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #1B1D29;
+}
+
+#withdrawMoneyFilter .filter-dropdown {
+    width: 100%;
+    float: none;
+    padding-left: 12px;
+}
+
+#withdrawMoneyFilter .filter-date-block {
+    margin-bottom: 1rem;
+}
+
+#withdrawMoneyFilter .filter-date-block h5 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #1B1D29;
+}
+
+#withdrawMoneyFilter .filter-date-block input {
+    width: 96%;
+    height: 40px;
+    padding-left: 12px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+#withdrawMoneyFilter .filter-date-block label {
+    cursor: pointer;
+}
+
+#withdrawMoneyFilter .filter-block-img-left {
+    position: absolute;
+    top: 50%;
+    right: 18px;
+}
+
+#withdrawMoneyFilter .filter-block-img-right {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+}
+
+#withdrawResult .modal-body {
+    text-align: center;
+}
+
+#withdrawResult .rotation-prize-img {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#withdrawResult .rotation-prize-detail {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+#withdrawResult .rotation-prize-detail p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #434657;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+#addAccountModal .form-change  {
+    position: relative;
+}
+
+#addAccountModal .form-change-button {
+    text-align: center;
+    padding: 0.75rem 0;
+    font-weight: 400;
+    font-size: 16px;
+    color: #82869E;
+    border-bottom: 1px solid #E4E5F0;
+    cursor: pointer;
+}
+
+#addAccountModal .form-change-button.form-change-button-active {
+    font-weight: 700;
+    color: #f25922;
+}
+
+#addAccountModal .form-listing {
+    position: absolute;
+    top: 96%;
+    left: 0;
+    height: 2px;
+    background-color: #f25922;
+    transition: transform 0.2s ease-in-out, width 0.2s ease-out;
+}
+
+#addAccountModal .account-input-block {
+    margin-top: 1.5rem;
+}
+
+#addAccountModal .account-input-block h5 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #1B1D29;
+    margin-bottom: 0.5rem;
+}
+
+#addAccountModal .account-input-block input {
+    height: 40px;
+    width: 100%;
+    padding-left: 12px;
+}
+
+#addAccountModal .account-bank-dropdown {
+    width: 100%;
+    float: none;
+    padding-left: 12px;
+}
+
+#addAccountModal .account-modal-notify {
+    margin: 1.5rem 0;
+}
+
+#addAccountModal .account-modal-notify h6 {
+    font-weight: 600;
+    font-size: 14px;
+    color: #82869E;
+    margin-bottom: 0.5rem;
+}
+
+#addAccountModal .account-modal-notify p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #434657;
+}
+
+#addAccountModal .rotation-modal-btn button {
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+    #withdrawMoney.withdraw-content {
+        border-radius: 0;
+    }
+
+    #withdrawMoney .listed-type {
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    #withdrawMoney .type-listing {
+        top: 82%;
+    }
+
+    #withdrawMoney .withdraw-tab {
+        border: none;
+        border-radius: 0;
+    }
+
+    #withdrawMoney .radio-container {
+        display: block;
+        width: 100%;
+    }
+
+    #withdrawMoney .radio-block {
+        margin-bottom: 0.25rem;
+    }
+
+    #withdrawMoney .input-block {
+        padding: 0;
+    }
+
+    #withdrawMoney .input-button {
+        padding: 0;
+        width: unset;
+    }
+
+    #withdrawMoney .search-form button {
+        display: none;
+    }
+
+    #withdrawMoney .search-form input {
+        width: 230px;
+    }
+
+    #withdrawMoney .search-form input::placeholder {
+        font-weight: 400;
+        font-size: 12px;
+    }
+
+    #withdrawMoney .history-table-container {
+        padding: 0;
+        overflow-y: scroll;
+    }
+
+    #withdrawMoney .history-table {
+        border: none;
+        border-radius: 0;
+        width: 215%;
+    }
+
+    #addAccountModal .account-input-block {
+        margin-top: 1rem;
+    }
+
+    #addAccountModal .account-modal-notify {
+        margin: 1rem 0;
+    }
+}

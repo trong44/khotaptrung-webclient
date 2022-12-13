@@ -3,83 +3,107 @@
     <meta name="robots" content="noindex,nofollow" />
 @endsection
 @section('content')
-    <div class="account">
 
-        <div class="account_content">
-            <div class="container">
-                @include('frontend.pages.account.sidebar')
-                <div class="account_sidebar_content">
-                    <div class="account_sidebar_content_title">
-                        <p>LỊCH SỬ CHƠI {{$group->title}} TRÚNG ACC</p>
-                        <div class="account_sidebar_content_line"></div>
-                    </div>
-                    <div class="account_content_transaction_history">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <select name="type" id="type" class="form-control">
-                                        <option value="1">Log trúng vật phẩm</option>
-                                        <option selected>Log trúng acc</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <select name="id" id="id" class="form-control">
-                                        @foreach($group_api as $item)
-                                        <option value="{{route('getLogAcc',['id' => $item->id])}}" {{$group->id==$item->id?'selected':''}}>{{$item->title}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <input type="hidden" id="group_id" value="{{$group->id}}">
-                            <script type="text/javascript">
-                                $("#id").change(function(){
-                                    window.location.href = $( "select#id" ).val();
-                                });
-                                $("#type").change(function(){
-                                    window.location.href = $( "select#id" ).val().replace('logacc','log');
-                                });
-                            </script>
+    <section>
+        <div class="container">
+
+            <div class="row user-manager">
+                @include('frontend.widget.__menu_profile')
+
+                <div class="col-12 col-md-8 col-lg-9 site-form " style="min-height: 212.568px;">
+
+                    <div class="menu-content">
+                        <div class="title">
+                            <h3>LỊCH SỬ CHƠI {{$group->title}} TRÚNG ACC</h3>
                         </div>
-                        <form action="{{route('getLogAcc',[$group->id])}}" method="get">
+                        <div class="booking_detail"></div>
+                        <div class="wapper-grid profile">
+
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="input-group">
-                                        <input type="text" class="form-control input-group-addon" name="gift_name" autocomplete="off" placeholder="Tên quà/ tên tài khoản" value="{{request('gift_name')}}">
+                                        <select name="type" id="type" class="form-control">
+                                            <option value="1">Log trúng vật phẩm</option>
+                                            <option selected>Log trúng acc</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="input-group">
-                                        <div class="input-group date" id="transaction_history_start">
+                                        <select name="id" id="id" class="form-control">
+                                            @foreach($group_api as $item)
+                                                <option value="{{route('getLogAcc',['id' => $item->id])}}" {{$group->id==$item->id?'selected':''}}>{{$item->title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="group_id" value="{{$group->id}}">
+                                <script type="text/javascript">
+                                    $("#id").change(function(){
+                                        window.location.href = $( "select#id" ).val();
+                                    });
+                                    $("#type").change(function(){
+                                        window.location.href = $( "select#id" ).val().replace('logacc','log');
+                                    });
+                                </script>
+                            </div>
+                            <form action="{{route('getLogAcc',[$group->id])}}" method="get">
+                                <div class="row" style="margin-top: 8px;margin-bottom: 8px">
+
+                                    <div class="form-row mb-3 col-md-4">
+
+                                        <div class="input-group m-b-10 c-square">
+                                            <div class="input-group date date-picker" data-date-format="dd/mm/yyyy"
+                                                 data-rtl="false">
+                                            <span class="input-group-btn">
+                                            <button class="btn default c-btn-square p-l-10 p-r-10" type="button"><i
+                                                    class="fa fa-calendar"></i></button>
+                                            </span>
+                                                <input type="text" class="form-control c-square c-theme started_at" name="started_at"
+                                                       autocomplete="off" placeholder="Từ ngày"
+                                                       value="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row mb-3 col-md-4">
+                                        <div class="input-group m-b-10 c-square">
+                                            <div class="input-group date date-picker" data-date-format="dd/mm/yyyy"
+                                                 data-rtl="false">
+                                            <span class="input-group-btn">
+                                            <button class="btn default c-btn-square p-l-10 p-r-10" type="button"><i
+                                                    class="fa fa-calendar"></i></button>
+                                            </span>
+                                                <input type="text" class="form-control c-square c-theme ended_at" name="ended_at"
+                                                       autocomplete="off" placeholder="Đến ngày"
+                                                       value="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row mb-3 col-md-4">
+                                        <div class="input-group date date-picker">
                                         <span class="input-group-btn">
-                                            <i class="fa fa-calendar"></i>
+                                        <p class="input-group-btn-p">Tên quà:</p>
                                         </span>
-                                            <input type="text" class="form-control input-group-addon" name="started_at" autocomplete="off" placeholder="Từ ngày" value="{{request('started_at')}}">
+
+                                            <input type="text" class="form-control input-group-addon" name="gift_name" autocomplete="off" placeholder="Tên quà" value="{{request('gift_name')}}">
+
                                         </div>
                                     </div>
+
+
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <div class="input-group date" id="transaction_history_end">
-                                        <span class="input-group-btn input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                        </span>
-                                            <input type="text" class="form-control input-group-addon" name="ended_at" autocomplete="off" placeholder="Đến ngày" value="{{request('ended_at')}}">
-                                        </div>
+                                <div class="row" style="margin-bottom: 8px">
+                                    <div class="col-md-4">
+                                        <input type="submit" style="margin-right: 16px" class="btn c-theme-btn c-btn-square m-b-10" value="Tìm kiếm" >
+                                        <a href="{{url()->current()}}" class="btn c-btn-square m-b-10 btn-danger">Tất cả</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <input type="submit" style="margin-right: 16px" class="btn c-theme-btn c-btn-square m-b-10" value="Tìm kiếm" >
-                                    <a href="{{url()->current()}}" class="btn c-btn-square m-b-10 btn-danger">Tất cả</a>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="table-responsive">
-                            <table class="table table-hover table-custom-res">
-                                <thead>
+                            </form>
+                            <div class="table-responsive">
+                                <table class="table table-hover table-custom-res">
+                                    <thead>
                                     <tr>
                                         <th>Thời gian</th>
                                         <th>ID</th>
@@ -88,38 +112,39 @@
                                         <th>Phần thưởng</th>
                                         <th>Danh mục</th>
                                     </tr>
-                                </thead>
-                                <tbody>
+                                    </thead>
+                                    <tbody>
                                     @foreach($result->data as $item)
-                                    <tr>
-                                        <td>{{\Carbon\Carbon::parse($item->created_at)->format('Y-m-d H:i')}}</td>
-                                        <td>{{$item->id}}</td>
-                                        <td>{{$item->item_acc->title}}</td>
-                                        <td>{{$item->item_acc->position}}</td>
-                                        <td>{{$item->item_ref->children[0]->title??""}}</td>
-                                        <td>{{$item->group->title}}</td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{\Carbon\Carbon::parse($item->created_at)->format('Y-m-d H:i')}}</td>
+                                            <td>{{$item->id}}</td>
+                                            <td>{{$item->item_acc->title}}</td>
+                                            <td>{{$item->item_acc->position}}</td>
+                                            <td>{{$item->item_ref->children[0]->title??""}}</td>
+                                            <td>{{$item->group->title}}</td>
+                                        </tr>
                                     @endforeach
-                                </tbody>
-                            </table>
-                            <div class="col-md-12 left-right justify-content-end paginate__v1 paginate__v1_mobie frontend__panigate">
-                                <div class="row marinautooo paginate__history paginate__history__fix justify-content-center">
-                                    <div class="col-auto paginate__category__col">
-                                        <div class="data_paginate paging_bootstrap paginations_custom" style="text-align: center">
-                                            {{ $paginatedItems->links() }}
+                                    </tbody>
+                                </table>
+                                <div class="col-md-12 left-right justify-content-end paginate__v1 paginate__v1_mobie frontend__panigate">
+                                    <div class="row marinautooo paginate__history paginate__history__fix justify-content-center">
+                                        <div class="col-auto paginate__category__col">
+                                            <div class="data_paginate paging_bootstrap paginations_custom" style="text-align: center">
+                                                {{ $paginatedItems->links() }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-
                     </div>
-
-
                 </div>
+
             </div>
-        </div>
-    </div>
+
+        </div><!-- /.container -->
+    </section>
 
 <script>
     // $(function () {

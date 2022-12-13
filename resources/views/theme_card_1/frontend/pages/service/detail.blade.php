@@ -1073,9 +1073,12 @@
                     }
                 }
             } else {
-                var s_discount = data["discount"];
-                let idx_server_selected = $('select.server-filter').val() * 1;
-                discount = s_discount[idx_server_selected];
+                let s_discount = data["discount"];
+                data.price.forEach((price_mark,idx) => {
+                    if (price >= price_mark){
+                        discount = s_discount[idx];
+                    }
+                })
                 total = price * discount;
             }
 

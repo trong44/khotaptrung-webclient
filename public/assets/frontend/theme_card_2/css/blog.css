@@ -173,3 +173,8 @@
         margin-bottom: 15px;
     }
 }
+
+/* css image chi tiet tin tuc*/
+#blog-content iframe{
+    max-width: 100%;
+}

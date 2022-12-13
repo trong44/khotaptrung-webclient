@@ -1,3 +1,32 @@
+new Swiper('#service-related',{
+    autoplay: false,
+    updateOnImagesReady: true,
+    watchSlidesVisibility: false,
+    lazyLoadingInPrevNext: false,
+    lazyLoadingOnTransitionStart: false,
+    slidesPerView: 5,
+    speed: 300,
+    spaceBetween: 16,
+    touchMove: true,
+    grabCursor: true,
+    observer: true,
+    observeParents: true,
+    breakpoints: {
+        992: {
+            freeMode: true,
+            slidesPerView: 4,
+        },
+        768: {
+            freeMode: true,
+            slidesPerView: 2.25,
+        }
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+});
+
 $('.service-form').on('submit', function (e) {
     e.preventDefault();
     let keyword = convertToSlug($(this).find('[name="search"]').val());
@@ -253,7 +282,6 @@ if (input_params_hide.length){
                     var s_price = data_params["price" + server_id];
                     var s_discount = data_params["discount" + server_id];
                     for (var i = 0; i < s_price.length; i++) {
-
                         if (price >= s_price[i] && s_price[i] != null) {
                             current = s_price[i];
                             index = i;
@@ -262,9 +290,12 @@ if (input_params_hide.length){
                         }
                     }
                 } else {
-                    var s_discount = data_params["discount"];
-                    let idx_server_selected = $('select[name="server"]').val() * 1;
-                    discount = s_discount[idx_server_selected];
+                    let s_discount = data_params["discount"];
+                    data_params.price.forEach((price_mark,idx) => {
+                        if (price >= price_mark){
+                            discount = s_discount[idx];
+                        }
+                    })
                     total = price * discount;
                 }
                 total = parseInt(total / 1000 * data_params.input_pack_rate);
