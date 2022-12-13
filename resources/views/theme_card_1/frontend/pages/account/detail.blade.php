@@ -227,7 +227,7 @@
                                                                             <li class="nav-item page-item {{ !$key ? 'active' : '' }} page-item-{{ $key }}">
                                                                                 <a class="page-link {{ !$key ? 'active' : '' }} page-link-{{ $key }}"
                                                                                 data-toggle="tab" href="#tab-champ-{{ $key }}"
-                                                                                role="tab" data-page="{{ $key }}">{{ $key + 1 }}</a>
+                                                                                role="tab" data-page="{{ $key }}" style="color: #fff">{{ $key + 1 }}</a>
                                                                             </li>
                                                                             @if(!$key)
                                                                                 <li class="page-item disabled hidden-xs dot-first-paginate">
