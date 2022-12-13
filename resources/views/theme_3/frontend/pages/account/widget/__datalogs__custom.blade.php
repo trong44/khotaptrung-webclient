@@ -71,7 +71,9 @@
                 @endif
                 @forelse($item->groups as $group)
                     @if($group->module == 'acc_category')
+                        @if(isset($group->childs))
                         <input type="hidden" class="js_attr_category" data-id="{{ $item->id }}" value="{{ json_encode($group->childs) }}">
+                        @endif
                     @endif
                     @if($group->module == 'acc_label')
                         <input type="hidden" class="js_attr_label" data-gr="{{$group->id}}" data-id="{{ $item->id }}" value="{{ @$group->parent->title }}">
