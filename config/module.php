@@ -149,7 +149,7 @@ return [
             '8' => 'Tiền thưởng',
             '9' => 'Thanh toán bán nick',
             '10' => 'Đặt cọc (Trả góp)',
-            '11' => 'Hoàn tiền',
+            '11' => 'Hoàn tiền dịch vụ',
             '12' => 'Thanh toán dịch vụ',
             '13' => 'Hoàn tất dịch vụ',
             '14' => 'Thanh toán mua thẻ',
