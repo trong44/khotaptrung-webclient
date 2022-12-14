@@ -91,13 +91,13 @@
 {{--                @include('frontend.pages.account.widget.__same__price')--}}
             </div>
 
-            <div id="showswatched">
+{{--            <div id="showswatched">--}}
 {{--                <div class="loading-wrap c-my-24">--}}
 {{--                    <span class="modal-loader-spin"></span>--}}
 {{--                </div>--}}
-                {{--  TK đồng giá   --}}
-                {{--                @include('frontend.pages.account.widget.__same__price')--}}
-            </div>
+{{--                --}}{{--  TK đồng giá   --}}
+{{--                --}}{{--                @include('frontend.pages.account.widget.__same__price')--}}
+{{--            </div>--}}
 
 
             <div>

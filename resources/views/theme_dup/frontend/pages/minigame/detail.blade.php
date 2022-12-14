@@ -2295,7 +2295,7 @@
                                             }else {
                                                 $html += "<span>Kết quả: "+gift_revice[0]["title"]+"</span><br/>";
                                                 if(gift_detail.winbox == 1){
-                                                    $html += "<span>Mua X1: Nhận được "+gift_gift_revice[$i]['parrent'].title+"</span><br/>";
+                                                    $html += "<span>Mua X1: Nhận được "+gift_revice[0]['parrent'].title+"</span><br/>";
                                                     //$html += "<span>Lật được "+(xvalue+3)+" hình trùng nhau. Nhận X"+(xvalueaDD[0])+" giải thưởng: "+gift_revice[0]["parrent"].params.value*(xvalueaDD[0])+""+msg_random_bonus[0]+"</span><br/>"+$strDiscountcode;
                                                     $html += "<span>Tổng cộng: "+parseInt(gift_revice[0]["parrent"].params.value)*(parseInt(xvalueaDD[0]))+"</span>";
                                                 }
@@ -2367,7 +2367,7 @@
                                             }else {
                                                 $html += "<span>Kết quả chơi thử: "+gift_revice[0]["title"]+"</span><br/>";
                                                 if(gift_detail.winbox == 1){
-                                                    $html += "<span>Mua X1: Nhận được "+gift_gift_revice[$i]['parrent'].title+"</span><br/>";
+                                                    $html += "<span>Mua X1: Nhận được "+gift_revice[0]['parrent'].title+"</span><br/>";
                                                     //$html += "<span>Lật được "+(xvalue+3)+" hình trùng nhau. Nhận X"+(xvalueaDD[0])+" giải thưởng: "+gift_revice[0]["parrent"].params.value*(xvalueaDD[0])+""+msg_random_bonus[0]+"</span><br/>"+$strDiscountcode;
                                                     $html += "<span>Tổng cộng: "+parseInt(gift_revice[0]["parrent"].params.value)*(parseInt(xvalueaDD[0]))+"</span>";
                                                 }

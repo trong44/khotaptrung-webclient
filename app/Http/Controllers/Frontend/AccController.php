@@ -420,7 +420,7 @@ class AccController extends Controller
 
         if(isset($response_data) && $response_data->status == 1 && isset($response_data->data)) {
             $data = $response_data->data;
-
+//            dd($data);
             if ($data->status == 0){
                 return view('frontend.pages.error.404');
             }
@@ -496,7 +496,11 @@ class AccController extends Controller
 
                 $data_category = $data->category;
 
-                $dataAttribute = $data_category->childs;
+                $dataAttribute = null;
+                if (isset($data_category->childs)){
+                    $dataAttribute = $data_category->childs;
+                }
+
 
                 $card_percent = (int)setting('sys_card_setting');
 

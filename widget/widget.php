@@ -362,6 +362,14 @@ View::composer('frontend.widget.__content__home__game', function ($view) {
         $dataSend = array();
         $dataSend['data'] = 'category_list';
         $dataSend['module'] = 'acc_category';
+        $arr = null;
+
+        if (setting('sys_nick_widget_one') != '' || setting('sys_nick_widget_two') != '' || setting('sys_nick_widget_three') != ''){
+            $arr = \App\Library\CategoryListOption::nick();
+            if (isset($arr)){
+                $dataSend['id_not_option'] = $arr;
+            }
+        }
 
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
 
@@ -382,6 +390,14 @@ View::composer('frontend.widget.__content__home__game_thuong', function ($view) 
         $dataSend = array();
         $dataSend['data'] = 'category_list';
         $dataSend['module'] = 'acc_category';
+        $arr = null;
+
+        if (setting('sys_nick_widget_one') != '' || setting('sys_nick_widget_two') != '' || setting('sys_nick_widget_three') != ''){
+            $arr = \App\Library\CategoryListOption::nick();
+            if (isset($arr)){
+                $dataSend['id_not_option'] = $arr;
+            }
+        }
 
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
 
@@ -402,6 +418,15 @@ View::composer('frontend.widget.__content__home__game__random', function ($view)
         $dataSend = array();
         $dataSend['data'] = 'category_list';
         $dataSend['module'] = 'acc_category';
+
+        $arr = null;
+
+        if (setting('sys_nick_widget_one') != '' || setting('sys_nick_widget_two') != '' || setting('sys_nick_widget_three') != ''){
+            $arr = \App\Library\CategoryListOption::nick();
+            if (isset($arr)){
+                $dataSend['id_not_option'] = $arr;
+            }
+        }
 
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
 

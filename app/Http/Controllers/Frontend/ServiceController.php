@@ -193,14 +193,10 @@ class ServiceController extends Controller
 
         }
         elseif ($result_Api->response_code == 404){
-            return view('frontend.404.404');
+            return view('frontend.pages.404');
         }
         else{
-
-            $data =null;
-            $message = "Không thể lấy dữ liệu";
-            return view('frontend.pages.service.detail')->with('data', $data)->with('message', $message);
-
+            return view('frontend.pages.404');
         }
     }
 
