@@ -22,7 +22,7 @@
         {{--            Slider baner    --}}
         @include('frontend.widget.__slider__banner__minigame')
         {{--            Top hôm nay    --}}
-        @include('frontend.pages.minigame.widget.__top__today')
+{{--        @include('frontend.pages.minigame.widget.__top__today')--}}
 
 
         {{--        --}}{{--        Giam gia soc    --}}
