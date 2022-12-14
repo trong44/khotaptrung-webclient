@@ -39,7 +39,7 @@
                             <div class="row marginauto price-minigame">
                                 <div class="col-md-12 left-right">
                                     @if(isset($item->params->percent_sale))
-                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                    <span class="oldPrice">{{ str_replace(',','.',number_format($item->price/((100 - $item->params->percent_sale)/100))) }} đ</span>
                                     @else
                                     @endif
                                     <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
