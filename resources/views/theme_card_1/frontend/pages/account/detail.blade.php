@@ -174,7 +174,7 @@
                                         </ul>
                                         <button class="submit-search-champ submit--search" type="button"></button>
                                     </div>
-                                    <img class="c-close-modal" data-dismiss="modal" src="/assets/frontend/theme_1/image/son/close.svg" alt="">
+                                        <img class="c-close-modal" data-dismiss="modal" src="/assets/frontend/theme_1/image/son/close.svg" alt="">
                                 </div>
 
                                 <div class="modal-body">

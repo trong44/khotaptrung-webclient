@@ -199,63 +199,102 @@
 
                                                 @if($data->itemconfig_ref->idkey =='nrogem')
                                                 @else
-                                                    <button class="btn btn-brand btn-edit" id="btn-edit" data-id="7630">Chỉnh sửa thông tin</button>
+                                                    <button class="btn btn-brand btn-edit" id="btn-edit" data-id="{{ $data->id }}">Chỉnh sửa thông tin</button>
                                                 @endif
                                             @endif
-                                                <script>
-                                                    $(document).on('click', '#btn-edit',function(event){
-                                                        $('#edit_info').modal('show');
-                                                    })
-                                                </script>
-                                                <div class="modal fade" id="edit_info">
+                                                <div class="modal fade" id="edit_info" role="dialog" style="display: none;" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
-                                                            <form method="POST" action="https://frontend.dev.tichhop.pro/dich-vu-da-mua-7630/edit" accept-charset="UTF-8" class="m-form editForm"><input name="_token" type="hidden" value="mXWkGqxgoRV3z7iAG5N7BnuVR0ih8IaDY2UcyyLc">
-                                                                <div class="modal-header" style="padding-left: 16px;padding-right: 16px">
-                                                                    <h4 class="modal-title" style="font-weight: bold;text-transform: uppercase;text-align: center">Chỉnh sửa thông tin</h4>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">×</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="error__editerrvice" style="width: 100%;text-align: center;margin-bottom: 0">
+                                                            {{Form::open(array('url'=>'/dich-vu-da-mua-'.$data->id.'/edit/','class'=>'m-form editForm','method'=>'post'))}}
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" style="padding-left:12px;font-weight: bold;text-transform: uppercase;text-align: center">Chỉnh sửa thông tin</h4>
+                                                                <button type="button" class="close mr-2" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="error__editerrvice" style="width: 100%;text-align: center;margin-bottom: 0">
 
-                                                                </div>
-                                                                <div class="modal-body text-left" style="padding-right: 16px;padding-left: 16px">
+                                                            </div>
+                                                            <div class="modal-body text-left">
 
-                                                                    <span class="mb-15 control-label bb fw-500" style="color: black;font-weight: bold">Tài Khoản đăng nhập game:</span>
+                                                                @php
+                                                                    $send_name=\App\Library\HelpersDecode::DecodeJson('send_name',$data->itemconfig_ref->params);
+                                                                    $send_type=\App\Library\HelpersDecode::DecodeJson('send_type',$data->itemconfig_ref->params);
+                                                                    $index = 0;
+                                                                @endphp
+                                                                @if(!empty($send_name)&& count($send_name)>0)
+                                                                    @for ($i = 0; $i < count($send_name); $i++)
+                                                                        @if($send_name[$i]!=null)
+                                                                            @php
+                                                                                $index = $index + 1;
+                                                                            @endphp
+                                                                            <span class="mb-15 control-label bb">{{$send_name[$i]}}:</span>
 
+                                                                            {{--                                                                    check trường của sendname--}}
+                                                                            @if($send_type[$i]==1 || $send_type[$i]==2||$send_type[$i]==3)
+                                                                                <div class="mb-15 pt-3 pb-2">
+                                                                                    @if(\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,json_encode($data->params)))
+                                                                                        <input type="text" required name="customer_data{{$i}}" value="{{\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,json_encode($data->params))}}" class="form-control t14 " placeholder="{{$send_name[$i]}}" value="">
+                                                                                    @else
+                                                                                        <input type="text" required name="customer_data{{$i}}" value="{{\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,$data->params)}}" class="form-control t14 " placeholder="{{$send_name[$i]}}" value="">
+                                                                                    @endif
+                                                                                </div>
 
-                                                                    <div class="mb-15 pt-3 pb-2">
-                                                                        <input type="text" required name="customer_data0" value="namdh@hqplay.vn" class="form-control t14 " placeholder="Tài Khoản đăng nhập game" value="">
-                                                                    </div>
+                                                                            @elseif($send_type[$i]==4)
+                                                                                <div class="mb-15 pt-3 pb-2">
+                                                                                    @if(\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,json_encode($data->params)))
+                                                                                        <input type="file" required accept="image/*" class="form-control" name="customer_data{{$i}}" value="{{\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,json_encode($data->params))}}" placeholder="{{$send_name[$i]}}">
+                                                                                    @else
+                                                                                        <input type="file" required accept="image/*" class="form-control" name="customer_data{{$i}}" value="{{\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,$data->params)}}" placeholder="{{$send_name[$i]}}">
+                                                                                    @endif
+                                                                                </div>
+                                                                            @elseif($send_type[$i]==5)
+                                                                                <div class="mb-15 pt-3 pb-2">
+                                                                                    @if(\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,json_encode($data->params)))
+                                                                                        <input type="password" required class="form-control" name="customer_data{{$i}}" value="{{\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,json_encode($data->params))}}" placeholder="{{$send_name[$i]}}">
+                                                                                    @else
+                                                                                        <input type="password" required class="form-control" name="customer_data{{$i}}" value="{{\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,$data->params)}}" placeholder="{{$send_name[$i]}}">
+                                                                                    @endif
+                                                                                </div>
+                                                                            @elseif($send_type[$i]==6)
+                                                                                @php
+                                                                                    if (\App\Library\HelpersDecode::DecodeJson('send_data'.$i,json_encode($data->params))){
+                                                                                        $send_data=\App\Library\HelpersDecode::DecodeJson('send_data'.$i,json_encode($data->params));
+                                                                                    }else{
+                                                                                        $send_data=\App\Library\HelpersDecode::DecodeJson('send_data'.$i,$data->params);
+                                                                                    }
 
+                                                                                @endphp
+                                                                                <div class="mb-15 pt-3 pb-2">
+                                                                                    <select name="customer_data{{$i}}" required class="mb-15 control-label bb">
+                                                                                        @if(!empty($send_data))
+                                                                                            @for ($sn = 0; $sn < count($send_data); $sn++)
+                                                                                                @if(\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,json_encode($data->params)))
+                                                                                                    <option value="{{$sn}}" {{\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,json_encode($data->params))==$sn?"selected":""}}>{{$send_data[$sn]}}</option>
+                                                                                                @else
+                                                                                                    <option value="{{$sn}}" {{\App\Library\HelpersDecode::DecodeJson('customer_data'.$i,$data->params)==$sn?"selected":""}}>{{$send_data[$sn]}}</option>
+                                                                                                @endif
+                                                                                            @endfor
+                                                                                        @endif
+                                                                                    </select>
+                                                                                </div>
+                                                                            @endif
 
-                                                                    <span class="mb-15 control-label bb fw-500" style="color: black;font-weight: bold">Mật khẩu game:</span>
-
-
-                                                                    <div class="mb-15 pt-3 pb-2">
-                                                                        <input type="password" required class="form-control" name="customer_data1" value="123@@123" placeholder="Mật khẩu game">
-                                                                    </div>
-
-                                                                    <span class="mb-15 control-label bb">Bạn Đã Đọc Kĩ Quy Định Và Chuẩn Bị Đầy Đủ Vật Phẩm, Phụ Kiện Theo Yêu Cầu Của Shop Chưa?:</span>
-
-
-                                                                    <div class="mb-15 pt-3 pb-2">
-                                                                        <input type="text" required name="customer_data2" value="321312" class="form-control t14 " placeholder="Bạn Đã Đọc Kĩ Quy Định Và Chuẩn Bị Đầy Đủ Vật Phẩm, Phụ Kiện Theo Yêu Cầu Của Shop Chưa?" value="">
-                                                                    </div>
-
-
-                                                                    <input type="hidden" name="index" class="index" value="3">
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold" id="d3" style="background: rgb(238, 70, 35);border: 2px solid rgb(238, 70, 35);color: #ffffff">Cập nhật</button>
-                                                                    <button type="button" class="btn c-theme-btn c-btn-border-2x c-btn-square c-btn-bold c-btn-uppercase" data-dismiss="modal">Đóng</button>
-                                                                </div>
-                                                            </form>
+                                                                        @endif
+                                                                    @endfor
+                                                                @endif
+                                                                <input type="hidden" name="index" class="index" value="{{ $index }}">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold" id="d3" style="">Cập nhật</button>
+                                                                <button type="button" class="btn c-theme-btn c-btn-border-2x c-btn-square c-btn-bold c-btn-uppercase" data-dismiss="modal">Đóng</button>
+                                                            </div>
+                                                            {{Form::close()}}
 
                                                         </div>
                                                     </div>
                                                 </div>
+
                                         @endif
 
 
