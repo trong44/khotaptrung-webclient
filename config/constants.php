@@ -10,8 +10,12 @@ return [
         '6' => 'Fifa online 4',
         '7' => 'Fifa online 4 mobile',
         '8' => 'Pubg mobile',
-        '9' => 'Audition mobile',
-        '10' => 'BlockMango'
+        '9' => 'Genshin Impact',
+        '10' => 'BlockMango',
+        '11' => 'Ninjaxu school',
+        '12' => 'Ngọc rồng (Ngọc)',
+        '13' => 'Roblox',
+        '14' => 'Ngọc rồng (Vàng)',
 
     ],
     'game_type_map' => [
@@ -23,8 +27,12 @@ return [
         '6' => 'fo4',
         '7' => 'fo4m',
         '8' => 'pubgm',
-        '9' => 'aumobile',
-        '10' => 'blockmango'
+        '9' => 'genesis_crystal',
+        '10' => 'blockmango',
+        '11' => 'ninjaxu',
+        '12' => 'nrogem',
+        '13' => 'roblox_buyserver',
+        '14' => 'nrocoin',
     ],
     'game_type_value' => [
         '1' => 'QUÂN HUY',
@@ -35,7 +43,7 @@ return [
         '6' => 'fo4',
         '7' => 'fo4m',
         '8' => 'UC',
-        '9' => 'aumobile',
+        '9' => 'Genesis Crystal',
         '10' => 'GCUBE',
         '11' => 'XU',
         '12' => 'HỒNG NGỌC',
