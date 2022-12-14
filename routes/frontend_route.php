@@ -323,12 +323,22 @@ Route::get('/406', function ()
 
                     Route::get('/garena/{slug}', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlGarena']);
                     Route::get('/danh-muc/{slug}', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlDanhmuc']);
+                    Route::get('/vtc-game/{slug}', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlVTC']);
 //                Shop rikaki
                     Route::get('/free-fire-gia-re', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlRikaki']);
                     Route::get('/nick-free-fire-sieu-re', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlRikaki']);
                     Route::get('/nick-free-fire-sieu-cap', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlRikaki']);
                     Route::get('/free-fire-tam-trung', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlRikaki']);
                     Route::get('/game-acc-free-fire', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlNickFreeGireGiare']);
+                    Route::get('/nick-cf-vip', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlTienZomebie']);
+                    Route::get('/nick-cf-tam-trung', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlTienZomebie']);
+                    Route::get('/nick-cf-gia-re', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlTienZomebie']);
+                    Route::get('/thu-van-may-cf-25k', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlTienZomebie25k']);
+                    Route::get('/thu-van-may-3z-sieu-hott', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlTienZomebieHot']);
+                    Route::get('/lien-quan-mobile', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlTienZomebieMobile']);
+                    Route::get('/thu-van-may-lq-vip-1', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlTienZomebie1']);
+                    Route::get('/thu-van-may-lq-vip-2', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlTienZomebie2']);
+                    Route::get('/thu-van-may-lq-vip-3', [\App\Http\Controllers\Frontend\RedirectUrl::class , 'redirectUrlTienZomebie3']);
 
                     Route::group(['middleware' => ['intend']], function () {
 

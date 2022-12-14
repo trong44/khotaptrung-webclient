@@ -25,6 +25,23 @@ class RedirectUrl extends Controller
         }
     }
 
+    public function redirectUrlVTC(Request $request,$slug){
+
+        if(setting('sys_google_plus') != ''){
+            if (\Request::server("HTTP_HOST") == 'shoptienzombie.net'){
+                if ($slug == 'nick-cf-gia-re'){
+                    $slug_new = '/mua-acc/nick-dot-kich-gia-re';
+                    $url = 'https://'.\Request::server("HTTP_HOST").$slug_new;
+                    return Redirect::to($url);
+                }
+            }else{
+                return view('frontend.404.404');
+            }
+        }else{
+            return view('frontend.404.404');
+        }
+    }
+
     public function redirectUrlGarena(Request $request,$slug){
         if(setting('sys_google_plus') != ''){
             if (\Request::server("HTTP_HOST") == 'shopas.vn'){
@@ -81,7 +98,8 @@ class RedirectUrl extends Controller
                         break;
                 }
 
-            }elseif (\Request::server("HTTP_HOST") == 'shopgilgaming.com'){
+            }
+            elseif (\Request::server("HTTP_HOST") == 'shopgilgaming.com'){
                 switch($slug){
                     case 'nick-free-fire-ha-gia':
                     case 'nick-free-fire-gia-re':
@@ -115,7 +133,8 @@ class RedirectUrl extends Controller
                             return view('frontend.404.404');
                         break;
                 }
-            }elseif (\Request::server("HTTP_HOST") == 'shopfreefire.vn'){
+            }
+            elseif (\Request::server("HTTP_HOST") == 'shopfreefire.vn'){
                 switch($slug){
                     case 'nick-free-fire-gia-re':
                             $slug_new = '/mua-acc/nick-free-fire';
@@ -126,7 +145,8 @@ class RedirectUrl extends Controller
                         return view('frontend.404.404');
                         break;
                 }
-            }elseif (\Request::server("HTTP_HOST") == 'shopfreefiregiare.com'){
+            }
+            elseif (\Request::server("HTTP_HOST") == 'shopfreefiregiare.com'){
                 switch($slug){
                     case 'nick-free-fire-gia-re':
                         $slug_new = '/mua-acc/nick-free-fire';
@@ -137,7 +157,8 @@ class RedirectUrl extends Controller
                         return view('frontend.404.404');
                         break;
                 }
-            }elseif (\Request::server("HTTP_HOST") == 'shopducmomtv.vn'){
+            }
+            elseif (\Request::server("HTTP_HOST") == 'shopducmomtv.vn'){
                 switch($slug){
                     case 'nick-free-fire-gia-re':
                         $slug_new = '/mua-acc/nick-free-fire';
@@ -161,7 +182,8 @@ class RedirectUrl extends Controller
                         return view('frontend.404.404');
                         break;
                 }
-            }elseif (\Request::server("HTTP_HOST") == 'acclienquan.net'){
+            }
+            elseif (\Request::server("HTTP_HOST") == 'acclienquan.net'){
                 switch($slug){
                     case 'nick-lien-quan-gia-re':
                         $slug_new = '/mua-acc/nick-lien-quan-gia-re';
@@ -172,7 +194,8 @@ class RedirectUrl extends Controller
                         return view('frontend.404.404');
                         break;
                 }
-            }else{
+            }
+            else{
                 return view('frontend.404.404');
             }
         }else{
@@ -181,9 +204,115 @@ class RedirectUrl extends Controller
     }
 
     public function redirectUrlRikaki(Request $request){
+
         if(setting('sys_google_plus') != ''){
             if (\Request::server("HTTP_HOST") == 'rikaki.vn'){
                 $slug_new = '/mua-acc/nick-free-fire';
+                $url = 'https://'.\Request::server("HTTP_HOST").$slug_new;
+                return Redirect::to($url);
+            }else{
+                return view('frontend.404.404');
+            }
+        }else{
+            return view('frontend.404.404');
+        }
+    }
+
+    public function redirectUrlTienZomebie(Request $request){
+
+        if(setting('sys_google_plus') != ''){
+            if (\Request::server("HTTP_HOST") == 'shoptienzombie.net'){
+                $slug_new = '/mua-acc/nick-dot-kich-gia-re';
+                $url = 'https://'.\Request::server("HTTP_HOST").$slug_new;
+                return Redirect::to($url);
+            }else{
+                return view('frontend.404.404');
+            }
+        }else{
+            return view('frontend.404.404');
+        }
+    }
+
+    public function redirectUrlTienZomebie25k(Request $request){
+
+        if(setting('sys_google_plus') != ''){
+            if (\Request::server("HTTP_HOST") == 'shoptienzombie.net'){
+                $slug_new = '/mua-acc/random-cf-vip-2';
+                $url = 'https://'.\Request::server("HTTP_HOST").$slug_new;
+                return Redirect::to($url);
+            }else{
+                return view('frontend.404.404');
+            }
+        }else{
+            return view('frontend.404.404');
+        }
+    }
+
+    public function redirectUrlTienZomebieHot(Request $request){
+
+        if(setting('sys_google_plus') != ''){
+            if (\Request::server("HTTP_HOST") == 'shoptienzombie.net'){
+                $slug_new = '/mua-acc/tai-khoan-random-qcmm';
+                $url = 'https://'.\Request::server("HTTP_HOST").$slug_new;
+                return Redirect::to($url);
+            }else{
+                return view('frontend.404.404');
+            }
+        }else{
+            return view('frontend.404.404');
+        }
+    }
+
+    public function redirectUrlTienZomebieMobile(Request $request){
+
+        if(setting('sys_google_plus') != ''){
+            if (\Request::server("HTTP_HOST") == 'shoptienzombie.net'){
+                $slug_new = '/mua-acc/nick-lien-quan-gia-re';
+                $url = 'https://'.\Request::server("HTTP_HOST").$slug_new;
+                return Redirect::to($url);
+            }else{
+                return view('frontend.404.404');
+            }
+        }else{
+            return view('frontend.404.404');
+        }
+    }
+
+    public function redirectUrlTienZomebie1(Request $request){
+
+        if(setting('sys_google_plus') != ''){
+            if (\Request::server("HTTP_HOST") == 'shoptienzombie.net'){
+                $slug_new = '/mua-acc/thu-van-may-lien-quan-vip-1';
+                $url = 'https://'.\Request::server("HTTP_HOST").$slug_new;
+                return Redirect::to($url);
+            }else{
+                return view('frontend.404.404');
+            }
+        }else{
+            return view('frontend.404.404');
+        }
+    }
+
+    public function redirectUrlTienZomebie2(Request $request){
+
+        if(setting('sys_google_plus') != ''){
+            if (\Request::server("HTTP_HOST") == 'shoptienzombie.net'){
+                $slug_new = '/mua-acc/thu-van-may-lien-quan-vip-2';
+                $url = 'https://'.\Request::server("HTTP_HOST").$slug_new;
+                return Redirect::to($url);
+            }else{
+                return view('frontend.404.404');
+            }
+        }else{
+            return view('frontend.404.404');
+        }
+    }
+
+    public function redirectUrlTienZomebie3(Request $request){
+
+        if(setting('sys_google_plus') != ''){
+            if (\Request::server("HTTP_HOST") == 'shoptienzombie.net'){
+                $slug_new = '/mua-acc/thu-van-may-lien-quan-vip-3';
                 $url = 'https://'.\Request::server("HTTP_HOST").$slug_new;
                 return Redirect::to($url);
             }else{
