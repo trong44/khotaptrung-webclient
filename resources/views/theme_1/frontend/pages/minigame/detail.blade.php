@@ -2260,7 +2260,7 @@
                                     // }
 
                                     var flag_bonus = true;
-
+                                    console.log(value_gif_bonus)
                                     if (value_gif_bonus.length > 0){
                                         for (let i = 0; i < value_gif_bonus.length; i++ ){
                                             if (parseInt(value_gif_bonus[i]) > 0){
@@ -2283,6 +2283,7 @@
                                             //     $strDiscountcode="<span>Bạn nhận được 1 mã giảm giá khuyến mãi đi kèm: <b>"+arrDiscount[0]+"</b></span>";
                                             // }
                                             if (!flag_bonus){//trường hợp bonus.
+
                                                 var total_vp = parseInt(gift_revice[0]['parrent'].params.value) + parseInt(value_gif_bonus[0]);
 
                                                 $html += "<span>Kết quả: Bạn đã trúng " + total_vp + c_game_type_value +"</span><br/>";
@@ -2292,9 +2293,10 @@
                                                     $html += "<span>Tổng cộng: " + (parseInt(gift_revice[0]['parrent'].params.value) * (parseInt(xvalueaDD[0])) + parseInt(value_gif_bonus[0])) + game_type_value +"</span>";
                                                 }
                                             }else {
+
                                                 $html += "<span>Kết quả: "+gift_revice[0]["title"]+"</span><br/>";
                                                 if(gift_detail.winbox == 1){
-                                                    $html += "<span>Mua X1: Nhận được "+gift_gift_revice[$i]['parrent'].title+"</span><br/>";
+                                                    $html += "<span>Mua X1: Nhận được "+gift_revice[0]['parrent'].title+"</span><br/>";
                                                     //$html += "<span>Lật được "+(xvalue+3)+" hình trùng nhau. Nhận X"+(xvalueaDD[0])+" giải thưởng: "+gift_revice[0]["parrent"].params.value*(xvalueaDD[0])+""+msg_random_bonus[0]+"</span><br/>"+$strDiscountcode;
                                                     $html += "<span>Tổng cộng: "+parseInt(gift_revice[0]["parrent"].params.value)*(parseInt(xvalueaDD[0]))+"</span>";
                                                 }
@@ -2355,6 +2357,7 @@
                                         if(gift_revice.length == 1)
                                         {
                                             if (!flag_bonus){//trường hợp bonus.
+
                                                 var total_vp = parseInt(gift_revice[0]['parrent'].params.value) + parseInt(value_gif_bonus[0]);
 
                                                 $html += "<span>Kết quả chơi thử: Bạn đã trúng " + total_vp + c_game_type_value +"</span><br/>";
@@ -2364,9 +2367,10 @@
                                                     $html += "<span>Tổng cộng: " + (parseInt(gift_revice[0]['parrent'].params.value) * (parseInt(xvalueaDD[0])) + parseInt(value_gif_bonus[0])) + game_type_value +"</span>";
                                                 }
                                             }else {
+
                                                 $html += "<span>Kết quả chơi thử: "+gift_revice[0]["title"]+"</span><br/>";
                                                 if(gift_detail.winbox == 1){
-                                                    $html += "<span>Mua X1: Nhận được "+gift_gift_revice[$i]['parrent'].title+"</span><br/>";
+                                                    $html += "<span>Mua X1: Nhận được "+gift_revice[0]['parrent'].title+"</span><br/>";
                                                     //$html += "<span>Lật được "+(xvalue+3)+" hình trùng nhau. Nhận X"+(xvalueaDD[0])+" giải thưởng: "+gift_revice[0]["parrent"].params.value*(xvalueaDD[0])+""+msg_random_bonus[0]+"</span><br/>"+$strDiscountcode;
                                                     $html += "<span>Tổng cộng: "+parseInt(gift_revice[0]["parrent"].params.value)*(parseInt(xvalueaDD[0]))+"</span>";
                                                 }
