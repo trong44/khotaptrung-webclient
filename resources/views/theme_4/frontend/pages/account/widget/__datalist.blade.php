@@ -10,9 +10,15 @@
 
                         <div class="col-md-3 col-sm-6 col-6 entries_item" style="display: block">
                             <a href="javascript:void(0)" class="buyacc" data-id="{{ $item->randId }}">
-                                @if(isset($data->params->thumb_default) && isset($data->params))
-                                    <img class="entries_item-img lazy item_buy_list_img-main{{ $item->randId }}" src="{{\App\Library\MediaHelpers::media($data->params->thumb_default)}}" alt="{{ $item->title }}" class="entries_item-img">
+                                @if(isset($data->custom->meta->image_detail))
+                                    <img class="entries_item-img lazy item_buy_list_img-main{{ $item->randId }}" src="{{\App\Library\MediaHelpers::media($data->custom->meta->image_detail)}}" alt="{{ $item->randId }}" class="entries_item-img">
+
+                                @else
+                                    @if(isset($data->params->thumb_default) && isset($data->params))
+                                        <img class="entries_item-img lazy item_buy_list_img-main{{ $item->randId }}" src="{{\App\Library\MediaHelpers::media($data->params->thumb_default)}}" alt="{{ $item->randId }}" class="entries_item-img">
+                                    @endif
                                 @endif
+
 
                                 <h2 class="text-title text-left  fw-bold" style="color: #434657;margin-bottom: 8px;font-weight: 700">#{{ $item->randId }}</h2>
 

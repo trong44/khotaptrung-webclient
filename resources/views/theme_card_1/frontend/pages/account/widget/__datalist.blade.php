@@ -9,9 +9,15 @@
 
                         <div class="col-lg-3 col-6 list-item" style="display: block">
                             <a href="javascript:void(0)" class="buyacc" data-id="{{ $item->randId }}">
-                                @if(isset($data->params->thumb_default) && isset($data->params))
-                                    <img class="list-item-img lazy item_buy_list_img-main{{ $item->randId }}" src="{{\App\Library\MediaHelpers::media($data->params->thumb_default)}}" alt="{{ $item->title }}">
+                                @if(isset($data->custom->meta->image_detail))
+                                    <img class="list-item-img lazy item_buy_list_img-main{{ $item->randId }}" src="{{\App\Library\MediaHelpers::media($data->custom->meta->image_detail)}}" alt="{{ $item->randId }}">
+
+                                @else
+                                    @if(isset($data->params->thumb_default) && isset($data->params))
+                                        <img class="list-item-img lazy item_buy_list_img-main{{ $item->randId }}" src="{{\App\Library\MediaHelpers::media($data->custom->meta->image_detail)}}" alt="{{ $item->randId }}">
+                                    @endif
                                 @endif
+
 
                                 <h2 class="text-title text-left fw-bold" style="color: #434657;margin-bottom: 8px;font-weight: 700">#{{ $item->randId }}</h2>
 
@@ -414,7 +420,7 @@
                                                 @endif
                                             @endforeach
                                         @endif
-                                        
+
                                     @endif
                                 @endif
 
@@ -465,7 +471,7 @@
             @endforeach
         </div>
     @else
-        
+
     @endif
 
     <div class="col-md-12 left-right justify-content-end paginate__v1 paginate__v1_mobie frontend__panigate" style="padding-top: 24px">
