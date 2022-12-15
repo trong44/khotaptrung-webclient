@@ -598,7 +598,11 @@
                     </div>
                 </div>
             </div>
-
+{{--        <script>--}}
+{{--            $('.button-default-ct').on('click', function(){--}}
+{{--                $('#openOrder').modal('show');--}}
+{{--            })--}}
+{{--        </script>--}}
             <div class="modal fade login show order-modal" id="openOrder" aria-modal="true">
 
                 <div class="modal-dialog step-tab-panel modal-lg modal-dialog-centered login animated">
@@ -862,7 +866,7 @@
     @if(\App\Library\AuthCustom::check())
         <input id="surplus" type="hidden" value="{{ \App\Library\AuthCustom::user()->balance }}">
     @endif
-{{--    <script src="/assets/frontend/{{theme('')->theme_key}}/js/cay-thue/cay-thue-detail.js?v={{time()}}"></script>--}}
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/cay-thue/cay-thue-detail.js?v={{time()}}"></script>
 {{--    <script src="/js/{{theme('')->theme_key}}/cay-thue/cay-thue-detail.js" type="text/javascript"></script>--}}
 @endsection
 

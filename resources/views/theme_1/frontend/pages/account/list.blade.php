@@ -61,10 +61,14 @@
                                 style="color:#000">{{ isset($data->custom->title) ? $data->custom->title :  $data->title }}</h1>
 
                             @if($data->custom->content)
-                                {!!  $data->custom->content !!}
+                                    <div class="news_detail_content">
+                                        {!!  $data->custom->content !!}
+                                    </div>
                             @else
                                 @if(isset($data->content))
-                                    {!!  $data->content !!}
+                                    <div class="news_detail_content">
+                                        {!!  $data->content !!}
+                                    </div>
                                 @else
 
                                 @endif
@@ -202,6 +206,7 @@
 {{--        @endif--}}
         <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/buyaccrandom.js?v={{time()}}"></script>
         <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/account-list.js?v={{time()}}"></script>
+        <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/account-list-text.js?v={{time()}}"></script>
         <script src="/assets/frontend/{{theme('')->theme_key}}/lib/select2/select2.min.js"></script>
 {{--        <script src="/js/{{theme('')->theme_key}}/account/list_2.js"></script>--}}
     @endif
