@@ -1,7 +1,7 @@
 
 <header>
     <div class="nav-bar">
-        <div class="nav-bar-container container">
+        <div class="nav-bar-container container" style="padding: 0">
             <div class="nav-bar-brand">
                 <a href="/">
                     <img src="{{\App\Library\MediaHelpers::media(setting('sys_logo'))}}" alt="">

@@ -86,7 +86,7 @@
                                 <p class="d-flex align-items-center c-mb-0">
                                     <span id="rotationFirstPrice" class="fw-400 fz-12 lh-16 c-mr-8">
                                          @if(isset($result->group->params->percent_sale))
-                                            {{ str_replace(',','.',number_format(($result->group->params->percent_sale*$result->group->price)/100 + $result->group->price)) }} đ
+                                            {{ str_replace(',','.',number_format($result->group->price/((100 - $result->group->params->percent_sale)/100))) }} đ
                                         @endif
                                     </span>
                                     <span id="rotationSalePrice" class="fw-700 fz-20 lh-28 c-mr-8">{{ str_replace(',','.',number_format($result->group->price)) }}đ</span>
@@ -280,10 +280,11 @@
                                     <p class="d-flex align-items-center c-mb-0">
                                         <span id="rotationFirstPrice" class="fw-400 fz-14 c-mr-8">
                                             @if(isset($result->group->params->percent_sale))
-                                                {{ str_replace(',','.',number_format(($result->group->params->percent_sale*$result->group->price)/100 + $result->group->price)) }} đ
+                                                {{ str_replace(',','.',number_format($result->group->price/((100 - $result->group->params->percent_sale)/100))) }} đ
                                             @endif
                                         </span>
-                                        <span id="rotationSalePrice" class="fw-700 fz-24 lh-32 c-mr-8">{{ str_replace(',','.',number_format($result->group->price)) }}đ</span>
+                                        <span id="rotationSalePrice" class="fw-700 fz-24 lh-32 c-mr-8">
+                                            {{ str_replace(',','.',number_format($result->group->price)) }}đ</span>
                                         @if(isset($result->group->params->percent_sale))
                                             <span id="rotationSaleRatio" class="brs-24 fw-400 fz-12 c-py-2 c-px-8 lh-16">Giảm {{ $result->group->params->percent_sale }}%</span>
                                         @endif

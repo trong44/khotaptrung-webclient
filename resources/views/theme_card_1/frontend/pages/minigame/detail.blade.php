@@ -296,8 +296,7 @@
                                 <p>
                                     <span id="rotationFirstPrice">
                                         @if(isset($result->group->params->percent_sale))
-                                            {{ str_replace(',','.',number_format(($result->group->params->percent_sale*$result->group->price)/100 + $result->group->price)) }}
-                                            đ
+                                            {{ str_replace(',','.',number_format($result->group->price/((100 - $result->group->params->percent_sale)/100))) }} đ
                                         @endif
                                     </span>
                                     <span id="rotationSalePrice">{{ str_replace(',','.',number_format($result->group->price)) }} đ</span>
@@ -568,7 +567,7 @@
                                 <div class="rotation-sale-secondary d-none d-lg-flex">
                                     <div class="first-sale-price">
                                         @if(isset($result->group->params->percent_sale))
-                                            {{ str_replace(',','.',number_format(($result->group->params->percent_sale*$result->group->price)/100 + $result->group->price)) }}đ
+                                            {{ str_replace(',','.',number_format($result->group->price/((100 - $result->group->params->percent_sale)/100))) }} đ
                                         @endif
                                     </div>
                                     <div class="second-sale-price">
@@ -907,7 +906,9 @@
                                             <div class="price">
                                                 @if(isset($item->params->percent_sale))
                                                     <div class="price-current">{{ str_replace(',','.',number_format($item->price)) }} đ</div>
-                                                    <div class="price-old c-mr-8">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</div>
+                                                    <div class="price-old c-mr-8">
+                                                        {{ str_replace(',','.',number_format($item->price/((100 - $item->params->percent_sale)/100))) }} đ
+                                                    </div>
                                                     <div class="discount">{{ $item->params->percent_sale }}%</div>
                                                 @else
                                                     <div class="price-current w-100">{{ str_replace(',','.',number_format($item->price)) }} đ</div>

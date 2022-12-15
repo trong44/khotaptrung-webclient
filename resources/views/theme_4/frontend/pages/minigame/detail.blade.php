@@ -295,7 +295,9 @@
                                                 <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
                                                 <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
                                                 @if(isset($item->params->percent_sale))
-                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="oldPrice">
+                                                        {{ str_replace(',','.',number_format($item->price/((100 - $item->params->percent_sale)/100))) }} đ
+                                                    </span>
                                                     <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
                                                 @else
                                                     <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
@@ -511,7 +513,9 @@
                                                 <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
                                                 <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
                                                 @if(isset($item->params->percent_sale))
-                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="oldPrice">
+                                                        {{ str_replace(',','.',number_format($item->price/((100 - $item->params->percent_sale)/100))) }}
+                                                        đ</span>
                                                     <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
                                                 @else
                                                     <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
@@ -637,7 +641,9 @@
                                                 <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
                                                 <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
                                                 @if(isset($item->params->percent_sale))
-                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="oldPrice">
+                                                        {{ str_replace(',','.',number_format($item->price/((100 - $item->params->percent_sale)/100))) }} đ
+                                                    </span>
                                                     <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
                                                 @else
                                                     <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
@@ -766,7 +772,9 @@
                                                 <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
                                                 <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
                                                 @if(isset($item->params->percent_sale))
-                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="oldPrice">
+                                                        {{ str_replace(',','.',number_format($item->price/((100 - $item->params->percent_sale)/100))) }}
+                                                        đ</span>
                                                     <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
                                                 @else
                                                     <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
@@ -933,7 +941,9 @@
                                                 <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
                                                 <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
                                                 @if(isset($item->params->percent_sale))
-                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="oldPrice">
+                                                        {{ str_replace(',','.',number_format($item->price/((100 - $item->params->percent_sale)/100))) }} đ
+                                                    </span>
                                                     <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
                                                 @else
                                                     <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
@@ -1063,7 +1073,9 @@
                                                 <h2 class="text-title text-limit limit-1" style="color: rgb(87, 87, 87)">{{ $item->title   }}</h2>
                                                 <p style="margin-bottom: 12px;margin-top: 4px;color: rgb(87, 87, 87)">Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}}</p>
                                                 @if(isset($item->params->percent_sale))
-                                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                                    <span class="oldPrice">
+                                                        {{ str_replace(',','.',number_format($item->price/((100 - $item->params->percent_sale)/100))) }}
+                                                        đ</span>
                                                     <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
                                                 @else
                                                     <span class="newPrice" style="margin-left: 0">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
