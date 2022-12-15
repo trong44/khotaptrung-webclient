@@ -11,15 +11,21 @@
                         <div class="card card-hover h-100">
                             <a href="javascript:void(0)" data-id="{{ $item->randId }}" class="card-body scale-thumb buyacc">
                                 <div class="account-thumb c-mb-8">
-                                    @if(isset($data->params->thumb_default) && isset($data->params))
-                                        <img src="{{\App\Library\MediaHelpers::media($data->params->thumb_default)}}" alt="{{\App\Library\MediaHelpers::media($data->title)}}" class="account-thumb-image lazy" onerror="imgError(this)">
+                                    @if(isset($data->custom->meta->image_detail))
+                                        <img src="{{\App\Library\MediaHelpers::media($data->custom->meta->image_detail)}}" alt="{{ $item->randId }}" class="account-thumb-image lazy" onerror="imgError(this)">
+
                                     @else
-                                        @if(isset($data->image))
-                                            <img onerror="imgError(this)" class="account-thumb-image lazy" src="{{\App\Library\MediaHelpers::media($data->image)}}" alt="{{ $item->randId }}">
+                                        @if(isset($data->params->thumb_default) && isset($data->params))
+                                            <img src="{{\App\Library\MediaHelpers::media($data->params->thumb_default)}}" alt="{{ $item->randId }}" class="account-thumb-image lazy" onerror="imgError(this)">
                                         @else
-                                            <img onerror="imgError(this)" class="account-thumb-image lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/images_1/no-image.png" alt="No-image">
+                                            @if(isset($data->image))
+                                                <img onerror="imgError(this)" class="account-thumb-image lazy" src="{{\App\Library\MediaHelpers::media($data->image)}}" alt="{{ $item->randId }}">
+                                            @else
+                                                <img onerror="imgError(this)" class="account-thumb-image lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/images_1/no-image.png" alt="No-image">
+                                            @endif
                                         @endif
                                     @endif
+
                                 </div>
                                 <div class="account-title">
                                     <div class="text-title fw-700 text-limit limit-1">{{ isset($data->custom->title) ? $data->custom->title :  $data->title }}</div>

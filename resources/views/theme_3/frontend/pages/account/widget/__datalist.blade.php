@@ -14,15 +14,20 @@
                                         <a href="javascript:void(0)" class="list-item-nick-hover buy-random-acc" data-id="{{ $item->randId }}">
                                             <div class="row marginauto list-item-nick-hover-row">
                                                 <div class="col-md-12 left-right default-overlay-nick-ct nick-item-cover-overlay">
-                                                    @if(isset($data->params->thumb_default) && isset($data->params))
-                                                        <img onerror="imgError(this)" class="img-list-nick-category lazy" src="{{\App\Library\MediaHelpers::media($data->params->thumb_default)}}" alt="{{ $item->randId }}" >
+                                                    @if(isset($data->custom->meta->image_detail))
+                                                        <img onerror="imgError(this)" class="img-list-nick-category lazy" src="{{\App\Library\MediaHelpers::media($data->custom->meta->image_detail)}}" alt="{{ $item->randId }}" >
                                                     @else
-                                                        @if(isset($data->image))
-                                                            <img onerror="imgError(this)" class="img-list-nick-category lazy" src="{{\App\Library\MediaHelpers::media($data->image)}}" alt="{{ $item->randId }}">
+                                                        @if(isset($data->params->thumb_default) && isset($data->params))
+                                                            <img onerror="imgError(this)" class="img-list-nick-category lazy" src="{{\App\Library\MediaHelpers::media($data->params->thumb_default)}}" alt="{{ $item->randId }}" >
                                                         @else
-                                                            <img onerror="imgError(this)" class="img-list-nick-category lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/images_1/no-image.png" alt="No-image">
+                                                            @if(isset($data->image))
+                                                                <img onerror="imgError(this)" class="img-list-nick-category lazy" src="{{\App\Library\MediaHelpers::media($data->image)}}" alt="{{ $item->randId }}">
+                                                            @else
+                                                                <img onerror="imgError(this)" class="img-list-nick-category lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/images_1/no-image.png" alt="No-image">
+                                                            @endif
                                                         @endif
                                                     @endif
+
                                                 </div>
 
                                                 <div class="col-md-12 left-right list-item-nick " >
@@ -398,7 +403,7 @@
                                                                                 ?>
                                                                                 <div class="col-md-12 left-right text-left body-detail-account-small-span-ct">
                                                                                     <small>
-                                                                                        {{ $in->name??'' }} : 
+                                                                                        {{ $in->name??'' }} :
                                                                                         {{ str_replace(',','.',number_format($in->value??'')) }}
                                                                                     </small>
                                                                                 </div>
@@ -408,7 +413,7 @@
                                                                                 ?>
                                                                                 <div class="col-md-12 left-right text-left body-detail-account-small-span-ct">
                                                                                     <small>
-                                                                                        {{ $in->name??'' }} : 
+                                                                                        {{ $in->name??'' }} :
                                                                                         {{ $in->value??'' }}
                                                                                     </small>
                                                                                 </div>
@@ -483,7 +488,7 @@
 
                                                             @endif
                                                         @endif
-                                                        
+
                                                         @if(isset($item->params) && isset($item->params->ext_info))
                                                             <?php
                                                                 $params = json_decode(json_encode($item->params->ext_info),true);
