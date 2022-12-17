@@ -59,7 +59,6 @@
             </div>
 
         </div>
-
         <script>
 
             $(document).ready(function(){
@@ -524,11 +523,7 @@
                                                 <div class="col-md-12 left-right">
                                                     <span class="detailViewBlockTitle">Mô tả dịch vụ</span>
                                                 </div>
-                                                @if(substr($data->content,1200))
-                                                    <div class="col-md-12 left-right footer-row-col-ct content-video-in content-video-in-add detailViewBlockContent">
-                                                        @else
-                                                            <div class="col-md-12 left-right footer-row-col-ct content-video-in  detailViewBlockContent">
-                                                                @endif
+                                                            <div class="col-md-12 left-right footer-row-col-ct content-video-in  detailViewBlockContent {{ substr($data->content,1200) ? 'content-video-in-add' :'' }}">
                                                                 {!!  $data->content !!}
                                                             </div>
                                                             @if(substr($data->content,1200))
@@ -540,17 +535,13 @@
                                                             @endif
                                                     </div>
                                             </div>
-
-                                        </div>
                                     </div>
                                 </div>
                             </section>
                         @endif
-
                     </div>
                 </div>
             </section>
-
 
             @include('frontend.pages.service.widget.__related',['current_id'=>$data->id])
 
@@ -856,7 +847,7 @@
                     <div class="col-md-12 left-right padding-order-footer-mobile-ct fixcungbuttonmobile">
                         <div class="row marginauto" style="padding: 12px 16px">
                             <div class="col-md-12 left-right">
-                                <button class="button-default-ct submit-form" type="button">Xác nhận</button>
+                                <button class="button-default-ct submit-form " type="button">Xác nhận</button>
                                 <div class="button-next-step-two d-none"></div>
                                 <div class="openSuccess d-none"></div>
                             </div>
