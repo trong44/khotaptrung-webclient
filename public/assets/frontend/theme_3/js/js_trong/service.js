@@ -1,31 +1,4 @@
-new Swiper('#service-related',{
-    autoplay: false,
-    updateOnImagesReady: true,
-    watchSlidesVisibility: false,
-    lazyLoadingInPrevNext: false,
-    lazyLoadingOnTransitionStart: false,
-    slidesPerView: 5,
-    speed: 300,
-    spaceBetween: 16,
-    touchMove: true,
-    grabCursor: true,
-    observer: true,
-    observeParents: true,
-    breakpoints: {
-        992: {
-            freeMode: true,
-            slidesPerView: 4,
-        },
-        768: {
-            freeMode: true,
-            slidesPerView: 2.25,
-        }
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-});
+
 
 $('.service-form').on('submit', function (e) {
     e.preventDefault();
@@ -402,3 +375,32 @@ if (table_bot.length){
     })
 }
 // Sau khi nhập đúng thì in ra màn hình
+
+new Swiper('#service-related',{
+    autoplay: false,
+    updateOnImagesReady: true,
+    watchSlidesVisibility: false,
+    lazyLoadingInPrevNext: false,
+    lazyLoadingOnTransitionStart: false,
+    slidesPerView: 5,
+    speed: 300,
+    spaceBetween: 16,
+    touchMove: true,
+    grabCursor: true,
+    observer: true,
+    observeParents: true,
+    breakpoints: {
+        992: {
+            freeMode: true,
+            slidesPerView: 4,
+        },
+        768: {
+            freeMode: true,
+            slidesPerView: 2.25,
+        }
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+});
