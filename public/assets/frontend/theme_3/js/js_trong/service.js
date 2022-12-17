@@ -82,7 +82,7 @@ $('input[numberic]').on('keypress', function (e) {
         return false;
     return true;
 });
-let input_params_hide =$('#data_params');
+// let input_params_hide =$('#data_params');
 let data_params;
 let purchase_name;
 let input_pack = $('#input_pack');
@@ -90,7 +90,7 @@ let txt_price = $('#txt-price');
 let server = -1;
 server = parseInt($('select[name=server] option').filter(':selected').val());
 
-if (input_params_hide.length){
+
     data_params = JSON.parse(input_params_hide.val());
     data_params['filter_type'] == 7 ? purchase_name = data_params['filter_name'] : purchase_name = 'VNĐ';
     switch (data_params['filter_type']) {
@@ -331,7 +331,7 @@ if (input_params_hide.length){
         default:
     }
 
-}
+
 
 function checkboxRequired(selector) {
     let checkboxs = $(`${selector}:checked`);

@@ -28,7 +28,12 @@
         $send_type = \App\Library\HelpersDecode::DecodeJson('send_type',$data->params);
     @endphp
     {{--    @dd($data_params)--}}
-    <input type="hidden" id="data_params" value="{{ $data->params }}">
+
+{{--    <input type="hidden" id="data_params" value="{{ $data->params }}">--}}
+    <script>
+        let data_params = <?php echo json_encode($data->params); ?>;
+        data_params = JSON.parse($params);
+    </script>
     <input type="hidden" name="slug" id="slug" value="{{ $slug }}" />
 
     @if(isset($data->note))
