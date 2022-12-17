@@ -20,11 +20,11 @@ class DirectAPI{
             return $resultChange;
         }
 
-        $data ['domain'] = str_replace('www.','',$http_url);
-        $data ['client'] =  str_replace('www.','',$http_url);
+//        $data ['domain'] = str_replace('www.','',$http_url);
+//        $data ['client'] =  str_replace('www.','',$http_url);
 
-//        $data ['domain'] = config('api.client');
-//        $data ['client'] =config('api.client');
+        $data ['domain'] = config('api.client');
+        $data ['client'] =config('api.client');
 
         if(session()->has('jwt')){
             $data['token'] = session()->get('jwt');
