@@ -82,10 +82,10 @@
                                             @endif
                                         </select>
                                     </div>
-
+{{--                                    {{isset($result->gametype->image)?$result->gametype->image:'vật phẩm'}}--}}
                                     <div class="group-info c-mb-16">
-                                        <span class="fw-400">Số {{isset($result->gametype->image)?$result->gametype->image:'vật phẩm'}} hiện có:</span>
-                                        <span class="text-primary-color">{{ str_replace(',','.',number_format($result->number_item)) }} đ</span>
+                                        <span class="fw-400">Số vật phẩm hiện có:</span>
+                                        <span class="text-primary-color">{{ str_replace(',','.',number_format($result->number_item)) }}</span>
                                     </div>
                                     <script type="text/javascript">
                                         $("#game_type").change(function(){
