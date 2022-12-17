@@ -531,34 +531,18 @@
                                                         @endif
                                                         <div class="col-md-12 left-right text-left body-detail-account-small-span-ct">
                                                             <ul>
-                                                                @if(isset($data->params) && isset($data->params->price))
-                                                                    <li class="fist-li-account">{{ str_replace(',','.',number_format($data->params->price)) }}đ</li>
-                                                                    <li class="second-li-account">{{ str_replace(',','.',number_format($data->params->price_old??$data->params->price)) }}đ</li>
-                                                                    @php
-                                                                        if (isset($data->params->price_old)) {
-                                                                            $sale_percent = (($data->params->price_old - $data->params->price) / $data->params->price_old) * 100;
-                                                                            $sale_percent = round($sale_percent, 0, PHP_ROUND_HALF_UP);
-                                                                        } else {
-                                                                            $sale_percent = 0;
-                                                                        }
-                                                                    @endphp
-                                                                    @if($sale_percent > 0)
+                                                                <li class="fist-li-account">{{ str_replace(',','.',number_format($item->price)) }}đ</li>
+                                                                <li class="second-li-account">{{ str_replace(',','.',number_format($item->price_old??$item->price)) }}đ</li>
+                                                                @php
+                                                                    if (isset($item->price_old)) {
+                                                                        $sale_percent = (($item->price_old - $item->price) / $item->price_old) * 100;
+                                                                        $sale_percent = round($sale_percent, 0, PHP_ROUND_HALF_UP);
+                                                                    } else {
+                                                                        $sale_percent = 0;
+                                                                    }
+                                                                @endphp
+                                                                @if($sale_percent > 0)
                                                                     <li class="three-li-account">-{{$sale_percent}}%</li>
-                                                                    @endif
-                                                                @else
-                                                                    <li class="fist-li-account">{{ str_replace(',','.',number_format($item->price)) }}đ</li>
-                                                                    <li class="second-li-account">{{ str_replace(',','.',number_format($item->price_old??$item->price)) }}đ</li>
-                                                                    @php
-                                                                        if (isset($item->price_old)) {
-                                                                            $sale_percent = (($item->price_old - $item->price) / $item->price_old) * 100;
-                                                                            $sale_percent = round($sale_percent, 0, PHP_ROUND_HALF_UP);
-                                                                        } else {
-                                                                            $sale_percent = 0;
-                                                                        }
-                                                                    @endphp
-                                                                    @if($sale_percent > 0)
-                                                                        <li class="three-li-account">-{{$sale_percent}}%</li>
-                                                                    @endif
                                                                 @endif
                                                             </ul>
                                                         </div>

@@ -59,7 +59,6 @@
 
                             <h1 class="alert-heading h1_category"
                                 style="color:#000">{{ isset($data->custom->title) ? $data->custom->title :  $data->title }}</h1>
-
                             @if($data->custom->content)
                                     <div class="news_detail_content">
                                         {!!  $data->custom->content !!}

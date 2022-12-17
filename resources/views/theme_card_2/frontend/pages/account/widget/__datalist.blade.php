@@ -289,11 +289,7 @@
                                                 <div class="c-account-price-block justify-content-between d-flex">
                                                     <div class="c-account-price-title">Số tiền cần thanh toán</div>
                                                         <div class="c-account-price-value">
-                                                            @if(isset($data->category->params->price) && isset($data->category->params))
-                                                                {{ str_replace(',','.',number_format($data->category->params->price)) }} đ
-                                                            @else
-                                                                {{ str_replace(',','.',number_format($data->price)) }} đ
-                                                            @endif
+                                                            {{ str_replace(',','.',number_format($data->price)) }} đ
                                                         </div>
                                                 </div>
                                             </div>
