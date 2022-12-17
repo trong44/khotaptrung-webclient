@@ -335,7 +335,8 @@ function checkboxRequired(selector) {
     return !checkboxs.length;
 }
 
-$('.submit-form').on('click', function () {
+$('body').on('click','.submit-form',function(elm, select){
+
     /*check conf tiền hay ko*/
     let price_balance = ($('#surplus').val()) * 1;
     let elm_text_total = Array.from($('.total--price'));
