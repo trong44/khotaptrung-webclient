@@ -99,11 +99,12 @@ if (input_params_hide.length){
             break
         // chọn một
         case '4':
-            $("select[name=selected]").change(function (elm, select) {
+
+            $('body').on('change','select[name=selected]',function(elm, select){
                 itemselect= itemselect_value = parseInt($('select[name=selected] option').filter(':selected').val());
                 UpdatePrice4();
             });
-            $("select[name=server]").change(function (elm, select) {
+            $('body').on('change','select[name=server]',function(elm, select){
                 server = parseInt($('select[name=server] option').filter(':selected').val());
                 UpdatePrice4();
             });
@@ -138,7 +139,7 @@ if (input_params_hide.length){
             break;
         // Dạng chọn nhiều
         case '5':
-            $('#select-multi input[type="checkbox"]').change(function () {
+            $('body').on('change','#select-multi input[type="checkbox"]',function(elm, select){
                 UpdatePrice5();
                 checkPack();
             });
@@ -188,7 +189,7 @@ if (input_params_hide.length){
             break
         // trong khoảng
         case '6':
-            $('.js-selected').on('change', function () {
+            $('body').on('change','.js-selected',function(elm, select){
 
                 var type = $(this).data("type");
 
@@ -319,7 +320,7 @@ if (input_params_hide.length){
             input_pack.bind('focus keyup', function () {
                 UpdateTotal();
             });
-            $('select[name=server]').on('change', function () {
+            $('body').on('change','select[name=server]',function(elm, select){
                 UpdateTotal();
             });
             UpdateTotal()
