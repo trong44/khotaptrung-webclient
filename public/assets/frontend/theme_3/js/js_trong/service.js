@@ -100,11 +100,12 @@ if (input_params_hide.length){
         // chọn một
         case '4':
 
-            $('body').on('change','select[name=selected]',function(elm, select){
+
+            $('select[name=selected]').on('change', function (elm, select) {
                 itemselect= itemselect_value = parseInt($('select[name=selected] option').filter(':selected').val());
                 UpdatePrice4();
             });
-            $('body').on('change','select[name=server]',function(elm, select){
+            $('select[name=server]').on('change', function (elm, select) {
                 server = parseInt($('select[name=server] option').filter(':selected').val());
                 UpdatePrice4();
             });
@@ -139,7 +140,8 @@ if (input_params_hide.length){
             break;
         // Dạng chọn nhiều
         case '5':
-            $('body').on('change','#select-multi input[type="checkbox"]',function(elm, select){
+            // $('body').on('change','#select-multi input[type="checkbox"]',function(elm, select){
+            $('#select-multi input[type="checkbox"]').on('change', function (elm, select) {
                 UpdatePrice5();
                 checkPack();
             });
@@ -189,8 +191,8 @@ if (input_params_hide.length){
             break
         // trong khoảng
         case '6':
-            $('body').on('change','.js-selected',function(elm, select){
-
+            // $('body').on('change','.js-selected',function(elm, select){
+            $('.js-selected').on('change', function (elm, select) {
                 var type = $(this).data("type");
 
                 UpdatePrice6(type);
@@ -320,7 +322,8 @@ if (input_params_hide.length){
             input_pack.bind('focus keyup', function () {
                 UpdateTotal();
             });
-            $('body').on('change','select[name=server]',function(elm, select){
+            // $('body').on('change','select[name=server]',function(elm, select){
+            $('select[name=server]').on('change', function (elm, select) {
                 UpdateTotal();
             });
             UpdateTotal()
