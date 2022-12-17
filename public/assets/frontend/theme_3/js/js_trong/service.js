@@ -91,7 +91,7 @@ let server = -1;
 server = parseInt($('select[name=server] option').filter(':selected').val());
 
 
-    data_params = JSON.parse(input_params_hide.val());
+    // data_params = JSON.parse(input_params_hide.val());
     data_params['filter_type'] == 7 ? purchase_name = data_params['filter_name'] : purchase_name = 'VNĐ';
     switch (data_params['filter_type']) {
         // Dạng tiền tệ
