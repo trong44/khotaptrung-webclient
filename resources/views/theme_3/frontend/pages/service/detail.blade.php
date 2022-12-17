@@ -16,7 +16,7 @@
 @endsection
 @section('content')
     <input type="hidden" id="data_params" value="{{ json_encode($data->params) }}">
-    <script src="/assets/frontend/{{theme('')->theme_key}}/js/js_trong/service.js?v={{time()}}" type="text/javascript"></script>
+
     @if(\App\Library\HelpersDecode::DecodeJson('server_mode',$data->params) == "1")
         @php
             $server_data=\App\Library\HelpersDecode::DecodeJson('server_data',$data->params);
@@ -863,6 +863,7 @@
     @if(\App\Library\AuthCustom::check())
         <input id="surplus" type="hidden" value="{{ \App\Library\AuthCustom::user()->balance }}">
     @endif
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/js_trong/service.js?v={{time()}}" type="text/javascript"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/cay-thue/cay-thue-detail.js?v={{time()}}"></script>
 {{--    <script src="/js/{{theme('')->theme_key}}/cay-thue/cay-thue-detail.js" type="text/javascript"></script>--}}
 @endsection
