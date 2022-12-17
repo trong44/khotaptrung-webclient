@@ -83,7 +83,7 @@ $('input[numberic]').on('keypress', function (e) {
     return true;
 });
 // let input_params_hide =$('#data_params');
-let data_params;
+// let data_params;
 let purchase_name;
 let input_pack = $('#input_pack');
 let txt_price = $('#txt-price');
