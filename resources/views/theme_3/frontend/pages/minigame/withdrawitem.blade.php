@@ -85,7 +85,8 @@
                                                 @endforeach
                                             @endif
                                         </select>
-                                        <div class="current-balance">Số {{isset($result->gametype->image)?$result->gametype->image:'vật phẩm'}} hiện có: <span style="font-weight: 700; color: #F67600;">{{number_format($result->number_item)}}</span></div>
+{{--                                        {{isset($result->gametype->image)?$result->gametype->image:'vật phẩm'}}--}}
+                                        <div class="current-balance">Số vật phẩm hiện có: <span style="font-weight: 700; color: #F67600;">{{number_format($result->number_item)}}</span></div>
                                     </div>
                                     <script type="text/javascript">
                                         $("#game_type").change(function(){

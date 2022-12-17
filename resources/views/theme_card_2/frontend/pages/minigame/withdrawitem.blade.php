@@ -62,7 +62,7 @@
                                     });
                                 </script>
                             </div>
-                            <div class="text-center" style="color: #eb5d68;font-size: 16px;    margin: -8px auto 12px auto;    font-weight: 600;">Số {{isset($result->gametype->image)?$result->gametype->image:'vật phẩm'}} hiện có: {{ str_replace(',','.',number_format($result->number_item)) }} </div>
+                            <div class="text-center" style="color: #eb5d68;font-size: 16px;    margin: -8px auto 12px auto;    font-weight: 600;">Số vật phẩm hiện có: {{ str_replace(',','.',number_format($result->number_item)) }} </div>
                             <form class="form-horizontal form-withdraw" method="POST">
                                 {{csrf_field()}}
 
