@@ -242,9 +242,9 @@
                                                                     <div class="text-right">
                                                                         <span class="fw-500 d-block c-mb-0">{{$item->price}}</span>
                                                                         @if($item->payment_type == 13 || $item->payment_type == 12 || $item->payment_type == 11 || $item->payment_type == 14)
-                                                                            @if ($item->status == 0)
+                                                                            @if ($item->status == 0 || $item->status == 3 || $item->status == 5 || $item->status == 6 || $item->status == 77 || $item->status == 88)
                                                                                 <span class="invalid-color c-mb-0">Giao dịch thất bại</span>
-                                                                            @elseif($item->status == 1 )
+                                                                            @elseif($item->status == 1 || $item->status == 9)
                                                                                 <span class="warning-color c-mb-0">Chờ xử lý</span>
                                                                             @elseif($item->status == 2 )
                                                                                 <span class="warning-color c-mb-0">Chờ xử lý</span>
