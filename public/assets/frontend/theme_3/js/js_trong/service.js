@@ -1,23 +1,71 @@
 
+$('body').on('click','.submit-form',function(elm, select){
 
-$('.service-form').on('submit', function (e) {
-    e.preventDefault();
-    let keyword = convertToSlug($(this).find('[name="search"]').val());
-    let is_empty = true;
-    let text_empty = $('#text-empty');
-    text_empty.hide();
-    $('.js-service').each(function (i,elm) {
-        let slug_service = $(elm).find('img').attr('alt');
-        slug_service = convertToSlug(slug_service);
-        $(this).toggle(slug_service.indexOf(keyword) > -1);
-        if (slug_service.indexOf(keyword) > -1){
-            is_empty  = false;
+    /*check conf tiền hay ko*/
+    let price_balance = ($('#surplus').val()) * 1;
+    let elm_text_total = Array.from($('.total--price'));
+    let elm_price = $(document).width() > 992 ? elm_text_total[0] : elm_text_total[1];
+    let price_total = ($(elm_price).text().match(/\d/g).join("")) * 1;
+    if (price_balance < price_total) {
+        $('#openOrder').modal('hide');
+        $('#rechargeModal').modal('show');
+        return
+    }
+
+    let data_form = $('#formDataService').serializeArray().reduce(function (obj, item) {
+        obj[item.name] = item.value;
+        return obj;
+    }, {});
+
+    let url = $('#formDataService').attr('action');
+    if (data_form.selected){
+        data_form.selected = data_form.selected.replace(/\./g, "");
+    }
+
+    //loading btn;
+    $(this).html('Đang xử lý...');
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data_form,
+        success: function (res) {
+            if (res.status) {
+                $('.js-message-res span').text(res.message)
+                if ($(document).width() > 1200){
+                    $('.openSuccess').trigger('click')
+                } else {
+                    $('.button-next-step-two').trigger('click');
+                }
+            }
+            else {
+                $('.modal__error__message small').text(res.message)
+            }
+        },
+        complete:function () {
+            $('.submit-form').html('Xác nhận');
         }
     });
-    if (is_empty){
-        text_empty.show();
-    }
-});
+
+})
+//
+// $('.service-form').on('submit', function (e) {
+//     e.preventDefault();
+//     let keyword = convertToSlug($(this).find('[name="search"]').val());
+//     let is_empty = true;
+//     let text_empty = $('#text-empty');
+//     text_empty.hide();
+//     $('.js-service').each(function (i,elm) {
+//         let slug_service = $(elm).find('img').attr('alt');
+//         slug_service = convertToSlug(slug_service);
+//         $(this).toggle(slug_service.indexOf(keyword) > -1);
+//         if (slug_service.indexOf(keyword) > -1){
+//             is_empty  = false;
+//         }
+//     });
+//     if (is_empty){
+//         text_empty.show();
+//     }
+// });
 
 function convertToSlug(title) {
     var slug;
@@ -308,54 +356,6 @@ function checkboxRequired(selector) {
     return !checkboxs.length;
 }
 
-$('body').on('click','.submit-form',function(elm, select){
-
-    /*check conf tiền hay ko*/
-    let price_balance = ($('#surplus').val()) * 1;
-    let elm_text_total = Array.from($('.total--price'));
-    let elm_price = $(document).width() > 992 ? elm_text_total[0] : elm_text_total[1];
-    let price_total = ($(elm_price).text().match(/\d/g).join("")) * 1;
-    if (price_balance < price_total) {
-        $('#openOrder').modal('hide');
-        $('#rechargeModal').modal('show');
-        return
-    }
-
-    let data_form = $('#formDataService').serializeArray().reduce(function (obj, item) {
-        obj[item.name] = item.value;
-        return obj;
-    }, {});
-
-    let url = $('#formDataService').attr('action');
-    if (data_form.selected){
-        data_form.selected = data_form.selected.replace(/\./g, "");
-    }
-
-    //loading btn;
-    $(this).html('Đang xử lý...');
-    $.ajax({
-        type: "POST",
-        url: url,
-        data: data_form,
-        success: function (res) {
-            if (res.status) {
-                $('.js-message-res span').text(res.message)
-                if ($(document).width() > 1200){
-                    $('.openSuccess').trigger('click')
-                } else {
-                    $('.button-next-step-two').trigger('click');
-                }
-            }
-            else {
-                $('.modal__error__message small').text(res.message)
-            }
-        },
-        complete:function () {
-            $('.submit-form').html('Xác nhận');
-        }
-    });
-
-})
 
 // BOT
 let table_bot = $('#table-bot');
