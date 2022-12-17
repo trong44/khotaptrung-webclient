@@ -199,13 +199,11 @@
 
                                                 <td>
                                                     @if($item->payment_type == 13 || $item->payment_type == 12 || $item->payment_type == 11 || $item->payment_type == 14)
-                                                        @if ($item->status == 0)
+                                                        @if ($item->status == 0 || $item->status == 3 || $item->status == 5 || $item->status == 6 || $item->status == 77 || $item->status == 88)
                                                             <a class="btn btn-sm c-btn-square m-b-10 btn-danger">Giao dịch thất bại</a>
-                                                        @elseif($item->status == 1 )
+                                                        @elseif($item->status == 1 || $item->status == 9)
                                                             <a class="btn btn-sm c-btn-square m-b-10 btn-warning">Chờ xử lý</a>
                                                         @elseif($item->status == 2 )
-                                                            <a class="btn btn-sm c-btn-square m-b-10 btn-warning">Chờ xử lý</a>
-                                                        @elseif($item->status == 6 )
                                                             <a class="btn btn-sm c-btn-square m-b-10 btn-warning">Chờ xử lý</a>
                                                         @elseif($item->status == 4 )
                                                             <a class="btn btn-sm c-btn-square m-b-10 btn-success">Hoàn thành</a>
