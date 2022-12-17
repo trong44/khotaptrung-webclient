@@ -32,7 +32,7 @@
 {{--    <input type="hidden" id="data_params" value="{{ $data->params }}">--}}
     <script>
         let data_params = <?php echo json_encode($data->params); ?>;
-        data_params = JSON.parse($params);
+        data_params = JSON.parse(data_params);
     </script>
     <input type="hidden" name="slug" id="slug" value="{{ $slug }}" />
 
