@@ -82,16 +82,16 @@ $('input[numberic]').on('keypress', function (e) {
         return false;
     return true;
 });
-// let input_params_hide =$('#data_params');
-// let data_params;
+let input_params_hide =$('#data_params');
+let data_params;
 let purchase_name;
 let input_pack = $('#input_pack');
 let txt_price = $('#txt-price');
 let server = -1;
 server = parseInt($('select[name=server] option').filter(':selected').val());
 
-
-    // data_params = JSON.parse(input_params_hide.val());
+if (input_params_hide.length){
+    data_params = JSON.parse(input_params_hide.val());
     data_params['filter_type'] == 7 ? purchase_name = data_params['filter_name'] : purchase_name = 'VNĐ';
     switch (data_params['filter_type']) {
         // Dạng tiền tệ
@@ -99,22 +99,20 @@ server = parseInt($('select[name=server] option').filter(':selected').val());
             break
         // chọn một
         case '4':
-            $('select[name=selected]').on('change', function (elm, select) {
-                    itemselect_value = parseInt($(this).val());
-                    itemselect = parseInt($(this).val());
+            $("select[name=selected]").change(function (elm, select) {
+                itemselect= itemselect_value = parseInt($('select[name=selected] option').filter(':selected').val());
                 UpdatePrice4();
             });
-            $('select[name=server]').on('change', function (elm, select) {
-                server = parseInt($(this).val());
+            $("select[name=server]").change(function (elm, select) {
+                server = parseInt($('select[name=server] option').filter(':selected').val());
                 UpdatePrice4();
             });
-            let itemselect_value = parseInt($('select[name=selected]').val());
-            let itemselect_name = $('select[name=selected]').text();
+            let itemselect_value = parseInt($('select[name=selected] option').filter(':selected').val());
+            let itemselect_name = $('select[name=selected] option').filter(':selected').text();
             UpdatePrice4();
 
         function UpdatePrice4() {
             let price = 0;
-            itemselect_value = parseInt($('select[name=selected]').val());
             if (itemselect_value == -1) {
                 return;
             }
@@ -140,8 +138,7 @@ server = parseInt($('select[name=server] option').filter(':selected').val());
             break;
         // Dạng chọn nhiều
         case '5':
-            // $('body').on('change','#select-multi input[type="checkbox"]',function(elm, select){
-            $('#select-multi input[type="checkbox"]').on('change', function (elm, select) {
+            $('#select-multi input[type="checkbox"]').change(function () {
                 UpdatePrice5();
                 checkPack();
             });
@@ -191,8 +188,8 @@ server = parseInt($('select[name=server] option').filter(':selected').val());
             break
         // trong khoảng
         case '6':
-            // $('body').on('change','.js-selected',function(elm, select){
-            $('.js-selected').on('change', function (elm, select) {
+            $('.js-selected').on('change', function () {
+
                 var type = $(this).data("type");
 
                 UpdatePrice6(type);
@@ -322,8 +319,7 @@ server = parseInt($('select[name=server] option').filter(':selected').val());
             input_pack.bind('focus keyup', function () {
                 UpdateTotal();
             });
-            // $('body').on('change','select[name=server]',function(elm, select){
-            $('select[name=server]').on('change', function (elm, select) {
+            $('select[name=server]').on('change', function () {
                 UpdateTotal();
             });
             UpdateTotal()
@@ -331,15 +327,14 @@ server = parseInt($('select[name=server] option').filter(':selected').val());
         default:
     }
 
-
+}
 
 function checkboxRequired(selector) {
     let checkboxs = $(`${selector}:checked`);
     return !checkboxs.length;
 }
 
-$('body').on('click','.submit-form',function(elm, select){
-
+$('.submit-form').on('click', function () {
     /*check conf tiền hay ko*/
     let price_balance = ($('#surplus').val()) * 1;
     let elm_text_total = Array.from($('.total--price'));
@@ -381,14 +376,14 @@ $('body').on('click','.submit-form',function(elm, select){
             }
         },
         complete:function () {
-           $('.submit-form').html('Xác nhận');
+            $('.submit-form').html('Xác nhận');
         }
     });
 
 })
 
-    // BOT
-    let table_bot = $('#table-bot');
+// BOT
+let table_bot = $('#table-bot');
 if (table_bot.length){
     $.ajax({
         type: 'GET',
