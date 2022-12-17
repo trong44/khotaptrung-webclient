@@ -99,23 +99,22 @@ server = parseInt($('select[name=server] option').filter(':selected').val());
             break
         // chọn một
         case '4':
-
-            let itemselect_value,itemselect;
             $('select[name=selected]').on('change', function (elm, select) {
-                itemselect = parseInt($('select[name=selected] option').filter(':selected').val());
-                itemselect_value = parseInt($('select[name=selected] option').filter(':selected').val());
+                    itemselect_value = parseInt($(this).val());
+                    itemselect = parseInt($(this).val());
                 UpdatePrice4();
             });
             $('select[name=server]').on('change', function (elm, select) {
-                server = parseInt($('select[name=server] option').filter(':selected').val());
+                server = parseInt($(this).val());
                 UpdatePrice4();
             });
-            itemselect_value = parseInt($('select[name=selected] option').filter(':selected').val());
-            let itemselect_name = $('select[name=selected] option').filter(':selected').text();
+            let itemselect_value = parseInt($('select[name=selected]').val());
+            let itemselect_name = $('select[name=selected]').text();
             UpdatePrice4();
 
         function UpdatePrice4() {
             let price = 0;
+            itemselect_value = parseInt($('select[name=selected]').val());
             if (itemselect_value == -1) {
                 return;
             }
