@@ -58,7 +58,22 @@ function getWithDrawItem(game_type,data_query) {
                     let select_game_type = $('#wrap-game-type');
                     select_game_type.empty();
                     result_data.listgametype.forEach(function (item) {
-                        let html = `<div class="swiper-slide">
+                        if (item.image_icon){
+                            let html = `<div class="swiper-slide">
+                                        <input type="radio" id="game_type_${item.parent_id}" value="${item.parent_id}" name="game_type" hidden ${item.parent_id === game_type * 1 ? 'checked' : ''}>
+                                        <label for="game_type_${item.parent_id}" class="label-item">
+                                            <div class="item-thumb">
+                                                <img src="${item.image_icon}" alt="">
+                                            </div>
+                                            <div class="item-info">
+                                                <div class="t-sub-1">${item.set_number_item || 0}</div>
+                                                <div class="t-body-1">${item.image}</div>
+                                            </div>
+                                        </label>
+                                    </div>`;
+                            select_game_type.prepend(html);
+                        }else {
+                            let html = `<div class="swiper-slide">
                                         <input type="radio" id="game_type_${item.parent_id}" value="${item.parent_id}" name="game_type" hidden ${item.parent_id === game_type * 1 ? 'checked' : ''}>
                                         <label for="game_type_${item.parent_id}" class="label-item">
                                             <div class="item-thumb">
@@ -70,7 +85,8 @@ function getWithDrawItem(game_type,data_query) {
                                             </div>
                                         </label>
                                     </div>`;
-                        select_game_type.prepend(html);
+                            select_game_type.prepend(html);
+                        }
                     });
                 }
               //    Chọn gói vật phẩm
