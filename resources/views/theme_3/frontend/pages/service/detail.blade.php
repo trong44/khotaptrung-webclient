@@ -15,6 +15,7 @@
 
 @endsection
 @section('content')
+    <input type="hidden" id="data_params" value="{{ $data->params }}">
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/js_trong/service.js?v={{time()}}" type="text/javascript"></script>
     @if(\App\Library\HelpersDecode::DecodeJson('server_mode',$data->params) == "1")
         @php
@@ -29,7 +30,7 @@
     @endphp
     {{--    @dd($data_params)--}}
 
-    <input type="hidden" id="data_params" value="{{ $data->params }}">
+
     <script>
         let data_params = <?php echo json_encode($data->params); ?>;
         data_params = JSON.parse(data_params);
