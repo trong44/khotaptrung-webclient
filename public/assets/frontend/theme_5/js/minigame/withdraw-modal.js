@@ -70,7 +70,13 @@ function getWithDrawItem(game_type,data_query) {
                         let html = `<option value="${item.id}">${item.title}</option>`;
                         select_package.append(html);
                     });
-                    select_package.niceSelect('update')
+                    select_package.niceSelect('update');
+                } else {
+                    let select_package = $('#package');
+                    select_package.empty();
+                    let html = `<option selected>Không có gói rút</option>`;
+                    select_package.append(html);
+                    select_package.niceSelect('update');
                 }
                 //id game
                 let text_id_game =  result_data.gametype.idkey ? result_data.gametype.idkey : 'Id trong game:';
