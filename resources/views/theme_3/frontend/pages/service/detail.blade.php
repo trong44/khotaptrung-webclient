@@ -31,10 +31,10 @@
     {{--    @dd($data_params)--}}
 
 
-    <script>
-        let data_params = <?php echo json_encode($data->params); ?>;
-        data_params = JSON.parse(data_params);
-    </script>
+{{--    <script>--}}
+{{--        let data_params = <?php echo json_encode($data->params); ?>;--}}
+{{--        data_params = JSON.parse(data_params);--}}
+{{--    </script>--}}
     <input type="hidden" name="slug" id="slug" value="{{ $slug }}" />
 
     @if(isset($data->note))
