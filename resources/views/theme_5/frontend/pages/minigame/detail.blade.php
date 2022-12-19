@@ -722,7 +722,7 @@
 
     <input type="hidden" class="started_at" name="started_at" value="{{ $result->group->started_at??0 }}">
     <input type="hidden" id="type_play" value="real">
-    <input type="text" id="checkPoint" name="checkPoint" value="{{$result->checkPoint}}">
+    <input type="hidden" id="checkPoint" name="checkPoint" value="{{$result->checkPoint}}">
 
     <!-- Modal rút quà -->
     <div class="modal fade" id="modalWithdraw" tabindex="-1" role="dialog">
