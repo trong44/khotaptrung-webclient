@@ -109,8 +109,8 @@ let c_swiper_config_category = new Swiper('.class-config-account-viewed',{
         }
     },
     navigation: {
-        nextEl: ".class-config-demo .navigation.slider-next",
-        prevEl: ".class-config-demo .navigation.slider-prev",
+        nextEl: ".class-config-account-viewed .navigation.slider-next",
+        prevEl: ".class-config-account-viewed .navigation.slider-prev",
     },
 });
 

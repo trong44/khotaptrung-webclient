@@ -30,7 +30,6 @@
         </div>
     </section>
 @else
-
     @if(isset($data->content))
         <section>
             <div class="font-detail-service container container-fix body-container-ct">
