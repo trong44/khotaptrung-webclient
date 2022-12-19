@@ -22,7 +22,7 @@ class DirectAPI{
 
         $data ['domain'] = str_replace('www.','',$http_url);
         $data ['client'] =  str_replace('www.','',$http_url);
-
+//
 //        $data ['domain'] = config('api.client');
 //        $data ['client'] =config('api.client');
 
