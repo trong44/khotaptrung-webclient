@@ -298,7 +298,7 @@ $('.submit-data-form').on('click',function (e) {
     e.preventDefault();
     let form = $('#form-service-detail');
     let $data = form.serializeArray().reduce(function (obj, item) {
-        obj[item.name] = item.value;
+        obj[item.name] = item.name === 'selected' ? item.value.replace('.','') : item.value;
         return obj;
     }, {});
 
