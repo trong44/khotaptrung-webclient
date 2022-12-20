@@ -8,8 +8,8 @@
 @endphp
 <header>
     <div class="nav-bar">
-        @if($total <= 5)
-        <div class="nav-bar-container container">
+        @if($total <= 6)
+        <div class="nav-bar-container container" style="max-width: 1200px">
             <div class="nav-bar-brand">
                 <a href="/">
                     <img src="{{\App\Library\MediaHelpers::media(setting('sys_logo'))}}" alt="">

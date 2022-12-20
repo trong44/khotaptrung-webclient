@@ -58,8 +58,12 @@
             @endforeach
 
         </div>
-        <div class="navigation slider-next"></div>
-        <div class="navigation slider-prev"></div>
+        <div class="navigation slider-next">
+{{--            <img src="./assets/frontend/theme_5/image/svg/arrow-left.svg" alt="">--}}
+        </div>
+        <div class="navigation slider-prev">
+{{--            <img src="./assets/frontend/theme_5/image/svg/arrow-left.svg" alt="">--}}
+        </div>
     </div>
     @endif
 
