@@ -14,8 +14,12 @@
 
         </div>
 
-        <div class="navigation slider-next "></div>
-        <div class="navigation slider-prev "></div>
+        <div class="navigation slider-next icon-slick">
+            <img src="./assets/frontend/theme_5/image/svg/arrow-left.svg" alt="">
+        </div>
+        <div class="navigation slider-prev icon-slick">
+            <img src="./assets/frontend/theme_5/image/svg/arrow-left.svg" alt="">
+        </div>
     </div>
     <div class="swiper-pagination"></div>
 </div>

@@ -77,8 +77,12 @@
                 @endforeach
 
             </div>
-            <div class="navigation slider-next"></div>
-            <div class="navigation slider-prev"></div>
+            <div class="navigation slider-next icon-slick">
+                <img src="./assets/frontend/theme_5/image/svg/arrow-left.svg" alt="">
+            </div>
+            <div class="navigation slider-prev icon-slick">
+                <img src="./assets/frontend/theme_5/image/svg/arrow-left.svg" alt="">
+            </div>
         </div>
     </section>
     <section class="acc-game-v2 media-mobile c-mt-12 c-mt-lg-24 c-mb-12 c-mb-lg-6">
