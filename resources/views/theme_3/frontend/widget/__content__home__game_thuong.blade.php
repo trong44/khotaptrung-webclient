@@ -14,16 +14,13 @@
         <div class="box-product acc-swiper">
             <div class="swiper-container list-product swiper-acc" >
                 <div class="swiper-wrapper">
+
                     @foreach($data as $key => $item)
                         @if($item->display_type == 1)
                             <div class="swiper-slide" >
                                 <a href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}">
                                     <div class="item-product__box-img">
-                                        @if(isset($item->image))
                                         <img onerror="imgError(this)" class="lazy" data-src="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) :  \App\Library\MediaHelpers::media($item->image) }}" alt="">
-                                        @else
-                                        <img onerror="imgError(this)" class="img-list-nick-category lazy" data-src="/assets/frontend/theme_3/image/images_1/no-image.png" alt="No-image">
-                                        @endif
                                     </div>
                                     <div class="item-product__box-content">
                                         <div class="item-product__box-name text-title limit-1">{{ isset($item->custom->title) ? $item->custom->title :  $item->title }}</div>

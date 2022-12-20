@@ -9,11 +9,7 @@
                             <a href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}" class="list-item-nick-hover">
                                 <div class="row marginauto list-item-nick-hover-row">
                                     <div class="col-md-12 left-right default-overlay-nick-ct">
-                                        @if(isset($item->image))
-                                            <img onerror="imgError(this)" class="lazy" src="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) : \App\Library\MediaHelpers::media($item->image) }}" alt="">
-                                        @else
-                                            <img onerror="imgError(this)" class="img-list-nick-category lazy" src="/assets/frontend/theme_3/image/images_1/no-image.png" alt="No-image">
-                                        @endif
+                                        <img onerror="imgError(this)" class="lazy" src="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) : \App\Library\MediaHelpers::media($item->image) }}" alt="">
                                     </div>
                                     <div class="col-md-12 left-right list-item-nick">
                                         <div class="row marginauto list-item-nick-body">
