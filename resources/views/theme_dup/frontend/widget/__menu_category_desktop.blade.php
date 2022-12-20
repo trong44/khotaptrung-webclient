@@ -8,7 +8,7 @@
 @endphp
 <header>
     <div class="nav-bar">
-        @if($total <= 6)
+        @if($total <= 5)
         <div class="nav-bar-container container">
             <div class="nav-bar-brand">
                 <a href="/">
