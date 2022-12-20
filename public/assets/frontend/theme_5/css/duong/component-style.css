@@ -805,3 +805,11 @@
 #intro_text_home p {
     font-size: unset;
 }
+/* css icon slick*/
+.icon-slick{
+    display: flex;
+    justify-content: center;
+}
+.icon-slick img{
+    width: 10px;
+}

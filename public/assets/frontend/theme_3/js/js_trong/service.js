@@ -165,6 +165,7 @@ switch (data_params['filter_type']) {
     function UpdatePrice4() {
         let price = 0;
         itemselect_value = parseInt($('select[name=selected]').val());
+        itemselect_name = $('select[name=selected]').text();
         if (itemselect_value == -1) {
             return;
         }
