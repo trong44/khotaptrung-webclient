@@ -724,7 +724,8 @@ View::composer('frontend.widget.__service_game', function ($view) {
 
         if (setting('sys_service_widget_one') != '' || setting('sys_service_widget_two') != '' || setting('sys_service_widget_three') != ''){
             $arr = \App\Library\CategoryListOption::service();
-            if (isset($arr) && count($arr)){
+
+            if (isset($arr)){
                 $arr = explode('|',$arr);
                 $dataSend['id_not_option'] = $arr;
             }
