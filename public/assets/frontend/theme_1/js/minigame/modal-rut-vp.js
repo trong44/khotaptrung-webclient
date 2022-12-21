@@ -14,7 +14,6 @@ $('#modal-tab-history [name="started_at"],#modal-tab-history [name="ended_at"]')
             clear: 'fas fa-trash',
             close: 'far fa-times' },
     maxDate: moment()
-
 });
 
 $(document).on('click','.toggle-password .eye',function (e) {
@@ -59,6 +58,28 @@ function getWithDrawItem(game_type,data_query) {
                     });
                     select_package.niceSelect('update')
                 }
+                // server
+                let has_server = !!result_data.service;
+                let input_wrap = $('#input-server');
+                if (has_server) {
+                    if(result_data.service.idkey !== 'roblox_buyserver') {
+                        let service_params = JSON.parse(result_data.service.params)
+                        let input_server = `<div class="t-sub-2 t-color-title my_8">Chọn máy chủ:</div>`;
+                        input_server += '<select name="server" class="form-control">';
+                        service_params.server_data.forEach((server,idx) => {
+                            if(!!server && server.indexOf('[DELETE]') === -1){
+                                input_server += `<option value="${service_params.server_id[idx]}">${server}</option>`
+                            }
+                        })
+                        input_server += '</select>';
+                        input_wrap.html(input_server);
+                    } else  {
+                        input_wrap.empty();
+                    }
+                } else {
+                    input_wrap.empty();
+                }
+
                 //id game
                 let text_id_game =  result_data.gametype.idkey ? result_data.gametype.idkey : 'Id trong game:';
                 $('.input-id-game .t-sub-2').text(text_id_game);
