@@ -561,7 +561,10 @@ class ServiceController extends Controller
             if ((int)$index > 0){
                 for ($i = 0; $i < $index; $i++){
                     if ($request->hasFile('customer_data'.$i)) {
-                        $dataSend['customer_data'.$i] = $request->file('customer_data'.$i);
+                        $type = pathinfo($request->file('customer_data'.$i), PATHINFO_EXTENSION);
+                        $data = file_get_contents($request->file('customer_data'.$i));
+                        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                        $dataSend['customer_data'.$i] = $base64;
                     }else{
                         $dataSend['customer_data'.$i] = $request->get('customer_data'.$i);
                     }
@@ -570,10 +573,10 @@ class ServiceController extends Controller
             }
             $dataSend['rank_from'] = $request->get('rank_from');
             $dataSend['rank_to'] = $request->get('rank_to');
-            
+
             $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
             $response_data = $result_Api->response_data??null;
-
+      
             if(isset($response_data) && $response_data->status == 1){
                 return response()->json([
                     'status' => 1,
