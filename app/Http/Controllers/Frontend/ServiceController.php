@@ -560,11 +560,17 @@ class ServiceController extends Controller
 
             if ((int)$index > 0){
                 for ($i = 0; $i < $index; $i++){
-                    $dataSend['customer_data'.$i] = $request->get('customer_data'.$i);
+                    if ($request->hasFile('customer_data'.$i)) {
+                        $dataSend['customer_data'.$i] = $request->file('customer_data'.$i);
+                    }else{
+                        $dataSend['customer_data'.$i] = $request->get('customer_data'.$i);
+                    }
+
                 }
             }
             $dataSend['rank_from'] = $request->get('rank_from');
             $dataSend['rank_to'] = $request->get('rank_to');
+            
             $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
             $response_data = $result_Api->response_data??null;
 

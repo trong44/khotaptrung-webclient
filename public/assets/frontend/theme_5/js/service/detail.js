@@ -307,7 +307,10 @@ $('.submit-data-form').on('click',function (e) {
      $.ajax({
          url:form.attr('action'),
          type:'POST',
-         data:$data,
+         data:  new FormData(this),
+         contentType: false,
+         cache: false,
+         processData:false,
          success:function (res) {
              if (res.status*1 ===1){
 

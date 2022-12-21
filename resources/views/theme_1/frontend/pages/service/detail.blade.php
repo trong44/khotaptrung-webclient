@@ -89,9 +89,9 @@
             </div>
 
             {{--            Tính toán  --}}
-
-            <form method="POST" action="/dich-vu/{{ $data->id }}/purchase" accept-charset="UTF-8" class="purchaseForm" enctype="multipart/form-data">
-                @csrf
+            {{Form::open(array('url'=>'/dich-vu/'.$data->id.'/purchase','method'=>'post' ,'class'=>'purchaseForm','enctype'=>"multipart/form-data"))}}
+{{--            <form method="POST" action="/dich-vu/{{ $data->id }}/purchase" accept-charset="UTF-8" class="purchaseForm" enctype="multipart/form-data">--}}
+{{--                @csrf--}}
                 <div class="container detail-service fixcssacount">
                     <div class="row">
                         <div class="col-md-7" style="margin-bottom:20px;">
@@ -427,8 +427,8 @@
                         </div>
                     </div>
                 </div>
-            </form>
-
+{{--            </form>--}}
+            {{ Form::close() }}
             {{--            Nội dung   --}}
 
             <div class="container fixcssacount">

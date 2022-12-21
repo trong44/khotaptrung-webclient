@@ -56,7 +56,10 @@ $('body').on('click','.submit-form',function(elm, select){
     $.ajax({
         type: "POST",
         url: url,
-        data: data_form,
+        data:  new FormData(this),
+        contentType: false,
+        cache: false,
+        processData:false,
         success: function (res) {
             if (res.status) {
                 $('.js-message-res span').text(res.message)
