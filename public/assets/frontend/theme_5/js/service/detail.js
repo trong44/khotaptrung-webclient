@@ -78,12 +78,12 @@
 
             break;
         case '5':
-            $('.input-checkbox input[type="checkbox"]').on('change', function () {
+            $('.input-checkbox input:not(.confirm-rule)[type="checkbox"]').on('change', function () {
                 setPrice5();
             });
 
         function setPrice5() {
-            let checked = $('.input-checkbox input[type="checkbox"]:checked');
+            let checked = $('.input-checkbox input:not(.confirm-rule)[type="checkbox"]:checked');
             let total = 0;
             let s_price;
             $item_selected = '';

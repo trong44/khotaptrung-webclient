@@ -521,7 +521,7 @@
                                             <div class="col-md-12 left-right">
                                                 <span class="detailViewBlockTitle">Mô tả dịch vụ</span>
                                             </div>
-                                            <div class="col-md-12 left-right footer-row-col-ct content-video-in  detailViewBlockContent {{ substr($data->content,1200) ? 'content-video-in-add' :'' }}">
+                                            <div class="col-md-12 left-right footer-row-col-ct content-video-in detailViewBlockContent {{ substr($data->content,1200) ? 'content-video-in-add' :'' }}">
                                                 {!!  $data->content !!}
                                             </div>
                                             @if(substr($data->content,1200))

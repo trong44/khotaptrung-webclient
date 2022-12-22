@@ -28,7 +28,6 @@ $(document).on('click', '.view-more', function (e) {
     let viewBlock = $(this).closest('.detailViewBlock');
     let viewBlockTitle = $(viewBlock).find('.detailViewBlockTitle').text();
     let viewBlockContent = $(viewBlock).find('.detailViewBlockContent').html();
-    console.log(viewBlock, viewBlockTitle, viewBlockContent);
     $('#viewMore #detailTitle').text(viewBlockTitle);
     $('#viewMore #detailContent').html(viewBlockContent);
     $('#viewMore').modal('show');
