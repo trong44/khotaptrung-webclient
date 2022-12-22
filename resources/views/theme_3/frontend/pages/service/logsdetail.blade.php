@@ -242,26 +242,36 @@
                                        </div>
                                    </div>
                                 </div>
-                                <div class="mx-2 mx-lg-0">
-                                    <div class="row marginauto justify-content-center">
-                                        <div class="col-md-6 col-6 modal-footer-success-col-left-ct">
-                                            <div class="row marginauto modal-footer-success-row-not-ct">
-                                                <div class="col-md-12 left-right">
-                                                    <a href="javascript:void(0)" class="button-not-bg-ct btn-delete"><span>Hủy</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-6 modal-footer-success-col-right-ct">
-                                            <div class="row marginauto">
-                                                <div class="col-md-12 left-right">
-                                                    <button class="button-default-modal-ct button-modal-nick btn-open-edit media-mobile" type="button">Chỉnh sửa</button>
+                                @if($data->status==1)
+                                    @if($input_auto==1 && ($data->itemconfig_ref->idkey!='' || $data->itemconfig_ref->idkey!=null ))
+                                    @else
+                                        @if($data->gate_id == 1)
 
-                                                    <button class="button-default-modal-ct button-modal-nick btn-open-edit media-web" type="button">Chỉnh sửa thông tin</button>
+                                        @else
+                                            <div class="mx-2 mx-lg-0">
+                                                <div class="row marginauto justify-content-center">
+                                                    <div class="col-md-6 col-6 modal-footer-success-col-left-ct">
+                                                        <div class="row marginauto modal-footer-success-row-not-ct">
+                                                            <div class="col-md-12 left-right">
+                                                                <a href="javascript:void(0)" class="button-not-bg-ct btn-delete"><span>Hủy</span></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-6 modal-footer-success-col-right-ct">
+                                                        <div class="row marginauto">
+                                                            <div class="col-md-12 left-right">
+                                                                <button class="button-default-modal-ct button-modal-nick btn-open-edit media-mobile" type="button">Chỉnh sửa</button>
+
+                                                                <button class="button-default-modal-ct button-modal-nick btn-open-edit media-web" type="button">Chỉnh sửa thông tin</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        @endif
+                                    @endif
+                                @endif
+
                             </div>
                         </div>
                         @else
