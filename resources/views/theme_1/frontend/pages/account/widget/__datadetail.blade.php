@@ -1,6 +1,6 @@
 @if(isset($data))
     @if($data->status == 1)
-        @dd($data)
+      
     <div class="row marginauto">
         <div class="col-lg-6 col-md-12 shop_product_detailS__col">
             <div class="gallery" style="overflow: hidden">
