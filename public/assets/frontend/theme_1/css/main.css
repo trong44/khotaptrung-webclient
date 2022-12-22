@@ -565,6 +565,7 @@ header .nav-bar{
     height: auto;
     top: -8px;
     right: -8px;
+    z-index: 1;
 }
 .game-list-image-in{
     width: 100%;
