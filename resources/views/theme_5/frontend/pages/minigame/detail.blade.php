@@ -756,7 +756,10 @@
                                         <span class="text-error"></span>
                                     </div>
                                 </div>
+
                                 <div class="item-input-tab">
+                                    <div class="" id="input-server"></div>
+
                                     <div class="input-group">
                                         <div class="form-label">
                                             Chọn gói rút
@@ -796,9 +799,6 @@
                                         <input type="search" placeholder="Tìm kiếm" class=" has-submit">
                                         <button type="submit"></button>
                                     </form>
-                                </div>
-                                <div class="value-filter">
-                                    <div class="show-modal-filter noselect">Bộ lọc</div>
                                 </div>
                                 <div class="row history-tab-inputs">
                                     <div class="col-7 c-pr-4">

@@ -160,7 +160,7 @@
         <div class="modal-content panel panel-primary"></div>
     </div>
 </div>
-{{--@include('frontend.widget.modal.__recharge_modal')--}}
+@include('frontend.widget.modal.__recharge_modal')
 
 @if(Request::is('/') || Request::is('login'))
     @include('frontend.widget.__slider__banner')

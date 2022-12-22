@@ -732,15 +732,17 @@
                                     </div>
                                 </div>
                                 <div class="item-input-tab">
+                                    <div class="" id="input-server"></div>
                                     <div class="input-group">
                                         <div class="form-label">
-                                            Chọn vật phẩm bạn đang sở hữu
+                                            Chọn gói rút:
                                         </div>
                                         <select name="package" id="package" class="wide select-withdraw">
                                             <option value="">Chọn gói</option>
                                         </select>
                                         <span class="text-error"></span>
                                     </div>
+
                                     <div class="input-group input-id-game">
                                         <div class="form-label">
                                             Tài khoản trong game
@@ -762,6 +764,7 @@
                                         <button type="submit" class="btn primary" style="width: 40%">Rút ngay</button>
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                         <div class="tab-pane fade" id="modal-tab-history" role="tabpanel">
@@ -771,9 +774,6 @@
                                         <input type="search" placeholder="Tìm kiếm" class=" has-submit">
                                         <button type="submit"></button>
                                     </form>
-                                </div>
-                                <div class="value-filter">
-                                    <div class="show-modal-filter noselect">Bộ lọc</div>
                                 </div>
                                 <div class="row history-tab-inputs">
                                     <div class="col-7 c-pr-4">

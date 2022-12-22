@@ -3276,7 +3276,7 @@ a.btn span {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
     border: 0;
-    color: #f25a59 !important;
+    /*color: #f25a59 !important;*/
    font-weight: 600;
 }
 .nav-tabs > li.active > a > span,
