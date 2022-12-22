@@ -19,13 +19,13 @@
                                     @if($item->lm_auto == 1)
                                         <a class="account_category" href="/mua-acc/{{ config('module.acc.slug-auto') }}">
                                             {{--                                                Anh khuyen mai--}}
-                                            @if(isset($item->image_icon))
+{{--                                            @if(isset($item->image_icon))--}}
                                                 @if(isset($item->custom->image_icon))
                                                     <img class="game-list-image-sticky lazy" data-original="{{ \App\Library\MediaHelpers::media($item->custom->image_icon) }}" alt="">
-                                                @else
-                                                    <img class="game-list-image-sticky" data-original="{{ \App\Library\MediaHelpers::media($item->image_icon) }}" alt="">
+{{--                                                @else--}}
+{{--                                                    <img class="game-list-image-sticky" data-original="{{ \App\Library\MediaHelpers::media($item->image_icon) }}" alt="">--}}
                                                 @endif
-                                            @endif
+{{--                                            @endif--}}
                                             @if(isset($item->image))
                                                 <img class="game-list-image-in lazy" data-original="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) :  \App\Library\MediaHelpers::media($item->image) }}" alt="">
                                             @else
@@ -37,15 +37,15 @@
                                     @else
                                         <a class="account_category" href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}">
                                             {{--                                                Anh khuyen mai--}}
-                                            @if(isset($item->image_icon))
+{{--                                            @if(isset($item->image_icon))--}}
                                                 @if(isset($item->custom->image_icon))
                                                     <img class="game-list-image-sticky lazy" data-original="{{ \App\Library\MediaHelpers::media($item->custom->image_icon) }}" alt="">
-                                                @else
-                                                    <img class="game-list-image-sticky" data-original="{{ \App\Library\MediaHelpers::media($item->image_icon) }}" alt="">
+{{--                                                @else--}}
+{{--                                                    <img class="game-list-image-sticky" data-original="{{ \App\Library\MediaHelpers::media($item->image_icon) }}" alt="">--}}
                                                 @endif
-                                            @else
+{{--                                            @else--}}
 
-                                            @endif
+{{--                                            @endif--}}
                                             @if(isset($item->image))
                                                 <img class="game-list-image-in lazy" data-original="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) :  \App\Library\MediaHelpers::media($item->image) }}" alt="">
                                             @else
@@ -58,15 +58,15 @@
                                 @else
                                     <a class="account_category" href="/mua-acc/{{ isset($item->custom->slug) && $item->custom->slug != '' ? $item->custom->slug :  $item->slug }}">
                                         {{--                                                Anh khuyen mai--}}
-                                        @if(isset($item->image_icon))
+{{--                                        @if(isset($item->image_icon))--}}
                                             @if(isset($item->custom->image_icon))
                                                 <img class="game-list-image-sticky lazy" data-original="{{ \App\Library\MediaHelpers::media($item->custom->image_icon) }}" alt="">
-                                            @else
-                                                <img class="game-list-image-sticky" data-original="{{ \App\Library\MediaHelpers::media($item->image_icon) }}" alt="">
+{{--                                            @else--}}
+{{--                                                <img class="game-list-image-sticky" data-original="{{ \App\Library\MediaHelpers::media($item->image_icon) }}" alt="">--}}
                                             @endif
-                                        @else
+{{--                                        @else--}}
 
-                                        @endif
+{{--                                        @endif--}}
                                         @if(isset($item->image))
                                             <img class="game-list-image-in lazy" data-original="{{ isset($item->custom->image) ? \App\Library\MediaHelpers::media($item->custom->image) :  \App\Library\MediaHelpers::media($item->image) }}" alt="">
                                         @else
