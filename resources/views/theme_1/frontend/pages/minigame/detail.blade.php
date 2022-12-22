@@ -1885,10 +1885,15 @@
                                     }else {
                                         $html += "<span>Kết quả: " + gift_revice[0]["title"] + "</span><br/>";
                                         if (gift_detail.winbox == 1) {
-
-                                            $html += "<span>Mua X1: Nhận được " + gift_revice[0]['parrent'].params.value + "</span><br/>";
+                                            var c_price = gift_revice[0]['parrent'].params.value;
+                                            var total_price = parseInt(gift_revice[0]['parrent'].params.value) * (parseInt(xvalueaDD[0]));
+                                            c_price = c_price.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                                            c_price = c_price.split('').reverse().join('').replace(/^[\.]/,'');
+                                            total_price = total_price.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                                            total_price = total_price.split('').reverse().join('').replace(/^[\.]/,'');
+                                            $html += "<span>Mua X1: Nhận được " + c_price + "</span><br/>";
                                             //$html += "<span>Quay được "+(xvalue+3)+" hình trùng nhau. Nhận X"+(xvalueaDD[0])+" giải thưởng: "+gift_revice[0]['parrent'].params.value*(xvalueaDD[0])+""+msg_random_bonus[0]+"</span><br/>"+$strDiscountcode;
-                                            $html += "<span>Tổng cộng: " + parseInt(gift_revice[0]['parrent'].params.value) * (parseInt(xvalueaDD[0])) + "</span>";
+                                            $html += "<span>Tổng cộng: " + total_price + "</span>";
                                         }
                                     }
 
@@ -1927,12 +1932,14 @@
                                             }
                                             $totalRevice += parseInt(gift_revice[$i]['parrent'].params.value) * (parseInt(xvalueaDD[$i])) + parseInt(value_gif_bonus[$i]);
                                         }
-
+                                        $totalRevice = $totalRevice.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                                        $totalRevice = $totalRevice.split('').reverse().join('').replace(/^[\.]/,'');
                                         $html += "<span><b>Tổng cộng: " + $totalRevice + "</b></span>";
                                     }
                                 }
                             } else {
                                 $("#btnWithdraw").hide();
+
                                 if (gift_revice.length == 1) {
                                     if (!flag_bonus) {//trường hợp bonus.
                                         var total_vp = parseInt(gift_revice[0]['parrent'].params.value) + parseInt(value_gif_bonus[0]);
@@ -1946,13 +1953,22 @@
                                     }else{
                                         $html += "<span>Kết quả chơi thử: " + gift_revice[0]["title"] + "</span><br/>";
                                         if (gift_detail.winbox == 1) {
-                                            $html += "<span>Mua X1: Nhận được " + gift_revice[0]['parrent'].params.value + "</span><br/>";
+                                            var c_price = gift_revice[0]['parrent'].params.value;
+                                            var total_price = parseInt(gift_revice[0]['parrent'].params.value) * (parseInt(xvalueaDD[0]));
+                                            c_price = c_price.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                                            c_price = c_price.split('').reverse().join('').replace(/^[\.]/,'');
+                                            total_price = total_price.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                                            total_price = total_price.split('').reverse().join('').replace(/^[\.]/,'');
+
+                                            $html += "<span>Mua X1: Nhận được " + c_price + "</span><br/>";
                                             //$html += "<span>Quay được "+(xvalue+3)+" hình trùng nhau. Nhận X"+(xvalueaDD[0])+" giải thưởng: "+gift_revice[0]['parrent'].params.value*(xvalueaDD[0])+""+msg_random_bonus[0]+"</span><br/>";
-                                            $html += "<span>Tổng cộng: " + parseInt(gift_revice[0]['parrent'].params.value) * (parseInt(xvalueaDD[0])) + "</span>";
+
+                                            $html += "<span>Tổng cộng: " + total_price + "</span>";
                                         }
                                     }
 
                                 } else {
+
                                     if (!flag_bonus) {//trường hợp bonus.
                                         $totalRevice = 0;
                                         $html += "<span>Kết quả chơi thử: Nhận " + gift_revice.length + " phần thưởng cho " + gift_revice.length + " lượt quay.</span><br/>";
@@ -1985,7 +2001,8 @@
                                             }
                                             $totalRevice += parseInt(gift_revice[$i]['parrent'].params.value) * (parseInt(xvalueaDD[$i])) + parseInt(value_gif_bonus[$i]);
                                         }
-
+                                        $totalRevice = $totalRevice.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+                                        $totalRevice = $totalRevice.split('').reverse().join('').replace(/^[\.]/,'');
                                         $html += "<span><b>Tổng cộng: " + $totalRevice + "</b></span>";
                                     }
                                 }
