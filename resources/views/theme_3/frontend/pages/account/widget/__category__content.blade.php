@@ -1,5 +1,4 @@
 @if(isset($data->custom->content))
-
     <section>
         <div class="font-detail-service container container-fix body-container-ct">
             <div class="row marginauto body-container-row-ct">
@@ -13,7 +12,9 @@
                         @else
                         <div class="col-md-12 left-right footer-row-col-ct content-video-in  detailViewBlockContent">
                         @endif
+                            <div class="data-content ">
                             {!!  $data->custom->content !!}
+                            </div>
                         </div>
                         @if(substr($data->custom->content,1200))
                         <div class="col-md-12 left-right text-center js-toggle-content noselect">
@@ -40,11 +41,13 @@
                                 <span class="detailViewBlockTitle">Chi tiết dịch vụ</span>
                             </div>
                             @if(substr($data->content,1200))
-                            <div class="col-md-12 left-right footer-row-col-ct content-video-in content-video-in-add detailViewBlockContent">
+                            <div class="col-md-12 left-right footer-row-col-ct content-video-in content-video-in-add detailViewBlockContent ">
                             @else
-                            <div class="col-md-12 left-right footer-row-col-ct content-video-in  detailViewBlockContent">
+                            <div class="col-md-12 left-right footer-row-col-ct content-video-in  detailViewBlockContent ">
                             @endif
-                                {!!  $data->content !!}
+                                <div class="data-content">
+                                    {!!  $data->content !!}
+                                </div>
                             </div>
                             @if(substr($data->content,1200))
                             <div class="col-md-12 left-right text-center js-toggle-content noselect">
@@ -62,6 +65,8 @@
         </section>
     @endif
 @endif
+<script src="/assets/frontend/{{theme('')->theme_key}}/js/nick/category_content.js?v={{time()}}"></script>
+
 <style>
     .font-detail-service a small span p{
         font-family: 'Open Sans' !important;

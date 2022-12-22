@@ -13,8 +13,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="modal-body modal-viewmore-body" id="detailContent">
+            <div class="modal-body modal-viewmore-body " id="detailContent">
 
             </div>
         </div>
