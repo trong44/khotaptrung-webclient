@@ -238,7 +238,10 @@ $('.submit-form').on('click', function () {
     $.ajax({
         type: "POST",
         url: url,
-        data: data_form,
+        data:  new FormData($('#formDataService')),
+        contentType: false,
+        cache: false,
+        processData:false,
         success: function (res) {
             if (res.status) {
                     $('.js-message-res span').text(res.message)

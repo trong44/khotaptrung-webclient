@@ -182,4 +182,27 @@ class Helpers
         $output = base64_encode($output);
         return $output;
     }
+
+    public static function UploadImageForService($request, $field)
+    {
+
+        // Handle File Upload
+        $allFilename = "";
+        $file = $request->file($field);
+        $filenameWithExt = $file->getClientOriginalName();
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $extension = $file->getClientOriginalExtension();
+        $extension = strtolower($extension);
+        // Nếu nó không phải là file hình thì sẽ thông báo lỗi
+        if (($extension != "jpg") && ($extension != "jpeg") && ($extension != "png") && ($extension != "gif")) {
+            return "";
+        }
+        // Filename to store
+        $pathSave = '/upload-usr/images/';
+        $fileNameToStore = self::rand_string(10) . '_' . time() . '.' . $extension;
+        $fileNameToStore = strtolower($fileNameToStore);
+        $moveSuccess = $file->move(public_path($pathSave), $fileNameToStore);
+        $allFilename .= $pathSave . $fileNameToStore;
+        return $allFilename;
+    }
 }

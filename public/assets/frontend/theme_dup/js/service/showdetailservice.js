@@ -261,7 +261,10 @@ $(document).ready(function(){
         $.ajax({
             type: "POST",
             url: url,
-            data: formSubmit.serialize(), // serializes the form's elements.
+            data:  new FormData(this),
+            contentType: false,
+            cache: false,
+            processData:false,
             beforeSend: function (xhr) {
 
             },
