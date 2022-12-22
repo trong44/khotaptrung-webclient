@@ -49,10 +49,14 @@
                         <h1>{{ isset($data->custom->title) ? $data->custom->title :  $data->title }}</h1>
                         <div class="special-text-nick">
                             @if($data->custom->content)
-                                {!!  $data->custom->content !!}
+                                <div class="accounts_detail_content">
+                                    {!!  $data->custom->content !!}
+                                </div>
                             @else
                                 @if(isset($data->content))
+                                    <div class="accounts_detail_content">
                                     {!!  $data->content !!}
+                                    </div>
                                 @else
 
                                 @endif
@@ -205,6 +209,7 @@
 
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/buyaccrandom.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/account-list.js?v={{time()}}"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/account-content.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/lib/select2/select2.min.js"></script>
     <script>
         // config select 2

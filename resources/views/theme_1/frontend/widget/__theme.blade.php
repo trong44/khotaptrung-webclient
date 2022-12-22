@@ -5,7 +5,7 @@
             .main-lay-out{
                 background:{{setting('sys_theme_background_color')}} url({{setting('sys_theme_background_image')}});
                 background-attachment: fixed;
-                background-size: 100%;
+                background-size: cover;
                 padding-bottom: 40px;
             }
         </style>
@@ -14,7 +14,7 @@
             .main-lay-out{
                 background:{{setting('sys_theme_background_color')}};
                 background-attachment: fixed;
-                background-size: 100%;
+                background-size: cover;
                 padding-bottom: 40px;
             }
         </style>
@@ -24,7 +24,7 @@
         .main-lay-out{
             background:#000 url(/assets/frontend/{{theme('')->theme_key}}/images/background_image.jpg);
             background-attachment: fixed;
-            background-size: 100%;
+            background-size:cover;
             padding-bottom: 40px;
         }
     </style>

@@ -261,7 +261,9 @@
                                     @else
                                     <div class="content-desc detailViewBlockContent">
                                     @endif
-                                        {!! $data->content !!}
+                                        <div class="data-content">
+                                            {!! $data->content !!}
+                                        </div>
                                     </div>
                                 </div>
                                 @if(substr($data->content, 1200))
@@ -572,4 +574,5 @@
 @section('scripts')
 {{--    <script src="/assets/frontend/{{theme('')->theme_key}}/lib/validate-form/validate.js"></script>--}}
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/service/detail.js?v={{ time() }}"></script>
+     <script src="/assets/frontend/{{theme('')->theme_key}}/js/js_duong/account-content.js?v={{time()}}"></script>
 @endsection
