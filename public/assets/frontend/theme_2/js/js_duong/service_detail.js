@@ -238,7 +238,7 @@ $('.submit-form').on('click', function () {
     $.ajax({
         type: "POST",
         url: url,
-        data:  new FormData($('#formDataService')),
+        data:  new FormData($('#formDataService')[0]),
         contentType: false,
         cache: false,
         processData:false,
