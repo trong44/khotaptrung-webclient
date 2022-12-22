@@ -717,7 +717,9 @@
                     <div class="card overflow-hidden detailViewBlock">
                         <div class="card-body c-px-16">
                             <div class="content-desc hide detailViewBlockContent">
-                                {!! $data->custom->content !!}
+                                <div class="data-content">
+                                    {!! $data->custom->content !!}
+                                </div>
                             </div>
                         </div>
                         <div class="card-footer text-center">
@@ -806,6 +808,7 @@
 @section('scripts')
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/nick/buyaccrandom.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/nick/account-list.js?v={{time()}}"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/js_duong/account-content.js?v={{time()}}"></script>
 
     <script>
         // config select 2

@@ -2571,7 +2571,7 @@ footer{
 }
 
 #noticeModal img{
-    width: 260px!important;
+    /*width: 260px!important;*/
     height: auto!important;
 }
 

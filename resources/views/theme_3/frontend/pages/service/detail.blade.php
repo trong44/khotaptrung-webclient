@@ -522,7 +522,9 @@
                                                 <span class="detailViewBlockTitle">Mô tả dịch vụ</span>
                                             </div>
                                             <div class="col-md-12 left-right footer-row-col-ct content-video-in detailViewBlockContent {{ substr($data->content,1200) ? 'content-video-in-add' :'' }}">
-                                                {!!  $data->content !!}
+                                                <div class="data-content">
+                                                    {!!  $data->content !!}
+                                                </div>
                                             </div>
                                             @if(substr($data->content,1200))
                                                 <div class="col-md-12 left-right text-center js-toggle-content noselect">
@@ -860,6 +862,7 @@
     @if(\App\Library\AuthCustom::check())
         <input id="surplus" type="hidden" value="{{ \App\Library\AuthCustom::user()->balance }}">
     @endif
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/nick/category_content.js?v={{time()}}"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/cay-thue/cay-thue-detail.js?v={{time()}}"></script>
     {{--    <script src="/js/{{theme('')->theme_key}}/cay-thue/cay-thue-detail.js" type="text/javascript"></script>--}}
 @endsection
