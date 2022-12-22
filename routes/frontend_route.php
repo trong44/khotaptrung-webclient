@@ -93,14 +93,15 @@ Route::get('/406', function ()
                     return view('frontend.pages.account.logs-installment');
                 });
 
-                Route::group(['middleware' => ['intend']], function (){
-                    Route::get('/acc/{slug}', [AccController::class , "getDetail"])->name('accDetail');
-                });
-
                 Route::get('/related-acc', [AccController::class , "getRelated"]);
                 Route::get('/watched-acc', [AccController::class , "getWatched"]);
 
                 Route::group(['middleware' => ['doNotCacheResponse']], function (){
+
+                    Route::group(['middleware' => ['intend']], function (){
+                        Route::get('/acc/{slug}', [AccController::class , "getDetail"])->name('accDetail');
+                    });
+
                     Route::post('/ajax/user/account_info', [UserController::class , "getInfo"]);
 
                     Route::group(['middleware' => ['intend']], function (){
