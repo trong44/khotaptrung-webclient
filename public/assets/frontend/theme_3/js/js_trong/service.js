@@ -56,7 +56,7 @@ $('body').on('click','.submit-form',function(elm, select){
     $.ajax({
         type: "POST",
         url: url,
-        data:  new FormData($('#formDataService')),
+        data:  new FormData($('#formDataService')[0]),
         contentType: false,
         cache: false,
         processData:false,
