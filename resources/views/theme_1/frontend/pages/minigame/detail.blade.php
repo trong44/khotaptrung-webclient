@@ -101,6 +101,23 @@
             </div>
         </div>
     </div>
+    <div class="item_buy">
+        <div class="container">
+            <div class="news_breadcrumbs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-12">
+                            <ul class="news_breadcrumbs_theme news_breadcrumbs_theme__show">
+                                <li><a href="/" class="news_breadcrumbs_theme_trangchu news_breadcrumbs_theme_trangchu_a">Trang chủ</a></li>
+                                <li>/</li>
+                                <li><a href="/minigame" class="news_breadcrumbs_theme_tintuc_a"><p class="news_breadcrumbs_theme_tintuc">Minigame</p></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="item_play">
         <div class="container">

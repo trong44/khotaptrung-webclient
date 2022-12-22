@@ -255,24 +255,24 @@
                                             <div role="tabpanel" class="tab-pane fade in active show tabpaymentv2{{ $item->randId }}" id="paymentv2{{ $item->randId }}">
                                                 <p class="c-tab-header-account">Thông tin tài khoản #{{ $item->randId }}</p>
                                                 <div class="table-nick-properties">
+{{--                                                    <div class="table-nick-items justify-content-between d-flex">--}}
+{{--                                                        <div class="table-properties-name">Nhà phát hành</div>--}}
+{{--                                                        @php--}}
+{{--                                                            $title_nph = '';--}}
+{{--                                                            if (isset($item->groups) && count($item->groups)){--}}
+{{--                                                                foreach ($item->groups as $t_group){--}}
+{{--                                                                    if ($t_group->module == "acc_provider"){--}}
+{{--                                                                        $title_nph = $t_group->title;--}}
+{{--                                                                    }--}}
+{{--                                                                }--}}
+{{--                                                            }--}}
+{{--                                                        @endphp--}}
+{{--                                                        <div class="table-properties-value">--}}
+{{--                                                            {{ $title_nph }}--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
                                                     <div class="table-nick-items justify-content-between d-flex">
-                                                        <div class="table-properties-name">Nhà phát hành</div>
-                                                        @php
-                                                            $title_nph = '';
-                                                            if (isset($item->groups) && count($item->groups)){
-                                                                foreach ($item->groups as $t_group){
-                                                                    if ($t_group->module == "acc_provider"){
-                                                                        $title_nph = $t_group->title;
-                                                                    }
-                                                                }
-                                                            }
-                                                        @endphp
-                                                        <div class="table-properties-value">
-                                                            {{ $title_nph }}
-                                                        </div>
-                                                    </div>
-                                                    <div class="table-nick-items justify-content-between d-flex">
-                                                        <div class="table-properties-name">Tên game</div>
+                                                        <div class="table-properties-name">Danh mục</div>
                                                         <div class="table-properties-value">
                                                             {{ isset($data->custom->title) ? $data->custom->title :  $data->title }}
                                                         </div>

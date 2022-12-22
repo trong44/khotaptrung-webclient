@@ -1235,29 +1235,29 @@
                                     <div class="col-md-12 left-right padding-order-ct">
                                         <div class="row marginauto">
                                             <div class="col-md-12 left-right background-order-ct">
+{{--                                                <div class="row marginauto background-order-body-row-ct">--}}
+{{--                                                    <div class="col-auto left-right background-order-col-left-ct">--}}
+{{--                                                        <span>Nhà phát hành</span>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="col-auto left-right background-order-col-right-ct">--}}
+{{--                                                        @if(isset($data->params))--}}
+{{--                                                            @if(isset($data->params->rank_info) && count($data->params->rank_info))--}}
+{{--                                                                <small>Garena</small>--}}
+{{--                                                            @else--}}
+{{--                                                                <small>--}}
+{{--                                                                    @if (isset($data->groups[0]))--}}
+{{--                                                                        {{ $data->groups[0]->title }}--}}
+{{--                                                                    @endif--}}
+{{--                                                                </small>--}}
+{{--                                                            @endif--}}
+{{--                                                        @endif--}}
+
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+
                                                 <div class="row marginauto background-order-body-row-ct">
                                                     <div class="col-auto left-right background-order-col-left-ct">
-                                                        <span>Nhà phát hành</span>
-                                                    </div>
-                                                    <div class="col-auto left-right background-order-col-right-ct">
-                                                        @if(isset($data->params))
-                                                            @if(isset($data->params->rank_info) && count($data->params->rank_info))
-                                                                <small>Garena</small>
-                                                            @else
-                                                                <small>
-                                                                    @if (isset($data->groups[0]))
-                                                                        {{ $data->groups[0]->title }}
-                                                                    @endif
-                                                                </small>
-                                                            @endif
-                                                        @endif
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="row marginauto background-order-body-row-ct">
-                                                    <div class="col-auto left-right background-order-col-left-ct">
-                                                        <span>Tên game</span>
+                                                        <span>Danh mục</span>
                                                     </div>
                                                     <div class="col-auto left-right background-order-col-right-ct">
                                                         <small>{{ isset($data->category->custom->title) ? $data->category->custom->title :  $data->category->title }}</small>
@@ -1426,7 +1426,7 @@
                                                         @if(isset($info) && count($info))
                                                             @foreach($info as $ke => $in)
                                                                 @if(in_array($in->name,config('module.acc.auto_nro_tt')))
-                                                                    
+
                                                                     @if($in->name == 'Skill Pet' || $in->name == 'Cải trang')
                                                                         @if($in->name == 'Skill Pet')
                                                                             @if(isset($in->value) && count($in->value) )

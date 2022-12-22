@@ -258,12 +258,12 @@
                                                                 <th colspan="2">Thông tin tài khoản #{{ $item->randId }}</th>
                                                             </tr>
                                                             </tbody><tbody>
+{{--                                                            <tr>--}}
+{{--                                                                <td>Nhà phát hành:</td>--}}
+{{--                                                                <th>{{ $item->groups[0]->title }}</th>--}}
+{{--                                                            </tr>--}}
                                                             <tr>
-                                                                <td>Nhà phát hành:</td>
-                                                                <th>{{ $item->groups[0]->title }}</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Tên game:</td>
+                                                                <td>Danh mục:</td>
                                                                 {{--                                    @dd($data_category)--}}
                                                                 <th>{{ isset($data->custom->title) ? $data->custom->title :  $data->title }}</th>
                                                             </tr>
