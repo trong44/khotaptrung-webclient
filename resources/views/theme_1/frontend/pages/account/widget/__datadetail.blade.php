@@ -1,5 +1,6 @@
 @if(isset($data))
     @if($data->status == 1)
+        @dd($data)
     <div class="row marginauto">
         <div class="col-lg-6 col-md-12 shop_product_detailS__col">
             <div class="gallery" style="overflow: hidden">
@@ -697,22 +698,22 @@
                                                         <th colspan="2">Thông tin tài khoản #{{ $data->randId }}</th>
                                                     </tr>
                                                     </tbody><tbody>
-                                                    @if(isset($data->params))
-                                                        @if(isset($data->params->rank_info) && count($data->params->rank_info))
-                                                            <tr>
-                                                                <td>Nhà phát hành:</td>
-                                                                <th>Garena</th>
-                                                            </tr>
-                                                        @else
-                                                            <tr>
-                                                                <td>Nhà phát hành:</td>
-                                                                <th>{{  @$data->groups[0]->title }}</th>
-                                                            </tr>
-                                                        @endif
-                                                    @endif
+{{--                                                    @if(isset($data->params))--}}
+{{--                                                        @if(isset($data->params->rank_info) && count($data->params->rank_info))--}}
+{{--                                                            <tr>--}}
+{{--                                                                <td>Nhà phát hành:</td>--}}
+{{--                                                                <th>Garena</th>--}}
+{{--                                                            </tr>--}}
+{{--                                                        @else--}}
+{{--                                                            <tr>--}}
+{{--                                                                <td>Nhà phát hành:</td>--}}
+{{--                                                                <th>{{  @$data->groups[0]->title }}</th>--}}
+{{--                                                            </tr>--}}
+{{--                                                        @endif--}}
+{{--                                                    @endif--}}
 
                                                     <tr>
-                                                        <td>Tên game:</td>
+                                                        <td>Danh mục:</td>
 
                                                         <th>{{ isset($data->category->custom->title) ? $data->category->custom->title :  $data->category->title }}</th>
                                                     </tr>

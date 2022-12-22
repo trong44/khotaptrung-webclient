@@ -728,7 +728,7 @@
                             <div class="card--gray c-mb-16 c-pt-8 c-pb-8 c-pl-12 c-pr-12 brs-8 g_mobile-content">
                                 <div class="card--attr justify-content-between d-flex c-mb-8 text-center">
                                     <div class="card--attr__name fw-400 fz-13 text-center text-order">
-                                        Game
+                                        Danh mục
                                     </div>
                                     <div class="card--attr__value fz-13 fw-500">{{ isset($data->category->custom->title) ? $data->category->custom->title :  $data->category->title }}</div>
                                 </div>
@@ -1197,7 +1197,7 @@
                     <div class="card--gray c-mb-16 c-pt-8 c-pb-8 c-pl-12 c-pr-12">
                         <div class="card--attr justify-content-between d-flex c-mb-16 text-center">
                             <div class="card--attr__name fw-400 fz-13 text-center">
-                                Game
+                                Danh mục
                             </div>
                             <div class="card--attr__value fz-13 fw-500">{{ isset($data->category->custom->title) ? $data->category->custom->title :  $data->category->title }}</div>
                         </div>
@@ -1370,7 +1370,7 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    
+
                                                 @endif
                                             @elseif($in->name == 'Hành tinh' || $in->name == 'Bông tai')
 

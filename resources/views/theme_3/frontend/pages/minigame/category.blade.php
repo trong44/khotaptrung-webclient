@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="col-auto left-right banner-mobile-span text-center" style="width: 80%">
-                        <p>Mini Game</p>
+                        <p>Minigame</p>
                     </div>
                     <div class="col-auto left-right" style="width: 10%">
                     </div>
