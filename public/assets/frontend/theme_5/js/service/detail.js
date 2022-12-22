@@ -171,9 +171,9 @@
         // điền số tiền
         case '7':
             input_pack.on('input', function () {
-                this.value = numberFormat($(this).val())
+                this.value = numberFormat($(this).val());
+                input_pack.next().val(input_pack.val().replace('.',''));
             });
-
         function UpdateTotal() {
 
             let price = input_pack.val().replace(/\./g, '') *1;
@@ -298,7 +298,7 @@ $('.submit-data-form').on('click',function (e) {
     e.preventDefault();
     let form = $('#form-service-detail');
     let $data = form.serializeArray().reduce(function (obj, item) {
-        obj[item.name] = item.value;
+        obj[item.name] = item.name === 'selected' ? item.value.replace('.','') : item.value;
         return obj;
     }, {});
 

@@ -144,8 +144,9 @@
                                         <div class="form-label">
                                             Nhập số tiền cần mua:
                                         </div>
-                                        <input type="text" id="input_pack" name="selected" placeholder="Số tiền"
+                                        <input type="text" id="input_pack" placeholder="Số tiền"
                                                value="{{ str_replace(',','.',number_format($data_params['input_pack_min'])) }}">
+                                        <input type="hidden" name="selected">
                                         <span>Số tiền thanh toán phải từ
                                         <span class="t-sub-3">{{number_format($data_params['input_pack_min'])}}đ</span>
                                         đến
