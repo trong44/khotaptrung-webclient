@@ -11,27 +11,34 @@ class MediaHelpers
 
 	static function media($path){
 
-
 	    if(empty($path)){
 	        return "";
         }
 
 	    //nếu là link http://
-		if (strpos($path, 'http://') > -1 ||strpos($path, 'https://') > -1 ||strpos($path, '//') > -1) {
-		    if (strpos($path, 'http://') > -1){
-                $path = str_replace('http:','',$path);
-            }elseif (strpos($path, 'https://') > -1){
-                $path = str_replace('https:','',$path);
-            }
+		if (strpos($path, 'http://') > -1 ||strpos($path, 'https://') > -1 || strpos($path, '//') > -1) {
+            if (strpos($path, 'http://') > -1 ||strpos($path, 'https://') > -1){
+                if (strpos($path, 'http://') > -1){
+                    $path = str_replace('http:','',$path);
+                }elseif (strpos($path, 'https://') > -1){
+                    $path = str_replace('https:','',$path);
+                }
 
-            if(setting('sys_server_image') != ''){
-                if (setting('sys_server_image') == 'https://imagetip.net'){
-                    $path = str_replace('cdn.upanh.info','imagetip.net',$path);
+                if(setting('sys_server_image') != ''){
+                    if (setting('sys_server_image') == 'https://imagetip.net'){
+                        $path = str_replace('cdn.upanh.info','imagetip.net',$path);
+                    }
+                }
+                return url($path);
+            }else{
+                if(setting('sys_server_image') != ''){
+                    return setting('sys_server_image').'/'. ltrim($path, '/');
+                }else{
+                    return config('api.url_media').'/'. ltrim($path, '/');
                 }
             }
-            return url($path);
-		}else{
 
+		}else{
             if(setting('sys_server_image') != ''){
                 return setting('sys_server_image').'/'. ltrim($path, '/');
             }else{
