@@ -9,7 +9,9 @@
             <div class="job-details">
                 <div class="article-content content_post ">
                     <div class="special-text">
-                        {!! $data->content  !!}
+                        <div class="account_content">
+                            {!! $data->content  !!}
+                        </div>
                     </div>
                     <span class="expand-button" style="text-align: center">
                         Xem thêm nội dung
@@ -33,4 +35,5 @@
         }
     });
 </script>
+<script src="/assets/frontend/{{theme('')->theme_key}}/js/account/account-content.js?v={{time()}}"></script>
 

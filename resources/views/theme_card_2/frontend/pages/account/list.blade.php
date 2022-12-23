@@ -69,7 +69,9 @@
                                         {!!  $data->custom->content !!}
                                     @else
                                         @if(isset($data->content))
-                                            {!!  $data->content !!}
+                                            <div class="accounts_content">
+                                                {!!  $data->content !!}
+                                            </div>
                                         @else
 
                                         @endif
@@ -211,6 +213,7 @@
 
         <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/buyaccrandom.js?v={{time()}}"></script>
         <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/account-list.js?v={{time()}}"></script>
+        <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/account-content.js?v={{time()}}"></script>
 {{--        <script src="/js/{{theme('')->theme_key}}/account/list_2.js"></script>--}}
     @endif
 
