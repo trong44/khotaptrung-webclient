@@ -89,18 +89,18 @@
                                                     <div class="col-md-12 left-right padding-order-ct">
                                                         <div class="row marginauto">
                                                             <div class="col-md-12 left-right background-order-ct">
-                                                                <div class="row marginauto background-order-body-row-ct">
-                                                                    <div class="col-auto left-right background-order-col-left-ct">
-                                                                        <span>Nhà phát hành</span>
-                                                                    </div>
-                                                                    <div class="col-auto left-right background-order-col-right-ct">
-                                                                        <small>{{ $item->groups[0]->title }}</small>
-                                                                    </div>
-                                                                </div>
+{{--                                                                <div class="row marginauto background-order-body-row-ct">--}}
+{{--                                                                    <div class="col-auto left-right background-order-col-left-ct">--}}
+{{--                                                                        <span>Nhà phát hành</span>--}}
+{{--                                                                    </div>--}}
+{{--                                                                    <div class="col-auto left-right background-order-col-right-ct">--}}
+{{--                                                                        <small>{{ $item->groups[0]->title }}</small>--}}
+{{--                                                                    </div>--}}
+{{--                                                                </div>--}}
 
                                                                 <div class="row marginauto background-order-body-row-ct">
                                                                     <div class="col-auto left-right background-order-col-left-ct">
-                                                                        <span>Tên game</span>
+                                                                        <span>Danh mục</span>
                                                                     </div>
                                                                     <div class="col-auto left-right background-order-col-right-ct">
                                                                         <small>{{ isset($data->custom->title) ? $data->custom->title :  $data->title }}</small>

@@ -443,7 +443,7 @@
                                                                                 <span class="span__dangky">
                                                                                     @if(isset($in->value) && count($in->value) )
                                                                                         {{ count($in->value) }}
-                                                                                    @endif    
+                                                                                    @endif
                                                                                 </span>
                                                                             </div>
                                                                         </div>
@@ -469,7 +469,7 @@
                                                                         <div class="col-md-1 col-2 pl-0 pr-0">
                                                                             <span class="span__dangky">
                                                                                 {{ $param??null }}
-                                                                                {{ $in->value }}    
+                                                                                {{ $in->value }}
                                                                             </span>
                                                                         </div>
                                                                     </div>
@@ -483,7 +483,7 @@
                                             @endif
                                         @endforeach
                                     @endif
-                                    
+
                                 @endif
                             @endif
 
@@ -620,25 +620,25 @@
                                         <div role="tabpanel" class="tab-pane fade in active show" id="paymentv2">
                                             <p class="c-tab-header-account">Thông tin tài khoản #{{ $data->randId }}</p>
                                             <div class="table-nick-properties">
-                                                @if(isset($data->params))
-                                                    @if(isset($data->params->rank_info) && count($data->params->rank_info))
-                                                        <div class="table-nick-items justify-content-between d-flex">
-                                                            <div class="table-properties-name">Nhà phát hành</div>
-                                                            <div class="table-properties-value">Garena</div>
-                                                        </div>
-                                                    @else
-                                                        <div class="table-nick-items justify-content-between d-flex">
-                                                            <div class="table-properties-name">Nhà phát hành</div>
-                                                            <div class="table-properties-value">{{  @$data->groups[0]->title }}</div>
-                                                        </div>
-                                                    @endif
-                                                @endif
-    
+{{--                                                @if(isset($data->params))--}}
+{{--                                                    @if(isset($data->params->rank_info) && count($data->params->rank_info))--}}
+{{--                                                        <div class="table-nick-items justify-content-between d-flex">--}}
+{{--                                                            <div class="table-properties-name">Nhà phát hành</div>--}}
+{{--                                                            <div class="table-properties-value">Garena</div>--}}
+{{--                                                        </div>--}}
+{{--                                                    @else--}}
+{{--                                                        <div class="table-nick-items justify-content-between d-flex">--}}
+{{--                                                            <div class="table-properties-name">Nhà phát hành</div>--}}
+{{--                                                            <div class="table-properties-value">{{  @$data->groups[0]->title }}</div>--}}
+{{--                                                        </div>--}}
+{{--                                                    @endif--}}
+{{--                                                @endif--}}
+
                                                 <div class="table-nick-items justify-content-between d-flex">
-                                                    <div class="table-properties-name">Tên game</div>
+                                                    <div class="table-properties-name">Danh mục</div>
                                                     <div class="table-properties-value">{{ isset($data->category->custom->title) ? $data->category->custom->title :  $data->category->title }}</div>
                                                 </div>
-    
+
                                                 <div class="table-nick-items justify-content-between d-flex">
                                                     <div class="table-properties-name">Giá tiền</div>
                                                     <div class="table-properties-value">
@@ -649,7 +649,7 @@
                                                         @endif
                                                     </div>
                                                 </div>
-    
+
                                                 @if(App\Library\AuthCustom::check())
                                                     <div class="table-nick-items justify-content-between d-flex">
                                                         <div class="table-properties-name">Số dư</div>
@@ -658,7 +658,7 @@
                                                         </div>
                                                     </div>
                                                 @endif
-    
+
                                             </div>
                                             <div class="c-account-price-block justify-content-between d-flex">
                                                 <div class="c-account-price-title">Số tiền cần thanh toán</div>
