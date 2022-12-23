@@ -31,7 +31,7 @@
     @endif
 @else
 
-    @include('frontend.widget.__card_purchase')
+{{--    @include('frontend.widget.__card_purchase')--}}
     <!--popup work start here-->
         @include('frontend.widget.__slider__banner')
 
