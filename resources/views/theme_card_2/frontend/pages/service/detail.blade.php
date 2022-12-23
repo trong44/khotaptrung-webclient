@@ -455,7 +455,9 @@
                                 <h2 style="margin-bottom: 4px;font-size: 20px;font-weight: bold;text-transform: uppercase;">Mô tả</h2>
                                 <div class="news_content_line"></div>
                                 <div class="article-content hidetext">
-                                    {!! $data->content  !!}
+                                    <div class="accounts_content">
+                                        {!! $data->content  !!}
+                                    </div>
                                 </div>
                                 <div style="text-align: center;margin: 15px 0">
                                     <span class="viewmore">Xem tất cả »</span>
@@ -874,6 +876,6 @@
     @endif
 
     @endif
-
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/account-content.js?v={{time()}}"></script>
 @endsection
 
