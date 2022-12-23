@@ -3,7 +3,7 @@ $(document).ready(function(){
     const csrf_token = $('meta[name="csrf-token"]').attr('content');
     const token =  $('meta[name="jwt"]').attr('content');
 
-    $(document).on('click', '.paginate__v1__ls .pagination a',function(event){
+    $('body').on('click', '.paginate__v1__ls .pagination a',function(event){
         event.preventDefault();
 
         var page = $(this).attr('href').split('page=')[1];

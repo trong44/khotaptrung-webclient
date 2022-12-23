@@ -1,944 +1,473 @@
 @extends('frontend.layouts.master')
-
+@section('seo_head')
+    @include('frontend.widget.__seo_head',with(['data'=>$data]))
+@endsection
+@section('meta_robots')
+    <meta name="robots" content="noindex,nofollow" />
+@endsection
 @section('content')
-
-    <form id="formBookingStepMobie" action="" method="POST">
-        {{csrf_field()}}
-
-        <fieldset id="fieldset-one">
-            {{--  Header mobile  --}}
-            <section class="media-mobile">
-                <div class="container container-fix banner-mobile-container-ct">
-
-                    <div class="row marginauto banner-mobile-row-ct">
-                        <div class="col-auto left-right" style="width: 10%">
-                            <a href="" class="previous-step-one" style="line-height: 28px">
-                                <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/back.png" alt="" >
-                            </a>
-                        </div>
-
-                        <div class="col-auto left-right banner-mobile-span text-center" style="width: 80%">
-                            <h3>Danh sách Nick</h3>
-                        </div>
-                        <div class="col-auto left-right" style="width: 10%">
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            {{--    Banner--}}
-
-            {{--  Menu  --}}
-            <section class="media-web">
-                <div class="container container-fix menu-container-ct">
-                    <ul>
-                        <li><a href="/">Trang chủ</a></li>
-                        <li class="menu-container-li-ct"><img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/arrow-right.png" alt=""></li>
-                        <li class="menu-container-li-ct"><a href="/mua-acc">Danh mục Shop Account</a></li>
-                        <li class="menu-container-li-ct"><img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/arrow-right.png" alt=""></li>
-                        <li class="menu-container-li-ct"><a href="/mua-acc/slug">Liên quân mobile</a></li>
-                        <li class="menu-container-li-ct"><img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/arrow-right.png" alt=""></li>
-                        <li class="menu-container-li-ct"><a href="/acc/id">Chi tiết Nick</a></li>
-                    </ul>
-                </div>
-            </section>
-
-            {{--   Bopđyy --}}
-            @include('frontend.pages.account.widget.__data__detail')
-
-            <section>
-                <div class="container container-fix body-container-ct">
-                    <div class="row marginauto body-container-row-ct">
-                        <div class="col-md-12 left-right">
-                            <div class="row marginauto body-row-ct footer-row-ct">
-                                <div class="col-md-12 left-right">
-                                    <span>Mô tả sản phẩm Nick Liên quân mobile | Mã số: 121590</span>
-                                </div>
-                                <div class="col-md-12 left-right footer-row-col-ct content-video-in content-video-in-add">
-                                    <p><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif; font-variant-east-asian:normal; font-variant-numeric:normal; white-space:pre-wrap">Xã hội ngày càng phát triển, đời sống tinh thần được quan tâm và chú trọng nhiều hơn. Các trò chơi điện tử trực tuyến được ra đời nhằm mục đích giải trí và thư giãn sau những giờ học và làm việc mệt mỏi đầy áp lực. Kích thích tâm trí phát triển và sáng tạo, kéo theo sự phát triển của ngành công nghiệp sản xuất game online - đặc biệt là các game mobile với nhiều hình thức khác nhau như game đối kháng, game chiến thuật,&nbsp; game thẻ bài, game kiếm hiệp hay game sinh tồn. Vì lẽ ấy mà nhu cầu </span><span style="font-family:Arial,Helvetica,sans-serif; font-variant-east-asian:normal; font-variant-numeric:normal; white-space:pre-wrap"><em>nạp game, mua nick, mua bán thẻ hay trò chơi thử may cùng những dịch vụ hấp dẫn</em></span><span style="font-family:Arial,Helvetica,sans-serif; font-variant-east-asian:normal; font-variant-numeric:normal; white-space:pre-wrap"> là không thể thiếu và ngày càng tăng cao đặc biệt là gen Z hiện nay - những vật phẩm đua top trend hay những kiện tướng xuất sắc muốn có được khi các game thủ chinh phục ván game của mình. Cùng </span><span style="font-family:Arial,Helvetica,sans-serif; font-variant-east-asian:normal; font-variant-numeric:normal; white-space:pre-wrap"><strong style="font-weight:700">WEBNICK.VN</strong></span><span style="font-family:Arial,Helvetica,sans-serif; font-variant-east-asian:normal; font-variant-numeric:normal; white-space:pre-wrap"> tìm hiểu cụ thể các thông tin và dịch vụ </span><span style="font-family:Arial,Helvetica,sans-serif; font-variant-east-asian:normal; font-variant-numeric:normal; white-space:pre-wrap"><strong style="font-weight:700">WEBNICK.VN</strong></span><span style="font-family:Arial,Helvetica,sans-serif; font-variant-east-asian:normal; font-variant-numeric:normal; white-space:pre-wrap">&nbsp; mang lại nhé !</span></span></span></p>
-
-                                    <p style="line-height:1.38"><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-variant:normal; white-space:pre-wrap"><strong style="font-weight:700"><em style="font-style:italic"><span style="text-decoration:none">Các dịch vụ đặc biệt đến từ webkick.vn</span></em></strong></span></span></span></span></p>
-
-                                    <p style="line-height:1.38"><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-variant:normal; white-space:pre-wrap"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Các dịch vụ độc đáo và duy nhất đến từ WEBNICK.VN như: <em>bán acc all game</em>, </span></span></span></span><span style="font-variant:normal; white-space:pre-wrap"><span style="font-weight:400"><em style="font-style:italic"><span style="text-decoration:none">bán vàng, bán ngọc, làm phiếu giảm giá, </span></em></span></span><span style="font-variant:normal; white-space:pre-wrap"><span style="font-weight:400"><em style="font-style:italic"><span style="text-decoration:none">làm thuê Capsule vàng, cày thuê tốc chiến, mua skin, nạp kim cương, nạp quân huy,... </span></em></span></span><span style="font-variant:normal; white-space:pre-wrap"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Tất cả được hỗ trợ 24/24 bởi đội ngũ chuyên nghiệp của chúng tôi. Bất cứ khi nào bạn cần WEBNICK.VN luôn sẵn sàng phục vụ !&nbsp;</span></span></span></span></span></span></span></p>
-
-                                    <p style="line-height:1.38; margin-bottom:16px"><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-variant:normal; white-space:pre-wrap"><strong style="font-weight:700"><em style="font-style:italic"><span style="text-decoration:none">Đến với Webnick.vn sự lựa chọn hàng đầu cho việc nạp game, hay mua bán nick cùng các dịch vụ khác</span></em></strong></span></span></span></span></p>
-
-                                    <p style="line-height:1.38; margin-bottom:16px"><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-variant:normal; white-space:pre-wrap"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Mục đích được xuất phát từ tâm lý nên hiện nay, có rất nhiều địa chỉ nạp tiền vào game hay mua bán nick cùng những dịch vụ hấp dẫn như: các group, fanpage facebook, các nhóm zalo hay các website nạp game trực tuyến,... Tuy nhiên, giữa vô vàn địa chỉ kể trên, thì người chơi khi nạp tiền vào game, mua bán nick không tránh khỏi những địa chỉ kém uy tín, bị lừa đảo trong quá trình nạp game, mua nick hay trao đổi các dịch vụ khác. Vì lẽ ấy, các game thủ phải cực kỳ tỉnh táo để lựa chọn những website uy tín, chuyên nạp game, mua bán nick cùng dịch vụ hấp dẫn chính hãng, uy tín, giá rẻ để thực hiện giao dịch.&nbsp;</span></span></span></span></span></span></span></p>
-
-                                    <p style="line-height:1.38; margin-bottom:16px"><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-variant:normal; white-space:pre-wrap"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Xuất phát từ tâm lý khách hàng WEBNICK.VN đã ra đời nhằm mục đích chăm sóc và phục vụ những mong muốn và yêu cầu của khách hàng. Website WEBNICK.VN đã sẵn sàng xử lý và phục vụ các game thủ. Một trong những website uy tín, chất lượng chuyên cung cấp tiền nạp game, mua bán nick cùng dịch vụ uy tín, đảm bảo 100%. Hằng ngày, tại website thực hiện hơn 30.000+ giao dịch&nbsp; thành công của nhiều game thủ từ trong và ngoài nước.</span></span></span></span></span></span></span></p>
-
-                                    <p style="line-height:1.38; margin-bottom:5px"><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-variant:normal; white-space:pre-wrap"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Với dịch vụ đa dạng, phong phú của nhiều game như: nạp Quân huy Liên Quân, nạp kc BnS, nạp UC PUBG Mobile, mua Xu ninja school, mua Ngọc NRO, mua vàng NRO, nạp kim cương free fire, nạp Play Together, mua Robux, .... Thời gian giao dịch và nhận tiền game trong game chưa đến 60 giây. Các game thủ hoàn toàn có thể yên tâm về số tiền bỏ vào game này. Chúng tôi xin đảm bảo tiền game được bán ra bởi shop nạp game hay tài khoản với các dịch vụ là hoàn toàn sạch và an toàn 100% bởi lẽ, chúng tôi là đại lý nạp game, bán nick được ủy quyền chính thức bởi các diễn đàn Game chuyên nghiệp.</span></span></span></span></span></span></span></p>
-
-                                    <p style="line-height:1.38; margin-bottom:5px"><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-variant:normal; white-space:pre-wrap"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Bên cạnh việc nạp game uy tín, chất lượng, giá rẻ cùng giao dịch nhanh chóng, dễ dàng. Bạn còn dễ dàng mua được thẻ game của các diễn đàn khác như: Garena, Zing, Funcard, Gate, Carot, Appota, Scoin, Soha, Vcoin, Gosu với card điện thoại: Vinaphone, Viettel, Mobi.</span></span></span></span></span></span></span></p>
-
-                                    <p style="line-height:1.8; margin-bottom:8px; margin-top:8px"><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-variant:normal; white-space:pre-wrap"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Cùng với những dịch vụ hết sức tuyệt vời khi sử dụng dịch vụ tại WEBNICK.VN, chúng tôi hy vọng WEBNICK.VN sẽ làm cho bạn thật hài lòng và nâng tầm trải nghiệm của bạn. Còn chần chờ gì nữa mà không đến shop của chúng tôi để nạp game, mua nick cùng với dịch vụ hấp dẫn đi nào ! WEBNICK.VN hân hạnh được phục vụ tất cả khách hàng khi đến. WEBNICK.VN nắm bắt tâm lý - lắng nghe khách hàng - uy tín trách nhiệm - sự lựa chọn hàng đầu của mọi game thủ đi đến con đường chuyên nghiệp. </span></span></span></span><span style="font-variant:normal; white-space:pre-wrap"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Khám phá thế giới ảo và đắm chìm để giải trí với mức giá hợp lý cùng dịch vụ thân thiện xuất phát từ lòng hiếu khách cùng sự tỉ mỉ, tận tâm tuyệt đối chính là điều hành khách có thể kì vọng ở WEBNICK.VN. Và&nbsp; hơn hết chúng tôi tin rằng điều đó mang ý nghĩa </span></span></span></span><span style="font-variant:normal; white-space:pre-wrap"><span style="font-weight:400"><em style="font-style:italic"><span style="text-decoration:none">“Hơn cả sự trải nghiệm”</span></em></span></span></span></span></span></p>
-
-                                    <p style="line-height:1.8; margin-bottom:8px; margin-top:8px"><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-variant:normal; white-space:pre-wrap"><strong style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">Hotline:&nbsp;</span></span></strong></span></span></span></span></p>
-
-                                    <p style="line-height:1.8; margin-bottom:8px; margin-top:8px"><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif"><span style="white-space:pre-wrap"><strong>Fanpage: </strong></span></span></span></span></p>
-
-                                    <p style="line-height:1.8; margin-bottom:8px; margin-top:8px"><span style="color:#ffffff"><span style="font-size:16px"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-variant:normal; white-space:pre-wrap"><strong style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none">Website: webnick.vn</span></span></strong></span></span></span></span></p>
-                                </div>
-
-                                <div class="col-md-12 left-right text-center js-toggle-content">
-                                    <div class="view-more">
-                                        <a href="javascript:void(0)" class="global__link__default">Xem thêm<i class="__icon__default --sm__default --link__default ml-1" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/arrow-down.png)"></i></a>
-
-                                    </div>
-                                    <div class="view-less">
-                                        <a href="javascript:void(0)" class="global__link__default">Thu gọn<i class="__icon__default --sm__default --link__default ml-1" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/iconright.png)"></i></a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <section class="media-mobile">
-                <div class="row marginauto intermediary-ct" style="height: 20px;background: #EFEFEF">
-
-                </div>
-            </section>
-
-            @include('frontend.pages.account.widget.__related__same')
-
-            <section class="media-mobile">
-                <div class="row marginauto intermediary-ct" style="height: 20px;background: #EFEFEF">
-
-                </div>
-            </section>
-
-            @include('frontend.pages.account.widget.__related__promotion')
-
-
-            <section class="media-mobile">
-                <div class="row marginauto intermediary-ct" style="height: 20px;background: #EFEFEF">
-
-                </div>
-            </section>
-
-            @include('frontend.pages.account.widget.__related__endow')
-
-            <div class="modal fade login show order-modal" id="openOrder" aria-modal="true">
-
-                <div class="modal-dialog step-tab-panel modal-lg modal-dialog-centered login animated">
-                    <!--        <div class="image-login"></div>-->
-                    <div class="modal-content">
-                        <div class="modal-header p-0" style="border-bottom: 0">
-                            <div class="row marginauto modal-header-order-ct">
-                                <div class="col-12 span__donhang text-center" style="position: relative">
-                                    <span>Xác nhận thanh toán</span>
-                                    <img class="lazy img-close-ct close-modal-default" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/close.png" alt="">
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="modal-body modal-body-order-ct">
-                            <div class="row marginauto">
-
-                                <div class="col-md-12 left-right title-order-ct">
-                                    <span>Thông tin acc</span>
-                                </div>
-
-                                <div class="col-md-12 left-right" id="order-errors">
-                                    <div class="row marginauto order-errors">
-                                        <div class="col-md-12 left-right">
-                                            <small>Lỗi rồi em ơi</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right padding-order-ct">
-                                    <div class="row marginauto">
-                                        <div class="col-md-12 left-right background-order-ct">
-                                            <div class="row marginauto background-order-row-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Tài khoản</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <small>Nam Hải</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right padding-order-ct">
-                                    <div class="row marginauto">
-                                        <div class="col-md-12 left-right background-order-ct">
-                                            <div class="row marginauto background-order-body-row-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Game</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/mobilegame.png" alt="">
-                                                </div>
-                                            </div>
-
-                                            <div class="row marginauto background-order-body-row-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Rank</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <small>Tinh Anh</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="row marginauto background-order-body-row-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Số lượng</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <small>01</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="row marginauto background-order-body-row-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Chiết khấu</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <small>3%</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="row marginauto background-order-body-bottom-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Thành tiền</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <small>100.000 đ</small>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right padding-order-ct">
-                                    <div class="row marginauto">
-                                        <div class="col-md-12 left-right background-order-ct">
-
-                                            <div class="row marginauto background-order-body-row-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Phương thức thanh toán</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <small>Tài khoản Shopbrand</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="row marginauto background-order-body-bottom-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Phí thanh toán</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <small>Miễn phí</small>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right padding-order-ct">
-                                    <div class="row marginauto">
-                                        <div class="col-md-12 left-right background-order-ct">
-                                            <div class="row marginauto background-order-row-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Tài khoản</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <span>97.000 đ</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right padding-order-footer-ct">
-                                    <div class="row marginauto">
-                                        <div class="col-md-12 left-right">
-                                            <button class="button-default-ct openSuccess" type="button">Xác nhận</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    @if(isset($data->params) && isset($data->params->article_type))
+        {!! $data->params->article_type !!}
+    @endif
+    @if($data == null)
+        <div class="item_buy">
+            <div class="container pt-3" style="padding-bottom: 600px">
+                <div class="row pb-3 pt-3">
+                    <div class="col-md-12 text-center">
+                        <span style="color: red;font-size: 16px;">
+                            @if(isset($message))
+                                {{ $message }}
+                            @else
+                                Hiện tại không có dữ liệu nào phù hợp với yêu cầu của bạn! Hệ thống cập nhật dịch vụ thường xuyên bạn vui lòng theo dõi web trong thời gian tới !
+                            @endif
+                        </span>
                     </div>
                 </div>
 
             </div>
 
+        </div>
+    @else
+    <!-- Cookie  -->
+    @php
+        if (isset($data->price_old)) {
+            $sale_percent = (($data->price_old - $data->price) / $data->price_old) * 100;
+            $sale_percent = round($sale_percent, 0, PHP_ROUND_HALF_UP);
+        } else {
+            $sale_percent = 0;
+        }
+    @endphp
+    @php
+        $totalaccount = 0;
+        if(isset($data->category->items_count)){
+            if ((isset($data->category->account_fake) && $data->category->account_fake > 1) || (isset($data->category->custom->account_fake) && $data->category->custom->account_fake > 1)){
+                $totalaccount = str_replace(',','.',number_format(round(isset($data->category->custom->account_fake) ? $data->category->items_count*$data->category->custom->account_fake : $data->category->items_count*$data->category->account_fake)));
+            }
+        }else{
+            $totalaccount = 0;
+        }
+    @endphp
+{{--    @php--}}
+{{--        $data_cookie = Cookie::get('viewed_account') ?? '[]';--}}
 
-            <div class="modal fade login show order-modal" id="traGop" aria-modal="true">
+{{--        $flag_viewed = true;--}}
+{{--        $data_cookie = json_decode($data_cookie,true);--}}
 
-                <div class="modal-dialog step-tab-panel modal-lg modal-dialog-centered login animated">
-                    <!--        <div class="image-login"></div>-->
-                    <div class="modal-content">
-                        <div class="modal-header p-0" style="border-bottom: 0">
-                            <div class="row marginauto modal-header-order-ct">
-                                <div class="col-12 span__donhang text-center" style="position: relative">
-                                    <span>Xác nhận thanh toán</span>
-                                    <img class="lazy img-close-ct close-modal-default" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/close.png" alt="">
-                                </div>
-                            </div>
+{{--            foreach ($data_cookie as $key => $acc_viewed){--}}
+{{--                if($acc_viewed['randId'] == $data->randId){--}}
+{{--                 $flag_viewed = false;--}}
+{{--                }--}}
+{{--            }--}}
+{{--            if ($flag_viewed){--}}
+{{--                    if (count($data_cookie) >= config('module.acc.viewed.limit_count')) {--}}
+{{--                         array_pop($data_cookie);--}}
+{{--                     }--}}
+{{--                    $data_save = [--}}
+{{--                        'image'=>$data->image,--}}
+{{--                        'category'=>isset($data->category->custom->title) ? $data->category->custom->title :  $data->category->title,--}}
+{{--                        'randId'=>$data->randId,--}}
+{{--                        'price'=>$data->price,--}}
+{{--                        'price_old'=>$data->price_old,--}}
+{{--                        'promotion'=>$sale_percent,--}}
+{{--                        'buy_account'=>$totalaccount,--}}
+{{--                     ];--}}
+{{--                    array_unshift($data_cookie,$data_save);--}}
+{{--                    $data_cookie = json_encode($data_cookie);--}}
+{{--                    Cookie::queue('viewed_account',$data_cookie,43200);--}}
+{{--            }--}}
+{{--    @endphp--}}
 
-                        </div>
+    <fieldset id="fieldset-one">
+        <div id="pageBreadcrumb">
 
-                        <div class="modal-body modal-body-order-ct">
-                            <div class="row marginauto">
+        </div>
 
-                                <div class="col-md-12 left-right title-order-ct">
-                                    <span>Thông tin tài khoản #521479</span>
-                                </div>
-
-                                <div class="col-md-12 left-right" id="order-errors">
-                                    <div class="row marginauto order-errors">
-                                        <div class="col-md-12 left-right">
-                                            <small>Lỗi rồi em ơi</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right padding-order-ct">
-                                    <div class="row marginauto">
-                                        <div class="col-md-12 left-right background-order-ct">
-                                            <div class="row marginauto background-order-body-row-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Nhà phát hành</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/nick/zing.png" alt="">
-                                                </div>
-                                            </div>
-
-                                            <div class="row marginauto background-order-body-row-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Tên game</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <small>Ngọc rồng</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="row marginauto background-order-body-row-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Số lượng</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <small>01</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="row marginauto background-order-body-bottom-ct">
-                                                <div class="col-auto left-right background-order-col-left-ct">
-                                                    <span>Tổng tiền</span>
-                                                </div>
-                                                <div class="col-auto left-right background-order-col-right-ct">
-                                                    <small>250.000 đ</small>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right title-tra-gop">
-                                    <span>Thông tin trả góp</span>
-                                </div>
-
-                                <div class="col-md-12 left-right">
-                                    <div class="row body-title-detail-ct">
-
-                                        <div class="col-md-6 text-left body-title-detail-nick-col-ct">
-                                            <div class="row marginauto">
-                                                <div class="col-md-12 left-right body-title-detail-span-ct">
-                                                    <span>Trả trước</span>
-                                                </div>
-                                                <div class="col-md-12 left-right body-title-detail-select-ct">
-                                                    <input readonly autocomplete="off" class="input-defautf-ct input-modal-defautf-ct-play" type="text" placeholder="50.000">
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="col-md-6 text-left body-title-detail-nick-col-ct">
-                                            <div class="row marginauto password-mobile">
-                                                <div class="col-md-12 left-right body-title-detail-span-ct">
-                                                    <span>Trả lần 2</span>
-                                                </div>
-                                                <div class="col-md-12 left-right body-title-detail-select-ct" style="position: relative">
-                                                    <input readonly autocomplete="off" class="input-defautf-ct" type="text" placeholder="200.000">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right title-tra-gop">
-                                    <small>Nếu bạn chưa hoàn tất thanh toán toàn bộ trước thời hạn 01/06/2022 00:00:00, giao dịch sẽ bị hủy bỏ và bạn sẽ nhận tiền hoàn lại bằng 20% số tiền trả ban đầu.</small>
-                                </div>
-
-                                <div class="col-md-12 left-right">
-                                    <div class="row body-title-detail-ct">
-                                        <div class="col-md-12 left-right body-title-detail-span-ct body-title-detail-col-ng-ct">
-                                            <span>Mã bảo vệ</span>
-                                        </div>
-                                        <div class="col-auto text-left body-title-detail-col-left-ng-ct chitiet-nick-input">
-                                            <div class="row marginauto">
-                                                <div class="col-md-12 left-right body-title-detail-select-ct">
-                                                    <input autocomplete="off" class="input-defautf-ct" type="text" placeholder="Nhập mã bảo vệ">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-auto text-left body-title-detail-col-center-ng-ct">
-                                            <div class="row marginauto password-mobile capcha-image-bg">
-                                                <div class="col-md-12 left-right body-title-detail-select-ct">
-                                                    <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/capcha.png" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-auto text-left body-title-detail-col-right-ng-ct">
-                                            <div class="row marginauto password-mobile capcha-image-bg">
-                                                <div class="col-md-12 left-right body-title-detail-select-ct">
-                                                    <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/rf-capcha.png" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right title-tra-gop-body">
-                                    <span>Thông tin trả góp</span>
-                                </div>
-
-                                <div class="col-md-12 left-right padding-order-ct">
-                                    <div class="row marginauto">
-                                        <div class="col-md-12 left-right background-order-ct">
-
-                                            <div class="row marginauto tragop-order-body-row-ct">
-                                                <div class="col-md-12 left-right background-order-col-left-ct">
-                                                    <ul id="tra-gop-scroll">
-                                                        <li>Trả góp ban đầu 20% giá trị tài khoản dự kiến mua để giữ tài khoản. Áp dụng cho tài khoản trị giá từ 200.000đ trở lên.</li>
-                                                        <li>Thời gian trả góp: 7 ngày. Không tính ngày xác nhận trả góp.</li>
-                                                        <li>Phí trả góp: 0%</li>
-                                                        <li>Trong thời gian trả góp bạn phải hoàn tất phần còn lại để giao dịch hoàn tất.</li>
-                                                        <li>Trường hợp quá thời gian trả góp giao dịch của bạn sẽ tự động bị hủy bỏ và hoàn lại 20% số tiền đã góp ban đầu.Lúc này tài khoản được tự do. (Ví dụ: tài khoản cần mua trị giá 1 triệu, trả góp ban đầu 200.000đ.</li>
-                                                        <li>Nếu quá thời gian giao dịch trả góp bị hủy bỏ thì bạn sẽ nhận lại 20% tức 40.000đ trong tài khoản) Quy trình giao dịch đều xử lý tự động, bạn không thể gọi hỗ trợ gia hạn thêm ngày trả góp hoặc đổi khác quy định trên.</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right padding-order-footer-ct">
-                                    <div class="row marginauto">
-                                        <div class="col-md-12 left-right">
-                                            <button class="button-default-modal-ct openSuccess" type="button">Xác nhận</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        {{--   Bopđyy --}}
+        <section id="detailLoader">
+            <div class="loader position-relative" style="margin: 4rem 0">
+                <div class="loading-spokes">
+                    <div class="spoke-container">
+                        <div class="spoke"></div>
+                    </div>
+                    <div class="spoke-container">
+                        <div class="spoke"></div>
+                    </div>
+                    <div class="spoke-container">
+                        <div class="spoke"></div>
+                    </div>
+                    <div class="spoke-container">
+                        <div class="spoke"></div>
+                    </div>
+                    <div class="spoke-container">
+                        <div class="spoke"></div>
+                    </div>
+                    <div class="spoke-container">
+                        <div class="spoke"></div>
+                    </div>
+                    <div class="spoke-container">
+                        <div class="spoke"></div>
+                    </div>
+                    <div class="spoke-container">
+                        <div class="spoke"></div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="showdetailacc">
+            {{-- @include('frontend.pages.account.widget.__datadetail') --}}
+        </section>
+
+        <section class="media-mobile">
+            <div class="row marginauto intermediary-ct" style="height: 20px;background: #EFEFEF">
 
             </div>
+        </section>
+
+        <section id="showslideracc">
+
+        </section>
+
+{{--        <section id="showswatched">--}}
+
+{{--        </section>--}}
+        {{--            Đã xem   --}}
+{{--        @include('frontend.pages.account.widget.__watched')--}}
+
+        <input type="hidden" name="previous" class="input-back-step-two" value="Trang trước"/>
 
 
-            <div class="modal fade login show order-modal" id="successModal" aria-modal="true">
 
-                <div class="modal-dialog step-tab-panel modal-lg modal-dialog-centered login animated">
-                    <!--        <div class="image-login"></div>-->
-                    <div class="modal-content">
-                        <div class="modal-header p-0" style="border-bottom: 0">
-                            <div class="row marginauto modal-header-order-ct">
-                                <div class="col-12 span__donhang text-center" style="position: relative">
-                                    <span>Mua tài khoản thành công</span>
-                                    <img class="lazy img-close-ct close-modal-default" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/close.png" alt="">
-                                </div>
-                            </div>
+    </fieldset>
 
+    <fieldset id="fieldset-two"></fieldset>
+
+    @if(isset($game_auto_props) && count($game_auto_props))
+        @if($slug_category == 'nick-lien-minh')
+            @php
+                if (isset($game_auto_props) && count($game_auto_props)){
+                    $total_tuong = 0;
+                    $total_bieucam = 0;
+                    $total_chuongluc = 0;
+                    $total_sandau = 0;
+                    $total_linhthu = 0;
+                    $total_trangphuc = 0;
+                    $total_thongtinchung = 0;
+
+
+                    foreach ($game_auto_props as $key => $item) {
+
+                        if ($key == 'champions') {
+
+                            foreach ($game_auto_props['champions'] as $arr_champ) {
+                                $total_tuong += count($arr_champ);
+                            }
+                        }
+                        if($key == 'skins') {
+                            foreach ($game_auto_props['skins'] as $arr_skins) {
+                                $total_trangphuc += count($arr_skins);
+                            }
+                        }
+                        if ($key == 'tftmapskins'){
+                            foreach ($game_auto_props['tftmapskins'] as $arr_mapskins) {
+                                $total_sandau += count($arr_mapskins);
+                            }
+                        }
+
+                        if ($key == 'tftdamageskins'){
+                            foreach ($game_auto_props['tftdamageskins'] as $arr_dameskins) {
+                                $total_chuongluc += count($arr_dameskins);
+                            }
+                        }
+
+                        if ($key == 'tftcompanions'){
+                            foreach ($game_auto_props['tftcompanions'] as $arr_linh_thu) {
+                                $total_linhthu += count($arr_linh_thu);
+                            }
+                        }
+
+                        if ($key == 'emotes'){
+                            foreach ($game_auto_props['emotes'] as $arr_emotes) {
+                                $total_bieucam += count($arr_emotes);
+                            }
+                        }
+                    }
+                }
+            @endphp
+        <!-- Modal Tướng -->
+        <div class="modal fade show modal-lmht" id="modal-champ" aria-modal="true">
+            <div class="modal-dialog modal-dialog-centered animated">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="d-block d-lg-flex w-100">
+                            <div class="modal-title">Tướng ({{ $total_tuong??0 }} tướng)</div>
+                            <form action="" class="form-search-modal c-ml-16 c-ml-lg-0 position-relative" data-tab="#content_page_champ">
+                                <input type="text" class="form-search-modal-input input-primary" placeholder="Tìm kiếm...">
+                                <ul class="suggest-list d-none">
+
+                                </ul>
+                                <button class="btn -primary d-none d-lg-inline-block" type="submit"></button>
+                            </form>
                         </div>
+                        <button type="button" class="close" data-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
 
-                        <div class="modal-body modal-body-order-ct">
-                            <div class="row marginauto">
+                        <div class="modal-lmht-tabs-block">
 
-                                <div class="col-md-12 left-right image-success">
-                                    <div class="row marginauto justify-content-center">
-                                        <div class="col-auto">
-                                            <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/group.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="tab-content" id="content_page_champ">
+                                @foreach($game_auto_props as $key => $game_auto_prop)
+                                    @if($key == 'champions' && count($game_auto_props['champions']))
 
-                                <div class="col-md-12 left-right title-tra-gop-success">
-                                    <div class="row body-title-detail-ct">
-                                        <div class="col-md-12 text-left body-title-detail-col-ct">
-                                            <div class="row marginauto">
-                                                <div class="col-md-12 left-right body-title-detail-span-ct">
-                                                    <span>Tài khoản</span>
-                                                </div>
-                                                <div class="col-md-12 left-right body-title-detail-select-ct email-success-nick">
-                                                    <input readonly autocomplete="off" class="input-defautf-ct" id="email" type="text" value="namok@gmail.com">
-                                                    <img class="lazy " src="/assets/frontend/{{theme('')->theme_key}}/image/nick/copy.png" alt="" id="getCopyemail">
-                                                </div>
-                                                <div class="row marginauto title-tra-gop-success-row">
-                                                    <div class="col-md-12 left-right body-title-detail-span-ct">
-                                                        <span>Mật khẩu</span>
-                                                    </div>
-                                                    <div class="col-md-12 left-right body-title-detail-select-ct taikhoan-success-nick">
-                                                        <input id="password" readonly autocomplete="off" class="input-defautf-ct" type="password" value="123456" placeholder="******">
-                                                        <img class="lazy img-copy" src="/assets/frontend/{{theme('')->theme_key}}/image/nick/copy.png" alt="" id="getCopypass">
-                                                        <div class="getCopypass">
-                                                            <img class="lazy img-show-password" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/eyehide.png" alt="" id="getShowpass">
+                                        @foreach($game_auto_props['champions'] as $key => $arr_champ)
+                                            <div class="tab-pane fade {{ !$key ? 'show active' : '' }}"
+                                                id="tab-champ-{{$key}}" role="tabpanel">
+                                                <div class="row" style="margin-right: 0;">
+                                                    @foreach($arr_champ as $champ)
+                                                        <div class="col-lg-2 col-6">
+                                                            <div class="card card-lmht">
+                                                                <div class="card-thumb">
+                                                                    <img data-src="https://backend.dev.tichhop.pro/{{$champ->thumb}}" alt="{{ $champ->name }}" class="card-thumb-image lazy">
+                                                                </div>
+                                                                <div class="card-name">
+                                                                    {{ $champ->name }}
+                                                                </div>
+                                                            </div>
                                                         </div>
-
-
-                                                    </div>
-                                                </div></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-12 left-right">
-                                    <div class="row body-title-detail-ct">
-
-                                        <div class="col-md-6 text-left body-title-detail-nick-col-ct">
-                                            <div class="row marginauto">
-                                                <div class="col-md-12 left-right body-title-detail-span-ct">
-                                                    <span>Trả trước</span>
-                                                </div>
-                                                <div class="col-md-12 left-right body-title-detail-select-ct">
-                                                    <input readonly autocomplete="off" class="input-defautf-ct input-modal-defautf-ct-play" type="text" placeholder="50.000">
+                                                    @endforeach
                                                 </div>
                                             </div>
-
-
-                                        </div>
-
-                                        <div class="col-md-6 text-left body-title-detail-nick-col-ct">
-                                            <div class="row marginauto password-mobile">
-                                                <div class="col-md-12 left-right body-title-detail-span-ct">
-                                                    <span>Trả lần 2</span>
-                                                </div>
-                                                <div class="col-md-12 left-right body-title-detail-select-ct" style="position: relative">
-                                                    <input readonly autocomplete="off" class="input-defautf-ct" type="text" placeholder="200.000">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right title-tra-gop text-center">
-                                    <small>Đã lấy mật khẩu lúc: 05-05-2022, 121:32:56</small>
-                                </div>
-
-                                <div class="col-md-12 left-right padding-order-28-ct">
-                                    <div class="row marginauto">
-                                        <div class="col-md-12 left-right background-order-ct">
-                                            <div class="row marginauto title-success-thanh-cong">
-                                                <div class="col-md-12 left-right">
-                                                    <span>Để tránh các trường hợp xấu xảy ra, quý khách vui lòng thêm thông tin (Email và Số điện thoại) Để đảm bảo không có vấn đề sau khi giao dịch tại shop! Xin cảm ơn!</span>
-                                                </div>
-                                                <div class="col-md-12 left-right padding-order-ct">
-                                                    <span>Để tránh các trường hợp xấu xảy ra, quý khách vui lòng thêm thông tin (Email và Số điện thoại) Để đảm bảo không có vấn đề sau khi giao dịch tại shop! Xin cảm ơn!</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 left-right">
-                                    <div class="row marginauto justify-content-center gallery-right-footer">
-                                        <div class="col-md-6 col-6 modal-footer-success-col-left-ct">
-                                            <div class="row marginauto modal-footer-success-row-not-ct">
-                                                <div class="col-md-12 left-right">
-                                                    <a href="javascript:void(0)" class="button-not-bg-ct close-modal-default"><span>Đóng</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-6 modal-footer-success-col-right-ct">
-                                            <div class="row marginauto modal-footer-success-row-ct">
-                                                <div class="col-md-12 left-right">
-                                                    <a href="/" class="button-bg-ct"><span>Đổi mật khẩu</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <input type="hidden" name="previous" class="input-back-step-two" value="Trang trước"/>
-
-
-        </fieldset>
-
-        <fieldset id="fieldset-two">
-
-            <section>
-                <div class="container container-fix banner-mobile-container-ct">
-                    <div class="row marginauto banner-mobile-row-ct">
-                        <div class="col-auto left-right" style="width: 10%">
-                            <img class="lazy previous-step-one" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/back.png" alt="" >
-                        </div>
-
-                        <div class="col-auto left-right banner-mobile-span text-center" style="width: 80%">
-                            <h3>Xác nhận thanh toán</h3>
-                        </div>
-                        <div class="col-auto left-right" style="width: 10%">
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <section class="max-header-fix">
-                <div class="row marginauto" style="padding: 12px 16px">
-
-                    <div class="col-md-12 left-right title-order-ct">
-                        <span>Thông tin acc</span>
-                    </div>
-
-                    <div class="col-md-12 left-right" id="order-errors">
-                        <div class="row marginauto order-errors">
-                            <div class="col-md-12 left-right">
-                                <small>Lỗi rồi em ơi</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 left-right padding-order-ct">
-                        <div class="row marginauto">
-                            <div class="col-md-12 left-right background-order-ct">
-                                <div class="row marginauto background-order-row-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Tài khoản</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <small>Nam Hải</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 left-right padding-order-ct">
-                        <div class="row marginauto">
-                            <div class="col-md-12 left-right background-order-ct">
-                                <div class="row marginauto background-order-body-row-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Game</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/mobilegame.png" alt="">
-                                    </div>
-                                </div>
-
-                                <div class="row marginauto background-order-body-row-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Rank</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <small>Tinh Anh</small>
-                                    </div>
-                                </div>
-
-                                <div class="row marginauto background-order-body-row-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Số lượng</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <small>01</small>
-                                    </div>
-                                </div>
-
-                                <div class="row marginauto background-order-body-row-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Chiết khấu</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <small>3%</small>
-                                    </div>
-                                </div>
-
-                                <div class="row marginauto background-order-body-bottom-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Thành tiền</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <small>100.000 đ</small>
-                                    </div>
-                                </div>
+                                        @endforeach
+                                    @endif
+                                @endforeach
                             </div>
 
-                        </div>
-                    </div>
+                            <div class="row justify-content-center default-paginate" style="margin-right: 0;">
+                                <div class="col-auto paginate__category__col">
+                                    <div class="data_paginate paging_bootstrap paginations_custom">
 
-                    <div class="col-md-12 left-right padding-order-ct">
-                        <div class="row marginauto">
-                            <div class="col-md-12 left-right background-order-ct">
+                                        <ul class="nav nav-tabs pagination pagination-sm border-0 js-pagination-handle champion-paginate" data-tab="champion-paginate" role="tablist">
+                                            @foreach($game_auto_props as $key => $game_auto_prop)
+                                                @if($key == 'champions' && count($game_auto_props['champions']) > 1)
 
-                                <div class="row marginauto background-order-body-row-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Phương thức thanh toán</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <small>Tài khoản Shopbrand</small>
-                                    </div>
-                                </div>
-
-                                <div class="row marginauto background-order-body-bottom-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Phí thanh toán</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <small>Miễn phí</small>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 left-right padding-order-ct">
-                        <div class="row marginauto">
-                            <div class="col-md-12 left-right background-order-ct">
-                                <div class="row marginauto background-order-row-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Tài khoản</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <span>97.000 đ</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 left-right padding-order-footer-ct fixcungbuttonmobile">
-                        <div class="row marginauto" style="padding: 12px 16px">
-                            <div class="col-md-12 left-right">
-                                <button class="button-default-ct button-next-step-two" type="button">Xác nhận</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <input type="hidden" name="previous" class="input-back-step-two" value="Trang trước"/>
-
-        </fieldset>
-
-        <fieldset id="fieldset-three">
-
-            <section>
-                <div class="container container-fix banner-mobile-container-ct">
-                    <div class="row marginauto banner-mobile-row-ct">
-                        <div class="col-auto left-right" style="width: 10%">
-                            <img class="lazy previous-step-one-tra-gop" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/back.png" alt="" >
-                        </div>
-
-                        <div class="col-auto left-right banner-mobile-span text-center" style="width: 80%">
-                            <h3>Xác nhận thanh toán</h3>
-                        </div>
-                        <div class="col-auto left-right" style="width: 10%">
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <section class="max-header-fix">
-                <div class="row marginauto" style="padding: 12px 16px">
-
-                    <div class="col-md-12 left-right title-order-ct">
-                        <span>Thông tin tài khoản #521479</span>
-                    </div>
-
-                    <div class="col-md-12 left-right" id="order-errors">
-                        <div class="row marginauto order-errors">
-                            <div class="col-md-12 left-right">
-                                <small>Lỗi rồi em ơi</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 left-right padding-order-ct">
-                        <div class="row marginauto">
-                            <div class="col-md-12 left-right background-order-ct">
-                                <div class="row marginauto background-order-body-row-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Nhà phát hành</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/nick/zing.png" alt="">
-                                    </div>
-                                </div>
-
-                                <div class="row marginauto background-order-body-row-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Tên game</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <small>Ngọc rồng</small>
-                                    </div>
-                                </div>
-
-                                <div class="row marginauto background-order-body-row-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Số lượng</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <small>01</small>
-                                    </div>
-                                </div>
-
-                                <div class="row marginauto background-order-body-bottom-ct">
-                                    <div class="col-auto left-right background-order-col-left-ct">
-                                        <span>Tổng tiền</span>
-                                    </div>
-                                    <div class="col-auto left-right background-order-col-right-ct">
-                                        <small>250.000 đ</small>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 left-right title-tra-gop">
-                        <span>Thông tin trả góp</span>
-                    </div>
-
-                    <div class="col-md-12 left-right">
-                        <div class="row body-title-detail-ct">
-
-                            <div class="col-md-6 text-left body-title-detail-nick-col-ct">
-                                <div class="row marginauto">
-                                    <div class="col-md-12 left-right body-title-detail-span-ct">
-                                        <span>Trả trước</span>
-                                    </div>
-                                    <div class="col-md-12 left-right body-title-detail-select-ct">
-                                        <input readonly autocomplete="off" class="input-defautf-ct input-modal-defautf-ct-play" type="text" placeholder="50.000">
-                                    </div>
-                                </div>
+                                                    @foreach($game_auto_props['champions'] as $key => $arr_champ)
+                                                        @if($key == count($game_auto_props['champions']) - 1)
+                                                            <li class="page-item disabled hidden-xs dot-last-paginate">
+                                                                <span class="page-link">...</span>
+                                                            </li>
+                                                        @endif
+                                                        <li class="nav-item page-item {{ !$key ? 'active' : '' }} page-item-{{ $key }}">
+                                                            <a class="page-link {{ !$key ? 'active' : '' }} page-link-{{ $key }}"
+                                                               data-toggle="tab" href="#tab-champ-{{ $key }}"
+                                                               role="tab"  data-page="{{ $key }}">{{ $key + 1 }}</a>
+                                                        </li>
+                                                        @if(!$key)
+                                                            <li class="page-item disabled hidden-xs dot-first-paginate">
+                                                                <span class="page-link">...</span>
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
 
 
-                            </div>
-
-                            <div class="col-md-6 text-left body-title-detail-nick-col-ct">
-                                <div class="row marginauto password-mobile">
-                                    <div class="col-md-12 left-right body-title-detail-span-ct">
-                                        <span>Trả lần 2</span>
-                                    </div>
-                                    <div class="col-md-12 left-right body-title-detail-select-ct" style="position: relative">
-                                        <input readonly autocomplete="off" class="input-defautf-ct" type="text" placeholder="200.000">
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 left-right">
-                        <div class="row body-title-detail-ct">
-                            <div class="col-md-12 left-right body-title-detail-span-ct body-title-detail-col-ng-ct">
-                                <span>Mã bảo vệ</span>
-                            </div>
-                            <div class="col-auto text-left body-title-detail-col-left-ng-ct chitiet-nick-input">
-                                <div class="row marginauto">
-                                    <div class="col-md-12 left-right body-title-detail-select-ct">
-                                        <input autocomplete="off" class="input-defautf-ct" type="text" placeholder="Nhập mã bảo vệ">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-auto text-left body-title-detail-col-center-ng-ct">
-                                <div class="row marginauto password-mobile capcha-image-bg">
-                                    <div class="col-md-12 left-right body-title-detail-select-ct">
-                                        <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/capcha.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-auto text-left body-title-detail-col-right-ng-ct">
-                                <div class="row marginauto password-mobile capcha-image-bg">
-                                    <div class="col-md-12 left-right body-title-detail-select-ct">
-                                        <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/rf-capcha.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-12 left-right padding-order-ct">
-                        <div class="row marginauto">
-                            <div class="col-md-12 left-right background-order-ct">
-                                <div class="row marginauto thong-tin-tra-gop-mobile">
-                                    <div class="col-6 left-right">
-                                        <span>Quy định trả góp</span>
-                                    </div>
-                                    <div class="col-auto left-right data-scroll-mobile">
-                                        <div class="row marginauto up-scroll-mobile"><div class="col-auto left-right"><img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/nick/up.png" alt=""></div></div>
-                                    </div>
-                                </div>
-                                <div class="row marginauto tragop-order-body-row-ct">
-                                    <div class="col-md-12 left-right background-order-col-left-ct">
-                                        <ul id="tra-gop-scroll-mobile">
-                                            <li>Trả góp ban đầu 20% giá trị tài khoản dự kiến mua để giữ tài khoản. Áp dụng cho tài khoản trị giá từ 200.000đ trở lên.</li>
-                                            <li>Thời gian trả góp: 7 ngày. Không tính ngày xác nhận trả góp.</li>
-                                            <li>Phí trả góp: 0%</li>
-                                            <li>Trong thời gian trả góp bạn phải hoàn tất phần còn lại để giao dịch hoàn tất.</li>
-                                            <li>Trường hợp quá thời gian trả góp giao dịch của bạn sẽ tự động bị hủy bỏ và hoàn lại 20% số tiền đã góp ban đầu.Lúc này tài khoản được tự do. (Ví dụ: tài khoản cần mua trị giá 1 triệu, trả góp ban đầu 200.000đ.</li>
-                                            <li>Nếu quá thời gian giao dịch trả góp bị hủy bỏ thì bạn sẽ nhận lại 20% tức 40.000đ trong tài khoản) Quy trình giao dịch đều xử lý tự động, bạn không thể gọi hỗ trợ gia hạn thêm ngày trả góp hoặc đổi khác quy định trên.</li>
+                                                @endif
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                    </div>
 
-                    <div class="col-md-12 left-right padding-order-footer-ct">
-                        <div class="row marginauto">
-                            <div class="col-md-12 left-right">
-                                <button class="button-default-ct button-next-step-two-tra-gop" type="button">Xác nhận</button>
+                        <div class="modal-lmht-search-results row" style="margin-right: 0;">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Skin -->
+        <div class="modal fade show modal-lmht" id="modal-skin" aria-modal="true">
+            <div class="modal-dialog modal-dialog-centered animated">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="d-block d-lg-flex w-100">
+                            <div class="modal-title">Trang phục ({{ $total_trangphuc }} Trang phục)</div>
+                            <form action="" class="form-search-modal c-ml-16 c-ml-lg-0 position-relative" data-tab="#content_page_skin">
+                                <input type="text" class="form-search-modal-input input-primary" placeholder="Tìm kiếm...">
+                                <ul class="suggest-list d-none">
+
+                                </ul>
+                                <button class="btn -primary d-none d-lg-inline-block" type="submit"></button>
+                            </form>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="modal-lmht-tabs-block">
+                            <div class="tab-content" id="content_page_skin">
+                                @foreach($game_auto_props as $key => $game_auto_prop)
+                                    @if($key == 'skins' && count($game_auto_props['skins']))
+
+                                        @foreach($game_auto_props['skins'] as $key => $arr_skins)
+                                            <div class="tab-pane fade {{ !$key ? 'show active' : '' }}"
+                                                id="tab-skin-{{$key}}" role="tabpanel">
+                                                <div class="row" style="margin-right: 0;">
+                                                    @foreach($arr_skins as $skin)
+                                                        <div class="col-lg-2 col-6">
+                                                            <div class="card card-lmht">
+                                                                <div class="card-thumb">
+                                                                    <img data-src="https://backend.dev.tichhop.pro/{{$skin->thumb}}" alt="{{ $skin->name }}" class="card-thumb-image lazy">
+                                                                </div>
+                                                                <div class="card-name">
+                                                                    {{ $skin->name }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                @endforeach
                             </div>
+
+                            <div class="row justify-content-center default-paginate" style="margin-right: 0;">
+                                <div class="col-auto paginate__category__col">
+                                    <div class="data_paginate paging_bootstrap paginations_custom">
+
+                                        <ul class="nav nav-tabs pagination pagination-sm border-0 js-pagination-handle skin-paginate" data-tab="skin-paginate" role="tablist">
+                                            @foreach($game_auto_props as $key => $game_auto_prop)
+                                                @if($key == 'skins' && count($game_auto_props['skins']) > 1)
+
+                                                    @foreach($game_auto_props['skins'] as $key => $arr_skins)
+                                                        @if($key == count($game_auto_props['skins']) - 1)
+                                                            <li class="page-item disabled hidden-xs dot-last-paginate">
+                                                                <span class="page-link">...</span>
+                                                            </li>
+                                                        @endif
+                                                        <li class="nav-item page-item {{ !$key ? 'active' : '' }} page-item-{{ $key }}">
+                                                            <a class="page-link {{ !$key ? 'active' : '' }} page-link-{{ $key }}"
+                                                               data-toggle="tab" href="#tab-skin-{{ $key }}"
+                                                               role="tab"  data-page="{{ $key }}">{{ $key + 1 }}</a>
+                                                        </li>
+                                                        @if(!$key)
+                                                            <li class="page-item disabled hidden-xs dot-first-paginate">
+                                                                <span class="page-link">...</span>
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
+
+
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-lmht-search-results row" style="margin-right: 0;">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Animal -->
+        <div class="modal fade show modal-lmht" id="modal-animal" aria-modal="true">
+            <div class="modal-dialog modal-dialog-centered animated">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="d-block d-lg-flex w-100">
+                            <div class="modal-title">Linh thú TFT ({{ $total_linhthu }} linh thú)</div>
+                            <form action="" class="form-search-modal c-ml-16 c-ml-lg-0 position-relative" data-tab="#content_page_companion">
+                                <input type="text" class="form-search-modal-input input-primary" placeholder="Tìm kiếm...">
+                                <ul class="suggest-list d-none">
+
+                                </ul>
+                                <button class="btn -primary d-none d-lg-inline-block" type="submit"></button>
+                            </form>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-lmht-tabs-block">
+                            <div class="tab-content" id="content_page_companion">
+                                @foreach($game_auto_props as $key => $game_auto_prop)
+                                    @if($key == 'tftcompanions' && count($game_auto_props['tftcompanions']))
+
+                                        @foreach($game_auto_props['tftcompanions'] as $key => $arr_companions)
+                                            <div class="tab-pane fade {{ !$key ? 'show active' : '' }}"
+                                                id="tab-companion-{{$key}}" role="tabpanel">
+                                                <div class="row" style="margin-right: 0;">
+                                                    @foreach($arr_companions as $companion)
+                                                        <div class="col-lg-2 col-6">
+                                                            <div class="card card-lmht">
+                                                                <div class="card-thumb">
+                                                                    <img data-src="https://backend.dev.tichhop.pro/{{$companion->thumb}}" alt="{{ $companion->name }}" class="card-thumb-image lazy">
+                                                                </div>
+                                                                <div class="card-name">
+                                                                    {{ $companion->name }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                @endforeach
+                            </div>
+
+                            <div class="row justify-content-center default-paginate" style="margin-right: 0;">
+                                <div class="col-auto paginate__category__col">
+                                    <div class="data_paginate paging_bootstrap paginations_custom">
+                                        <ul class="nav nav-tabs pagination pagination-sm border-0 js-pagination-handle tft-paginate" data-tab="tft-paginate" role="tablist">
+                                            @foreach($game_auto_props as $key => $game_auto_prop)
+                                                @if($key == 'tftcompanions' && count($game_auto_props['tftcompanions']) > 1)
+                                                    @foreach($game_auto_props['tftcompanions'] as $key => $arr_companions)
+                                                        @if($key == count($game_auto_props['tftcompanions']) - 1)
+                                                            <li class="page-item disabled hidden-xs dot-last-paginate">
+                                                                <span class="page-link">...</span>
+                                                            </li>
+                                                        @endif
+                                                        <li class="nav-item page-item {{ !$key ? 'active' : '' }} page-item-{{ $key }}">
+                                                            <a class="page-link {{ !$key ? 'active' : '' }} page-link-{{ $key }}"
+                                                               data-toggle="tab" href="#tab-companion-{{ $key }}"
+                                                               role="tab"  data-page="{{ $key }}">{{ $key + 1 }}</a>
+                                                        </li>
+                                                        @if(!$key)
+                                                            <li class="page-item disabled hidden-xs dot-first-paginate">
+                                                                <span class="page-link">...</span>
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-lmht-search-results row" style="margin-right: 0;">
+
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+        @endif
+    @endif
+    <input type="hidden" name="slug" class="slug" value="{{ $slug }}">
+    <input type="hidden" name="slug" class="slug_category" value="{{ $slug_category }}">
+    @endif
 
-            <input type="hidden" name="previous" class="input-back-step-two-tra-gop" value="Trang trước"/>
 
-        </fieldset>
 
-    </form>
-
+{{--    <script src="/js/{{theme('')->theme_key}}/nick/nick-detail.js?v={{time()}}"></script>--}}
     <script src="/assets/frontend/{{theme('')->theme_key}}/js/nick/nick-detail.js?v={{time()}}"></script>
 @endsection
 

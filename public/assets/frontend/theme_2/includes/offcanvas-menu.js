@@ -7,7 +7,7 @@ document.write( '                <li class=\"nav-item item-home active\"><a href
 document.write( '                <li class=\"nav-item item-buy-card\"><a href=\"#\" class=\"nav-link\"><i class=\"las la-credit-card icon\"></i> Mua thẻ game điện thoại</a></li>\n' );
 document.write( '                <li class=\"nav-item item-history\"><a href=\"#\" class=\"nav-link\"><i class=\"las la-clock icon\"></i> Lịch sử giao dịch</a></li>\n' );
 document.write( '                <li class=\"nav-item item-profile\"><a href=\"profile.html\" class=\"nav-link\"><i class=\"las la-user icon\"></i> Thông tin cá nhân</a></li>\n' );
-document.write( '                <li class=\"nav-item item-news\"><a href=\"#\" class=\"nav-link\"><i class=\"las la-newspaper icon\"></i> Tin tức</a></li>\n' );
+document.write( '                <li class=\"nav-item item-article\"><a href=\"#\" class=\"nav-link\"><i class=\"las la-newspaper icon\"></i> Tin tức</a></li>\n' );
 document.write( '                <li class=\"nav-item item-support\"><a href=\"#\" class=\"nav-link\"><i class=\"las la-life-ring icon\"></i> Hỗ trợ</a></li>\n' );
 document.write( '            </ul>\n' );
 document.write( '        </div>\n' );

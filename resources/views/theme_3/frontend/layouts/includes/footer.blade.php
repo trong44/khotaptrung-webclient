@@ -1,156 +1,99 @@
-<section class="footer-default">
-    <div class="container container-fix">
-        <div class="row footer-default-row">
-            <div class="col-auto media-footer-order-one footer-default-col left-right text-left">
-                <div class="row marginauto footer-default-body-row">
-                    <div class="col-md-12 left-right footer-default-body-col">
-                        <img class="lazy" src="https://cdn.upanh.info/storage/upload/images/LOGO-SHOPNGOCRONG-NET.png" alt="">
-                    </div>
-                    <div class="col-md-12 left-right footer-default-body-col">
-                        <span>Giới thiệu</span>
-                    </div>
-                    <div class="col-md-12 left-right footer-default-body-col">
-                        <small>Website chuyên cung cấp account chuyên nghiệp lớn nhất Việt Nam. Ngoài ra chúng tôi còn cung cấp dịch vụ all game hiện có</small>
-                    </div>
-                    <div class="col-md-12 left-right footer-default-body-col">
-                        <span>Trụ Sở chính</span>
-                    </div>
-                    <div class="col-md-12 left-right footer-default-body-col">
-                        <small>37 Nguyễn Văn Huyên,Quân hoa,Cầu Giấy,Hà Nội</small>
-                    </div>
-                    <div class="col-md-12 left-right footer-default-body-col">
-                        <span>Văn phòng miền bắc</span>
-                    </div>
-                    <div class="col-md-12 left-right footer-default-body-col">
-                        <small>37 Nguyễn Văn Huyên,Quân hoa,Cầu Giấy,Hà Nội</small>
-                    </div>
-{{--                    <div class="col-md-12 left-right footer-default-body-col">--}}
-{{--                        <div class="row footer-default-icon-row">--}}
-{{--                            <div class="col-auto footer-default-icon-col">--}}
-{{--                                <a href=""><img src="/assets/frontend/{{theme('')->theme_key}}/image/icons/facebook.png" alt=""></a>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-auto footer-default-icon-col">--}}
-{{--                                <a href=""><img src="/assets/frontend/{{theme('')->theme_key}}/image/icons/istgram.png" alt=""></a>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-auto footer-default-icon-col">--}}
-{{--                                <a href=""><img src="/assets/frontend/{{theme('')->theme_key}}/image/icons/tictoc.png" alt=""></a>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-auto footer-default-icon-col">--}}
-{{--                                <a href=""><img src="/assets/frontend/{{theme('')->theme_key}}/image/icons/twid.png" alt=""></a>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-auto footer-default-icon-col">--}}
-{{--                                <a href=""><img src="/assets/frontend/{{theme('')->theme_key}}/image/icons/youtube.png" alt=""></a>--}}
-{{--                            </div>--}}
+
+{!! setting('sys_footer') !!}
+
+{{--<section class="footer-default">--}}
+{{--    <div class="container container-fix">--}}
+{{--        <div class="footer-default-row row">--}}
+{{--    <div class="col-auto footer-default-col left-right media-footer-order-one text-left">--}}
+{{--        <div class="footer-default-body-row marginauto row">--}}
+{{--            <div class="col-md-12 footer-default-body-col left-right"><img alt="shop free fire" class="lazy" src="https://cdn.upanh.info/storage/upload/images/Logo%20shop/TEXT-SHOPFREEFIRE-NET.png" /></div>--}}
+
+{{--            <div class="col-md-12 footer-default-body-col left-right"><small>Web Bán Acc Free Fire Uy Tín, Giá Rẻ, Giao Dịch Tự Động 100%, Trả Góp Linh Hoạt, Nick Sai Hoàn Tiền 100%. Uy Tín Tạo Niềm Tin Với Hơn 100.000 Giao Dịch Mỗi Ngày Trên Shop</small></div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+
+{{--    <div class="col-auto footer-default-col left-right media-footer-order-two text-left">--}}
+{{--        <div class="footer-default-two-row marginauto row">--}}
+{{--            <div class="col-md-12 footer-default-two-col left-right">--}}
+{{--                <h4>THÔNG TIN CHUNG</h4>--}}
+{{--            </div>--}}
+
+{{--            <div class="col-md-12 footer-default-two-col left-right">--}}
+{{--                <ul>--}}
+{{--                    <li><a href="">Về chúng tôi</a></li>--}}
+{{--                    <li><a href="">Chính sách bảo mật</a></li>--}}
+{{--                    <li><a href="">Ðiều khoản sử dụng</a></li>--}}
+{{--                    <li><a href="">Chính sách bán hàng</a></li>--}}
+{{--                    <li><a href="">Chính sách đổi trả</a></li>--}}
+{{--                </ul>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+
+{{--    <div class="col-auto footer-default-col left-right media-footer media-footer-order-three text-left">--}}
+{{--        <div class="footer-default-two-row marginauto row">--}}
+{{--            <div class="col-md-12 footer-default-two-col left-right">--}}
+{{--                <h4>SẢN PHẨM</h4>--}}
+{{--            </div>--}}
+
+{{--            <div class="col-md-12 left-right">--}}
+{{--                <ul class="row">--}}
+{{--                    <li class="media-footer-li col-6 col-sm-12"><a href="/mua-acc/nick-free-fire">Mua Acc Free Fire</a></li>--}}
+{{--                    <li class="media-footer-li col-6 col-sm-12"><a href="/dich-vu/nap-kim-cuong-free-fire">Nạp Kim Cương Free Fire</a></li>--}}
+{{--                    <li class="media-footer-li col-6 col-sm-12"><a href="/minigame">Vòng Quay Kim Cương</a></li>--}}
+{{--                    <li class="media-footer-li col-6 col-sm-12"><a href="/mua-acc">Mua Acc Game</a></li>--}}
+{{--                    <li class="media-footer-li col-6 col-sm-12"><a href="/dich-vu">Dịch Vụ Game</a></li>--}}
+{{--                </ul>--}}
+{{--            </div>--}}
+
+{{--            <div class="col-md-12 footer-default-three-col left-right">--}}
+{{--                <div class="footer-default-three-row-image row">--}}
+{{--                    <div class="col-auto footer-default-three-col-image footer-default-three-col-image-left">--}}
+{{--                        <div class="marginauto row">--}}
+{{--                            <div class="col-md-12 left-right"><img alt="" class="lazy" src="/assets/frontend/theme_3/image/svg/appstore.svg" /></div>--}}
+
+{{--                            <div class="col-md-12 footer-default-google left-right"><img alt="" class="lazy" src="/assets/frontend/theme_3/image/svg/googleplay.svg" /></div>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
-                </div>
-            </div>
-            <div class="col-auto media-footer-order-two footer-default-col left-right text-left">
-                <div class="row marginauto footer-default-two-row">
-                    <div class="col-md-12 left-right footer-default-two-col">
-                        <h4>THÔNG TIN CHUNG</h4>
-                    </div>
-                    <div class="col-md-12 left-right footer-default-two-col">
-                        <ul>
-                            <li><a href="">Về chúng tôi</a></li>
-                            <li><a href="">Quy định chung</a></li>
-                            <li><a href="">Chính sách bảo mật</a></li>
-                            <li><a href="">Điều khoản sử dụng</a></li>
-                            <li><a href="">Chính sách bán hàng</a></li>
-                            <li><a href="">Chính sách đổi trả</a></li>
-                            <li><a href="">Quy định giá cả và hình thức thanh toán</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-auto media-footer-order-three footer-default-col media-footer left-right text-left">
-                <div class="row marginauto footer-default-two-row">
-                    <div class="col-md-12 left-right footer-default-two-col">
-                        <h4>SẢN PHẨM</h4>
-                    </div>
-                    <div class="col-md-12 left-right">
-                        <ul class="row">
-                            <li class="media-footer-li col-6 col-sm-12"><a href="">Nạp tiền điện thoại</a></li>
-                            <li class="media-footer-li col-6 col-sm-12"><a href="">Mua Mã thẻ điện thoại</a></li>
-                            <li class="media-footer-li col-6 col-sm-12"><a href="">Nạp tài khoản game</a></li>
-                            <li class="media-footer-li col-6 col-sm-12"><a href="">Mua mã thẻ game</a></li>
-                            <li class="media-footer-li col-6 col-sm-12"><a href="">Nổ hũ trúng thưởng</a></li>
-                            <li class="media-footer-li col-6 col-sm-12"><a href="">Bắn cá ăn tiền</a></li>
-                            <li class="media-footer-li col-6 col-sm-12"><a href="">Vòng quay may mắn</a></li>
-                            <li class="media-footer-li col-6 col-sm-12"><a href="">Dịch vụ khác</a></li>
-                        </ul>
-                    </div>
 
-                    <div class="col-md-12 left-right footer-default-three-col">
-                        <div class="row footer-default-three-row-image">
-                            <div class="col-auto footer-default-three-col-image footer-default-three-col-image-left">
-                                <div class="row marginauto">
-                                    <div class="col-md-12 left-right ">
-                                        <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/icons/appstore.png" alt="">
-                                    </div>
-                                    <div class="col-md-12 left-right footer-default-google">
-                                        <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/icons/googleplay.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-auto footer-default-three-col-image footer-default-three-col-image-right">
-                                <div class="row marginauto">
-                                    <div class="col-md-12 left-right">
-                                        <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/icons/qrcode.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-auto media-footer-order-foor footer-default-col footer-default-foor left-right text-left">
-                <div class="row marginauto footer-default-foor-row">
-                    <div class="col-md-12 left-right media-footer-two footer-default-two-col">
-                        <h4>HỖ TRỢ KHÁCH HÀNG</h4>
-                    </div>
-                    <div class="col-md-12 left-right footer-default-ul-foor footer-default-two-col">
-                        <ul>
-                            <li>
-                                <a href="javascript:void(0)" class="global__link__footer"><i class="__icon__footer --sm__footer --link__footer" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/phoneno.png)"></i>Hỗ trợ bán hàng: 1900 1111</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="global__link__footer"><i class="__icon__footer --sm__footer --link__footer" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/phoneno.png)"></i>Chăm sóc khách hàng: 1900 2222</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="global__link__footer"><i class="__icon__footer --sm__footer --link__footer" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/phoneno.png)"></i>Hợp tác phát triển: 1900 3333</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="global__link__footer"><i class="__icon__footer --sm__footer --link__footer" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/zalono.png)"></i>Zalo: 021345678</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="global__link__footer"><i class="__icon__footer --sm__footer --link__footer" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/telegramno.png)"></i>Telegram: 1234567 2323</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="global__link__footer"><i class="__icon__footer --sm__footer --link__footer" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/facebookno.png)"></i>Facebook fanpage</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="global__link__footer"><i class="__icon__footer --sm__footer --link__footer" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/facebookno.png)"></i>Facebook Group</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="global__link__footer"><i class="__icon__footer --sm__footer --link__footer" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/youtubeno.png)"></i>Youtube</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="global__link__footer"><i class="__icon__footer --sm__footer --link__footer" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/tiktokno.png)"></i>Tiktok</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="footer-copy">
-    <div class="container container-fix">
-        <div class="row marginauto">
-            <div class="col-md-12 left-right text-center">
-                <span>© Copyright</span><small> HQ GROUP </small><span>2021. All Right Reserved.</span>
-            </div>
-        </div>
-    </div>
-</section>
+{{--                    <div class="col-auto footer-default-three-col-image footer-default-three-col-image-right">--}}
+{{--                        <div class="marginauto row">--}}
+{{--                            <div class="col-md-12 left-right"><img alt="" class="lazy" src="/assets/frontend/theme_3/image/svg/qrcode.svg" /></div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+
+{{--    <div class="col-auto footer-default-col footer-default-foor left-right media-footer-order-foor text-left">--}}
+{{--        <div class="footer-default-foor-row marginauto row  p-0">--}}
+{{--            <div class="col-md-12 footer-default-two-col footer-default-two-row footer-default-two-row left-right media-footer-two">--}}
+{{--                <h4>HỖ TRỢ KHÁCH HÀNG</h4>--}}
+
+{{--                <ul class="my-2">--}}
+{{--                    <li class="media-footer-li col-6 col-sm-12 px-0"><span style="color:#dddddd"><span style="font-size:12px">Chăm sóc hàng: 0792.000.792</span></span></li>--}}
+{{--                    <li class="media-footer-li col-6 col-sm-12 px-0"><span style="color:#dddddd"><span style="font-size:12px">Fanpage:</span></span></li>--}}
+
+{{--                </ul>--}}
+
+
+
+{{--                <div class="fb-page" data-adapt-container-width="true" data-height="" data-hide-cover="false" data-href="https://www.facebook.com/Shop-Mua-B%C3%A1n-Acc-Free-Fire-Gi%C3%A1-R%E1%BA%BB-Uy-T%C3%ADn-112155671532767" data-show-facepile="true" data-small-header="false" data-tabs="" data-width="">--}}
+{{--                    <blockquote cite="https://www.facebook.com/Shop-Mua-B%C3%A1n-Acc-Free-Fire-Gi%C3%A1-R%E1%BA%BB-Uy-T%C3%ADn-112155671532767" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Shop-Mua-B%C3%A1n-Acc-Free-Fire-Gi%C3%A1-R%E1%BA%BB-Uy-T%C3%ADn-112155671532767" rel="nofollow" target="_blank">Shop Mua Bán Acc Free Fire - Giá Rẻ, Uy Tín</a></blockquote>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
+{{--    </div>--}}
+{{--</section>--}}
+{{--<section class="footer-copy">--}}
+{{--    <div class="container container-fix">--}}
+{{--        <div class="row marginauto">--}}
+{{--            <div class="col-md-12 left-right text-center">--}}
+{{--                <span>© Copyright</span><small> HQ GROUP </small><span>2021. All Right Reserved.</span>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}

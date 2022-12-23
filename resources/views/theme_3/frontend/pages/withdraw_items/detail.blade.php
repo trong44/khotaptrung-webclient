@@ -1,4 +1,7 @@
 @extends('theme_3.frontend.layouts.master')
+@section('seo_head')
+    @include('frontend.widget.__seo_head')
+@endsection
 @section('styles')
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/style_phu/breadcrumb.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/style_phu/withdraw_items.css">
@@ -12,7 +15,7 @@
         {{--breadcrumb--}}
         <section class="breadcrumb-container">
             <ul class="breadcrumb breadcrumb-arrow">
-                <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
                 <li class="breadcrumb-item"><a href="">Rút vật phẩm</a></li>
             </ul>
         </section>

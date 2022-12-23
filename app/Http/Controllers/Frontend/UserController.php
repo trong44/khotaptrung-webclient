@@ -22,12 +22,15 @@ class UserController extends Controller
     public function getInfo(Request $request){
 
         try{
+
             $jwt = Session::get('jwt');
+
             if(empty($jwt)){
                 return response()->json([
                     'status' => "LOGIN"
                 ]);
             }
+
             $url = '/profile';
             $method = "GET";
             $data = array();
@@ -37,7 +40,6 @@ class UserController extends Controller
                 if( $result_Api->response_code == 200){
                     $result = $result_Api->response_data;
                     Session::put('auth_custom', $result->user);
-//                    $request->session()->put('auth_custom', $result->user);
 
                     if($result->status == 1){
                         return response()->json([
@@ -48,7 +50,12 @@ class UserController extends Controller
                     }
                 }
                 else if($result_Api->response_code == 401){
-                    session()->flush();
+
+                    Session::forget('jwt');
+                    Session::forget('exp_token');
+                    Session::forget('time_exp_token');
+                    Session::forget('auth_custom');
+//                    session()->flush();
                     return response()->json([
                         'status' => 401,
                         'message'=>"unauthencation"
@@ -85,9 +92,15 @@ class UserController extends Controller
         }
     }
 
+    public function profileSidebar(Request $request)
+    {
+        return view('frontend.pages.profile.sidebar');
+
+    }
+
     public function info(Request $request)
     {
-        return view('frontend.pages.profile.index');
+        return view(''.theme('')->theme_key.'.frontend.pages.profile.index');
 
     }
 
@@ -142,7 +155,7 @@ class UserController extends Controller
     {
         try{
 
-            return view('theme_2.frontend.pages.account.user.index');
+            return view(''.theme('')->theme_key.'.frontend.pages.account.user.index');
         }
         catch(\Exception $e){
             Log::error($e);
@@ -162,9 +175,11 @@ class UserController extends Controller
                 ]);
             }
 
+            $config = config('module.txns.trade_type_api');
+            $status = config('module.txns.status');
+
             if ($request->ajax()) {
                 $id_user = AuthCustom::user()->id;
-
                 $url = '/get-txns';
                 $method = "GET";
                 $dataSend = array();
@@ -181,6 +196,10 @@ class UserController extends Controller
                 }
 
                 $dataSend['page'] = $page;
+
+                if (isset($request->id) || $request->id != '' || $request->id != null) {
+                    $dataSend['id'] = $request->id;
+                }
 
                 if (isset($request->config) || $request->config != '' || $request->config != null) {
                     $dataSend['trade_type'] = $request->config;
@@ -214,39 +233,31 @@ class UserController extends Controller
                 }
 
                 $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+
                 $response_data = $result_Api->response_data??null;
 
                 if(isset($response_data) && $response_data->status == 1){
-
                     $data = $response_data->data;
-                    $config = config('module.txns.trade_type_api');
-                    $status = config('module.txns.status');
                     $data = new LengthAwarePaginator($data->data, $data->total, $data->per_page, $page, $data->data);
                     $data->setPath($request->url());
-
-                    $htmlconfig =  view('frontend.pages.transaction.widget.__data_config')
-                        ->with('config', $config)->render();
-                    $htmlstatus =  view('frontend.pages.transaction.widget.__data_status')
-                        ->with('status', $status)->render();
-
-                    //dd($data);
                     $html =  view('frontend.pages.transaction.widget.__transaction_history')
                         ->with('data', $data)->with('config', $config)->with('status', $status)->render();
-
                     if (count($data) == 0 && $page == 1){
                         return response()->json([
                             'status' => 0,
-                            'datastatus' => $htmlstatus,
-                            'dataconfig' => $htmlconfig,
                             'message' => 'Không có dữ liệu !',
                         ]);
                     }
-
+                    if ($page > $data->lastPage()) {
+                        return response()->json([
+                            'status' => 404,
+                            'message'=>'Trang này không tồn tại',
+                        ]);
+                    }
                     return response()->json([
                         'data' => $html,
-                        'datastatus' => $htmlstatus,
-                        'dataconfig' => $htmlconfig,
                         'status' => 1,
+                        'last_page'=>$data->lastPage(),
                         'message' => "Lấy dữ liệu thành công",
                     ]);
                 }
@@ -258,13 +269,16 @@ class UserController extends Controller
                 }
             }
 
-            return view('theme_1.frontend.pages.transaction.logs');
+            $config = config('module.txns.trade_type_api');
+            $status = config('module.txns.status');
+
+            return view(''.theme('')->theme_key.'.frontend.pages.transaction.logs')->with('config',$config)->with('status',$status);
 
         }
         catch(\Exception $e){
             Log::error($e);
             return response()->json([
-                'status' => "ERROR"
+                'status' => $e->getMessage()
             ]);
         }
     }
@@ -284,7 +298,6 @@ class UserController extends Controller
                 }
 
                 $id_user = AuthCustom::user()->id;
-
                 $url = '/get-txns';
                 $method = "GET";
                 $data = array();
@@ -313,8 +326,8 @@ class UserController extends Controller
                     $result = $result_Api->response_data;
                     $data = $result->data;
 
-                    $config = $result->dataconfig;
-                    $status = $result->datastatus;
+                    $config = config('module.txns.trade_type_api');
+                    $status = config('module.txns.status');
                     $per_page = 0;
                     $total = 0;
 
@@ -328,7 +341,7 @@ class UserController extends Controller
 
                     $data = new LengthAwarePaginator($data->data, $data->total, $data->per_page, $page, $data->data);
 
-                    return view('frontend.pages.transaction.logs')
+                    return view(''.theme('')->theme_key.'.frontend.pages.transaction.logs')
                         ->with('data', $data)
                         ->with('total',$total)
                         ->with('status',$status)
@@ -390,10 +403,12 @@ class UserController extends Controller
                     if ($result->status == 1) {
 
                         $result = $result_Api->response_data;
+
                         $data = $result->data;
 
                         $arrpin = array();
                         $arrserial = array();
+                        $arr_declare_amount = array();
 
                         for ($i = 0; $i < count($data->data); $i++){
                             $serial = $data->data[$i]->serial;
@@ -405,6 +420,10 @@ class UserController extends Controller
                             $pin = $data->data[$i]->pin;
                             $pin = Helpers::Decrypt($pin,config('module.charge.key_encrypt'));
                             array_push($arrpin,$pin);
+                        }
+                        for ($i = 0; $i < count($data->data); $i++){
+                            $declare_amount = $data->data[$i]->declare_amount;
+                            array_push($arr_declare_amount,$declare_amount);
                         }
 
                         $per_page = 0;
@@ -422,12 +441,15 @@ class UserController extends Controller
                             $data->setPath($request->url());
                         }
 
-                        return view('frontend.pages.charge.logs')
+
+
+                        return view(''.theme('')->theme_key.'.frontend.pages.charge.logs')
                             ->with('data',$data)
                             ->with('arrpin',$arrpin)
                             ->with('total',$total)
                             ->with('per_page',$per_page)
-                            ->with('arrserial',$arrserial);
+                            ->with('arrserial',$arrserial)
+                            ->with('arr_declare_amount',$arr_declare_amount);
                     } else {
                         return redirect()->back()->withErrors($result->message);
                     }
@@ -445,11 +467,247 @@ class UserController extends Controller
         }
     }
 
+    public function getChargeATMHistory(Request $request){
+
+        try{
+
+            if ($request->ajax()) {
+                $page = $request->page;
+                $url = '/transfer/history';
+                $method = "GET";
+                $val = array();
+                $jwt = Session::get('jwt');
+                if (empty($jwt)) {
+                    return response()->json([
+                        'status' => "LOGIN"
+                    ]);
+                }
+                $val['token'] = $jwt;
+                $val['page'] = $page;
+
+
+//                if (isset($request->started_at) || $request->started_at != '' || $request->started_at != null) {
+//                    $started_at = \Carbon\Carbon::parse($request->started_at)->format('Y-m-d H:i:s');
+//                    $val['started_at'] = $started_at;
+//                }
+//
+//                if (isset($request->ended_at) || $request->ended_at != '' || $request->ended_at != null) {
+//                    $ended_at = \Carbon\Carbon::parse($request->ended_at)->format('Y-m-d H:i:s');
+//                    $val['ended_at'] = $ended_at;
+//                }
+
+                $result_Api = DirectAPI::_makeRequest($url, $val, $method);
+
+
+                if (isset($result_Api) && $result_Api->response_code == 200) {
+                    $result = $result_Api->response_data;
+                    if ($result->status == 1) {
+
+                        $result = $result_Api->response_data;
+
+                        $data = $result->data;
+
+                        $per_page = 0;
+                        $total = 0;
+                        if (isset($data->total)){
+                            $total = $data->total;
+                        }
+
+                        if (isset($data->to)){
+                            $per_page = $data->to;
+                        }
+
+                        if (isEmpty($data->data)) {
+                            $data = new LengthAwarePaginator($data->data, $data->total, $data->per_page, $page, $data->data);
+                            $data->setPath($request->url());
+                        }
+
+                        return view(''.theme('')->theme_key.'.frontend.pages.transfer.logs')
+                            ->with('data',$data)
+                            ->with('total',$total)
+                            ->with('per_page',$per_page);
+
+                    } else {
+                        return redirect()->back()->withErrors($result->message);
+                    }
+                }else{
+                    return redirect('/404');
+                }
+            }
+
+        }
+        catch(\Exception $e){
+            Log::error($e);
+            return response()->json([
+                'status' => "ERROR"
+            ]);
+        }
+    }
+
+    public function getLogsStore(Request $request){
+        $url = '/store-card/get-telecom';
+        $method = "GET";
+        $sendData = array();
+        $result_Api = DirectAPI::_makeRequest($url, $sendData, $method);
+        $data_res = $result_Api->response_data;
+        $data_telecom = [];
+        if($data_res->status){
+            $data_telecom = $data_res->data;
+        }
+        $data_category = [
+            'telecoms'=>$data_telecom,
+            'status'=>config('module.store-card.status'),
+        ];
+        return view(''.theme('')->theme_key.'.frontend.pages.storecard.logs',compact('data_category'));
+    }
+
+    public function getLogsStoreData(Request $request){
+        try{
+
+            if ($request->ajax()) {
+
+                $page = $request->page;
+
+                $url = '/store-card/history';
+
+                $method = "GET";
+                $dataSend = array();
+                $jwt = Session::get('jwt');
+                if (empty($jwt)) {
+                    return response()->json([
+                        'status' => "LOGIN"
+                    ]);
+                }
+                $dataSend['token'] = $jwt;
+                $dataSend['page'] = $page;
+
+                if ($request->filled('pin')) {
+                    $dataSend['pin'] = $request->pin;
+                }
+
+                if ($request->filled('serial')) {
+                    $dataSend['serial'] = $request->serial;
+                }
+
+                if ($request->filled('telecom')) {
+                    $dataSend['telecom'] = $request->telecom;
+                }
+                if ($request->filled('status')) {
+                    $dataSend['status'] = $request->status;
+                }
+
+                if ($request->filled('started_at')) {
+                    $dataSend['started_at'] = \Carbon\Carbon::parse($request->started_at)->format('d/m/Y H:i:s');
+                }
+                if ($request->filled('ended_at')) {
+                    $dataSend['ended_at'] = \Carbon\Carbon::parse($request->ended_at)->format('d/m/Y H:i:s');
+                }
+                $result_Api = DirectAPI::_makeRequest($url, $dataSend, $method);
+                $response_data = $result_Api->response_data??null;
+                if(isset($response_data) && $response_data->status == 1){
+
+                    $data = $response_data->data;
+
+                    $arrpin = array();
+                    $arrserial = array();
+
+                    $per_page = 0;
+                    $total = 0;
+
+                    if (isset($data->total)){
+                        $total = $data->total;
+                    }
+
+                    if (isset($data->to)){
+                        $per_page = $data->to;
+                    }
+
+                    if (isEmpty($data->data)) {
+                        $data = new LengthAwarePaginator($data->data, $data->total, $data->per_page, $page, $data->data);
+                        $data->setPath($request->url());
+                    }
+                    $html = view(''.theme('')->theme_key.'.frontend.pages.storecard.widget.__datalogs')
+                        ->with('data',$data)
+                        ->with('total',$total)
+                        ->with('per_page',$per_page)
+                        ->with('arrpin',$arrpin)
+                        ->with('arrserial',$arrserial)->render();
+
+                    if (count($data) == 0 && $page == 1){
+                        return response()->json([
+                            'status' => 0,
+                            'message' => 'Không có dữ liệu !',
+                        ]);
+                    }
+
+                    if ($page > $data->lastPage()) {
+                        return response()->json([
+                            'status' => 404,
+                            'message'=>'Trang này không tồn tại',
+                        ]);
+                    }
+
+                    return response()->json([
+                        'status' => 1,
+                        'data' => $html,
+                        'total'=>$total,
+                        'last_page'=>$data->lastPage(),
+                        'message' => 'Load dữ liệu thành công',
+                    ]);
+                }
+                else{
+                    return response()->json([
+                        'status' => 0,
+                        'message' => $response_data->message??'',
+                    ]);
+                }
+            }
+
+        }
+        catch(\Exception $e){
+            Log::error($e);
+            return response()->json([
+                'status' => "ERROR"
+            ]);
+        }
+    }
+
+    public function getShowLogsStore(Request $request,$id){
+
+        $url = '/store-card/history/'.$id;
+
+        $method = "GET";
+        $dataSend = array();
+        $jwt = Session::get('jwt');
+        if (empty($jwt)) {
+            return response()->json([
+                'status' => "LOGIN"
+            ]);
+        }
+        $dataSend['token'] = $jwt;
+
+        $result_Api = DirectAPI::_makeRequest($url, $dataSend, $method);
+        $response_data = $result_Api->response_data??null;
+
+        if(isset($response_data) && $response_data->status == 1){
+
+            $data = $response_data->data;
+
+            return view(''.theme('')->theme_key.'.frontend.pages.storecard.detail')->with('data',$data);
+
+        } else{
+            return redirect('/404');
+        }
+
+
+    }
+
     public function getStoreHistory(Request $request){
 
         try{
 
             if ($request->ajax()) {
+
                 $page = $request->page;
 
                 $url = '/store-card/history';
@@ -467,6 +725,10 @@ class UserController extends Controller
 
                 if (isset($request->id) || $request->id != '' || $request->id != null) {
                     $data['id'] = $request->id;
+                }
+
+                if (isset($request->telecom) || $request->telecom != '' || $request->telecom != null) {
+                    $data['telecom'] = $request->telecom;
                 }
 
                 if (isset($request->started_at) || $request->started_at != '' || $request->started_at != null) {
@@ -529,8 +791,7 @@ class UserController extends Controller
                            $data->setPath($request->url());
                        }
 
-
-                        return view('frontend.pages.storecard.logs')
+                        return view(''.theme('')->theme_key.'.frontend.pages.storecard.widgets.logs')
                             ->with('data',$data)
                             ->with('total',$total)
                             ->with('per_page',$per_page)
@@ -550,6 +811,51 @@ class UserController extends Controller
             Log::error($e);
             return response()->json([
                 'status' => "ERROR"
+            ]);
+        }
+    }
+
+    public function getTranDetail(Request $request,$id)
+    {
+        try{
+            $jwt = Session::get('jwt');
+            if(empty($jwt)){
+                return response()->json([
+                    'status' => "LOGIN",
+                ]);
+            }
+            $config = config('module.txns.trade_type_api');
+
+            $id_user = AuthCustom::user()->id;
+            $url = '/get-txns';
+            $method = "GET";
+            $dataSend = array();
+            $dataSend['token'] = $jwt;
+            $dataSend['user_id'] = $id_user;
+            $dataSend['id'] = $id;
+            $dataSend['page'] = 1;
+            $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+            $response_data = $result_Api->response_data??null;
+
+            if ($response_data->status == 1){
+                $data = $response_data->data->data[0];
+                $data_view = [
+                    'status'=>1,
+                    'config'=>$config,
+                    'data'=>$data,
+                ];
+            } else {
+                $data_view = [
+                    'status'=>0,
+                    'message'=>'Không lấy được dữ liệu.',
+                ];
+            }
+            return view(''.theme('')->theme_key.'.frontend.pages.transaction.logdetail',$data_view);
+        }
+        catch(\Exception $e){
+            Log::error($e);
+            return response()->json([
+                'status' => $e->getMessage()
             ]);
         }
     }

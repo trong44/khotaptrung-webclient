@@ -6,6 +6,10 @@ $(document).ready(function (e) {
 
     var product_list = new Swiper('.list-nap-game', {
         autoplay: false,
+        navigation: {
+            nextEl: '.swiper-nap-game .swiper-button-next',
+            prevEl: '.swiper-nap-game .swiper-button-prev',
+        },
         // preloadImages: false,
         updateOnImagesReady: true,
         // lazyLoading: false,
@@ -15,23 +19,25 @@ $(document).ready(function (e) {
 
         loop: false,
         centeredSlides: false,
-        slidesPerView: 8,
+        slidesPerView: 4.5,
+        slidesPerGroup: 3,
         speed: 800,
-        spaceBetween: 8,
+        spaceBetween: 16,
         touchMove: true,
+        freeMode:true,
         freeModeSticky:true,
         grabCursor: true,
         observer: true,
         observeParents: true,
         breakpoints: {
             992: {
-                slidesPerView: 6,
+                slidesPerView: 3.2,
             },
             768:{
-                slidesPerView: 4,
+                slidesPerView: 3.2,
             },
             480: {
-                slidesPerView: 3.5,
+                slidesPerView: 1.5,
 
             }
         }
@@ -41,36 +47,15 @@ $(document).ready(function (e) {
     $('.show-btn-password').on('click', function(){
 
         // Get the password field
-        var passwordField = $('#password');
-
-        // Get the current type of the password field will be password or text
-        var passwordFieldType = passwordField.attr('type');
-
-        // Check to see if the type is a password field
-        if(passwordFieldType == 'password')
-        {
-            // Change the password field to text
-            passwordField.attr('type', 'text');
-
-            var htmlpass = '';
-            htmlpass += '<img class="lazy" src="/assets/theme_3/image/images_1/eye-show.svg" alt="">';
-            $('.show-btn-password').html('');
-            $('.show-btn-password').html(htmlpass);
-
-            // Change the Text on the show password button to Hide
-            $(this).val('Hide');
+        let passwordField = $('#password');
+        if (passwordField.attr('type') === "password") {
+            passwordField.attr('type','text');
+            $(this).find('img').attr('src','/assets/frontend/theme_3/image/images_1/eye-hide.svg')
         } else {
-            var htmlpass = '';
-            htmlpass += '<img class="lazy" src="/assets/theme_3/image/images_1/eye-hide.svg" alt="">';
-            $('.show-btn-password').html('');
-            $('.show-btn-password').html(htmlpass);
-
-            // If the password field type is not a password field then set it to password
-            passwordField.attr('type', 'password');
-
-            // Change the value of the show password button to Show
-            $(this).val('Show');
+            passwordField.attr('type','password')
+            $(this).find('img').attr('src','/assets/frontend/theme_3/image/images_1/eye-show.svg')
         }
+
     });
 
     $('.show-btn-password-mobile').on('click', function(){
@@ -115,14 +100,13 @@ $(document).ready(function (e) {
     // $('#successModal').modal('show');
     $('.wide').niceSelect();
 
-
     tippy('.checkbox-info-ct', {
         // default
         placement: 'top',
         arrow: true,
         animation: 'fade',
         theme: 'light',
-        content: "Đã copy!",
+        // content: $(this).data('name'),
     });
 
     tippy('.option-info-ct', {
@@ -228,157 +212,65 @@ $(document).ready(function (e) {
         $('#successModal').modal('show');
     });
 
-    function handleToggleContent(){
-        $('.js-toggle-content .view-less').toggle();
-        $('.js-toggle-content .view-more').toggle();
-        if ($('.view-less').is(":visible")) {
-
-            $('.content-video-in').css('max-height', 'initial')
-            $('.content-video-in').removeClass('content-video-in-add')
-
-        } else {
-            $('.content-video-in').addClass('content-video-in-add')
-            $('.content-video-in::after').show()
-            $('.content-video-in').css('max-height', '')
-        }
-    }
-
-    $('.js-toggle-content').click(function () {
-        handleToggleContent();
-    });
-
     $('body').on('click','.close-modal-default',function(e){
         e.preventDefault();
         $('#successModal').modal('hide');
         $('#openOrder').modal('hide');
     })
 
-    $('body').on('click','.btn-data',function(e){
-        e.preventDefault();
-        var index = 0;
-        var isSet = true;
+    $('body').on('click','.btn-data',function(){
+        let is_ok = 1;
+        let html = '';
 
-        var rankstvalue = $('.data-select-rank-start .list .option.selected').data('value');
-        var rankst = $('.data-select-rank-start .list .option.selected').text();
-
-        if (rankst == null || rankst == undefined || rankst == 'Chọn rank hiện tại' || rankstvalue == null || rankstvalue == undefined || rankstvalue == ''){
-
-            var htmlrankst = '';
-            htmlrankst += '<div class="row marginauto order-errors"><div class="col-md-12 left-right default-span"><small>Bạn chưa chọn rank hiện tại.</small></div></div>';
-
-            $('.rank-start-error').html('');
-            $('.rank-start-error').html(htmlrankst);
-
-            $('.data-select-rank-start .nice-select').css('border-color','#DA4343');
-
-            isSet = false;
-        }else {
-            $('.rank-start-error').html('');
-            $('.data-select-rank-start .nice-select').css('border-color','#DCDEE9');
+        let required = $('#formDataService input[required]');
+        if (required.length){
+            required.each(function () {
+                $(this).toggleClass('invalid',!$(this).val().trim());
+                if (!$(this).val().trim()){
+                    is_ok = 0;
+                    let text = $(this).parent().prev().text().trim().toLowerCase();
+                    html = `<div class="row marginauto order-errors"><div class="col-md-12 left-right default-span"><small>Bạn chưa nhập ${text}</small></div></div>`
+                    $(this).parent().next().html(html)
+                }else {
+                    $(this).parent().next().text('');
+                }
+            });
         }
 
-        var rankmmvalue = $('.data-select-rank-end .list .option.selected').data('value');
-        var rankmm = $('.data-select-rank-end .list .option.selected').text();
+        if ($('.allgame[type=checkbox]').length){
+            if (checkboxRequired('input.allgame[type=checkbox]')){
+                html = `<div class="row marginauto order-errors"><div class="col-md-12 left-right default-span"><small>Phải chọn ít nhất một gói dịch vụ</small></div></div>`;
+                is_ok = 0;
+                $('#error-mes-checkbox').html(html)
+            }
 
-        if (rankmm == null || rankmm == undefined || rankmm == 'Chọn rank hiện tại' || rankmmvalue == null || rankmmvalue == undefined || rankmmvalue == ''){
-
-            var htmlrankmm = '';
-            htmlrankmm += '<div class="row marginauto order-errors"><div class="col-md-12 left-right default-span"><small>Bạn chưa chọn rank mong muốn.</small></div></div>';
-
-            $('.rank-end-error').html('');
-            $('.rank-end-error').html(htmlrankmm);
-
-            $('.data-select-rank-end .nice-select').css('border-color','#DA4343');
-
-            isSet = false;
-        }else {
-            $('.rank-end-error').html('');
-            $('.data-select-rank-end .nice-select').css('border-color','#DCDEE9');
+            else {
+                $('#error-mes-checkbox').html('');
+            }
         }
-
-        var servervalue = $('.data-select-server .list .option.selected').data('value');
-        var server = $('.data-select-server .list .option.selected').text();
-
-        if (server == null || server == undefined || server == 'Chọn server' || servervalue == null || servervalue == undefined || servervalue == ''){
-
-            var htmlserver = '';
-            htmlserver += '<div class="row marginauto order-errors"><div class="col-md-12 left-right default-span"><small>Bạn chưa chọn server.</small></div></div>';
-
-            $('.server-error').html('');
-            $('.server-error').html(htmlserver);
-
-            $('.data-select-server .nice-select').css('border-color','#DA4343');
-
-            isSet = false;
-        }else {
-            $('.server-error').html('');
-            $('.data-select-server .nice-select').css('border-color','#DCDEE9');
+        let confirm_rules = $('.confirm-rules');
+        /*nếu có nút confirm thì kiểm tra xem được check chưa*/
+        if (confirm_rules.length){
+            if (!confirm_rules.is(':checked')){
+                html = `<div class="row marginauto order-errors"><div class="col-md-12 left-right default-span"><small>Vui lòng xác nhận thông tin trên</small></div></div>`;
+                is_ok = 0;
+                confirm_rules.parent().next().html(html)
+            }
+            else {
+                confirm_rules.parent().next().html('')
+            }
         }
-
-        var herovalue = $('.data-select-hero .list .option.selected').data('value');
-        var hero = $('.data-select-hero .list .option.selected').text();
-
-        if (hero == null || hero == undefined || hero == 'Ví dụ: Yasuyo' || herovalue == null || herovalue == undefined || herovalue == ''){
-
-            var htmlserver = '';
-            htmlserver += '<div class="row marginauto order-errors"><div class="col-md-12 left-right default-span"><small>Bạn chưa chọn tướng.</small></div></div>';
-
-            $('.hero-error').html('');
-            $('.hero-error').html(htmlserver);
-
-            $('.data-select-hero .nice-select').css('border-color','#DA4343');
-
-            isSet = false;
-        }else {
-            $('.hero-error').html('');
-            $('.data-select-hero .nice-select').css('border-color','#DCDEE9');
+        if (is_ok){
+            if ($(document).width() > 1200) {
+                $('#openOrder').modal('show');
+            }else {
+                $('.button-next-step-one').trigger('click')
+            }
         }
-
-        var username = $('.username').val();
-
-        if (username == null || username == undefined || username == ''){
-            var htmltk = '';
-            htmltk += '<div class="row marginauto order-errors"><div class="col-md-12 left-right default-span"><small>Bạn chưa nhập tài khoản game.</small></div></div>';
-
-            $('.tk-error').html('');
-            $('.tk-error').html(htmltk);
-
-            $('.username').css('border-color','#DA4343');
-            isSet =  false;
-        }else {
-            $('.tk-error').html('');
-            $('.username').css('border-color','#DCDEE9');
-        }
-
-        var password = $('.password').val();
-
-        if (password == null || password == undefined || password == ''){
-            var htmlpw = '';
-            htmlpw += '<div class="row marginauto order-errors"><div class="col-md-12 left-right default-span"><small>Bạn chưa nhập mật khẩu game.</small></div></div>';
-
-            $('.pw-error').html('');
-            $('.pw-error').html(htmlpw);
-
-            $('.password').css('border-color','#DA4343');
-
-            isSet =  false;
-        }else {
-            $('.password').css('border-color','#DCDEE9');
-            $('.pw-error').html('');
-        }
-
-        if (isSet == false){
-            return false;
-        }
-
-        $('#openOrder').modal('show');
-
-    })
-
+    });
 
     $('body').on('click','.openSuccess',function(e){
         $('#openOrder').modal('hide');
         $('#successModal').modal('show');
     })
-
 })

@@ -3,24 +3,7 @@
 
 $( document ).ready(function() {
 
-    $(document).on('scroll',function(){
-        if($(window).width() > 1024){
-            if ($(this).scrollTop() > 100) {
-                $(".nav-bar-container").css("height","90px");
-                $(".nav-bar-category .nav li a").css("line-height","90px");
-                $("header .nav-bar").css("background-color","rgba(0,0,0,0.5)");
-                $(".nav-bar-brand").css("margin","14px");
 
-
-            } else {
-                $(".nav-bar-container").css("height","120px");
-                $(".nav-bar-category .nav li a").css("line-height","120px");
-                $(".nav-bar-brand").css("margin","20px 0");
-                $("header .nav-bar").css("background-color","rgba(0,0,0,0.8)");
-            }
-        }
-
-    });
     $('.item_play_intro_viewmore').click(function(){
         $('.item_play_intro_viewless').css("display","flex");
         $('.item_play_intro_viewmore').css("display","none");
@@ -171,49 +154,52 @@ $( document ).ready(function() {
     });
 
 });
+// $(document).ready(function(){
+//
+//     // $(function() {
+//         $('.lazy').Lazy({
+//             // your configuration goes here
+//             // placeholder: "data:image/gif;base64,R0lGODlhEALAPQAPzl5uLr9Nrl8e7...",
+//             // scrollDirection: 'vertical',
+//             effect: 'fadeIn',
+//             visibleOnly: true,
+//             afterLoad: function(element) {
+//                 $('img.lazy').css('background-image','unset')
+//             },
+//             onFinishedAll: function() {
+//                 // called once all elements was handled
+//             }
+//
+//         });
+//
+//     // });
+//
+// });
 $(document).ready(function(){
-    (function () {
-        function logElementEvent(eventName, element) {
-            // console.log(Date.now(), eventName, element.getAttribute("data-src"));
-        }
 
-        var callback_enter = function (element) {
-            logElementEvent("🔑 ENTERED", element);
-        };
-        var callback_exit = function (element) {
-            logElementEvent("🚪 EXITED", element);
-        };
-        var callback_loading = function (element) {
-            logElementEvent("⌚ LOADING", element);
-        };
-        var callback_loaded = function (element) {
-            logElementEvent("👍 LOADED", element);
-        };
-        var callback_error = function (element) {
-            logElementEvent("💀 ERROR", element);
-            element.src =
-                "https://via.placeholder.com/440x560/?text=Error+Placeholder";
-        };
-        var callback_finish = function () {
-            logElementEvent("✔️ FINISHED", document.documentElement);
-        };
-        var callback_cancel = function (element) {
-            logElementEvent("🔥 CANCEL", element);
-        };
+(function () {
 
-        var ll = new LazyLoad({
-            // container: document.getElementById("results"),
-            threshold: 200,
-            load_delay: 200,
-            // Assign the callbacks defined above
-            callback_enter: callback_enter,
-            callback_exit: callback_exit,
-            callback_cancel: callback_cancel,
-            callback_loading: callback_loading,
-            callback_loaded: callback_loaded,
-            callback_error: callback_error,
-            callback_finish: callback_finish
-        });
+    // function logElementEvent(eventName, element) {
+    //     console.log(new Date().getTime(), eventName, element.getAttribute('data-original'));
+    // }
+    //
+    // function logEvent(eventName, elementsLeft) {
+    //     console.log(new Date().getTime(), eventName, elementsLeft + " images left");
+    // }
 
-    })();
+    /* Uncomment the callbacks in LazyLoad options to see the callbacks logs in your browser's console */
+
+    new LazyLoad(/*{
+			callback_load: function (element) {
+				logElementEvent("LOADED", element);
+			},
+			callback_set: function (element) {
+				logElementEvent("SET", element);
+			},
+			callback_processed: function(elementsLeft) {
+				logEvent("PROCESSED", elementsLeft);
+			}
+		}*/);
+
+}());
 });

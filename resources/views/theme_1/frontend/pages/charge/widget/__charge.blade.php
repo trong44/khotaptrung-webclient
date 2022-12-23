@@ -1,7 +1,7 @@
 @if(empty($data->data))
     <div class="table-responsive"   >
         <table class="table table-hover table-custom-res">
-            <thead><tr><th>Thời gian</th><th>Nhà mạng</th><th>Mã thẻ</th><th>serial</th><th>Mệnh giá</th><th>Kết quả</th><th>Thực nhận</th></tr></thead>
+            <thead><tr><th>Thời gian</th><th>Nhà mạng</th><th>Mã thẻ</th><th>Serial</th><th>Mệnh giá</th><th>Kết quả</th><th>Thực nhận</th></tr></thead>
 
             <tbody>
             @if(isset($data) && count($data) > 0)
@@ -29,7 +29,10 @@
                                     {{ $item->serial }}
                                 @endif
                             </td>
-                            <td>{{ formatPrice($item->declare_amount) }}</td>
+
+
+                            <td>{{ str_replace(',','.',number_format($item->declare_amount)) }} đ</td>
+
                             <td>
                                 @if($item->status == 1)
                                     <span class="badge badge-primary">{{config('module.charge.status.1')}}</span>
@@ -49,7 +52,7 @@
                             </td>
                             <td>
                                 @if(isset($item->real_received_amount))
-                                    {{ formatPrice($item->real_received_amount) }}
+                                    {{ str_replace(',','.',number_format($item->real_received_amount)) }} đ
                                 @else
                                     0
                                 @endif
@@ -72,7 +75,9 @@
                                     {{ $item->serial }}
                                 @endif
                             </td>
-                            <td>{{ formatPrice($item->declare_amount) }}</td>
+                            <td>
+                                {{ str_replace(',','.',number_format($item->declare_amount)) }} đ
+                            </td>
                             <td>
                                 @if($item->status == 1)
                                     <span class="badge badge-primary">{{config('module.charge.status.1')}}</span>
@@ -92,7 +97,7 @@
                             </td>
                             <td>
                                 @if(isset($item->real_received_amount))
-                                    {{ formatPrice($item->real_received_amount) }}
+                                    {{ str_replace(',','.',number_format($item->real_received_amount)) }} đ
                                 @else
                                     0
                                 @endif

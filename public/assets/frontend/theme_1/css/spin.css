@@ -286,7 +286,7 @@
 
 /*view more*/
 .item_play_intro{
-    padding: 60px 0px;
+    padding: 40px 0px;
     color: #211010;
     font-size: 17px;
 
@@ -549,7 +549,7 @@
 }
 .item_buy_list_img{
     position: relative;
-
+    padding-bottom: 46.15%;
 }
 .item_buy_list_img-sale{
     position: absolute;
@@ -561,7 +561,8 @@
     height: 75px;
 }
 .item_buy_list_img-main{
-    /*height: 180px;*/
+    position: absolute;
+    height: 100%;
     max-width: 100%;
     width: 100%;
     object-fit: cover;
@@ -1020,8 +1021,8 @@
 }
 .item_slot {
     background-size: 720px 495px !important;
-    width: 720px;height: 495px
-
+    width: 720px;height: 495px;
+    margin: auto;
 }
 @media screen and (max-width: 580px){
     .item_slot {
@@ -1481,7 +1482,8 @@
         height: 50px !important;
         position: relative;
         border-radius: 13px;
-        margin: 0 12px;
+        margin: 0 12px!important;
+        padding: 0!important
     }
 }
 #squaredesktop .box {
@@ -1568,12 +1570,12 @@ td{
     }
     .item_five_record_inner_img {
         display: inline-block;
-        margin-left: 0px;
-        margin-right: 0px;
-        background-size: 52px 48px;
-        width: 52px;
-        height: 48px;
-        border-radius: 4px;
+        margin-left: 0px!important;
+        margin-right: 0px!important;
+        background-size: 52px 48px!important;
+        width: 52px!important;
+        height: 48px!important;
+        border-radius: 4px!important;
     }
     .item_five_record_inner {
         position: absolute;

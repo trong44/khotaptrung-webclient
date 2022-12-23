@@ -26,6 +26,19 @@ class ServiceController extends Controller
         $method = "GET";
 
         $dataSend = array();
+        $dataSend['limit'] = 100;
+
+        if ($request->filled('service-option'))  {
+            if ($request->get('service-option') == 1){
+                $arr = explode('|',setting('sys_service_widget_one'));
+            }elseif ($request->get('service-option') == 2){
+                $arr = explode('|',setting('sys_service_widget_two'));
+            }elseif ($request->get('service-option') == 3){
+                $arr = explode('|',setting('sys_service_widget_three'));
+            }
+
+            $dataSend['id_option'] = $arr;
+        }
 
         if ($request->ajax()){
 
@@ -84,14 +97,12 @@ class ServiceController extends Controller
             $data = new LengthAwarePaginator($data->data, $data->total, $data->per_page, $data->current_page, $data->data);
             $data->setPath($request->url());
 
-            Session::forget('return_url');
-            Session::put('return_url', $_SERVER['REQUEST_URI']);
+
             Session::put('path', $_SERVER['REQUEST_URI']);
 
             return view('frontend.pages.service.list')->with('data', $data);
 
-        }
-        else{
+        }else{
             $data =null;
             $message = "Không thể lấy dữ liệu";
             return view('frontend.pages.service.list')->with('data', $data)->with('message', $message);
@@ -110,18 +121,47 @@ class ServiceController extends Controller
 //        $dataSend['slug'] = $slug;
 
         $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
-
         $response_data = $result_Api->response_data??null;
+
         if(isset($response_data) && ($response_data->status??"") == 1){
 
             $data = $response_data->data;
-            $data_bot = $response_data->data_bot??null;
+
+            try {
+
+                $data_seo_price = 0;
+                $service_params = json_decode($data->params);
+                $filter_type = $service_params->filter_type;
+                $server_mode = $service_params->server_mode;
+                $server_price = $service_params->server_price;
+
+                if ( $filter_type == 7 ) {
+                    $data_seo_price = $service_params->input_pack_min;
+                }
+
+                if ( $filter_type == 4 || $filter_type == 5 ) {
+                    if ( $server_mode == 1 && $server_price == 1 ) {
+                        $server_id =  $service_params->server_id[0];
+                        $data_seo_price = $service_params->{'price'.$server_id}[0];
+                    } else {
+                        $data_seo_price = $service_params->price[0];
+                    }
+                }
+
+                if ( $filter_type == 6 ) {
+                    $data_seo_price = $service_params->price[0];
+                }
+
+            } catch (\Exception $e) {
+                $data_seo_price = 7700;
+            }
+
             $urlCate = '/service';
 
             $dataSendCate = array();
             $dataSendCate['limit'] = 8;
             $result_cate_Api = DirectAPI::_makeRequest($urlCate,$dataSendCate,$method);
-
+//            return $result_cate_Api;
             $response_cate_data = $result_cate_Api->response_data??null;
 
             if(isset($response_cate_data) && $response_cate_data->status == 1){
@@ -130,13 +170,17 @@ class ServiceController extends Controller
 
                 $datacate = new LengthAwarePaginator($datacate->data, $datacate->total, $datacate->per_page, $datacate->current_page, $datacate->data);
                 $datacate->setPath($request->url());
-//                return $datacate;
+
                 Session::put('path', $_SERVER['REQUEST_URI']);
+
+                if (!$data) {
+                    abort('404');
+                }
 
                 return view('frontend.pages.service.detail')
                     ->with('data', $data)
-                    ->with('data', $data)
-                    ->with('data_bot', $data_bot)
+                    ->with('data_seo_price', $data_seo_price)
+                    ->with('datacate', $datacate)
                     ->with('slug', $slug);
 
             }
@@ -148,44 +192,78 @@ class ServiceController extends Controller
             }
 
         }
+        elseif ($result_Api->response_code == 404){
+            return view('frontend.pages.404');
+        }
         else{
-            return response()->json([
-                'status' => 0,
-                'message'=>$response_data->message??"Không thể lấy dữ liệu"
-            ]);
+            return view('frontend.pages.404');
+        }
+    }
+
+    public function showBot(Request $request){
+        if ($request->ajax()){
+            $slug = $request->slug;
+
+            $url = '/service/list-bot/'.$slug;
+            $method = "GET";
+            $dataSend = array();
+//        $dataSend['slug'] = $slug;
+
+            $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+            $response_data = $result_Api->response_data??null;
+
+            if(isset($response_data) && ($response_data->status??"") == 1){
+
+                $data_bot = $response_data->data_bot??null;
+
+                $html =  view('frontend.pages.service.widget.__data__bot')
+                    ->with('data_bot',$data_bot)->render();
+
+                return response()->json([
+                    'status' => 1,
+                    'data' => $html,
+                    'message' => 'Load du lieu thanh cong.',
+                ]);
+
+            }
+            else{
+                return response()->json([
+                    'status' => 0,
+                    'message'=>$response_data->message??"Không thể lấy dữ liệu"
+                ]);
+            }
         }
     }
 
     public function getLogs(Request $request)
     {
         if (AuthCustom::check()) {
+            $url = '/service/log';
+            $method = "GET";
+            $dataSend = array();
+            $jwt = Session::get('jwt');
+            if (empty($jwt)) {
+                return response()->json([
+                    'status' => "LOGIN"
+                ]);
+            }
+            $dataSend['token'] = $jwt;
+            $dataSend['author_id'] = AuthCustom::user()->id;
 
             if ($request->ajax()) {
                 $page = $request->page;
-                $url = '/service/log';
-                $method = "GET";
-                $dataSend = array();
-                $jwt = Session::get('jwt');
-                if (empty($jwt)) {
-                    return response()->json([
-                        'status' => "LOGIN"
-                    ]);
-                }
 
-                $dataSend['token'] = $jwt;
-                $dataSend['author_id'] = AuthCustom::user()->id;
                 $dataSend['page'] = $page;
 
-                if (isset($request->id) || $request->id != '' || $request->id != null) {
-//                    $checkid = decodeItemID($request->serial);
+                if ($request->filled('id')) {
                     $dataSend['id'] = $request->id;
                 }
 
-                if (isset($request->key) || $request->key != '' || $request->key != null) {
-                    $dataSend['slug_category'] = $request->key;
+                if ($request->filled('slug_category')) {
+                    $dataSend['slug_category'] = $request->slug_category;
                 }
 
-                if (isset($request->status) || $request->status != '' || $request->status != null) {
+                if ($request->filled('status')) {
                     $dataSend['status'] = $request->status;
                 }
 
@@ -206,34 +284,25 @@ class ServiceController extends Controller
                 if(isset($response_data) && $response_data->status == 1){
 
                     $data = $response_data->datatable;
-                    $datacate = $response_data->categoryservice;
 
                     if (isEmpty($data->data)) {
                         $data = new LengthAwarePaginator($data->data, $data->total, $data->per_page, $data->current_page, $data->data);
                     }
 
                     if (count($data) == 0 && $page == 1){
-                        $htmlcate = view('frontend.pages.service.widget.__datacategorylogs')
-                            ->with('datacate', $datacate)->render();
 
                         return response()->json([
                             'status' => 0,
-                            "datacate" => $htmlcate,
                             'message' => 'Không có dữ liệu !',
                         ]);
                     }
 
-                    $html = view('frontend.pages.service.widget.__datalogs')
-                        ->with('data', $data)->render();
-
-                    $htmlcate = view('frontend.pages.service.widget.__datacategorylogs')
-                        ->with('datacate', $datacate)->render();
-
+                    $html = view('frontend.pages.service.widget.__datalogs')->with('data', $data)->render();
                     return response()->json([
                         "success"=> true,
                         "data" => $html,
-                        "datacate" => $htmlcate,
                         "status" => 1,
+                        "last_page"=>$data->lastPage(),
                     ], 200);
 
                 }
@@ -245,12 +314,30 @@ class ServiceController extends Controller
                 }
             }
 
-            return view('frontend.pages.service.logs');
+            $result_Api = DirectAPI::_makeRequest($url, $dataSend, $method);
+
+
+            $response_data = $result_Api->response_data??null;
+
+            if(isset($response_data) && $response_data->status == 1){
+
+                $datacate = $response_data->categoryservice;
+
+            }
+            else{
+                return response()->json([
+                    'status' => 0,
+                    'message'=>"Không thể tải dữ liệu vui lòng thử lại."
+                ]);
+            }
+
+            return view('frontend.pages.service.logs')->with('datacate',$datacate);
         }
 
     }
 
     public function getLogsDetail(Request $request,$id){
+
         if (AuthCustom::check()) {
             $url = '/service/log/detail';
             $method = "GET";
@@ -267,12 +354,39 @@ class ServiceController extends Controller
             $result_Api = DirectAPI::_makeRequest($url, $dataSend, $method);
             $response_data = $result_Api->response_data??null;
 
-
             if(isset($response_data) && $response_data->status == 1){
 
                 $data = $response_data->data;
 
-                return view('frontend.pages.service.logsdetail')->with('data', $data);
+                $urlInbox = '/inbox/'.$id.'/send';
+                $methodInbox = "GET";
+                $dataSendInbox = array();
+
+
+                $dataSendInbox['token'] = $jwt;
+                $dataSendInbox['id'] = $id;
+
+                $result_Inbox_Api = DirectAPI::_makeRequest($urlInbox, $dataSendInbox, $methodInbox);
+                $response_Inbox_data = $result_Inbox_Api->response_data??null;
+
+                if(isset($response_Inbox_data) && $response_Inbox_data->status == 1){
+
+                    $dataInbox = $response_Inbox_data->data;
+                    $conversation = $dataInbox->conversation;
+                    $inbox = $dataInbox->inbox;
+                    $itemInbox = $dataInbox->order;
+
+                    return view('frontend.pages.service.logsdetail')->with('data', $data)->with('itemInbox', $itemInbox)->with('inbox', $inbox)->with('conversation', $conversation);
+
+                }
+                else{
+                    return response()->json([
+                        'status' => 0,
+                        'message'=>$response_data->message??"Không thể lấy dữ liệu"
+                    ]);
+                }
+
+
 
             }
             else{
@@ -379,7 +493,6 @@ class ServiceController extends Controller
     }
 
     public function postDestroy(Request $request,$id){
-
         if (AuthCustom::check()) {
             $url = '/service/log/detail/destroy/'.$id;
             $method = "POST";
@@ -424,7 +537,6 @@ class ServiceController extends Controller
     }
 
     public function postPurchase(Request $request,$id){
-
         if (AuthCustom::check()) {
 
             $index = $request->index;
@@ -448,7 +560,15 @@ class ServiceController extends Controller
 
             if ((int)$index > 0){
                 for ($i = 0; $i < $index; $i++){
-                    $dataSend['customer_data'.$i] = $request->get('customer_data'.$i);
+                    if ($request->hasFile('customer_data'.$i)) {
+                        $type = pathinfo($request->file('customer_data'.$i), PATHINFO_EXTENSION);
+                        $data = file_get_contents($request->file('customer_data'.$i));
+                        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                        $dataSend['customer_data'.$i] = $base64;
+                    }else{
+                        $dataSend['customer_data'.$i] = $request->get('customer_data'.$i);
+                    }
+
                 }
             }
             $dataSend['rank_from'] = $request->get('rank_from');
@@ -456,7 +576,7 @@ class ServiceController extends Controller
 
             $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
             $response_data = $result_Api->response_data??null;
-
+      
             if(isset($response_data) && $response_data->status == 1){
                 return response()->json([
                     'status' => 1,
@@ -550,10 +670,32 @@ class ServiceController extends Controller
                 $inbox = $data->inbox;
                 $item = $data->order;
 
-                return view('frontend.pages.service.chat')
-                    ->with('conversation',$conversation)
-                    ->with('inbox',$inbox)
-                    ->with('item',$item );
+                $urlItem = '/service/log/detail';
+                $methodItem = "GET";
+                $dataSendItem = array();
+
+                $dataSendItem['token'] = $jwt;
+                $dataSendItem['id'] = $id;
+
+                $result_Item_Api = DirectAPI::_makeRequest($urlItem, $dataSendItem, $methodItem);
+                $response_Item_data = $result_Item_Api->response_data??null;
+
+                if(isset($response_Item_data) && $response_Item_data->status == 1){
+
+                    $dataItem = $response_Item_data->data;
+
+                    return view('frontend.pages.service.chat')
+                        ->with('conversation',$conversation)
+                        ->with('inbox',$inbox)
+                        ->with('dataItem',$dataItem)
+                        ->with('item',$item );
+                }
+                else{
+                    return response()->json([
+                        'status' => 0,
+                        'message'=>$response_data->message??"Không thể lấy dữ liệu"
+                    ]);
+                }
 
             }
             else{
@@ -637,5 +779,35 @@ class ServiceController extends Controller
             ]);
         }
 //        return $response_data;
+    }
+
+    public function getListMobile(Request $request)
+    {
+        $url = '/menu-category';
+        $method = "POST";
+        $dataSend = array();
+
+        $urlTrans = '/menu-transaction';
+        $dataSendTran = array();
+
+        $result_Api = DirectAPI::_makeRequest($url,$dataSend,$method);
+        $result_Api_Trans = DirectAPI::_makeRequest($urlTrans,$dataSendTran,$method);
+        $response_data = $result_Api->response_data->data??null;
+        $response_data_Trans = $result_Api_Trans->response_data->data??null;
+
+
+
+        if(isset($response_data) && isset($response_data_Trans) ){
+            return view('frontend.pages.service.list-mobile')->with('data', $response_data)->with('data_trans', $response_data_Trans);
+
+
+        }
+        else{
+            $telecoms =null;
+            $message = "Không thể lấy dữ liệu";
+            return view(''.theme('')->theme_key.'.frontend.pages.storecard-v2.index')->with('telecoms', $telecoms)->with('message', $message);
+        }
+
+
     }
 }

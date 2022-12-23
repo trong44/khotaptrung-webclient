@@ -16,11 +16,11 @@
                                 <div class="item_play_dif_slide_img">
                                     @if($item->target == 1)
                                         <a target="_blank" href="{{ $item->url }}">
-                                            <img src="{{\App\Library\MediaHelpers::media($item->image)}}" alt=""  class="img-fluid swiper-lazy item_play_dif_slide_img_main">
+                                            <img data-original="{{\App\Library\MediaHelpers::media($item->image)}}" alt=""  class="img-fluid lazy item_play_dif_slide_img_main">
                                         </a>
                                     @else
                                         <a href="{{ $item->url }}">
-                                            <img src="{{ \App\Library\MediaHelpers::media($item->image) }}" alt=""  class="img-fluid swiper-lazy item_play_dif_slide_img_main">
+                                            <img data-original="{{ \App\Library\MediaHelpers::media($item->image) }}" alt=""  class="img-fluid lazy item_play_dif_slide_img_main">
                                         </a>
                                     @endif
                                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
+use Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
@@ -15,8 +16,18 @@ use Validator;
 class RegisterController extends Controller
 {
     public function showFormRegister(){
-        return view('frontend.pages.regist');
+        if (theme('')->theme_key == "theme_1"
+            ||theme('')->theme_key == "theme_2"
+            || theme('')->theme_key == "theme_card_2"
+            ||theme('')->theme_key == "theme_dup"){
+
+            return view('frontend.pages.regist');
+        }else{
+            return view('frontend.pages.404');
+        }
+
     }
+
     public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'username'=>'required',
@@ -35,11 +46,17 @@ class RegisterController extends Controller
             ]);
         }
         try{
+
+            $utm_source = Cookie::get('utm_source')??'';
+            $utm_campaign = Cookie::get('utm_campaign')??'';
+
             $url = '/register';
             $method = "POST";
             $data = array();
             $data['username'] = $request->username;
             $data['password'] = $request->password;
+            $data['utm_source'] = $utm_source;
+            $data['utm_campain'] = $utm_campaign;
             $data['password_confirmation'] = $request->password_confirmation;
             $result_Api = DirectAPI::_makeRequest($url,$data,$method);
             $response_data = $result_Api->response_data??null;
@@ -51,8 +68,9 @@ class RegisterController extends Controller
                 Session::put('jwt',$response_data->token);
                 Session::put('exp_token',$response_data->exp_token);
                 Session::put('time_exp_token',$time_exp_token);
+                Session::put('auth_custom',$response_data->user);
+                $return_url = Session::get('url.intended');
 
-                $return_url = Session::get('return_url');
                 return response()->json([
                     'status' => 1,
                     'message' => 'Thành công',

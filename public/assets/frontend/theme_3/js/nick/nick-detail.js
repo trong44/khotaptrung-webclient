@@ -1,230 +1,433 @@
 $(document).ready(function (e) {
 
-    function handleToggleContent(){
-        $('.js-toggle-content .view-less').toggle();
-        $('.js-toggle-content .view-more').toggle();
-        if ($('.view-less').is(":visible")) {
+    var slug = $('.slug').val();
+    var slug_category = $('.slug_category').val();
 
-            $('.content-video-in').css('max-height', 'initial')
-            $('.content-video-in').removeClass('content-video-in-add')
+    setDisplayLink(0, 'skin-paginate');
+    setDisplayLink(0, 'tft-paginate');
+    setDisplayLink(0, 'champion-paginate');
 
-        } else {
-            $('.content-video-in').addClass('content-video-in-add')
-            $('.content-video-in::after').show()
-            $('.content-video-in').css('max-height', '')
+    getShowAccDetail(slug);
+
+    getRelatedAcc(slug_category);
+
+    function getShowAccDetail(slug) {
+
+        var url = '/acc/'+ slug + '/showacc';
+        request = $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                // id:id
+            },
+            beforeSend: function (xhr) {
+
+            },
+            success: (data) => {
+
+                if (data.status == 1){
+
+                    $('#showdetailacc').html('');
+                    $('#showdetailacc').html(data.data);
+
+                    $('#fieldset-two').append($('#fieldsetTwoPayment').html());
+                    $('#fieldsetTwoPayment').remove();
+
+                    //Loading blur when data is being loaded
+                    $('.loading-data__buyacc').html('');
+
+                    $('#pageBreadcrumb').html('');
+                    $('#pageBreadcrumb').html(data.datamenu);
+                    // activateGalleryThumbs();
+                    // activateGallerySlider();
+
+                }else if (data.status == 0){
+
+                    var html = '';
+                    html += '<div class="row pb-3 pt-3"><div class="col-md-12 text-center"><span style="color: red;font-size: 16px;">' + data.message + '</span></div></div>';
+
+                    $('#showdetailacc').html('');
+                    $('#showdetailacc').html(html);
+
+
+                    var htmlform = '';
+                    htmlform += '<label class="col-md-12 form-control-label text-danger" style="text-align: center;margin: 10px 0; ">Bạn phải đăng nhập mới có thể mua tài khoản tự động.</label>';
+
+                    $('.form__data__buyacc').html('');
+                    $('.form__data__buyacc').html(htmlform);
+
+                }
+
+            },
+            error: function (data) {
+
+            },
+            complete: function (data) {
+                $('#detailLoader').addClass('d-none');
+                initSwiperGallery();
+            }
+        });
+    };
+
+    function getRelatedAcc(slug_category) {
+
+        var url = '/related-acc';
+        request = $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                slug:slug_category,
+                ran_id: slug
+            },
+            beforeSend: function (xhr) {
+
+            },
+            success: (data) => {
+
+                if (data.status == 1){
+
+                    $('#showslideracc').html('');
+                    $('#showslideracc').html(data.dataslider);
+                    activateRelatedSlider();
+                }else if (data.status == 0){
+
+                    var html = '';
+                    html += '<div class="row pb-3 pt-3"><div class="col-md-12 text-center"><span style="color: red;font-size: 16px;">' + data.message + '</span></div></div>';
+
+                    $('#showslideracc').html('');
+                    $('#showslideracc').html(html);
+                }
+
+            },
+            error: function (data) {
+
+            },
+            complete: function (data) {
+                let c_swiper_config_category = new Swiper('.class-config-account-viewed',{
+                    navigation: {
+                        nextEl: '.class-config-account-viewed .swiper-button-next',
+                        prevEl: '.class-config-account-viewed .swiper-button-prev',
+                    },
+                    autoplay: false,
+                    updateOnImagesReady: true,
+                    watchSlidesVisibility: false,
+                    lazyLoadingInPrevNext: false,
+                    lazyLoadingOnTransitionStart: false,
+                    slidesPerView: 4.5,
+                    speed: 800,
+                    slidesPerGroup: 3,
+                    spaceBetween: 16,
+                    touchMove: true,
+                    grabCursor: true,
+                    observer: true,
+                    observeParents: true,
+                    breakpoints: {
+                        992: {
+                            freeMode: true,
+                            slidesPerView: 3.2,
+                        },
+                        768: {
+                            freeMode: true,
+                            slidesPerView: 2.3,
+                        },
+                        480: {
+                            slidesPerView: 1.8,
+
+                        }
+                    },
+                });
+            }
+        });
+    };
+
+    // getTaiKhoanDaXem();
+
+    function getTaiKhoanDaXem() {
+
+        var url = '/watched-acc';
+        request = $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                slug:slug_category,
+                ran_id: slug
+            },
+            beforeSend: function (xhr) {
+
+            },
+            success: (data) => {
+
+                if (data.status == 1){
+
+                    $('#showswatched').html('');
+                    $('#showswatched').html(data.datawatched);
+
+                }else if (data.status == 0){
+                    $('#showswatched').html('');
+                    // var html = '';
+                    // html += '<div class="row pb-3 pt-3"><div class="col-md-12 text-center"><span style="color: red;font-size: 16px;">' + data.message + '</span></div></div>';
+                    //
+                    // $('#showdetailacc').html('');
+                    // $('#showdetailacc').html(html);
+                }else if (data.status == 2){
+                    $('#showswatched').html('');
+                    console.log("chưa có dữ liệu")
+                }
+
+            },
+            error: function (data) {
+
+            },
+            complete: function (data) {
+                var list_dong_gia_v2 = new Swiper('.list-dong-gia-v2', {
+                    navigation: {
+                        nextEl: '.list-dong-gia .swiper-button-next',
+                        prevEl: '.list-dong-gia .swiper-button-prev',
+                    },
+                    autoplay: false,
+                    // preloadImages: false,
+                    updateOnImagesReady: true,
+                    // lazyLoading: false,
+                    watchSlidesVisibility: false,
+                    lazyLoadingInPrevNext: false,
+                    lazyLoadingOnTransitionStart: false,
+                    freeMode:true,
+                    loop: false,
+                    centeredSlides: false,
+                    slidesPerView: 4.5,
+                    speed: 800,
+                    slidesPerGroup: 3,
+                    spaceBetween: 0,
+                    touchMove: true,
+                    freeModeSticky:true,
+                    grabCursor: true,
+                    observer: true,
+                    observeParents: true,
+                    breakpoints: {
+                        992: {
+                            slidesPerView: 3.2,
+                        },
+                        768:{
+                            slidesPerView: 2.5,
+                        },
+                        480: {
+                            slidesPerView: 1.8,
+
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    $(document).on('submit', '.formDonhangAccount', function(e){
+        e.preventDefault();
+
+        var formSubmit = $(this);
+        var url = formSubmit.attr('action');
+        var btnSubmit = formSubmit.find(':submit');
+        var btnText = $(btnSubmit).text();
+        $(btnSubmit).text('Đang xử lý...');
+        btnSubmit.prop('disabled', true);
+
+        let accountID = formSubmit.data('id');
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: formSubmit.serialize(), // serializes the form's elements.
+            beforeSend: function (xhr) {
+
+            },
+            success: function (response) {
+
+                $('#openOrder').modal('hide');
+                if(response.status == 1){
+                    $('#successModal').modal('show');
+                }
+                else if (response.status == 2){
+                    swal(
+                        'Thông báo!',
+                        response.message,
+                        'warning'
+                    )
+                    $(btnSubmit).prop('disabled', false);
+                    $(btnSubmit).text(btnText);
+                }else {
+                    swal(
+                        'Lỗi!',
+                        response.message,
+                        'error'
+                    )
+                    $(btnSubmit).prop('disabled', false);
+                    $(btnSubmit).text(btnText);
+                }
+            },
+            error: function (response) {
+                if(response.status === 422 || response.status === 429) {
+                    let errors = response.responseJSON.errors;
+
+                    jQuery.each(errors, function(index, itemData) {
+
+                        formSubmit.find('.order-errors .purchaseError').empty();
+                        formSubmit.find('.order-errors .purchaseError').html(`<small>${itemData[0]}</small>`);
+                        return false; // breaks
+                    });
+                }else if(response.status === 0){
+                    alert(response.message);
+                }
+                else {
+                    alert('Kết nối với hệ thống thất bại.Xin vui lòng thử lại');
+                }
+            },
+            complete: function (data) {
+                btnSubmit.prop('disabled', false);
+            }
+        })
+
+
+    });
+
+    function initSwiperGallery() {
+
+        if ($('.gallery-thumbs').length) {
+            let galleryTop = new Swiper('.gallery-thumbs', {
+                slidesPerView: 5.5,
+                spaceBetween: 8,
+                centeredSlides: true,
+                loop: true,
+                clickable: true,
+                slideToClickedSlide: true,
+                observer: true,
+                observeParents: true,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+                touchRatio: 0.2,
+                breakpoints: {
+                    992: {
+                        slidesPerView: 4.5,
+                    },
+                    768:{
+                        slidesPerView: 3.5,
+                    },
+                    480: {
+                        slidesPerView: 3.2,
+
+                    }
+                }
+            });
+            let galleryThumbs = new Swiper('.gallery-slider', {
+
+
+                clickable: true,
+                slideToClickedSlide: true,
+                slidesPerView: "auto",
+                centeredSlides: true,
+                loop: true,
+                loopedSlides: 6,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                observer: true,
+                observeParents: true,
+            });
+
+            galleryTop.controller.control = galleryThumbs;
+            galleryThumbs.controller.control = galleryTop;
+        }
+
+        if ($('.gallery-thumbs-mobile').length) {
+            let galleryTop = new Swiper('.gallery-thumbs-mobile', {
+                slidesPerView: 5.5,
+                spaceBetween: 8,
+                centeredSlides: true,
+                loop: false,
+                clickable: true,
+                slideToClickedSlide: true,
+                observer: true,
+                observeParents: true,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+                touchRatio: 0.2,
+                breakpoints: {
+                    992: {
+                        slidesPerView: 4.5,
+                    },
+                    768:{
+                        slidesPerView: 3.5,
+                    },
+                    480: {
+                        slidesPerView: 3.2,
+
+                    }
+                }
+            });
+            let galleryThumbs = new Swiper('.gallery-slider-mobile', {
+
+
+                clickable: true,
+                slideToClickedSlide: true,
+                slidesPerView:1,
+                centeredSlides: false,
+                loop: true,
+                // loopedSlides: 6,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                observer: true,
+                observeParents: true,
+            });
+
+            galleryTop.controller.control = galleryThumbs;
+            galleryThumbs.controller.control = galleryTop;
         }
     }
 
-    $('.js-toggle-content').click(function () {
-        handleToggleContent();
-    });
-
-    $(function(){
-        var slider = new Swiper ('.gallery-slider', {
-            autoplay: {
-                delay: 2000,
-
-            },
-
-            slidesPerView: 1,
-            centeredSlides: true,
-            loop: false,
-            loopedSlides: 6,
+    function activateRelatedSlider(params) {
+        var list_dong_gia = new Swiper('.list-dong-gia', {
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.list-dong-gia .swiper-button-next',
+                prevEl: '.list-dong-gia .swiper-button-prev',
             },
-        });
-
-        var thumbs = new Swiper ('.gallery-thumbs', {
-            slidesPerView: 6.5,
-            spaceBetween: 8,
-            centeredSlides: false,
+            autoplay: false,
+            // preloadImages: false,
+            updateOnImagesReady: true,
+            // lazyLoading: false,
+            watchSlidesVisibility: false,
+            lazyLoadingInPrevNext: false,
+            lazyLoadingOnTransitionStart: false,
+            freeMode:true,
             loop: false,
-            slideToClickedSlide: true,
+            centeredSlides: false,
+            slidesPerView: 4.5,
+            speed: 800,
+            slidesPerGroup: 3,
+            spaceBetween: 0,
+            touchMove: true,
+            freeModeSticky:true,
+            grabCursor: true,
+            observer: true,
+            observeParents: true,
             breakpoints: {
                 992: {
-                    slidesPerView: 4.5,
+                    slidesPerView: 3.2,
                 },
                 768:{
-                    slidesPerView: 3.5,
+                    slidesPerView: 2.5,
                 },
                 480: {
-                    slidesPerView: 3.2,
+                    slidesPerView: 1.8,
 
                 }
             }
         });
-    });
+    }
 
-    var list_dong_gia = new Swiper('.list-dong-gia', {
-        autoplay: false,
-        // preloadImages: false,
-        updateOnImagesReady: true,
-        // lazyLoading: false,
-        watchSlidesVisibility: false,
-        lazyLoadingInPrevNext: false,
-        lazyLoadingOnTransitionStart: false,
 
-        loop: false,
-        centeredSlides: false,
-        slidesPerView: 4.5,
-        speed: 800,
-        spaceBetween: 0,
-        touchMove: true,
-        freeModeSticky:true,
-        grabCursor: true,
-        observer: true,
-        observeParents: true,
-        breakpoints: {
-            992: {
-                slidesPerView: 3.2,
-            },
-            768:{
-                slidesPerView: 2.5,
-            },
-            480: {
-                slidesPerView: 1.8,
-
-            }
-        }
-    });
-
-    var list_uu_dai = new Swiper('.list-uu-dai', {
-        autoplay: false,
-        // preloadImages: false,
-        updateOnImagesReady: true,
-        // lazyLoading: false,
-        watchSlidesVisibility: false,
-        lazyLoadingInPrevNext: false,
-        lazyLoadingOnTransitionStart: false,
-
-        loop: false,
-        centeredSlides: false,
-        slidesPerView: 4.5,
-        speed: 800,
-        spaceBetween: 0,
-        touchMove: true,
-        freeModeSticky:true,
-        grabCursor: true,
-        observer: true,
-        observeParents: true,
-        breakpoints: {
-            992: {
-                slidesPerView: 3.2,
-            },
-            768:{
-                slidesPerView: 2.5,
-            },
-            480: {
-                slidesPerView: 1.8,
-
-            }
-        }
-    });
-
-    var list_da_xem = new Swiper('.list-da-xem', {
-        autoplay: false,
-        // preloadImages: false,
-        updateOnImagesReady: true,
-        // lazyLoading: false,
-        watchSlidesVisibility: false,
-        lazyLoadingInPrevNext: false,
-        lazyLoadingOnTransitionStart: false,
-
-        loop: false,
-        centeredSlides: false,
-        slidesPerView: 4.5,
-        speed: 800,
-        spaceBetween: 0,
-        touchMove: true,
-        freeModeSticky:true,
-        grabCursor: true,
-        observer: true,
-        observeParents: true,
-        breakpoints: {
-            992: {
-                slidesPerView: 3.2,
-            },
-            768:{
-                slidesPerView: 2.5,
-            },
-            480: {
-                slidesPerView: 1.8,
-
-            }
-        }
-    });
 
     $('.wide').niceSelect();
-
-    tippy('#getShowpass', {
-        // default
-        trigger: 'click',
-        content: "Đã lấy mật khẩu!",
-        placement: 'right',
-    });
-
-    tippy('#getCopypass', {
-        // default
-        trigger: 'click',
-        content: "Đã copy mật khẩu!",
-        placement: 'right',
-    });
-
-    tippy('#getCopyemail', {
-        // default
-        trigger: 'click',
-        content: "Đã copy email!",
-        placement: 'right',
-    });
-
-    $('.getCopypass').on('click', function(){
-
-        // Get the password field
-        var passwordField = $('#password');
-
-        // Get the current type of the password field will be password or text
-        var passwordFieldType = passwordField.attr('type');
-
-        // Check to see if the type is a password field
-        if(passwordFieldType == 'password')
-        {
-            // Change the password field to text
-            passwordField.attr('type', 'text');
-
-            var htmlpass = '';
-            htmlpass += '<img class="lazy img-show-password" src="/assets/theme_3/image/cay-thue/eyeshow.png" alt="">';
-            $('.getCopypass').html('');
-            $('.getCopypass').html(htmlpass);
-
-            // Change the Text on the show password button to Hide
-            $(this).val('Hide');
-        } else {
-            var htmlpass = '';
-            htmlpass += '<img class="lazy img-show-password" src="/assets/theme_3/image/cay-thue/eyehide.png" alt="">';
-            $('.getCopypass').html('');
-            $('.getCopypass').html(htmlpass);
-
-            // If the password field type is not a password field then set it to password
-            passwordField.attr('type', 'password');
-
-            // Change the value of the show password button to Show
-            $(this).val('Show');
-        }
-    });
-
-    $('#getCopyemail').on('click', function(){
-        var copyText = $('#email').val();
-
-        navigator.clipboard.writeText(copyText);
-    })
-
-    $('.getCopypass').on('click', function(){
-        var copyText = $('#password').val();
-
-        navigator.clipboard.writeText(copyText);
-    })
 
     //    Step
 
@@ -233,7 +436,7 @@ $(document).ready(function (e) {
     var animating; //flag to prevent quick multi-click glitches
 
     //xac nhan don hang
-    $('body').on('click','.button-next-step-one',function(){
+    $('body').on('click','.button-next-step-one',function(event){
         if (animating) return false;
         animating = true;
 
@@ -257,7 +460,7 @@ $(document).ready(function (e) {
             },
             easing: 'easeInOutBack'
         });
-    })
+    });
 
     $('body').on('click','.previous-step-one',function(){
 
@@ -441,23 +644,167 @@ $(document).ready(function (e) {
 
     });
 
-    $('body').on('click','.btn-tra-gop',function(){
-        $('#traGop').modal('show')
-    })
-
-    $('body').on('click','.openSuccess',function(){
-        $('#successModal').modal('show')
-    })
+    // $('body').on('click','.btn-tra-gop',function(){
+    //     $('#traGop').modal('show')
+    // })
 
 
-    $('body').on('click','.btn-mua-ngay',function(){
-        $('#openOrder').modal('show')
-    })
+    $('body').on('click','.btn-mua-ngay',function(event){
+        $('#openOrder').modal('show');
+    });
 
     $('body').on('click','.close-modal-default',function(){
         $('#openOrder').modal('hide')
         $('#successModal').modal('hide')
         $('#traGop').modal('hide')
+    });
+
+    function convertToSlug(title) {
+        var slug;
+        //Đổi chữ hoa thành chữ thường
+        slug = title.toLowerCase();
+        //Đổi ký tự có dấu thành không dấu
+        slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+        slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+        slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+        slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+        slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+        slug = slug.replace(/đ/gi, 'd');
+        //Xóa các ký tự đặt biệt
+        slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\<|\'|\"|\:|\;|_/gi, '');
+        //Đổi khoảng trắng thành ký tự gạch ngang
+        slug = slug.replace(/ /gi, "-");
+        //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+        //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+        slug = slug.replace(/\-\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-/gi, '-');
+        //Xóa các ký tự gạch ngang ở đầu và cuối
+        slug = '@' + slug + '@';
+        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+        // trả về kết quả
+        return slug;
+    }
+
+    $('body').on('click','#show-modal-champ',function (e) {
+        e.preventDefault();
+        $('#modal-champ').modal('show').find('.modal-body').trigger('scroll');;
+    })
+    $('body').on('click','#show-modal-skin',function (e) {
+        e.preventDefault();
+        $('#modal-skin').modal('show').find('.modal-body').trigger('scroll');;
+    })
+    $('body').on('click','#show-modal-animal',function (e) {
+        e.preventDefault();
+        $('#modal-animal').modal('show').find('.modal-body').trigger('scroll');;
     })
 
+    $('.modal-lmht .modal-body').on('scroll',function () {
+        $('html body').trigger('scroll');
+    });
+
+    $(document).on('click','.js_copy_input',function (e) {
+        e.preventDefault();
+        let val = $(this).parent().find('input').val();
+        navigator.clipboard.writeText(val);
+    });
+
+    // Paginate Handle
+    function setDisplayLink (page, paginateTab) {
+        let firstPage = $(`.js-pagination-handle.${paginateTab} .page-item:first-child .page-link`).data('page');
+        let lastPage = $(`.js-pagination-handle.${paginateTab} .page-item:last-child .page-link`).data('page');
+
+        //Display none all page item
+        $(`.js-pagination-handle.${paginateTab} .page-item`).addClass('d-none');
+
+        if ( page > 2 ) {
+            $(`.js-pagination-handle.${paginateTab} .page-item-0`).removeClass('d-none');
+        }
+
+        if ( page > 3 ) {
+            $(`.js-pagination-handle.${paginateTab} .page-item.dot-first-paginate`).removeClass('d-none');
+        }
+
+        for ( let i = firstPage; i <= lastPage; i++ ) {
+            if ( i >= page - 2 && i <= page + 2 ) {
+                if ( i == page ) {
+                    $(`.js-pagination-handle.${paginateTab} .page-item`).removeClass('active');
+                    $(`.js-pagination-handle.${paginateTab} .page-item-${i}`).removeClass('d-none');
+                    $(`.js-pagination-handle.${paginateTab} .page-item-${i}`).addClass('active');
+                } else {
+                    $(`.js-pagination-handle.${paginateTab} .page-item-${i}`).removeClass('d-none');
+                }
+            }
+        }
+
+        if ( page < lastPage - 3 ) {
+            $(`.js-pagination-handle.${paginateTab} .page-item.dot-last-paginate`).removeClass('d-none');
+        }
+
+        if ( page < lastPage - 2 ) {
+            $(`.js-pagination-handle.${paginateTab} .page-item-${lastPage}`).removeClass('d-none');
+        }
+
+    }
+
+    $('.js-pagination-handle .page-item .page-link').on('click', function (e) {
+        e.preventDefault();
+        let pageSelected = $(this).data('page');
+        let paginateTab = $(this).closest('.js-pagination-handle').data('tab');
+        if ( pageSelected === undefined || pageSelected === null || pageSelected === "" ) {
+            return false;
+        }
+
+        setDisplayLink(pageSelected, paginateTab);
+    });
+
+    // Handle suggestion
+    $('.form-search-modal-input').on('input', function () {
+
+        let formBlock = $(this).closest('.form-search-modal');
+        let dataBlock = formBlock.data('tab');
+        let result_ul = $(formBlock).find('.suggest-list');
+
+        result_ul.empty();
+        result_ul.toggleClass('d-none', !$(this).val().trim());
+
+        let keyword = convertToSlug($(this).val());
+        Array.from($(`${dataBlock} .card-lmht`)).forEach(function (elm) {
+            let text = convertToSlug($(elm).find('.card-name').text().trim())
+            if (text.indexOf(keyword) > -1) {
+                let html = `<li class="suggest-item">${$(elm).find('.card-name').text().trim()}</li>`;
+                result_ul.append(html);
+            }
+        })
+    });
+
+    $('.suggest-list').on('click', '.suggest-item', function () {
+        let text = $(this).text();
+        $(this).parent().prev().val(text);
+        $(this).parent().next().trigger('click');
+    });
+
+    $('.form-search-modal').on('submit', function (e) {
+        e.preventDefault();
+        let modalBlock = $(this).closest('.modal-lmht');
+        let dataBlock = $(this).data('tab');
+        let keyword = convertToSlug($(this).find('.form-search-modal-input').val().trim());
+        let elm_result = $(modalBlock).find('.modal-lmht-search-results');
+        elm_result.empty();
+        $('.suggest-list').addClass('d-none')
+        Array.from($(`${dataBlock} .card-lmht`)).forEach(function (elm) {
+            let text = convertToSlug($(elm).find('.card-name').text().trim())
+            if (text && text.indexOf(keyword) > -1) {
+                let new_elm = $(elm).clone();
+                new_elm.find('img').attr('src', new_elm.find('img').attr('data-original'));
+                let elmBlock = jQuery("<div></div>", {class: "col-lg-2 col-6"});
+                elmBlock.append(new_elm);
+                elm_result.append(elmBlock);
+            }
+        });
+        elm_result.toggleClass('d-none', !keyword);
+        $(modalBlock).find('.modal-lmht-tabs-block').toggleClass('d-none', !!keyword);
+    });
 })

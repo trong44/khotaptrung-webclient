@@ -1,4 +1,7 @@
 @extends('theme_3.frontend.layouts.master')
+@section('seo_head')
+    @include('frontend.widget.__seo_head')
+@endsection
 @section('styles')
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/style_phu/breadcrumb.css">
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/style_phu/withdraw_money.css">
@@ -20,7 +23,7 @@
             <a href="/" style="display: block">
                 <img src="/assets/frontend/{{theme('')->theme_key}}/image/images_1/back.svg" alt="">
             </a>
-            <h3>Rút tiền ATM - Ví điện tử</h3>
+            <h1>Rút tiền ATM - Ví điện tử</h1>
         </section>
         <div class="row">
             {{--navbar--}}
@@ -427,7 +430,7 @@
                 <div class="modal-header rotation-modal-header">
                     <h5 class="modal-title">Gửi yêu cầu rút tiền thành công</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <img src="assets/{{env('THEME_VERSION')}}/image/images_1/close.png" alt="">
+                        <img src="assets/{{theme('')->theme_key}}/image/images_1/close.png" alt="">
                     </button>
                 </div>
                 <div class="modal-body">

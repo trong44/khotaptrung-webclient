@@ -1,17 +1,36 @@
 @extends('frontend.layouts.master')
 @section('seo_head')
-    @include('frontend.widget.__seo_head',with(['data'=>$data]))
+    @include('frontend.widget.__seo_head',with(['data'=>$data, 'data_seo_price' => $data_seo_price]))
 @endsection
 @section('meta_robots')
     <meta name="robots" content="index,follow" />
 @endsection
 @section('content')
 
+    @if($data == null)
+        <div class="item_buy">
+            <div class="container pt-3" style="padding-bottom: 600px">
+                <div class="row pb-3 pt-3">
+                    <div class="col-md-12 text-center">
+                        <span style="color: red;font-size: 16px;">
+                            @if(isset($message))
+                                {{ $message }}
+                            @else
+                                Hiện tại không có dữ liệu nào phù hợp với yêu cầu của bạn! Hệ thống cập nhật dịch vụ thường xuyên bạn vui lòng theo dõi web trong thời gian tới !
+                            @endif
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    @else
+
     <script src="/assets/frontend/{{theme('')->theme_key}}/rank/js/rslider.js"></script>
     <script src="/assets/frontend/{{theme('')->theme_key}}/rank/js/select-chosen.js" type="text/javascript"></script>
     <link href="/assets/frontend/{{theme('')->theme_key}}/rank/css/style.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="/assets/frontend/{{theme('')->theme_key}}/rank/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/assets/frontend/{{theme('')->theme_key}}/rank/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="/assets/frontend/{{theme('')->theme_key}}/rank/css/chosen.css">
     <style type="text/css">
         @media only screen and (max-width: 640px) {
@@ -70,9 +89,9 @@
             </div>
 
             {{--            Tính toán  --}}
-
-            <form method="POST" action="/dich-vu/{{ $data->id }}/purchase" accept-charset="UTF-8" class="purchaseForm" enctype="multipart/form-data">
-                @csrf
+            {{Form::open(array('url'=>'/dich-vu/'.$data->id.'/purchase','method'=>'post' ,'class'=>'purchaseForm','enctype'=>"multipart/form-data"))}}
+{{--            <form method="POST" action="/dich-vu/{{ $data->id }}/purchase" accept-charset="UTF-8" class="purchaseForm" enctype="multipart/form-data">--}}
+{{--                @csrf--}}
                 <div class="container detail-service fixcssacount">
                     <div class="row">
                         <div class="col-md-7" style="margin-bottom:20px;">
@@ -83,9 +102,9 @@
                                             <div class="news_image">
                                                 @if(isset($data->image))
 
-                                                    <img src="{{\App\Library\MediaHelpers::media($data->image)}}" alt="Bán vàng">
+                                                    <img src="{{\App\Library\MediaHelpers::media($data->image)}}" alt="{{ $data->title }}">
                                                 @else
-                                                    <img src="https://nick.vn/storage/images/nfjY80CaXR_1623228739.jpg" alt="Bán vàng">
+                                                    <img src="https://nick.vn/storage/images/nfjY80CaXR_1623228739.jpg" alt="{{ $data->title }}">
                                                 @endif
                                             </div>
                                         </div>
@@ -138,7 +157,7 @@
                                     <span class="mb-15 control-label bb">Nhập số tiền cần mua:</span>
                                     <div class="mb-15">
                                         <input autofocus="" value="{{old('input_pack',\App\Library\HelpersDecode::DecodeJson('input_pack_min',$data->params))}}" class="form-control t14 price " id="input_pack" type="text" placeholder="Số tiền">
-                                        <span style="font-size: 14px;">Số tiền thanh toán phải từ <b style="font-weight:bold;">{{number_format(\App\Library\HelpersDecode::DecodeJson('input_pack_min',$data->params))}}đ</b>  đến <b style="font-weight:bold;">{{number_format(\App\Library\HelpersDecode::DecodeJson('input_pack_max',$data->params))}}đ</b> </span>
+                                        <span style="font-size: 14px;">Số tiền thanh toán phải từ <b style="font-weight:bold;">{{ str_replace(',','.',number_format(\App\Library\HelpersDecode::DecodeJson('input_pack_min',$data->params))) }}đ</b>  đến <b style="font-weight:bold;">{{ str_replace(',','.',number_format(\App\Library\HelpersDecode::DecodeJson('input_pack_max',$data->params))) }}đ</b> </span>
                                     </div>
                                     <span class="mb-15 control-label bb">Hệ số:</span>
                                     <div class="mb-15">
@@ -315,12 +334,6 @@
                     @endif
                 </div>
 
-{{--                <div class="modal fade" id="homealert" role="dialog" style="display: none;" aria-hidden="true">--}}
-{{--                    <div class="modal-dialog" role="document">--}}
-{{--                        <div class="modal-content modal-content__data">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
                 <div class="modal fade" id="homealert" role="dialog" style="display: none;" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="loader" style="text-align: center"><img src="/assets/frontend/images/loader.gif" style="width: 50px;height: 50px;display: none"></div>
@@ -400,15 +413,12 @@
                             <input type="hidden" name="index" value="{{ $index }}">
                             <div class="modal-footer modal-footer__data">
                                 <div>
-                                    @if(Auth::check())
-
+                                    @if(\App\Library\AuthCustom::check())
                                         <button type="submit" class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold loading" id="d3" style="" >Xác nhận thanh toán</button>
                                     @else
                                         <a class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold" href="/login?return_url=/dich-vu/{{ $data->slug }}">Đăng nhập</a>
                                     @endif
                                 </div>
-
-
 
                                 <button type="button" class="btn c-theme-btn c-btn-border-2x c-btn-square c-btn-bold c-btn-uppercase" data-dismiss="modal">Đóng</button>
 
@@ -417,60 +427,20 @@
                         </div>
                     </div>
                 </div>
-            </form>
-
+{{--            </form>--}}
+            {{ Form::close() }}
             {{--            Nội dung   --}}
 
             <div class="container fixcssacount">
                 <div class="job-wide-devider">
                     {{--                    Bot   --}}
-                    @if(isset($data_bot))
-                        <div class="row">
-                            <div class="col-lg-12 column">
-                                <div class="job-details">
-                                    <h2 style="margin-bottom: 23px;font-size: 20px;font-weight: bold;text-transform: uppercase;float: left">Vị trí <span style="font-size:14px;margin-top: 8px;margin-left:5px;font-weight:bold;">(MẶC ĐỊNH Ở VÁCH NÚI KAKAROT KHU 39)</span></h2>
-                                    <div class="table-bot m_datatable m-datatable m-datatable--default m-datatable--loaded">
-                                        <table class="table table-bordered m-table m-table--border-brand m-table--head-bg-brand">
-                                            <thead class="m-datatable__head">
-                                            <tr class="m-datatable__row">
-                                                <th style="" class="m-datatable__cell">
-                                                    Server
-                                                </th>
-                                                <th class="m-datatable__cell">
-                                                    Nhân vật
-                                                </th>
-                                                <th style="" class="m-datatable__cell">
-                                                    Khu vực
-                                                </th>
-                                                <th style="" class="m-datatable__cell">
-                                                    Trạng thái
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody class="m-datatable__body-bot">
-                                            @foreach($data_bot as $key=> $bot)
-                                                <tr>
-                                                    <td>{{ $key + 1 }}</td>
-                                                    <td>{{ $bot->uname }}</td>
 
-                                                    <td>{{ $bot->zone }}</td>
-                                                    <td>
-                                                        @if($bot->active == 'on')
-                                                        <span style="color:#2fa70f;font-weight: bold">[ONLINE]</span>
-                                                        @else
-                                                            <span style="color:#212529;font-weight: bold">[OFFLINE]</span>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                    <div class="row marginauto">
+                        <div class="col-md-12 left-right data-bot">
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    @endif
+                    </div>
+
                     {{--MO tả --}}
 
                     <div class="row">
@@ -500,21 +470,38 @@
 
         <!-- END: PAGE CONTENT -->
     </div>
+    @if(isset($data->note))
+        <div class="modal fade in" id="notiseviceModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="font-weight: bold;text-transform: uppercase;color: #FF0000;text-align: center">Thông báo</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="font-family: helvetica, arial, sans-serif;">
+                        {!! $data->note !!}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn c-theme-btn c-btn-border-2x c-btn-square c-btn-bold c-btn-uppercase" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
 
+            $(document).ready(function(){
+                $('#notiseviceModal').modal('show');
+            })
 
+        </script>
+    @endif
     <input type="hidden" name="slug" id="slug" value="{{ $slug }}" />
     <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/css/service.css">
-    <script src="/assets/frontend/{{theme('')->theme_key}}/js/service/showdetailservice.js"></script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/service/showdetailservice.js?v={{time()}}"></script>
 
     <script>
-
-        // $(document).ready(function () {
-        //     $('#btnPurchase').click(function () {
-        //
-        //         $('#homealert').modal('show');
-        //     });
-        // });
-
 
         function Confirm(index, serverid) {
             $('[name="server"]').val(serverid);
@@ -600,7 +587,7 @@
         function UpdatePrice() {
             var price = 0;
             var itemselect = '';
-            console.log(data)
+
             if (data.server_mode == 1 && data.server_price == 1) {
                 var s_price = data["price" + server];
             }
@@ -725,10 +712,7 @@
         $('#txtPrice').html('Tổng: 0 ' + purchase_name);
 
         function UpdatePrice() {
-
             var container = $('.m-datatable__body').html('');
-
-
             if (data.server_mode == 1 && data.server_price == 1) {
 
                 var s_price = data["price" + server];
@@ -768,7 +752,7 @@
 
         function UpdateTotal() {
             var price = parseInt($('#input_pack').val().replace(/,/g, ''));
-
+            let purchase_name = data.filter_name;
             if (typeof price != 'number' || price < min || price > max) {
                 $('button[type="submit"]').addClass('not-allow');
 
@@ -784,32 +768,39 @@
 
 
             if (data.server_mode == 1 && data.server_price == 1) {
-
                 var s_price = data["price" + server];
                 var s_discount = data["discount" + server];
-            }
-            else {
-                var s_price = data["price"];
-                var s_discount = data["discount"];
-            }
-            for (var i = 0; i < s_price.length; i++) {
 
-                if (price >= s_price[i] && s_price[i] != null) {
-                    current = s_price[i];
-                    index = i;
-                    discount = s_discount[i];
-                    total = price * s_discount[i];
+                for (var i = 0; i < s_price.length; i++) {
 
+                    if (price >= s_price[i] && s_price[i] != null) {
+                        current = s_price[i];
+                        index = i;
+                        discount = s_discount[i];
+                        total = price * s_discount[i];
+
+                    }
                 }
             }
-            $('[name="value"]').val('');
+            else {
+                let s_discount = data["discount"];
+                data.price.forEach((price_mark,idx) => {
+                    if (price >= price_mark){
+                        discount = s_discount[idx];
+                    }
+                })
+                total = price * discount;
+            }
+
             $('[name="value"]').val(price);
-            total = parseInt(total / 1000 * data.input_pack_rate);
-            console.log(discount)
+            if(isNaN(total)) {
+                total = 0;
+            }
+            total = total / 1000 * data.input_pack_rate;
+
             $('#txtDiscount').val(discount);
             total = total.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
             total = total.split('').reverse().join('').replace(/^[\.]/,'');
-            $('#txtPrice').html('');
             $('#txtPrice').html('Tổng: ' + total + " " + purchase_name);
             $('#txtPrice').removeClass().addClass('bounceIn animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                 $(this).removeClass();
@@ -832,5 +823,8 @@
         }
     </script>
     @endif
+
+    @endif
+
 @endsection
 

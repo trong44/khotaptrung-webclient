@@ -2,11 +2,44 @@ $(document).ready(function(){
 
     const media = "http://cdn.upanh.info/";
 
+    var slug = $('#slug').val();
 
+    getShowBot(slug)
+
+    function getShowBot(slug){
+
+        request = $.ajax({
+            type: 'GET',
+            url: '/show-bot',
+            data: {
+                slug:slug
+            },
+            beforeSend: function (xhr) {
+
+            },
+            success: (response) => {
+
+                if (response.status == 1){
+                    $('.data-bot').html('');
+                    $('.data-bot').html(response.data);
+                }
+            },
+            error: function (data) {
+
+            },
+            complete: function (data) {
+
+            }
+        });
+    }
 
 
     $('body').on('click','#btnPurchase',function(e){
         e.preventDefault();
+        if (!auth_check) {
+            location.href = '/login?return_url=' + window.location.href;
+            return
+        }
         var selected = $('[name="selected"]').val();
 
         if (selected == null || selected == '' || selected == undefined){
@@ -25,9 +58,9 @@ $(document).ready(function(){
         $('.loading-data__thanhtoan').html('');
         $('.loading-data__thanhtoan').html(htmlloading);
 
-        const jwt =  $('meta[name="jwt').attr('content');
+
         var slug = $('.slug_category').val();
-        if (jwt == null || jwt == '' || jwt == undefined || jwt == 'jwt'){
+        if (!auth_check){
             var html = '';
             html += '<a class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold" href="/login?return_url=/dich-vu/' + slug + '">Đăng nhập</a>';
             html += '<button type="button" class="btn c-theme-btn c-btn-border-2x c-btn-square c-btn-bold c-btn-uppercase" data-dismiss="modal">Đóng</button>';
@@ -36,7 +69,7 @@ $(document).ready(function(){
         }else {
 
             var html = '';
-            html += '<button type="submit" class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold" id="d3" style="" >Xác nhận thanh toán</button>';
+            html += '<button type="submit" class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold" id="d3" style="" >Xác nhận thanh toán<div class="row justify-content-center loading-data__buydichvu"></div></button>';
             html += '<button type="button" class="btn c-theme-btn c-btn-border-2x c-btn-square c-btn-bold c-btn-uppercase" data-dismiss="modal">Đóng</button>';
             $('.modal-footer__data').html('');
             $('.modal-footer__data').html(html);
@@ -87,7 +120,7 @@ $(document).ready(function(){
         }else {
 
             var html = '';
-            html += '<button type="submit" class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold" id="d3" style="" >Xác nhận thanh toán</button>';
+            html += '<button type="submit" class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold" id="d3" style="" >Xác nhận thanh toán<div class="row justify-content-center loading-data__buydichvu"></div></button>';
             html += '<button type="button" class="btn c-theme-btn c-btn-border-2x c-btn-square c-btn-bold c-btn-uppercase" data-dismiss="modal">Đóng</button>';
             $('.modal-footer__data').html('');
             $('.modal-footer__data').html(html);
@@ -104,20 +137,7 @@ $(document).ready(function(){
         // getModalService(price)
     })
 
-    // $('body').on('click','.pay',function(e){
-    //     e.preventDefault();
-    //
-    //     var price = $('[name="value"]').val();
-    //     var htmlloading = '';
-    //     htmlloading += '<div class="loading"></div>';
-    //     $('.loading-data__pay').html('');
-    //     $('.loading-data__pay').html(htmlloading);
-    //
-    //
-    //
-    //     $('#homealert').modal('show');
-    //     // getModalService(price)
-    // })
+
     function getModalService(price) {
         let slug = $('#slug').val();
 
@@ -237,18 +257,18 @@ $(document).ready(function(){
 
         $('.loading-data__buydichvu').html('');
         $('.loading-data__buydichvu').html(htmlloading);
-        // $('.loading-data__muangay').html('');
-        // $('.loading-data__muangay').html(htmlloading);
 
         var formSubmit = $(this);
         var url = formSubmit.attr('action');
         var btnSubmit = formSubmit.find(':submit');
         btnSubmit.prop('disabled', true);
-
         $.ajax({
             type: "POST",
             url: url,
-            data: formSubmit.serialize(), // serializes the form's elements.
+            data:  new FormData(this),
+            contentType: false,
+            cache: false,
+            processData:false,
             beforeSend: function (xhr) {
 
             },
@@ -274,8 +294,7 @@ $(document).ready(function(){
                         })
                 }
                 else if (response.status == 2){
-                    // $('.loadModal__acount').modal('hide');
-                    // $('#homealert').modal('hide');
+
                     var html = '';
                     html += '<div class="col-md-12 text-center"><span style="font-size: 12px;color: red">' + response.message + '</span></div>';
 

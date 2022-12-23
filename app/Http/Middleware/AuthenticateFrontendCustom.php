@@ -23,17 +23,7 @@ class AuthenticateFrontendCustom
 //        session()->has('auth_custom');
         $jwt = Session::get('jwt');
         if(empty($jwt)){
-            Session::forget('return_url');
-            Session::put('return_url', $_SERVER['REQUEST_URI']);
-//            if($request->ajax()){
-//                return response()->json([
-//                    'status' => 401,
-//                    'message'=>"unauthencation"
-//                ]);
-//            }
-//            else{
-//                return redirect('login');
-//            }
+            session()->put('url.intended',url()->current());
             return redirect('login');
         }
         return $next($request);

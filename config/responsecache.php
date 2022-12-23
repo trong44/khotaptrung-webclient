@@ -48,7 +48,7 @@ return [
      */
     'replacers' => [
         \Spatie\ResponseCache\Replacers\CsrfTokenReplacer::class,
-        \App\Library\JwtTokenReplacer::class,
+//        \App\Library\JwtTokenReplacer::class,
     ],
 
     /*

@@ -1,0 +1,494 @@
+#loginModal .modal-dialog {
+    width: 766px;
+}
+
+#loginModal .modal-content {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    border: none;
+}
+
+.modal-login-container {
+    background-color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 465px;
+    border-radius: 12px;
+}
+
+.modal-login-container.right-panel-active .sign-in-container {
+    transform: translateX(75%);
+}
+
+.modal-login-container.right-panel-active .sign-up-container {
+    transform: translateX(75%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+    0%, 49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.modal-login-form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-up-container {
+    left: 0;
+    width: 57%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.close-login-modal {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+}
+
+.sign-in-container {
+    left: 0;
+    width: 57%;
+    z-index: 2;
+}
+
+.modal-login-form {
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 65px;
+    height: 100%;
+    text-align: center;
+}
+
+.modal-login-form p {
+    color: #1B1D29;;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 0.5rem;
+}
+
+.social-container {
+    margin-top: 1.5rem;
+}
+
+.social-container a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    height: 40px;
+    width: 40px;
+}
+
+.social-container a img {
+    width: 100%;
+}
+
+.modal-login-form span {
+    color: #A7ABC3;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 1.5rem;
+}
+
+#loginModal .modal-content .modal-login-container input{
+    color: #1B1D29 !important;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-top: 12px;
+}
+
+#loginModal .modal-content .modal-login-container input.input-error {
+    border: 1px solid #DA4343 !important;
+}
+
+#loginModal .modal-content .modal-login-container input::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.password-input-container {
+    width: 100%;
+    position: relative;
+}
+
+.password-input-container img {
+    position: absolute;
+    right: 8px;
+    top: 40%;
+    cursor: pointer;
+}
+
+.modal-login-forget-password {
+    display: block;
+    width: 100%;
+    color: #DD6A00;
+    margin: 12px 0 8px 0;
+    text-align: right;
+    font-weight: 400;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.modal-login-forget-password:hover {
+    color: #DD6A00;
+    text-decoration: none;
+}
+
+.modal-login-form button {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background-color: #f25922;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 12px 0;
+    margin-top: 1rem;
+}
+
+.modal-login-form button:hover {
+    background-color: #DD6A00;
+}
+
+.modal-login-form button:active {
+    background-color: #C55E00;
+}
+
+/* Overlay */
+.modal-login-container.right-panel-active .modal-login-overlay-container {
+    transform: translateX(-133%);
+}
+
+.modal-login-container.right-panel-active .modal-login-overlay {
+    transform: translateX(50%);
+}
+
+.modal-login-container.right-panel-active .modal-login-overlay-left {
+    transform: translateX(0);
+}
+
+.modal-login-container.right-panel-active .modal-login-overlay-right {
+    transform: translateX(0);
+}
+
+.modal-login-overlay-container {
+    position: absolute;
+    top: 0;
+    left: 57%;
+    width: 43%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.modal-login-overlay {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: #FFFFFF;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.modal-login-overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 24px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.modal-login-overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.modal-login-overlay-panel p.modal-login-suggestion {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.modal-login-overlay-panel p {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 1.5rem;
+}
+
+.modal-login-overlay-panel button {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #FFFFFF;
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: transparent;
+    padding: 11px 0;
+}
+
+.modal-login-form p.modal-login-error {
+    color: #DA4343;
+    font-weight: 400;
+    font-size: 12px;
+    width: 100%;
+    text-align: left;
+    margin: 4px 0 0 0;
+}
+
+/* Loader Modal Style
+.modal-loader-container {
+	display: none;
+	align-items: center;
+  	justify-content: center;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #00000080;
+    z-index: 4000;
+}
+
+.modal-loader-content {
+   border: none;
+   background-color: transparent;
+   text-align: center;
+}
+
+.modal-loader-spin {
+  display: block;
+  border: 7px solid #737373;
+  border-left-color: #FFF;
+  border-radius: 100%;
+  width: 67px;
+  height: 67px;
+  margin: 25px auto;
+  animation: spin 1.25s linear infinite;
+}
+
+.otp-input-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+#loginModal .modal-content .modal-login-container .otp-input-container input {
+    width: 67%;
+    margin-top: 0;
+}
+
+.modal-login-form .otp-input-container button {
+    width: 30%;
+    display: block;
+    margin-top: 0;
+    padding: 8px 0;
+}
+
+.otpNotify b {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+@keyframes spin {
+   to{transform: rotate(360deg);}
+} */
+
+.mobile-auth {
+    display: none;
+}
+
+
+
+@media only screen  and (max-width: 1200px) {
+    .nav-bar-info-pstar-login{
+        display: none!important;
+    }
+    /* CSS of Login/Register in Mobile Start Here */
+    .mobile-auth {
+      display: block;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #FFFFFF;
+      transform: translateX(100vw);
+      transition: all .2s ease-in-out;
+      z-index: 999;
+    }
+
+    .mobile-auth.mobile-auth-show {
+        transform: translateX(0);
+    }
+
+    .mobile-auth-header {
+      position: relative;
+      text-align: center;
+      background: #2A2A2A;
+      padding: 1rem 0;
+    }
+
+    .mobile-auth-header img {
+      position: absolute;
+      width: 24px;
+      height: auto;
+      left: 1rem;
+      top: 1rem;
+    }
+
+    .mobile-auth-header p {
+      color: #F3F3F3;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+
+    .mobile-auth-nav {
+      display: flex;
+    }
+
+    .auth-nav-option {
+      flex-basis: 50%;
+      text-align: center;
+      font-weight: 600;
+      font-size: 16px;
+      color: #434657;
+      padding: 12px 0 10px 0;
+      box-shadow: inset 0px -1px 0px #BCBFD6;
+      transition: all 0.2s ease-in;
+    }
+
+    .auth-nav-option.auth-nav-option-active {
+      color: #f25922;
+      box-shadow: inset 0px -2px 0px #f25922;
+    }
+
+    .mobile-auth-form {
+
+    }
+
+    .modal-login-form {
+        padding: 1rem 1rem 0 1rem;
+    }
+
+    .modal-login-form p {
+        color: #A7ABC3;
+        font-weight: 400;
+        font-size: 14px;
+        margin-top: 1.5rem;
+    }
+
+    .social-container {
+        margin: 1rem 0 0 0;
+    }
+
+    .modal-login-form span {
+        color: #DBDBDB;
+    }
+
+    .mobile-auth-form .modal-login-form input {
+        color: #1B1D29 !important;
+        width: 100%;
+        background: #FBFBFD;
+        padding: 10px 12px;
+        border: 1px solid #DCDEE9;
+        border-radius: 8px;
+        margin-top: 12px;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .mobile-auth-form .modal-login-form input.input-error {
+        border: 1px solid #DA4343;
+    }
+
+    .mobile-auth-form .modal-login-form input::placeholder {
+        font-weight: 400;
+        font-size: 14px;
+        color: #A7ABC3;
+    }
+
+    .mobile-auth-form .modal-login-form input:focus {
+        outline: none ;
+        border: 1px solid #FDE4CC;
+        background-color: #F3F3F7;
+    }
+
+    .modal-login-forget-password {
+        margin: 12px 0 4px 0;
+    }
+
+    .modal-login-form button {
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    .mobile-auth-change-form {
+        margin-top: 1.5rem;
+        color: #434657;
+        font-weight: 400;
+        font-size: 12px;
+        margin-bottom: 0;
+    }
+
+    .mobile-auth-change-form span {
+        color: #f25922;
+        font-size: 12px;
+    }
+
+    .modal-login-form .otp-input-container button {
+        padding: 11px 0;
+    }
+
+    .mobile-auth-form .modal-login-form .otp-input-container input {
+        width: 67%;
+        margin-top: 0;
+    }
+
+    .modal-login-form .otp-input-container button {
+        padding: 11px 0;
+    }
+
+    .mobile-auth-form .modal-login-form .otp-input-container input {
+        width: 67%;
+        margin-top: 0;
+    }
+
+    /* CSS of Login/Register in Mobile End Here */
+
+}

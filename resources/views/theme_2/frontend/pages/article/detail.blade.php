@@ -13,12 +13,20 @@
     </script>
 @endpush
 @section('content')
+
+    @if(isset($data->params) && isset($data->params->article_type))
+        {!! $data->params->article_type !!}
+    @endif
+
     <div class="site-content-body alt first pt-0 pb-0 d-flex justify-content-between align-items-center">
         <ul class="nav nav-line">
             <li class="nav-item">
-                <a href="/tin-tuc" class="nav-link">Tin tức chung</a>
+                @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                <a href="{{ setting('sys_zip_shop') }}" class="nav-link">Tin tức chung</a>
+                @else
+                    <a href="/tin-tuc" class="nav-link">Tin tức chung</a>
+                @endif
             </li>
-
             @include('frontend.widget.__menu__article')
         </ul>
         <div>
@@ -32,8 +40,20 @@
     <div class="site-content-body bg-white last">
         <nav class="site-breadcrumb mb-3">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="/tin-tuc">Tin tức</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="/tin-tuc/{{ $data->groups[0]->slug }}">{{ $data->groups[0]->title }}</a></li>
+                <li class="breadcrumb-item">
+                    @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                    <a href="{{ setting('sys_zip_shop') }}">Blog</a>
+                    @else
+                        <a href="/tin-tuc">Tin tức</a>
+                    @endif
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                    <a href="{{ setting('sys_zip_shop') }}/{{ $data->groups[0]->slug }}">{{ $data->groups[0]->title }}</a>
+                    @else
+                        <a href="/tin-tuc/{{ $data->groups[0]->slug }}">{{ $data->groups[0]->title }}</a>
+                    @endif
+                </li>
             </ol>
         </nav>
         <div class="row">
@@ -41,7 +61,7 @@
                 <div class="article-single mb-4">
                     <div class="article-thumb mb-4">
                         <div class="media-placeholder ratio-2-1 rounded">
-                            <div class="bg rounded" style="background-image: url({{$data->image }});"></div>
+                            <div class="bg rounded" style="background-image: url({{\App\Library\MediaHelpers::media($data->image)}});"></div>
                             <div class="media-inner aling-items-end">
                                 <div class="align-items-end h-100 text-white">
                                     <div class="align-items-bottom">
@@ -67,6 +87,7 @@
                         {{--                            </ul>--}}
                         {{--                        </div>--}}
                         <div class="article-content flex-grow-1 news_detail_content">
+
                             {!! $data->content !!}
 
                         </div>
@@ -92,6 +113,7 @@
             $('.active{{ $data->groups[0]->slug }}').addClass('active');
         })
     </script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/article/article-detail.js?v={{time()}}"></script>
 @endsection
 
 

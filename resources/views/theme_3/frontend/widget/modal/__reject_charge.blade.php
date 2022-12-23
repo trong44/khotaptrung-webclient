@@ -22,16 +22,16 @@
                 </div>
                 <div class="row marginauto modal-body-span-success-ct justify-content-center">
                     <div class="col-md-12 left-right text-center">
-                        <span style="font-size: 14px">Đã xảy ra lỗi trong quá trình nạp thẻ, vui lòng liên hệ fanpage để được hỗ trợ.</span>
+                        <span style="font-size: 14px" id="reject_charge"></span>
                     </div>
 
                 </div>
                 <div class="row marginauto justify-content-center modal-footer-success-ct">
 
-                    <div class="col-md-12 col-6 modal-footer-success-col-right-ct">
+                    <div class="col-md-12 col-12 modal-footer-success-col-right-ct">
                         <div class="row marginauto modal-footer-success-row-ct">
                             <div class="col-md-12 left-right">
-                                <a href="/" class="button-bg-ct" style="display: flex;justify-content: center"><span>Đi tới fanpage</span></a>
+                                <a href="#" class="button-bg-ct" data-dismiss="modal" aria-label="Close"  style="display: flex;justify-content: center"><span>Đóng</span></a>
                             </div>
                         </div>
                     </div>

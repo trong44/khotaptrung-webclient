@@ -19,9 +19,9 @@
 
                                 @endif
                                 @if(isset($item->image))
-                                    <img class="game-list-image-in lazy" src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="">
+                                    <img class="game-list-image-in lazy" data-original="{{\App\Library\MediaHelpers::media($item->image)}}" alt="">
                                 @else
-                                    <img class="game-list-image-in lazy" src="/assets/frontend/{{theme('')->theme_key}}/images/ff.jpg" alt="">
+                                    <img class="game-list-image-in lazy" data-original="/assets/frontend/{{theme('')->theme_key}}/images/ff.jpg" alt="">
                                 @endif
 {{--                                                                                Anh chinh--}}
 
@@ -34,12 +34,12 @@
                         </div>
                         <div class="game-list-description">
                             <div class="countime"></div>
-                            <p>Đã quay: {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}} </p>
+                            <p>Đã quay:  {{isset($item->params->fake_num_play)?($item->params->fake_num_play+$item->order_gate_count):$item->order_gate_count}} </p>
 
                             <div class="row marginauto price-minigame">
                                 <div class="col-md-12 left-right">
                                     @if(isset($item->params->percent_sale))
-                                    <span class="oldPrice">{{ str_replace(',','.',number_format(($item->params->percent_sale*$item->price)/100 + $item->price)) }} đ</span>
+                                    <span class="oldPrice">{{ str_replace(',','.',number_format($item->price/((100 - $item->params->percent_sale)/100))) }} đ</span>
                                     @else
                                     @endif
                                     <span class="newPrice">{{ str_replace(',','.',number_format($item->price)) }} đ</span>
@@ -53,7 +53,20 @@
                                     @if(isset($item->params->image_view_all))
                                         <img src="{{\App\Library\MediaHelpers::media($item->params->image_view_all)}}" alt="" class="lazy">
                                     @else
-                                        <img src="/assets/frontend/{{theme('')->theme_key}}/images/muangay.jpg" alt="">
+                                        @if(isset(theme('')->theme_config->sys_button_home))
+                                            @if(theme('')->theme_config->sys_button_home == 'sys_button_home_text')
+                                                <div class="col-xs-12 w-75 m-auto">
+                                                    <div class="btn-view-more mt-3">
+                                                        Xem tất cả
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <img src="/assets/frontend/{{theme('')->theme_key}}/images/muangay.jpg" alt="">
+
+                                            @endif
+                                        @else
+                                            <img src="/assets/frontend/{{theme('')->theme_key}}/images/muangay.jpg" alt="">
+                                        @endif
                                     @endif
                                 </a>
                             </div>

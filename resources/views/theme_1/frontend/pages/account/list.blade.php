@@ -3,10 +3,10 @@
     @include('frontend.widget.__seo_head',with(['data'=>$data]))
 @endsection
 @section('meta_robots')
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content="index,follow"/>
 @endsection
 @section('content')
-
+    <link rel="stylesheet" href="/assets/frontend/{{theme('')->theme_key}}/lib/select2/select2.min.css">
     @if($data == null)
         <div class="item_buy">
 
@@ -17,7 +17,8 @@
                             @if(isset($message))
                                 {{ $message }}
                             @else
-                                Hiện tại không có dữ liệu nào phù hợp với yêu cầu của bạn! Hệ thống cập nhật nick thường xuyên bạn vui lòng theo dõi web trong thời gian tới !
+                                Hiện tại không có dữ liệu nào phù hợp với yêu cầu của bạn! Hệ thống cập nhật nick thường
+                                xuyên bạn vui lòng theo dõi web trong thời gian tới !
                             @endif
                         </span>
                     </div>
@@ -28,18 +29,23 @@
         </div>
     @else
 
-
         <div class="item_buy">
             <div class="news_breadcrumbs">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10 col-md-12">
                             <ul class="news_breadcrumbs_theme news_breadcrumbs_theme__show">
-                                <li><a href="/" class="news_breadcrumbs_theme_trangchu news_breadcrumbs_theme_trangchu_a">Trang chủ</a></li>
+                                <li><a href="/"
+                                       class="news_breadcrumbs_theme_trangchu news_breadcrumbs_theme_trangchu_a">Trang
+                                        chủ</a></li>
                                 <li>/</li>
-                                <li><a href="/mua-acc" class="news_breadcrumbs_theme_tintuc_a"><p class="news_breadcrumbs_theme_tintuc">Mua Acc</p></a></li>
+                                <li><a href="/mua-acc" class="news_breadcrumbs_theme_tintuc_a"><p
+                                            class="news_breadcrumbs_theme_tintuc">Mua Acc</p></a></li>
                                 <li>/</li>
-                                <li class="news_breadcrumbs_theme__li"><a href="javascript:void(0)" class="news_breadcrumbs_theme_title_a"><p class="news_breadcrumbs_theme_title">{{ isset($data->custom->title) ? $data->custom->title :  $data->title }}</p></a></li>
+                                <li class="news_breadcrumbs_theme__li"><a href="javascript:void(0)"
+                                                                          class="news_breadcrumbs_theme_title_a"><p
+                                            class="news_breadcrumbs_theme_title">{{ isset($data->custom->title) ? $data->custom->title :  $data->title }}</p>
+                                    </a></li>
                             </ul>
                         </div>
                     </div>
@@ -49,23 +55,19 @@
             <div class="container pt-3">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="alert alert-info box-text hidetext" role="alert">
-                            <h1 class="alert-heading h1_category" style="color:#000">{{ isset($data->custom->title) ? $data->custom->title :  $data->title }}</h1>
-                            @if($data->custom->description)
-                                {!!  $data->custom->description !!}
-                            @else
-                                @if(isset($data->description))
-                                    {!!  $data->description !!}
-                                @else
+                        <div class="alert alert-info box-text hidetext fix-image-acount" role="alert">
 
-                                @endif
-                            @endif
-                            <br>
+                            <h1 class="alert-heading h1_category"
+                                style="color:#000">{{ isset($data->custom->title) ? $data->custom->title :  $data->title }}</h1>
                             @if($data->custom->content)
-                                {!!  $data->custom->content !!}
+                                    <div class="accounts_detail_content">
+                                        {!!  $data->custom->content !!}
+                                    </div>
                             @else
                                 @if(isset($data->content))
-                                    {!!  $data->content !!}
+                                    <div class="accounts_detail_content">
+                                        {!!  $data->content !!}
+                                    </div>
                                 @else
 
                                 @endif
@@ -87,16 +89,17 @@
                 </div>
 
                 <div class="item_buy_filter">
-                    <label for="item_buy_filter_input" class="item_buy_filter_in btn btn-success" style="cursor: pointer;">
+                    <label for="item_buy_filter_input" class="item_buy_filter_in btn btn-success"
+                           style="cursor: pointer;">
                         <i class="fas fa-filter"></i> Tìm kiếm
                     </label>
-                    <input type="checkbox" hidden class="item_buy_filter_input" id="item_buy_filter_input" >
+                    <input type="checkbox" hidden class="item_buy_filter_input" id="item_buy_filter_input">
                     <label for="item_buy_filter_input" class="item_buy_filter_overlay">
 
                     </label>
                     <div class="item_buy_form-mobile">
                         <div class="item_buy_form-mobile_title">
-                            <label for="item_buy_filter_input" class="item_buy_form-mobile_close" >
+                            <label for="item_buy_filter_input" class="item_buy_form-mobile_close">
                                 <i class="fas fa-times"></i>
                             </label>
                             <p>Tìm kiếm</p>
@@ -125,7 +128,7 @@
                 </div>
 
 
-                <input type="hidden" name="hidden_page" id="hidden_page_service" value="1" />
+                <input type="hidden" name="hidden_page" id="hidden_page_service" value="1"/>
 
             </div>
         </div>
@@ -140,17 +143,80 @@
         <input type="hidden" name="status_data" class="status_data" value="">
         <input type="hidden" name="sort_by_data" class="sort_by_data" value="">
 
-        <div class="modal fade modal__buyacount loadModal__acount" id="LoadModal" role="dialog" style="display: none;" aria-hidden="true">
+        <input type="hidden" name="server_data" class="server_data" value="">
+
+        {{--        Lm auto  --}}
+
+        <input type="hidden" name="champions_data" class="champions_data" value="">
+        <input type="hidden" name="skill_data" class="skill_data" value="">
+        <input type="hidden" name="tftcompanions_data" class="tftcompanions_data" value="">
+        <input type="hidden" name="tftdamageskins_data" class="tftdamageskins_data" value="">
+        <input type="hidden" name="tftmapskins_data" class="tftmapskins_data" value="">
+
+        <div class="modal fade modal__account modal__buyacount loadModal__acount" id="LoadModal" role="dialog" style="display: none;"
+             aria-hidden="true">
             <div class="modal-dialog modal-dialog__account" role="document">
-                <div class="loader" style="text-align: center"><img src="/assets/frontend/{{theme('')->theme_key}}/images/loader.gif" style="width: 50px;height: 50px;display: none"></div>
+                <div class="loader" style="text-align: center"><img
+                        src="/assets/frontend/{{theme('')->theme_key}}/images/loader.gif"
+                        style="width: 50px;height: 50px;display: none"></div>
                 <div class="modal-content modal-content_accountlist data__form__random">
 
                 </div>
             </div>
         </div>
+
+        <div class="modal fade modal__account" role="dialog" id="successModal" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog__account" role="document">
+                <div class="modal-content modal-content_accountlist">
+
+                    <div class="modal-header">
+                        <span class="nick-modal-header">Thanh toán thành công</span>
+                        <img data-dismiss="modal" class="nick-modal-header-close" src="/assets/frontend/{{theme('')->theme_key}}/image/son/close.svg" alt="">
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="modal-account-success-image d-flex justify-content-center w-100">
+                            <img src="/assets/frontend/{{theme('')->theme_key}}/image/son/group.png" alt="">
+                        </div>
+                        <div class="input-group nick-success-input-group" style="width: 100%">
+                            <label>ID tài khoản</label>
+                            <input id="nickIdInput" type="text" class="form-control" style="width:100%" readonly>
+                        </div>
+                        <div class="nick-notify-success-block">
+                            <p>Nick của bạn được sẽ gửi tới trang Lịch sử mua Nick, vui lòng kiểm tra và đăng nhập vào Game, thay đổi mật khẩu để bảo mật cho tài khoản đã mua</p>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-center w-100">
+                            <a class="btn-nick btn-secondary" href="/">Trang chủ</a>
+                            <a class="btn-nick btn-primary" href="/lich-su-mua-account">Lịch sử</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+{{--        @if($data->display_type == 2)--}}
+{{--                    <script src="/assets/frontend/{{theme('')->theme_key}}/js/js_trong/modal-charge.js?v={{time()}}"></script>--}}
+{{--                    <script src="/assets/frontend/{{theme('')->theme_key}}/js/transfer/transfer.js?v={{time()}}"></script>--}}
+{{--            <script src="/js/{{theme('')->theme_key}}/account/list_1.js"></script>--}}
+{{--        @endif--}}
         <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/buyaccrandom.js?v={{time()}}"></script>
         <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/account-list.js?v={{time()}}"></script>
+        <script src="/assets/frontend/{{theme('')->theme_key}}/js/account/account-list-text.js?v={{time()}}"></script>
+        <script src="/assets/frontend/{{theme('')->theme_key}}/lib/select2/select2.min.js"></script>
+{{--        <script src="/js/{{theme('')->theme_key}}/account/list_2.js"></script>--}}
     @endif
-
+    <script>
+        // config select 2
+        let $select_2 = $('.select-2-custom');
+        $select_2.select2({
+            placeholder: '--Không chọn--',
+            allowClear: true,
+            tags: false,
+        });
+    </script>
 @endsection
 

@@ -26,11 +26,11 @@ $(document).ready(function(){
                     return;
                 }
                 if(data.status === "ERROR"){
-                    alert('Lỗi dữ liệu, vui lòng load lại trang để tải lại dữ liệu')
+                    console.log('Lỗi dữ liệu, vui lòng load lại trang để tải lại dữ liệu')
                 }
                 if(data.status == true){
                     $('#info_id').html('<span>'+data.info.id+'</span>')
-                    $('#info_name').html('<span>'+data.info.username+'</span>')
+                    $('#info_name').html('<span>'+data.info.fullname??data.info.username+'</span>')
                     $('#info_balance').html('<span>'+data.info.balance+'</span>')
                     $('#info_balance').html('<span><i class="text-danger">'+formatNumber(data.info.balance)+'</i></span>')
                 }

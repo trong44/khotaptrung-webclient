@@ -1,0 +1,272 @@
+/* css service game */
+
+.block-product.gaming-recharge {
+    padding: 18px 21px 2px 21px;
+}
+.gaming-recharge-header {
+    border-bottom: 1px solid #DCDEE9;
+    padding-bottom: 18px;
+}
+
+.gaming-recharge-header p {
+    margin-left: 0.5rem;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1B1D29;
+    margin-bottom: 0;
+}
+.gaming-recharge-search-header {
+    padding: 0.75rem 0;
+}
+
+.gaming-recharge-search-header p {
+    font-weight: 600;
+    font-size: 16px;
+    color: #434657;
+    margin-bottom: 0;
+}
+.gaming-recharge-search-form {
+    padding: 0.75rem 0;
+}
+
+.gaming-recharge-search-form h6 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #1B1D29;
+    margin-bottom: 0.5rem;
+}
+.gaming-recharge-form-detail {
+    position: relative;
+}
+
+.gaming-recharge-form-detail input {
+    height: 40px;
+    padding-left: 2.75rem;
+    width: 340px;
+}
+
+.gaming-recharge-form-detail img {
+    position: absolute;
+    left: 12px;
+    top: 46%;
+}
+
+.gaming-recharge-form-detail button {
+    height: 40px;
+    width: 120px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 0.75rem;
+}
+
+.content-video-in iframe,
+.content-video-in img
+{
+    max-width: 100%;
+    height: auto;
+}
+
+.detail-ser-content{
+    flex-basis: 45%;
+}
+@media (max-width: 767px) {
+    .gaming-recharge-search-form button{
+        display: none;
+    }
+}
+/*end*/
+
+/* modal sedding */
+.modal-sedding-notification{
+    left: -100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border-radius: 12px;
+    background: #ffffff;
+    width: 360px;
+    /*height: 160px;*/
+    position: fixed;
+    z-index: 12;
+    bottom: 100px;
+    transition: .3s ease;
+    padding: 12px;
+    box-shadow: 0 4px 32px rgb(0 0 0 / 8%);
+}
+.modal-sedding-notification_show{
+    left: 4px;
+    transition: .3s ease;
+}
+.modal-sedding-image{
+    width: 232px;
+    height: 96px;
+    margin: auto;
+}
+.modal-sedding-image img{
+    width: 100%;
+    border-radius: 12px;
+    height: 100%;
+    object-fit: cover;
+}
+.modal-sedding-title{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #000000;
+}
+.modal-sedding-content{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #82869E;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+.modal-sedding-notification span{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #F67600;
+}
+.close-sedding{
+    position: absolute;
+    background: #FBFBFD;
+    top: -9px;
+    right: -8px;
+    padding: 0 6px;
+    border-radius: 100%;
+    box-shadow: 0 4px 32px rgb(0 0 0 / 8%);
+}
+.modal-sedding{
+    margin-left: 12px;
+}
+@media (max-width: 992px) {
+    .sedding-notification-mobile{
+        top: -100%;
+        left: 16px;
+        right: 16px;
+        bottom:auto;
+        width: auto;
+    }
+    /*.fix-sedding:before {*/
+    /*    content: '';*/
+    /*    position: fixed;*/
+    /*    top: 0;*/
+    /*    left: 0;*/
+    /*    right: 0;*/
+    /*    bottom: 0;*/
+    /*    background-color: rgba(0,0,0,.75);*/
+    /*    z-index: 1000;*/
+    /*}*/
+    .modal-sedding-image{
+        width: 180px;
+        height: 78px;
+    }
+    .modal-sedding-title{
+        font-size: 13px;
+    }
+    .modal-sedding-content{
+        font-size: 12px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .modal-sedding-notification span{
+        font-size: 13px;
+    }
+    .modal-sedding-notification_show{
+        top: 66px;
+        transition: .4s ease;
+    }
+}
+ /* fix phan dich vu*/
+.body-title-detail{
+    padding-left: 8px;
+    padding-right: 8px;
+}
+/* css description account*/
+#viewMore a{
+    font-size: unset;
+}
+#viewMore li{
+    font-size: unset;
+}
+#viewMore strong{
+    font-size: unset;
+}
+/* css intro text*/
+#intro_text_home a {
+    font-size: unset;
+}
+#intro_text_home p {
+    font-size: unset;
+}
+
+/*  TOC Component  */
+#toctoc.toc-container {
+    width: auto;
+    margin-bottom: 1rem;
+    text-align: left;
+    display: table;
+    background: #F9F9F9;
+    border: 1px solid #AAAAAA;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+    padding: 10px 20px 10px 10px;
+    position: relative;
+}
+
+#toctoc.toc-container #toctoc-head {
+    padding: 0;
+    align-items: center;
+}
+
+.toc-header {
+    line-height: 1.45;
+    color: #333;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.toc-container .toc-toggle {
+    margin-left: 1rem;
+    margin-right: -0.5rem;
+}
+
+.toc-container .toc-toggle label {
+    padding: 2px 5px 2px 5px;
+    border: 1px solid #999191;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #444444;
+    margin-bottom: 0;
+}
+
+#toctoc.toc-container #toctoc-body {
+    overflow: hidden;
+    padding: 0;
+}
+
+#toctoc.toc-container #toctoc-body a {
+    color: #444444;
+}
+
+#toctoc #toctoc-body a .link {
+    color: #444444;
+}
+
+.accounts_content h2, .accounts_content h3, .accounts_content h4 {
+    scroll-margin-top: 10rem;
+    scroll-snap-margin-top: 10rem;
+}
+
+@media (max-width: 992px) {
+    .accounts_content h2, .accounts_content h3, .accounts_content h4 {
+        scroll-margin-top: 5rem;
+        scroll-snap-margin-top: 5rem;
+    }
+}
+/*  End TOC Component  */

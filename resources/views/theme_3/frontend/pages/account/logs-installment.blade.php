@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
-
+@section('seo_head')
+    @include('frontend.widget.__seo_head')
+@endsection
 @section('content')
 
     {{--  Menu  --}}
@@ -20,13 +22,13 @@
 
             <div class="row marginauto banner-mobile-row-ct">
                 <div class="col-auto left-right" style="width: 10%">
-                    <a href="" class="previous-step-one" style="line-height: 28px">
+                    <a href="javascript:void(0)" class="previous-step-one" style="line-height: 28px" onclick="openMenuProfile()">
                         <img class="lazy" src="/assets/frontend/{{theme('')->theme_key}}/image/cay-thue/back.png" alt="" >
                     </a>
                 </div>
 
                 <div class="col-auto left-right banner-mobile-span text-center" style="width: 80%">
-                    <h3>Tài khoản trả góp</h3>
+                    <h1>Tài khoản trả góp</h1>
                 </div>
                 <div class="col-auto left-right" style="width: 10%">
                 </div>
@@ -809,9 +811,6 @@
                                 <div class="col-md-12 left-right background-order-ct">
                                     <div class="row marginauto title-success-thanh-cong">
                                         <div class="col-md-12 left-right">
-                                            <span>Để tránh các trường hợp xấu xảy ra, quý khách vui lòng thêm thông tin (Email và Số điện thoại) Để đảm bảo không có vấn đề sau khi giao dịch tại shop! Xin cảm ơn!</span>
-                                        </div>
-                                        <div class="col-md-12 left-right padding-order-ct">
                                             <span>Để tránh các trường hợp xấu xảy ra, quý khách vui lòng thêm thông tin (Email và Số điện thoại) Để đảm bảo không có vấn đề sau khi giao dịch tại shop! Xin cảm ơn!</span>
                                         </div>
                                     </div>

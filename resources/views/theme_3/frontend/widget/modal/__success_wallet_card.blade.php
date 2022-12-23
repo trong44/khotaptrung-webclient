@@ -40,7 +40,7 @@
     </div>
 
 
-    {{--            <fieldset id="fieldset-two-recharge-atm" style="background-color: white">--}}
+    {{--            <fieldset id="fieldset-two-transfer" style="background-color: white">--}}
     {{--                <section>--}}
     {{--                    <div class="container container-fix banner-mobile-container-ct">--}}
     {{--                        <div class="row marginauto banner-mobile-row-ct">--}}

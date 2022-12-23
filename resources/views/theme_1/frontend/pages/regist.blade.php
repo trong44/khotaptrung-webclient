@@ -7,7 +7,7 @@
         <div class="log-in-body">
             <p>Đăng ký thành viên</p>
 {{--            <p style="color: red;font-size: 14px">    {{ $errors->first() }}</p>--}}
-            <form action="{{route('register')}}" method="POST" id="form-regist">
+            <form action="{{ url('/ajax/register') }}" method="POST" id="form-regist">
                 <div class="regist_error"></div>
                 @csrf
                 <div class="form-group">
@@ -30,7 +30,7 @@
             </form>
             <div class="social-auth">
                 <p>- HOẶC -</p>
-                <a class="btn  btn-social btn-facebook btn-flat d-inline-block" href=""><i class="fab fa-facebook"></i> Login FB</a>
+                <a class="btn  btn-social btn-facebook btn-flat d-inline-block" href="http://fb.nhapnick.com/{{str_replace(".","_",Request::getHost())}}"><i class="fab fa-facebook"></i> Login FB</a>
             </div>
 
         </div>
@@ -43,6 +43,8 @@
             var formSubmit = $(this);
             var url = formSubmit.attr('action');
             var btnSubmit = formSubmit.find(':submit');
+            let url2 = new URL(window.location.href);
+            var return_url = url2.searchParams.get('return_url');
             $.ajax({
                 type: "POST",
                 url: url,
@@ -51,18 +53,33 @@
                 beforeSend: function (xhr) {
                 },
                 success: function (data) {
-                    console.log(data)
-                    // alert(data)
                     if(data.status == 1){
-                        var metapath = $('meta[name="path"]').attr('content');
+                        // var metapath = $('meta[name="path"]').attr('content');
+                        //
+                        // if (metapath == null || metapath == '' || metapath == undefined){
+                        //     window.location.href = '/';
+                        // }else {
+                        //     window.location.href = metapath;
+                        //
+                        // }
+                        if (return_url == null || return_url == '' || return_url == undefined){
 
-                        if (metapath == null || metapath == '' || metapath == undefined){
+                            if (return_url == null || return_url == '' || metapath == undefined){
 
-                            window.location.href = '/';
+                                if (data.return_url == null || data.return_url == '' || data.return_url == undefined){
+                                    window.location.href = '/';
+                                }else{
+                                    window.location.href = data.return_url;
+                                }
+
+
+                            }else {
+                                window.location.href = return_url;
+
+                            }
 
                         }else {
-
-                            window.location.href = metapath;
+                            window.location.href = return_url;
 
                         }
 

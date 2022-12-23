@@ -7,9 +7,18 @@
 
 
                     <div class="media-inner aling-items-end">
-                        <a href="/tin-tuc/{{ $item->slug }}">
-                            <img src="{{$item->image}}" alt="" class="bg rounded">
+
+
+                        @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                        <a href="{{ setting('sys_zip_shop') }}/{{ $item->slug }}">
+
+                            <img src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="" class="bg rounded">
                         </a>
+                        @else
+                            <a href="/tin-tuc/{{ $item->slug }}">
+                                <img src="{{\App\Library\MediaHelpers::media($item->image)}}" alt="" class="bg rounded">
+                            </a>
+                        @endif
 
                         <div class="align-items-bottom">
                             {{--                            <div class="align-items-end h-100 text-white">--}}
@@ -17,7 +26,11 @@
                                 @if(isset($item->url_redirect_301))
                                     <a target="_blank" href="{{ $item->url_redirect_301 }}" class="text-white">{{ $item->title }}</a>
                                 @else
-                                    <a href="/tin-tuc/{{ $item->slug }}" class="text-white">{{ $item->title }}</a>
+                                    @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                                    <a href="{{ setting('sys_zip_shop') }}/{{ $item->slug }}" class="text-white">{{ $item->title }}</a>
+                                    @else
+                                        <a href="/tin-tuc/{{ $item->slug }}" class="text-white">{{ $item->title }}</a>
+                                    @endif
                                 @endif
                             </h3>
                             {{--                            </div>--}}
@@ -33,9 +46,17 @@
                 <div class="item-thumb">
                     <div class="media-placeholder ratio-5-3 rounded">
                         <div class="bg rounded item-imager-blog" >
-                            <a href="/tin-tuc/{{ $item->slug }}">
-                                <img src="{{  $item->image }}" class="img-fluid" title="{{ $item->title }}">
+
+                            @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                            <a href="{{ setting('sys_zip_shop') }}/{{ $item->slug }}">
+
+                                <img src="{{\App\Library\MediaHelpers::media($item->image)}}" class="img-fluid" title="{{ $item->title }}">
                             </a>
+                            @else
+                                <a href="/tin-tuc/{{ $item->slug }}">
+                                    <img src="{{\App\Library\MediaHelpers::media($item->image)}}" class="img-fluid" title="{{ $item->title }}">
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -44,19 +65,31 @@
                         @if(isset($item->url_redirect_301))
                             <a target="_blank" href="{{ $item->url_redirect_301 }}">{{ $item->title }}</a>
                         @else
-                            <a href="/tin-tuc/{{ $item->slug }}">{{ $item->title }}</a>
+                            @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                            <a href="{{ setting('sys_zip_shop') }}/{{ $item->slug }}">{{ $item->title }}</a>
+                            @else
+                                <a href="/tin-tuc/{{ $item->slug }}">{{ $item->title }}</a>
+                            @endif
                         @endif
                     </h6>
                     <div class="item-meta small">
 
                         <div class="time text-secondary"><i class="las la-clock"></i>
-
-                            {{ formatDateTime($item->created_at) }} | Danh mục : {{ $item->groups[0]->title }}
+                            @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                                @if(isset($item->published_at))
+                                    {{ formatDateTime($item->published_at) }}
+                                @else
+                                    {{ formatDateTime($item->created_at) }}
+                                @endif
+                            @else
+                                {{ formatDateTime($item->created_at) }}
+                            @endif
+                            | Danh mục : {{ $item->groups[0]->title }}
 
                         </div>
                     </div>
                     <div class="item-summary">
-                        {!! $item->description !!}
+                        {!! $item->seo_description !!}
                     </div>
                 </div>
             </div><!-- END Item -->

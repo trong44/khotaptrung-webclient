@@ -162,10 +162,11 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
-
+        App\Providers\BladeServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -178,6 +179,7 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         App\Providers\WidgetServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
     ],
 
     /*

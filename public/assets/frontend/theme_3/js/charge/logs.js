@@ -48,17 +48,17 @@ $(document).ready(function (e) {
         $('.nick-findter-data').html('');
         $('.nick-findter-data').html(defaulthtml);
 
-        var id = $('.id').val();
+        var serial = $('.serial').val();
 
-        if (id == null || id == undefined || id == ''){}else {
+        if (serial == null || serial == undefined || serial == ''){}else {
             if ($('.prepend-nick').hasClass('prepend-nick-id')){
                 return false;
             }
-            if (parseInt(id.length) > 50){
+            if (parseInt(serial.length) > 50){
                 return false;
             }
             var htmlid = '';
-            htmlid += '<div class="col-auto prepend-nick prepend-nick-id" style="position: relative"><a href="javascript:void(0)">' + id + '</a><img class="lazy close-item-nick imgae-nick-id" src="/assets/theme_3/image/nick/close.png" alt=""></div>';
+            htmlid += '<div class="col-auto prepend-nick prepend-nick-id" style="position: relative"><a href="javascript:void(0)">' + serial + '</a><img class="lazy close-item-nick imgae-nick-id" src="/assets/frontend/theme_3/image/nick/close.png" alt=""></div>';
             $('.nick-findter-data').prepend(htmlid);
             isSet = true;
             index = index + 1;
@@ -67,13 +67,13 @@ $(document).ready(function (e) {
         var statusvalue = $('.status-finter-nick .list .option.selected').data('value');
         var status = $('.status-finter-nick .list .option.selected').text();
 
-        if (status == null || status == undefined || status == '' || statusvalue == null || statusvalue == undefined || statusvalue == 'Chọn'){}else {
+        if (status == null || status == undefined || status == 'Chọn' || statusvalue == null || statusvalue == undefined || statusvalue == 'Chọn'){}else {
             if ($('.prepend-nick').hasClass('prepend-nick-status')){
                 return false;
             }
 
             var htmlstatus = '';
-            htmlstatus += '<div class="col-auto prepend-nick prepend-nick-status" style="position: relative"><a href="javascript:void(0)">' + status + '</a><img class="lazy close-item-nick imgae-nick-status" src="/assets/theme_3/image/nick/close.png" alt=""></div>';
+            htmlstatus += '<div class="col-auto prepend-nick prepend-nick-status" style="position: relative"><a href="javascript:void(0)">' + status + '</a><img class="lazy close-item-nick imgae-nick-status" src="/assets/frontend/theme_3/image/nick/close.png" alt=""></div>';
             $('.nick-findter-data').prepend(htmlstatus);
             isSet = true;
             index = index + 1;
@@ -82,12 +82,12 @@ $(document).ready(function (e) {
         var transactionvalue = $('.transaction-finter-nick .list .option.selected').data('value');
         var transaction = $('.transaction-finter-nick .list .option.selected').text();
 
-        if (transaction == null || transaction == undefined || transaction == '' || transactionvalue == null || transactionvalue == undefined || transactionvalue == 'Chọn'){}else {
+        if (transaction == null || transaction == undefined || transaction == 'Chọn' || transactionvalue == null || transactionvalue == undefined || transactionvalue == 'Chọn'){}else {
             if ($('.prepend-nick').hasClass('prepend-nick-transaction')){
                 return false;
             }
             var htmlrank = '';
-            htmlrank += '<div class="col-auto prepend-nick prepend-nick-transaction" style="position: relative"><a href="javascript:void(0)">' + transaction + '</a><img class="lazy close-item-nick imgae-nick-rank" src="/assets/theme_3/image/nick/close.png" alt=""></div>';
+            htmlrank += '<div class="col-auto prepend-nick prepend-nick-transaction" style="position: relative"><a href="javascript:void(0)">' + transaction + '</a><img class="lazy close-item-nick imgae-nick-rank" src="/assets/frontend/theme_3/image/nick/close.png" alt=""></div>';
             $('.nick-findter-data').prepend(htmlrank);
             isSet = true;
             index = index + 1;
@@ -104,7 +104,7 @@ $(document).ready(function (e) {
                 htmltime += '<a href="javascript:void(0)">';
                 htmltime += 'Trước - ' + ended_at;
                 htmltime += '</a>';
-                htmltime += '<img class="lazy close-item-nick imgae-nick-rank" src="/assets/theme_3/image/nick/close.png" alt="">';
+                htmltime += '<img class="lazy close-item-nick imgae-nick-rank" src="/assets/frontend/theme_3/image/nick/close.png" alt="">';
                 htmltime += '</div>';
 
                 $('.nick-findter-data').prepend(htmltime);
@@ -118,7 +118,7 @@ $(document).ready(function (e) {
                 htmltime += '<a href="javascript:void(0)">';
                 htmltime += 'Sau - ' + started_at;
                 htmltime += '</a>';
-                htmltime += '<img class="lazy close-item-nick imgae-nick-rank" src="/assets/theme_3/image/nick/close.png" alt="">';
+                htmltime += '<img class="lazy close-item-nick imgae-nick-rank" src="/assets/frontend/theme_3/image/nick/close.png" alt="">';
                 htmltime += '</div>';
 
                 $('.nick-findter-data').prepend(htmltime);
@@ -130,7 +130,7 @@ $(document).ready(function (e) {
                 htmltime += '<a href="javascript:void(0)">';
                 htmltime += started_at + ' - ' + ended_at;
                 htmltime += '</a>';
-                htmltime += '<img class="lazy close-item-nick imgae-nick-rank" src="/assets/theme_3/image/nick/close.png" alt="">';
+                htmltime += '<img class="lazy close-item-nick imgae-nick-rank" src="/assets/frontend/theme_3/image/nick/close.png" alt="">';
                 htmltime += '</div>';
 
                 $('.nick-findter-data').prepend(htmltime);
@@ -154,23 +154,59 @@ $(document).ready(function (e) {
     })
 
     $('body').on('click','.prepend-nick-status',function(){
+
         $('.status').val('');
         $('.status').niceSelect('update');
         $('.status-finter-nick .current').html('Chọn');
         $('.status-finter-nick .list:first-child').addClass('selected');
+
         loadData();
+
+        $('.started_at_data_ls').val('');
+
+        var serial_data = $('.serial_data_ls').val();
+        var key_data =  $('.key_data_ls').val();
+        var status_data =  $('.status_data_ls').val();
+        var started_at_data = $('.started_at_data_ls').val();
+        var ended_at_data =  $('.ended_at_data_ls').val();
+        var page = 1;
+
+        loadDataChargeHistory(page, serial_data, key_data, status_data,started_at_data,ended_at_data);
     })
 
     $('body').on('click','.prepend-nick-times',function(){
         $('.started_at').val('');
 
         loadData();
+
+        $('.started_at_data_ls').val('');
+        $('.ended_at_data_ls').val('');
+
+        var serial_data = $('.serial_data_ls').val();
+        var key_data =  $('.key_data_ls').val();
+        var status_data =  $('.status_data_ls').val();
+        var started_at_data = $('.started_at_data_ls').val();
+        var ended_at_data =  $('.ended_at_data_ls').val();
+        var page = 1;
+
+        loadDataChargeHistory(page, serial_data, key_data, status_data,started_at_data,ended_at_data);
     })
 
     $('body').on('click','.prepend-nick-id',function(){
-        $('.id').val('');
+        $('.serial').val('');
 
         loadData();
+
+        $('.serial_data_ls').val('');
+
+        var serial_data = $('.serial_data_ls').val();
+        var key_data =  $('.key_data_ls').val();
+        var status_data =  $('.status_data_ls').val();
+        var started_at_data = $('.started_at_data_ls').val();
+        var ended_at_data =  $('.ended_at_data_ls').val();
+        var page = 1;
+
+        loadDataChargeHistory(page, serial_data, key_data, status_data,started_at_data,ended_at_data);
     })
 
     $('body').on('click','.prepend-nick-transaction',function(){
@@ -179,20 +215,64 @@ $(document).ready(function (e) {
         $('.transaction-finter-nick .current').html('Chọn');
         $('.transaction-finter-nick .list:first-child').addClass('selected');
         loadData();
+
+        $('.key_data_ls').val('');
+
+        var serial_data = $('.serial_data_ls').val();
+        var key_data =  $('.key_data_ls').val();
+        var status_data =  $('.status_data_ls').val();
+        var started_at_data = $('.started_at_data_ls').val();
+        var ended_at_data =  $('.ended_at_data_ls').val();
+        var page = 1;
+
+        loadDataChargeHistory(page, serial_data, key_data, status_data,started_at_data,ended_at_data);
     })
 
     $('body').on('click','.prepend-nick-timee',function(){
         $('.ended_at').val('');
 
         loadData();
+
+        $('.started_at_data_ls').val('');
+        $('.ended_at_data_ls').val('');
+
+        var serial_data = $('.serial_data_ls').val();
+        var key_data =  $('.key_data_ls').val();
+        var status_data =  $('.status_data_ls').val();
+        var started_at_data = $('.started_at_data_ls').val();
+        var ended_at_data =  $('.ended_at_data_ls').val();
+        var page = 1;
+
+        loadDataChargeHistory(page, serial_data, key_data, status_data,started_at_data,ended_at_data);
     })
+
     $('body').on('click','.prepend-nick-timese',function(){
         $('.ended_at').val('');
         $('.started_at').val('');
         loadData();
+
+        $('.started_at_data_ls').val('');
+        $('.ended_at_data_ls').val('');
+
+        var serial_data = $('.serial_data_ls').val();
+        var key_data =  $('.key_data_ls').val();
+        var status_data =  $('.status_data_ls').val();
+        var started_at_data = $('.started_at_data_ls').val();
+        var ended_at_data =  $('.ended_at_data_ls').val();
+        var page = 1;
+
+        loadDataChargeHistory(page, serial_data, key_data, status_data,started_at_data,ended_at_data);
     })
 
+
     $('body').on('click','.reset-find',function(){
+
+        $('.span-reset').html('')
+        var htmlloading = '';
+        htmlloading += '<div class="loading"></div>';
+        $('.btn-reset .loading-data__timkiem').html('');
+        $('.btn-reset .loading-data__timkiem').html(htmlloading);
+
         $('.id').val('');
         $('.ended_at').val('');
         $('.started_at').val('');
@@ -211,9 +291,189 @@ $(document).ready(function (e) {
             }
         });
         loadData();
-    })
+
+        $('.serial_data_ls').val('');
+        $('.key_data_ls').val('');
+        $('.status_data_ls').val('');
+        $('.started_at_data_ls').val('');
+        $('.ended_at_data_ls').val('');
+
+        var serial_data = $('.serial_data_ls').val();
+        var key_data =  $('.key_data_ls').val();
+        var status_data =  $('.status_data_ls').val();
+        var started_at_data = $('.started_at_data_ls').val();
+        var ended_at_data =  $('.ended_at_data_ls').val();
+        var page = 1;
+
+        loadDataChargeHistory(page, serial_data, key_data, status_data,started_at_data,ended_at_data);
+    });
+
+
+    $(document).on('submit', '.search-txns', function(e){
+        e.preventDefault();
+
+        $('.span-timkiem').html('');
+
+        var htmlloading = '';
+        htmlloading += '<div class="loading"></div>';
+        $('.btn-timkiem .loading-data__timkiem').html('');
+        $('.btn-timkiem .loading-data__timkiem').html(htmlloading);
+
+        var key = $('.search').val();
+
+        $('.serial_data_ls').val(key);
+
+        var serial_data = $('.serial_data_ls').val();
+        var key_data =  $('.key_data_ls').val();
+        var status_data =  $('.status_data_ls').val();
+        var started_at_data = $('.started_at_data_ls').val();
+        var ended_at_data =  $('.ended_at_data_ls').val();
+        var page = 1;
+
+        loadDataChargeHistory(page, serial_data, key_data, status_data,started_at_data,ended_at_data);
+    });
 
     $('body').on('click','.close-modal-default',function(){
         $('#openFinter').modal('hide')
     })
+
+    $(document).on('click', '.paginate__v1 .pagination a',function(event){
+        event.preventDefault();
+
+        var page = $(this).attr('href').split('page=')[1];
+
+        $('#hidden_page').val(page);
+
+        $('li').removeClass('active');
+        $(this).parent().addClass('active');
+
+        var serial = $('.serial_data_ls').val();
+        var key =  $('.key_data_ls').val();
+        var status =  $('.status_data_ls').val();
+        var started_at = $('.started_at_data_ls').val();
+        var ended_at =  $('.ended_at_data_ls').val();
+
+        loadDataChargeHistory(page, serial, key, status,started_at,ended_at);
+    });
+
+    loadDataChargeHistory();
+
+    function loadDataChargeHistory(page, serial, key, status,started_at,ended_at) {
+        if (page == null || page == '' || page == undefined){
+            page = 1;
+        }
+        request = $.ajax({
+            type: 'GET',
+            url: '/lich-su-nap-the',
+            data: {
+                page:page,
+                serial:serial,
+                key:key,
+                status:status,
+                started_at:started_at,
+                ended_at:ended_at,
+            },
+            beforeSend: function (xhr) {
+
+            },
+            success: (data) => {
+                $('.loading-data__timkiem').html('');
+                $('#openFinter').modal('hide');
+                if (data.status == 1){
+                    $("#data_pay_card_history_ls").empty().html('');
+                    $("#data_pay_card_history_ls").empty().html(data.data);
+                }else if (data.status == 0) {
+                    var html = '';
+                    html += '<div class="table-responsive" id="tableacchstory">';
+                    html += '<table class="table table-hover table-custom-res">';
+                    html += '<thead><tr><th>Thời gian</th><th>Nhà mạng</th><th>Mã thẻ</th><th>serial</th><th>Mệnh giá</th><th>Kết quả</th><th>Thực nhận</th></tr></thead>';
+                    html += '<tbody>';
+                    html += '<tr style="width: 100%" id="table-notdata"><td colspan="7"><span>Tài khoản của quý khách chưa phát sinh giao dịch</span></td></tr>';
+                    html += '</tbody>';
+                    html += '</table>';
+                    html += '</div>';
+
+                    $("#data_pay_card_history_ls").empty().html('');
+                    $("#data_pay_card_history_ls").empty().html(html);
+                }
+
+                $('#data_service_history .default-paginate').removeClass('default-paginate-addpadding');
+
+                $('#data_service_history .table-logs').addClass('table-responsive');
+                $('.span-ap-dung').html('Áp dụng');
+                $('.span-reset').html('Thiết lập lại');
+                $('.span-timkiem').html('Tìm kiếm');
+
+            },
+            error: function (data) {
+
+            },
+            complete: function (data) {
+
+            }
+        });
+    }
+
+    $(document).on('submit', '.form-charge_ls', function(e){
+        e.preventDefault();
+
+        $('.span-ap-dung').html('');
+        var htmlloading = '';
+        htmlloading += '<div class="loading"></div>';
+        $('.btn-ap-dung .loading-data__timkiem').html('');
+        $('.btn-ap-dung .loading-data__timkiem').html(htmlloading);
+
+        var serial = $('.serial').val();
+
+        var keyvalue = $('.transaction-finter-nick .list .option.selected').data('value');
+        var key = $('.transaction-finter-nick .list .option.selected').text();
+
+        var statusvalue = $('.status-finter-nick .list .option.selected').data('value');
+        var status = $('.status-finter-nick .list .option.selected').text();
+
+        var started_at = $('.started_at').val();
+        var ended_at = $('.ended_at').val();
+
+        if (serial == null || serial == undefined || serial == ''){
+            $('.serial_data_ls').val('');
+        }else {
+            $('.serial_data_ls').val(serial);
+        }
+
+        if (keyvalue == null || keyvalue == undefined || keyvalue == 'Chọn' || key == null || key == undefined || key == 'Chọn'){
+            $('.key_data_ls').val('');
+        }else {
+            $('.key_data_ls').val(keyvalue);
+        }
+
+        if (statusvalue == null || statusvalue == undefined || statusvalue == 'Chọn' || status == null || status == undefined || status == 'Chọn'){
+            $('.status_data_ls').val('');
+        }else {
+            $('.status_data_ls').val(statusvalue);
+        }
+
+        var started_at = $('.started_at').val();
+        if (started_at == null || started_at == undefined || started_at == ''){
+            $('.started_at_data_ls').val('');
+        }else {
+            $('.started_at_data_ls').val(started_at);
+        }
+
+        var ended_at =  $('.ended_at').val();
+        if (ended_at == null || ended_at == undefined || ended_at == ''){
+            $('.ended_at_data_ls').val('');
+        }else {
+            $('.ended_at_data_ls').val(ended_at);
+        }
+
+        var serial_data = $('.serial_data_ls').val();
+        var key_data =  $('.key_data_ls').val();
+        var status_data =  $('.status_data_ls').val();
+        var started_at_data = $('.started_at_data_ls').val();
+        var ended_at_data =  $('.ended_at_data_ls').val();
+        var page = 1;
+
+        loadDataChargeHistory(page, serial_data, key_data, status_data,started_at_data,ended_at_data);
+    });
+
 })

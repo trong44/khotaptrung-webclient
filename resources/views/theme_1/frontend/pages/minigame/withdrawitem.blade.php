@@ -1,4 +1,7 @@
 @extends('frontend.layouts.master')
+@section('meta_robots')
+    <meta name="robots" content="noindex,nofollow" />
+@endsection
 @section('content')
 
     @if ($message = Session::get('success'))
@@ -29,7 +32,8 @@
             @include('frontend.pages.account.sidebar')
             <div class="account_sidebar_content">
                 <div class="account_sidebar_content_title">
-                    <p>RÚT VẬT PHẨM GAME {{config('constants.game_type.'.$game_type)}}</p>
+{{--                    <p>RÚT VẬT PHẨM GAME {{config('constants.game_type.'.$game_type)}}</p>--}}
+                    <p>RÚT VẬT PHẨM</p>
                     <div class="account_sidebar_content_line"></div>
                 </div>
                 <div class="form-group row">
@@ -53,9 +57,54 @@
                         });
                     </script>
                 </div>
-                <div class="text-center" style="color: #eb5d68;font-size: 18px;    margin: -14px auto 12px auto;    font-weight: 600;">Số {{isset($result->gametype->image)?$result->gametype->image:'vật phẩm'}} hiện có: {{number_format($result->number_item)}}</div>
+{{--                {{isset($result->gametype->image)?$result->gametype->image:'vật phẩm'}}--}}
+                <div class="text-center" style="color: #eb5d68;font-size: 18px;    margin: -14px auto 12px auto;    font-weight: 600;">Số vật phẩm hiện có: {{number_format($result->number_item)}}</div>
                 <form class="form-horizontal form-withdraw" method="POST">
                     {{csrf_field()}}
+
+                    @php
+                        $service = null;
+                        $params = null;
+                        $server_id = null;
+                        $server_data = null;
+                        if (isset($result->service)){
+                            $service = $result->service;
+
+                            if (isset($service->params)){
+                                $params = $service->params;
+                                $server_data=\App\Library\HelpersDecode::DecodeJson('server_data',$params);
+                                $server_id = \App\Library\HelpersDecode::DecodeJson('server_id',$params);
+                            }
+
+                        }
+
+                    @endphp
+
+                    @if(isset($service))
+                        <input type="hidden" name="service_id" value="{{ $service->id }}">
+                        @if(isset($server_data) && isset($server_id) && count($server_data) && count($server_id))
+                            @if($service->idkey != 'roblox_buyserver')
+                            <div class="form-group row">
+                                <label class="col-md-3 control-label">
+                                    Chọn máy chủ:
+                                </label>
+                                <div class="col-md-6">
+                                    <div class="input-group" style="width: 100%">
+                                        <select name="server" class="server-filter form-control t14" style="">
+                                            @for($i = 0; $i < count($server_data); $i++)
+                                                @if((strpos($server_data[$i], '[DELETE]') === false))
+                                                    <option value="{{$server_id[$i]}}">{{$server_data[$i]}}</option>
+                                                @endif
+                                            @endfor
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            @endif
+                        @endif
+                    @endif
+
                     <div class="form-group row">
                         <label class="col-md-3 control-label">
                             Gói muốn rút:
@@ -73,6 +122,8 @@
                         </div>
 
                     </div>
+
+                    @if(isset($result->gametype->idkey))
                     <div class="form-group row">
                         <label class="col-md-3 control-label">
                             {{isset($result->gametype->idkey)?$result->gametype->idkey:'ID trong game:'}}
@@ -84,6 +135,8 @@
                         </div>
 
                     </div>
+                    @endif
+                    @if(isset($result->gametype->position))
                     <div class="form-group row">
                         <label class="col-md-3 control-label">
                             {{isset($result->gametype->position)?$result->gametype->position:'Số điện thoại ( nếu có ):'}}
@@ -95,6 +148,7 @@
                         </div>
 
                     </div>
+                    @endif
                     <div class="form-group row " style="margin: 20px 0">
                         <div class="col-md-6" style="    margin-left: 25%;">
                             <button id="btn-confirm" class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold btn-block">Thực hiện</button>
@@ -107,12 +161,9 @@
                     </div>
                 </form>
 
-
                 <div class="" style="margin: 35px 0px;border: 1px solid #cccccc;padding: 15px">
                     {!!isset($result->gametype->description)?$result->gametype->description:''!!}
                 </div>
-
-
 
                 <table id="charge_recent" class="table table-striped table-custom-res">
 
@@ -120,13 +171,14 @@
                     <tr>
                         <th>Thời gian</th>
                         <th>ID</th>
-                        <th>Số kim cương</th>
+                        <th>Số vật phẩm rút</th>
                         <th>Ghi chú</th>
                         <th>Thông báo</th>
                         <th>Trạng thái</th>
                         <!-- <th>Thao tác</th> -->
                     </tr>
                     </tbody>
+
                         @if($paginatedItems)
                             @foreach($result->withdraw_history->data as $item)
                             <tr>
@@ -140,15 +192,28 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($item->status == 0)
-                                        <a class="btn btn-xs c-btn-square m-b-10 btn-warning">{{config('constants.withdraw_status.0')}}</a>
-                                    @elseif($item->status == 1 )
-                                        <a class="btn btn-xs c-btn-square m-b-10 btn-success">{{config('constants.withdraw_status.1')}}</a>
-                                    @elseif($item->status == 2 )
-                                        <a class="btn btn-xs c-btn-square m-b-10 btn-danger">{{config('constants.withdraw_status.2')}}</a>
-                                    @elseif($item->status == 3 )
-                                        <a class="btn btn-xs c-btn-square m-b-10 btn-danger">{{config('constants.withdraw_status.3')}}</a>
+                                    @if($item->payment_type == 13 || $item->payment_type == 12 || $item->payment_type == 11 || $item->payment_type == 14)
+                                        @if ($item->status == 0 || $item->status == 3 || $item->status == 5 || $item->status == 6 || $item->status == 77 || $item->status == 88)
+                                            <a class="btn btn-xs c-btn-square m-b-10 btn-danger">Giao dịch thất bại</a>
+                                        @elseif($item->status == 1 || $item->status == 9)
+                                            <a class="btn btn-xs c-btn-square m-b-10 btn-warning">Chờ xử lý</a>
+                                        @elseif($item->status == 2 )
+                                            <a class="btn btn-xs c-btn-square m-b-10 btn-warning">Chờ xử lý</a>
+                                        @elseif($item->status == 4 )
+                                            <a class="btn btn-xs c-btn-square m-b-10 btn-success">Hoàn thành</a>
+                                        @endif
+                                    @else
+                                        @if ($item->status == 0)
+                                            <a class="btn btn-xs c-btn-square m-b-10 btn-warning">{{config('constants.withdraw_status.0')}}</a>
+                                        @elseif($item->status == 1 )
+                                            <a class="btn btn-xs c-btn-square m-b-10 btn-success">{{config('constants.withdraw_status.1')}}</a>
+                                        @elseif($item->status == 2 )
+                                            <a class="btn btn-xs c-btn-square m-b-10 btn-danger">{{config('constants.withdraw_status.2')}}</a>
+                                        @elseif($item->status == 3 )
+                                            <a class="btn btn-xs c-btn-square m-b-10 btn-danger">{{config('constants.withdraw_status.3')}}</a>
+                                        @endif
                                     @endif
+
                                 </td>
                             </tr>
                             @endforeach

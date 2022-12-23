@@ -1,8 +1,21 @@
     @foreach($data??[] as $item)
         @if ($item->parent_id == 0)
-            <li class="nav-item item-home active  item-{{substr($item->url, 1)}}">
-                <a href="{{$item->url??'/'}}" class="nav-link">{{$item->title}}</a>
-            </li>
+
+            @if($item->url == '/tin-tuc')
+                @if(setting('sys_zip_shop') && setting('sys_zip_shop') != '')
+                    <li class="nav-item item-home active  item-{{substr($item->url, 1)}}">
+                        <a href="{{ setting('sys_zip_shop') }}" class="nav-link">{{$item->title}}</a>
+                    </li>
+                @else
+                    <li class="nav-item item-home active  item-{{substr($item->url, 1)}}">
+                        <a href="{{$item->url??'/'}}" class="nav-link">{{$item->title}}</a>
+                    </li>
+                @endif
+            @else
+                <li class="nav-item item-home active  item-{{substr($item->url, 1)}}">
+                    <a href="{{$item->url??'/'}}" class="nav-link">{{$item->title}}</a>
+                </li>
+            @endif
 
         @endif
     @endforeach

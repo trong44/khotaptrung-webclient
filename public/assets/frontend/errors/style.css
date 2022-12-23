@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+
+.background_error{
+    background: #F3F3F7;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex
+}
+.container_error{
+    /*width: 50%;*/
+    /*height: 50%;*/
+    margin: auto;
+    background: #FFFFFF;
+    border-radius: 16px;
+    display: flex;
+    padding: 0;
+}
+.marginauto{
+    width: 100%;
+    margin: 0 auto
+}
+.left__right{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.container_error_row_tiem{
+    justify-content: center;
+    align-items: center;
+}
+.container_error_row{
+    padding: 40px;
+}
+.title__error{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 140%;
+    color: #1B1D29;
+}
+
+.text__error{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #434657;
+}
+.container_error_col{
+    padding-top: 24px;
+}
+
+.btn__error{
+    width: 240px;
+    padding: 8px 16px;
+    background: #0E3EDA;
+    border: 1px solid #0E3EDA;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 150%;
+}
+
+.btn__error:hover{
+    text-decoration: none;
+    color: #0E3EDA;
+    background: #FFFFFF;
+    border: 1px solid #0E3EDA;
+}
+
+.container_error_col_f{
+    padding-top: 24px;
+}
+.title__error{
+    margin-bottom: 0;
+}
+
+.image__error{
+    width: 100%;
+    background-size: cover;
+    object-fit: cover;
+}
+.container_error_row_tiem_i{
+    height: 100%;
+}
+@media (min-width: 1200px) {
+    .c-container {
+        max-width: 1264px;
+    }
+
+    .c-container-side {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .container_error_row{
+        padding: 24px;
+    }
+    .container_error_col{
+        padding-top: 20px;
+    }
+    .title__error{
+        font-size: 24px;
+    }
+    .btn__error{
+        width: 240px;
+        padding: 8px 16px;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 150%;
+    }
+    .text__error {
+        font-size: 14px;
+    }
+    .container_error{
+        border-radius: 0;
+    }
+    .mobile_text{
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 573px) and (max-width: 768px) {
+    .container_error_row{
+        padding: 20px;
+    }
+    .container_error_col{
+        padding-top: 8px;
+    }
+    .title__error{
+        font-size: 20px;
+    }
+    .btn__error{
+        width: 240px;
+        padding: 8px 16px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 150%;
+    }
+    .text__error {
+        font-size: 13px;
+    }
+    .mobile_text{
+        text-align: center;
+    }
+    .container_error{
+        border-radius: 0;
+    }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 573px) {
+    .container_error_row{
+        padding: 16px;
+    }
+    .container_error_col{
+        padding-top: 4px;
+    }
+    .title__error{
+        font-size: 16px;
+    }
+    .btn__error{
+        width: 240px;
+        padding: 8px 16px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 150%;
+    }
+    .text__error {
+        font-size: 12px;
+    }
+    .mobile_text{
+        text-align: center;
+    }
+    .container_error{
+        border-radius: 0;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .mobile_text{
+        text-align: center;
+    }
+    .text__error {
+        font-size: 10px;
+    }
+    .container_error_row{
+        padding: 16px;
+    }
+    .container_error_col{
+        padding-top: 0px;
+    }
+    .title__error{
+        font-size: 16px;
+    }
+    .btn__error{
+        width: 240px;
+        padding: 8px 16px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 150%;
+    }
+    .container_error{
+        border-radius: 0;
+    }
+}

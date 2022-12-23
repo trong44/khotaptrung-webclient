@@ -1,0 +1,33 @@
+/**
+ * A jQuery plugin autocomplete
+ * @author Gozoro <gozoro@yandex.ru>
+ * @version 1.0.0
+ */
+
+.autocompleter-result{
+	position:absolute;
+	display: none;
+	border: 1px solid #2A2A2A;
+	background: #2A2A2A;
+	/*box-shadow: #ccc 0 2px 8px;*/
+	overflow-y: auto;
+	max-height:300px;
+	z-index:4000;
+    color: #ffffff;
+}
+
+.autocompleter-item{
+	cursor: pointer;
+	color: #9147FF;
+	padding: 5px;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.autocompleter-item.selected{
+	background: #d7d7d7;
+}
+
+.autocompleter-item.selected .autocompleter-item{
+    color: #252836;
+}

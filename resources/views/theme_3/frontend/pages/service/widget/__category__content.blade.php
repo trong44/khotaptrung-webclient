@@ -1,12 +1,12 @@
 <section>
     <div class="container container-fix body-container-ct">
         <div class="row marginauto body-container-row-ct">
-            <div class="col-md-12 left-right">
+            <div class="col-md-12 left-right detailViewBlock">
                 <div class="row marginauto body-row-ct footer-row-ct">
                     <div class="col-md-12 left-right">
-                        <span>Chi tiết dịch vụ</span>
+                        <span class="detailViewBlockTitle">Chi tiết dịch vụ</span>
                     </div>
-                    <div class="col-md-12 left-right footer-row-col-ct content-video-in content-video-in-add">
+                    <div class="col-md-12 left-right footer-row-col-ct content-video-in content-video-in-add detailViewBlockContent">
                         <p><strong><em><span style="font-size:16px"><span style="font-variant:normal; white-space:pre-wrap"><span style="font-family:Arial"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Chào các game thủ đã đến với Shopngocrong.net !</span></span></span></span></span></span></span></em></strong></p>
 
                         <p style="line-height:1.38; text-align:justify"><span style="font-size:16px"><span style="font-variant:normal; white-space:pre-wrap"><span style="font-family:Arial"><span style="color:#000000"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none">Tất cả các “tín đồ” chơi Ngọc Rồng Online chắc hẳn quá quen thuộc với Hồng Ngọc - “vật phẩm”. Hãy yên tâm khi đến với shopngocrong.net bạn hãy yên tâm để có hồng ngọc chất lượng mà không bỏ nhiều thời gian để cày cuốc để có được. Có nhất thiết cần phải mua hồng ngọc chất lượng, uy tín. Nắm bắt được mong muốn của các game thủ, shopngocrong.net đã ra đời với sứ mệnh đáp ứng nhu cầu, mong muốn của khách hàng. Cách có được nhanh nhất hồng ngọc nhanh nhất là đến với shopngocrong.net với giá rẻ, uy tín. Đừng chần chờ gì nữa hãy nhanh tay sử dụng dịch vụ bán hồng ngọc của Shopngocrong.net.</span></span></span></span></span></span></span></p>
@@ -67,11 +67,7 @@
 
                     <div class="col-md-12 left-right text-center js-toggle-content">
                         <div class="view-more">
-                            <a href="javascript:void(0)" class="global__link__default">Xem thêm<i class="__icon__default --sm__default --link__default ml-1" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/arrow-down.png)"></i></a>
-
-                        </div>
-                        <div class="view-less">
-                            <a href="javascript:void(0)" class="global__link__default">Thu gọn<i class="__icon__default --sm__default --link__default ml-1" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/icons/iconright.png)"></i></a>
+                            <a href="javascript:void(0)" class="global__link__default">Xem thêm<i class="__icon__default --sm__default --link__default ml-1" style="--path : url(/assets/frontend/{{theme('')->theme_key}}/image/svg/xemthem.svg)"></i></a>
                         </div>
                     </div>
 

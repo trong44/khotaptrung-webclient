@@ -38,7 +38,9 @@ class JwtTokenReplacer implements Replacer
             return;
         }
         $dom = new \DOMDocument();
+
         @$dom->loadHTML($response->getContent());
+
         foreach ($dom->getElementsByTagName("meta") as $tag) {
             if (stripos($tag->getAttribute("name"), "jwt") !== false) {
                 $tag->setAttribute("content", session()->get('jwt'));

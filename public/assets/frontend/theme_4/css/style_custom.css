@@ -1,0 +1,123 @@
+.search-input_out{
+    display: none;
+}
+
+.search-active .search-input_out {
+    display: block;
+    opacity: 1;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    position: fixed;
+    top: 0;
+}
+
+.search-active .search-input_out_nav {
+    opacity: 1;
+    background-color:rgb(238, 70, 35);
+    width: 100%;
+    z-index: 2000;
+    padding: 10px 20px;
+    box-shadow: 1px 1px 4px 0 rgb(0 0 0 / 10%);
+}
+
+.search-active .search-input_in {
+    opacity: 1;
+    background-color: #fff;
+    width: 100%;
+    height: 40px;
+    z-index: 2000;
+    border-radius: 100px;
+
+    position: relative;
+}
+
+
+
+.icon-close {
+    position: fixed;
+    top: 21px;
+    left: 36px;
+    color: rgb(87, 87, 87);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-active .search-input {
+    opacity: 1;
+    transform: none;
+    pointer-events: all;
+}
+
+
+
+.search-input {
+
+    position: absolute;
+    top: 2px;
+    left: 40px;
+    /* margin-top: -45px; */
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(40px, 0);
+    transition: all 0.3s ease-in-out;
+    width: 72%;
+}
+.search-input input {
+    color: rgb(87, 87, 87);
+    font-size: 16px;
+    border: 0;
+    /* margin-top: 60px; */
+    background: #fff;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    outline: 0;
+    font-weight: 200;
+    width: 100%;
+    height: 33px;
+    line-height: 33px;
+}
+
+
+.search-active .icon-delete {
+    position: fixed;
+    top: 18px;
+    right: 36px;
+    color: rgb(87, 87, 87);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+#result-search-mobile p{
+    padding: 15px;
+}
+.nav-search-in-value-detail-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-left: 20px;
+}
+.nav-search-in-value-detail-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+.nav-search-in-value-detail a {
+    display: flex;
+}
+.nav-search-in-value-detail {
+    width: 100%;
+    padding: 16px 0 8px 0;
+}
+
+.nav-search-in-value-detail a span {
+    flex: 1;
+    margin: 5px 0 0 24px;
+    font-size: 14px;
+    font-weight: 500;
+}
