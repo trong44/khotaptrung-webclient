@@ -383,7 +383,9 @@
                                     @else
                                     <div class="content-desc detailViewBlockContent">
                                     @endif
-                                        {!! $result->group->content !!}
+                                        <div class="data-content">
+                                            {!! $result->group->content !!}
+                                        </div>
                                     </div>
                                 </div>
                                 @if(substr($result->group->content, 1200))
@@ -1271,5 +1273,5 @@
             }
         }
     </script>
+    <script src="/assets/frontend/{{theme('')->theme_key}}/js/minigame/minigame-content.js?v={{time()}}"></script>
 @endsection
-
