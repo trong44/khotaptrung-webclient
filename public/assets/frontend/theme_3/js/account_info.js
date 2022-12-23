@@ -96,7 +96,8 @@ $(document).ready(function(){
                 if(data.status == true){
 
                     auth_check = true;
-
+                    let input_balance_hide = $('#surplus');
+                    input_balance_hide.length ? input_balance_hide.val(data.info.balance) : '';
                     $(window).resize(function() {
                         if($(window).width() > 992){
                             $('.box-loading').hide();
