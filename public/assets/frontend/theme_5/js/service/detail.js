@@ -181,7 +181,7 @@
                 $text_total.text('Tiền nhập không đúng');
                 return;
             }
-            let server_id = $server;
+            let server_id = $('[name="server"]').val();
             let total = 0, index, current, discount = 0;
             if (!!price) {
                 if ($params.server_mode * 1 === 1 && $params.server_price * 1 === 1) {
