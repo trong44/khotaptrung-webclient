@@ -374,6 +374,8 @@ switch (data_params['filter_type']) {
         }
     }
         input_pack.bind('focus keyup', function () {
+            $(this).val(numberFormat($(this).val(),'.'));
+            $(this).next().val($(this).val().replace(/\D/g,''))
             UpdateTotal();
         });
         // $('body').on('change','select[name=server]',function(elm, select){
@@ -410,4 +412,7 @@ if (table_bot.length){
         },
     })
 }
-// Sau khi nhập đúng thì in ra màn hình
+function numberFormat(value,dot = ',') {
+    let value_only_num = value.replace(/\D/g,'');
+    return value_only_num.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1" + dot);
+}

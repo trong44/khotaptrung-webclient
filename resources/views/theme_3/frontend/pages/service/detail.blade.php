@@ -321,12 +321,12 @@
                                                                         <input autocomplete="off" class="input-defautf-ct mb-2"
                                                                                id="input_pack"
                                                                                value="{{ number_format($data_params['input_pack_min'],0,"",".") }}"
-                                                                               name="selected"
                                                                                type="text"
                                                                                placeholder="Số tiền"
                                                                                numberic
                                                                                currency
                                                                                required>
+                                                                        <input type="hidden" name="selected" value="{{$data_params['input_pack_min']}}">
                                                                         <span id="text-pack">
                                                             Số tiền thanh toán phải từ
                                                             <b style="font-weight:bold;">{{number_format($data_params['input_pack_min'])}}đ</b>
